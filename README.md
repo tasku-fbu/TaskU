@@ -107,7 +107,51 @@ General idea of our app design:
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+
+User (Subclass of PFUser)  
+
+| Property  | Type | Description |
+| ------------- | ------------- | ------------- |
+| Name | String| The username's full name (optional) |
+| Username | String  | The username for the user (required)|
+| Password | String  | The password for the user (required)|
+| Email | String  | The email address for the user (required) |
+| University | String  | The user's university (required)|
+| Phone | Number  | The user's phone number (optional) Used as a point of contact|
+| Profile picture | PFFile  | The user's profile picture (optional)|
+| Payment informaition | Number  | The user's credit card information (Secured) (Optional, still figuring out how to store this safely) |
+
+
+Task 
+
+| Property  | Type | Description |
+| ------------- | ------------- | ------------- |
+| Category | String| The category name in which the task belongs (required) |
+| User | Pointer  | Pointer to user who created this task (required) |
+| Image | PFFile  | An image of the task (optional) |
+| Starting address | PFGeopoint  | The location where the mission starts (required) |
+| Ending address | PFGeopoint  | The location where the mission ends (required)|
+| Date | Date  | The date when the mission needs to be accomplished (required) |
+| Task difficulty | String  | Describes the complexity of the task (required) |
+| Task description | String  | Additional details/special requests for the task (optional) |
+
+
+Request 
+
+| Property  | Type | Description |
+| ------------- | ------------- | ------------- |
+| Task | Pointer| Pointer to the task created by the user who requested it |
+| Completion Status | Boolean  | Returns whether the request has been accomplished or not|
+
+
+Mission 
+
+| Property  | Type | Description |
+| ------------- | ------------- | ------------- |
+| Task | Pointer| Pointer to the task the current user wants to accomplish |
+| Completion Status | Boolean  | Returns whether the mission has been accomplished or not|
+
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
