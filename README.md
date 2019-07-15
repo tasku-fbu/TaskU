@@ -127,29 +127,15 @@ Task
 | Property  | Type | Description |
 | ------------- | ------------- | ------------- |
 | Category | String| The category name in which the task belongs (required) |
-| User | Pointer  | Pointer to user who created this task (required) |
+| Requester | Pointer  | Pointer to user who created this task (required) |
+| Missioner | Pointer  | Pointer to user who accepted this task (required) |
 | Image | PFFile  | An image of the task (optional) |
 | Starting address | PFGeopoint  | The location where the mission starts (required) |
 | Ending address | PFGeopoint  | The location where the mission ends (required)|
 | Date | Date  | The date when the mission needs to be accomplished (required) |
 | Task difficulty | String  | Describes the complexity of the task (required) |
 | Task description | String  | Additional details/special requests for the task (optional) |
-
-
-Request 
-
-| Property  | Type | Description |
-| ------------- | ------------- | ------------- |
-| Task | Pointer| Pointer to the task created by the user who requested it |
-| Completion Status | Boolean  | Returns whether the request has been accomplished or not|
-
-
-Mission 
-
-| Property  | Type | Description |
-| ------------- | ------------- | ------------- |
-| Task | Pointer| Pointer to the task the current user wants to accomplish |
-| Completion Status | Boolean  | Returns whether the mission has been accomplished or not|
+| Completion Status | Enum | Returns the stage of the completion (created, accepted, completed, etc) |
 
 
 ### Networking
