@@ -163,18 +163,23 @@ Sign Up Screen
 
 Login Screen
 (Read/GET) Query users to authenticate user
+
 Home Screen
 (Read/GET) Query all tasks
 (Delete) Delete existing task
+
 Compose Task Screen
 (Create/POST) Create a new task object
+
 My Missions Screen
 (Read/GET) Get all the user’s accepted tasks
 (Update/PUT) Change the status of a task object
 (Delete) Delete existing task
+
 My Requests Screen
 (Read/GET) Get all the user’s requested tasks
 (Create/POST) Post/Change the status of a task object
+
 Profile Screen
 (Read/GET) Query logged in user object
 (Update/PUT) Update user profile image, payment, or account information
