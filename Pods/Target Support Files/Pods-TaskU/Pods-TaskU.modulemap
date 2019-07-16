@@ -1,0 +1,6 @@
+framework module Pods_TaskU {
+  umbrella header "Pods-TaskU-umbrella.h"
+
+  export *
+  module * { export * }
+}
