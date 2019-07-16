@@ -1,23 +1,27 @@
 //
-//  ViewController.m
+//  LoginViewController.M
 //  TaskU
 //
 //  Created by rhaypapenfuzz on 7/15/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 
-@interface ViewController ()
+static NSString *const signUpSegueIdentifier = @"signUpSegue";
+@interface LoginViewController ()
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
+- (IBAction)signUpButtonAction:(id)sender {
+     [self performSegueWithIdentifier: signUpSegueIdentifier sender:nil]; //performs segue to show sign up page
+}
 
 @end
