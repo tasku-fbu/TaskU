@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MissionsViewController : UIViewController
+@property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
