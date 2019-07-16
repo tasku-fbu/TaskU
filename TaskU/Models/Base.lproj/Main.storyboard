@@ -60,14 +60,19 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I5T-0K-NKO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="passwordTextField" destination="Lyp-2Z-6f3" id="PsG-fV-htJ"/>
+                        <outlet property="usernameTextField" destination="IKW-xt-kdX" id="ZI9-NO-ezy"/>
                         <segue destination="hQA-xe-Vo2" kind="show" identifier="signUpSegue" id="RQI-6K-T8j"/>
-                        <segue destination="2dv-dE-POF" kind="show" id="qlH-zN-obZ"/>
+                        <segue destination="2dv-dE-POF" kind="show" identifier="loginSegue" id="qlH-zN-obZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
