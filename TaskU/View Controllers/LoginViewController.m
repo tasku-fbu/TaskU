@@ -30,23 +30,99 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     NSString *password = self.passwordTextField.text;
     
     
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
-        if (error != nil) {
-            NSLog(@"User log in failed: %@", error.localizedDescription);
-        } else {
-            [self performSegueWithIdentifier: loginSegueIdentifier sender:nil]; //performs segue to login if user is valid
-            NSLog(@"User logged in successfully");
-            
-            // display view controller that needs to shown after successful login
-        }
-    }];
+    if ([self isSignUpInfoComplete] == false){
+        
+        //show alert
+        
+    }
+    else{
+        [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+            if (error != nil) {
+                NSLog(@"User log in failed: %@", error.localizedDescription);
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Try Again"
+                                                                               message:@"Incorrect username or password"
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                
+                // create an OK action
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle response here.
+                                                                 }];
+                // add the OK action to the alert controller
+                [alert addAction:okAction];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    // optional code for what happens after the alert controller has finished presenting
+                }];
+            } else {
+                [self performSegueWithIdentifier: loginSegueIdentifier sender:nil]; //performs segue to login if user is valid
+                NSLog(@"User logged in successfully");
+                
+                // display view controller that needs to shown after successful login
+            }
+        }];
+    }
 }
 
 - (IBAction)signUpButtonAction:(id)sender {
-     [self performSegueWithIdentifier: signUpSegueIdentifier sender:nil]; //performs segue to show sign up page
+    [self performSegueWithIdentifier: signUpSegueIdentifier sender:nil]; //performs segue to show sign up page
 }
 - (IBAction)loginActionButton:(id)sender {
     [self loginUser]; //verifies the user through parse login authentication
 }
+
+//Alerts the user if unaccepted login information is entered
+- (bool) isSignUpInfoComplete{
+    
+    if ([self.usernameTextField.text isEqual:@""]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Username"
+                                                                       message:@"Please type valid username."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    
+    else if ([self.passwordTextField.text isEqual:@""]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Password"
+                                                                       message:@"Password cannot be empty."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    
+    return true;
+}
+
 
 @end

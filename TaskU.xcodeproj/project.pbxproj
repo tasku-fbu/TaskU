@@ -23,6 +23,7 @@
 		0E8EFF5922DD523600B9FE89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF5822DD523600B9FE89 /* main.m */; };
 		0E8EFF6322DD523600B9FE89 /* TaskUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6222DD523600B9FE89 /* TaskUTests.m */; };
 		0E8EFF6E22DD523600B9FE89 /* TaskUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */; };
+		0EFEDA9322DFD4F70075A9DD /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */; };
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
 		11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D2F51022DE8C130065D70D /* newTask.storyboard */; };
 		11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
@@ -78,6 +79,7 @@
 		0E8EFF6922DD523600B9FE89 /* TaskUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskUUITests.m; sourceTree = "<group>"; };
 		0E8EFF6F22DD523600B9FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		11D2F50B22DE5D520065D70D /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		11D2F50C22DE5D520065D70D /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		11D2F51022DE8C130065D70D /* newTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newTask.storyboard; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				0E45A04F22DE56C3005D798F /* HomeView.storyboard */,
 				0E45A05222DE5EDA005D798F /* Requests.storyboard */,
 				0E45A05422DE5EF2005D798F /* Missions.storyboard */,
+				0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */,
 				11D2F51022DE8C130065D70D /* newTask.storyboard */,
 			);
 			path = Storyboards;
@@ -352,6 +355,7 @@
 			files = (
 				0E8EFF5622DD523600B9FE89 /* LaunchScreen.storyboard in Resources */,
 				0E45A05522DE5EF3005D798F /* Missions.storyboard in Resources */,
+				0EFEDA9322DFD4F70075A9DD /* Profile.storyboard in Resources */,
 				0E8EFF5322DD523600B9FE89 /* Assets.xcassets in Resources */,
 				0E8EFF5122DD523500B9FE89 /* Main.storyboard in Resources */,
 				0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */,
