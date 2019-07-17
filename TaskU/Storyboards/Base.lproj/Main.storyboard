@@ -161,11 +161,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpButtonAction:" destination="hQA-xe-Vo2" eventType="touchUpInside" id="2ai-6g-KMw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bVp-5c-7xG"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="84t-32-E4B" id="pVF-CO-yFV"/>
+                        <outlet property="emailTextField" destination="P7u-Jm-r2h" id="3dk-vM-bKc"/>
+                        <outlet property="nameTextField" destination="IW6-IL-S7e" id="MJx-p3-hXa"/>
+                        <outlet property="passwordTextField" destination="gPX-gu-g4t" id="LXL-Wo-KiZ"/>
+                        <outlet property="phoneNumberTextField" destination="6Ka-fQ-zjl" id="nBE-Ko-5mi"/>
+                        <outlet property="universityNameTextField" destination="c7F-fE-Ncl" id="ond-Ie-13k"/>
+                        <outlet property="usernameTextField" destination="56u-ma-g8M" id="O7v-qL-lYU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kt1-Yz-zH8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
