@@ -39,24 +39,176 @@
     newUser.username = self.usernameTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
+    newUser[@"name"] = self.universityNameTextField.text;
+    newUser[@"university"] = self.universityNameTextField.text;
+    newUser[@"phone"] =  [NSNumber numberWithInt: self.phoneNumberTextField];
+    //write statement to double confirm password and avoid error
     
-    // call sign up function on the object
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"User registered successfully");
-            PFUser *user = [PFUser currentUser];
-            user[@"name"] = self.universityNameTextField.text;
-            user[@"university"] = self.universityNameTextField.text;
-            user[@"phone"] = self.phoneNumberTextField.text;
-            NSString *confirmPassword =  self.confirmPasswordTextField.text;
-            [user saveInBackground];
-            // dismiss signUpViewController
-            [self dismissViewControllerAnimated:true completion:nil];
-        }
-    }];
+    // set user properties
+    if ([self isSignUpInfoComplete] == false){
+       
+        //show alert
+        
+    }
+    else{
+        // call sign up function on the object
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                NSLog(@"User registered successfully");
+                
+                [newUser saveInBackground];
+                // dismiss signUpViewController
+                [self dismissViewControllerAnimated:true completion:nil];
+            }
+        }];
+    }
 }
+
+
+
+
+//Alerts the user if unaccepted sign up information is entered
+- (bool) isSignUpInfoComplete{
+    
+    if ([self.usernameTextField.text isEqual:@""]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Username"
+                                                                       message:@"Please type valid username."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    
+    else if ([self.emailTextField.text isEqual:@""]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Email"
+                                                                       message:@"Please type a valid email."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    
+    else if ([self.universityNameTextField.text isEqual:@""]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid University"
+                                                                       message:@"Please type your University name."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    else if ([self.passwordTextField.text isEqual:@""]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Password"
+                                                                       message:@"Password cannot be empty."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    else if ([self.confirmPasswordTextField.text isEqual:@""]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Password"
+                                                                       message:@"Both Passwords must match."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    else if (![self.confirmPasswordTextField.text isEqual:self.passwordTextField.text]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Password"
+                                                                       message:@"Both Passwords must match."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    return true;
+}
+
 /*
 #pragma mark - Navigation
 
