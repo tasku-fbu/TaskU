@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "ProfileViewController.h"
 
 static NSString *const signUpSegueIdentifier = @"signUpSegue";
 static NSString *const loginSegueIdentifier = @"loginSegue";
@@ -47,6 +48,12 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 }
 - (IBAction)loginActionButton:(id)sender {
     [self loginUser]; //verifies the user through parse login authentication
+}
+- (IBAction)onTapDummy:(UIButton *)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    ProfileViewController *myNewVC = (ProfileViewController *) [storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    UIViewController *vc = (UIViewController *) self;
+    [vc presentViewController:myNewVC animated:YES completion:nil];
 }
 
 @end
