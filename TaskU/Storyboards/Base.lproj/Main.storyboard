@@ -64,12 +64,12 @@
                                     <action selector="loginActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I5T-0K-NKO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpF-a4-hBJ">
-                                <rect key="frame" x="243" y="708" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuC-3N-L4h">
+                                <rect key="frame" x="255" y="703" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="testing"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="onTestTimeline1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IyR-ls-TuK"/>
+                                    <action selector="test:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XVr-sD-enl"/>
                                 </connections>
                             </button>
                         </subviews>

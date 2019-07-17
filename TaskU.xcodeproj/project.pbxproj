@@ -25,6 +25,8 @@
 		0E8EFF6322DD523600B9FE89 /* TaskUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6222DD523600B9FE89 /* TaskUTests.m */; };
 		0E8EFF6E22DD523600B9FE89 /* TaskUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */; };
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
+		11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D2F51022DE8C130065D70D /* newTask.storyboard */; };
+		11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
 		7AF2BDEABCE537A6B60761A2 /* Pods_TaskU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CCEDA8F313441951F05FC8 /* Pods_TaskU.framework */; };
 		B902D13C22DE9A5B0080B87E /* Timeline1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */; };
 		B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */; };
@@ -83,6 +85,9 @@
 		0E8EFF6F22DD523600B9FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11D2F50B22DE5D520065D70D /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		11D2F50C22DE5D520065D70D /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		11D2F51022DE8C130065D70D /* newTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newTask.storyboard; sourceTree = "<group>"; };
+		11D2F51222DE8CC30065D70D /* newTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = newTaskViewController.h; sourceTree = "<group>"; };
+		11D2F51322DE8CC30065D70D /* newTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = newTaskViewController.m; sourceTree = "<group>"; };
 		1C1CFE7C6C006D8B4608EF80 /* Pods-TaskU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskU.release.xcconfig"; path = "Target Support Files/Pods-TaskU/Pods-TaskU.release.xcconfig"; sourceTree = "<group>"; };
 		2AD1405BED2F0479B121B9D5 /* Pods-TaskU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskU.debug.xcconfig"; path = "Target Support Files/Pods-TaskU/Pods-TaskU.debug.xcconfig"; sourceTree = "<group>"; };
 		88CCEDA8F313441951F05FC8 /* Pods_TaskU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +149,8 @@
 				0E45A04B22DD9322005D798F /* ProfileViewController.m */,
 				B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */,
 				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
+				11D2F51222DE8CC30065D70D /* newTaskViewController.h */,
+				11D2F51322DE8CC30065D70D /* newTaskViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -173,6 +180,7 @@
 				0E45A05422DE5EF2005D798F /* Missions.storyboard */,
 				0E45A05722DE5F19005D798F /* Profile.storyboard */,
 				B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */,
+				11D2F51022DE8C130065D70D /* newTask.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -365,6 +373,7 @@
 				0E8EFF5122DD523500B9FE89 /* Main.storyboard in Resources */,
 				0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */,
 				0E45A05822DE5F19005D798F /* Profile.storyboard in Resources */,
+				11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */,
 				0E45A05022DE56C3005D798F /* HomeView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +490,7 @@
 				0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
+				11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,

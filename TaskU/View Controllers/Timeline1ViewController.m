@@ -29,6 +29,7 @@
     
     [self getAllTasks];
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -81,10 +82,16 @@
     cell.titleLabel.text = task[@"taskTitle"];
     cell.requesterLabel.text = @"testing";
     cell.paymentLabel.text = @"not on Parse";
-    cell.dateLabel.text = task[@"taskDate"];
+    NSDate *date = [[NSDate alloc] init];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    cell.dateLabel.text = dateString;
     
     return cell;
 }
+
 
 
 
