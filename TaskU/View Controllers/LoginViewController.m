@@ -49,4 +49,5 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     [self loginUser]; //verifies the user through parse login authentication
 }
 
+
 @end
