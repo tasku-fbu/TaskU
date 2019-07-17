@@ -17,21 +17,18 @@
 @property (weak, nonatomic) IBOutlet UITextField *taskSize;
 @property (weak, nonatomic) IBOutlet UITextField *taskDescription;
 
-
 @end
 
 @implementation newTaskViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
 }
 - (IBAction)didTapClose:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didTapNext:(UIButton *)sender {
-    
     [Task postTask:self.taskName.text withStart:self.startAddress.text withDate:self.taskDate.date withDifficulty:self.taskSize.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         
         if(succeeded){
@@ -43,24 +40,21 @@
         } else{
             NSLog(@"Error posting task: %@", error.localizedDescription);
             
-        }
-}];
-    
-//    [Task postTask:self.taskName.text withStart:self._startAddress.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//
-//        if(succeeded){
-//            NSLog(@"Posted!");
-//            //ParentViewController is tab bar controller
-//            [self.parentViewController.tabBarController setSelectedIndex:0];
-//        } else{
-//            NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
-//
-//        }
-//
-//    }];
-//    + (void) postTask: ( NSString * _Nullable )taskName withStart: ( PFGeoPoint * _Nullable )startAddress withDate: (NSDate *_Nullable)taskDate withDifficulty: ( NSString * _Nullable )taskDifficulty withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion
-    [self dismissViewControllerAnimated:YES completion:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Completion error"
+                                                                           message:@"Please fill all the required fields"
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
 
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 // handle response here.
+                                                             }];
+            // add the OK action to the alert controller
+            [alert addAction:okAction];
+            
+        }
+    }];
 }
 
 
