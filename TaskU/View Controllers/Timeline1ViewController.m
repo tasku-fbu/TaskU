@@ -81,8 +81,8 @@
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     Task *task = self.tasks[indexPath.row];
     cell.task = task;
-    cell.titleLabel.text = task[@"taskTitle"];
-    cell.requesterLabel.text = @"testing";
+    cell.titleLabel.text = task[@"taskName"];
+    cell.requesterLabel.text = @"tester";
     
     NSNumber *payment = task[@"pay"];
     int pay = [payment intValue];
@@ -97,11 +97,12 @@
     cell.destinationLabel.text = [NSString stringWithFormat:@"%@TO %@",
                                   startString,task[@"endAddress"]];
     
-    /*
+    
     NSDate *date = task[@"taskDate"];
-    cell.dateLabel.text = [self stringfromDateHelper:date];
-    */
-    /*
+    NSString *dateString = [self stringfromDateHelper:date];
+    cell.dateLabel.text = [NSString stringWithFormat:@"due %@", dateString];
+    
+    
     NSNumber *hour = task[@"hours"];
     NSNumber *minute = task[@"minutes"];
     int hr = [hour intValue];
@@ -113,7 +114,7 @@
     } else {
         cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
     }
-    */
+    
     
     
     
@@ -123,7 +124,7 @@
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm"];
+    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
