@@ -53,6 +53,8 @@
     [query includeKey:@"taskImage"];
     [query includeKey:@"taskDescription"];
     [query includeKey:@"category"];
+    [query includeKey:@"hours"];
+    [query includeKey:@"minutes"];
     
     //[query whereKey:@"completionStatus equalTo:@1"created"];
     query.limit = 20;
@@ -81,7 +83,10 @@
     cell.task = task;
     cell.titleLabel.text = task[@"taskTitle"];
     cell.requesterLabel.text = @"testing";
-    cell.paymentLabel.text = task[@"pay"];
+    
+    NSNumber *payment = task[@"pay"];
+    int pay = [payment intValue];
+    cell.paymentLabel.text = [NSString stringWithFormat:@"$%i",pay];
     
     NSString *startString = @"";
     if (task[@"startAddress"]) {
@@ -92,16 +97,24 @@
     cell.destinationLabel.text = [NSString stringWithFormat:@"%@TO %@",
                                   startString,task[@"endAddress"]];
     
+    /*
     NSDate *date = task[@"taskDate"];
     cell.dateLabel.text = [self stringfromDateHelper:date];
-    
+    */
     /*
-    NSNumber *hour = task[@"hour"];
-    NSNumber *minute = task[@"minute"];
+    NSNumber *hour = task[@"hours"];
+    NSNumber *minute = task[@"minutes"];
     int hr = [hour intValue];
     int min = [minute intValue];
-    cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
+    if (hr == 0) {
+        cell.timeLabel.text = [NSString stringWithFormat:@"%imin", min];
+    } else if (min == 0){
+        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr", hr];
+    } else {
+        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
+    }
     */
+    
     
     
     return cell;
