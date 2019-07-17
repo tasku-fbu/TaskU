@@ -85,12 +85,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hpC-ar-y0s">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="UsA-Wy-wK6"/>
                     </view>
                     <navigationItem key="navigationItem" id="17b-TU-OcR"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="hpC-ar-y0s" id="TlJ-uX-QNs"/>
                         <outlet property="tableView" destination="LGX-vm-u0e" id="TQW-26-YgT"/>
                     </connections>
                 </viewController>

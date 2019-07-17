@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray *tasks;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
@@ -32,7 +33,7 @@
     [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-    
+    [self.activityIndicator startAnimating];
     
 }
 
@@ -62,7 +63,7 @@
             
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
-            //[self.activityIndicator stopAnimating];
+            [self.activityIndicator stopAnimating];
             
         } else {
             NSLog(@"%@", error.localizedDescription);
