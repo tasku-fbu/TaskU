@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
-#import "newTaskViewController.h"
 
 static NSString *const signUpSegueIdentifier = @"signUpSegue";
 static NSString *const loginSegueIdentifier = @"loginSegue";
