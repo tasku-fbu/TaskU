@@ -7,9 +7,13 @@
 //
 
 #import "Timeline1ViewController.h"
+#import "TaskCell.h"
+#import "Task.h"
 
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSMutableArray *tasks;
 
 @end
 
@@ -17,8 +21,70 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self getAllTasks];
+    
+    
+    
 }
+
+//want to make it a public method in Task, so that it takes in a "category" and gets all tasks in this category
+- (void) getAllTasks {
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query orderByDescending:@"taskDate"];
+    [query includeKey:@"reqester"];
+    [query includeKey:@"taskDate"];
+    [query includeKey:@"taskTitle"];
+    [query includeKey:@"taskDifficulty"];
+    [query includeKey:@"completionStatus"];
+    [query includeKey:@"missioner"];
+    [query includeKey:@"startAddress"];
+    [query includeKey:@"taskImage"];
+    [query includeKey:@"taskDescription"];
+    [query includeKey:@"category"];
+    
+    //[query whereKey:@"likesCount" greaterThan:@100];
+    query.limit = 20;
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
+        if (tasks != nil) {
+            // do something with the array of object returned by the call
+            self.tasks = [tasks mutableCopy];
+            
+            [self.tableView reloadData];
+            //[self.refreshControl endRefreshing];
+            //[self.activityIndicator stopAnimating];
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        
+    }];
+}
+
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    Task *task = self.tasks[indexPath.row];
+    cell.task = task;
+    cell.titleLabel.text = task[@"taskTitle"];
+    cell.requesterLabel.text = @"testing";
+    cell.paymentLabel.text = @"not on Parse";
+    cell.dateLabel.text = task[@"taskDate"];
+    
+    return cell;
+}
+
+
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tasks.count;
+}
+
 
 /*
 #pragma mark - Navigation
@@ -29,5 +95,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
 
 @end

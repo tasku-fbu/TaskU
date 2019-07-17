@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Task.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *paymentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *destinationLabel;
+
+@property (strong, nonatomic) Task *task;
 
 @end
 
