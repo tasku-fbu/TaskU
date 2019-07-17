@@ -81,17 +81,39 @@
     cell.task = task;
     cell.titleLabel.text = task[@"taskTitle"];
     cell.requesterLabel.text = @"testing";
-    cell.paymentLabel.text = @"not on Parse";
-    NSDate *date = [[NSDate alloc] init];
+    cell.paymentLabel.text = task[@"pay"];
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    cell.dateLabel.text = dateString;
+    NSString *startString = @"";
+    if (task[@"startAddress"]) {
+        if (![task[@"startAddress"] isEqualToString:@""]) {
+            startString = [NSString stringWithFormat:@"FROM %@ ", task[@"startAddress"]];
+        }
+    }
+    cell.destinationLabel.text = [NSString stringWithFormat:@"%@TO %@",
+                                  startString,task[@"endAddress"]];
+    
+    NSDate *date = task[@"taskDate"];
+    cell.dateLabel.text = [self stringfromDateHelper:date];
+    
+    /*
+    NSNumber *hour = task[@"hour"];
+    NSNumber *minute = task[@"minute"];
+    int hr = [hour intValue];
+    int min = [minute intValue];
+    cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
+    */
+    
     
     return cell;
 }
 
+
+- (NSString *) stringfromDateHelper: (NSDate *) date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    return dateString;
+}
 
 
 

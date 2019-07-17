@@ -66,6 +66,12 @@
                                                         <action selector="onClickDetails:" destination="vxn-6z-0o6" eventType="touchUpInside" id="jo7-cw-eZ9"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1hr 30min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idK-zz-GD5">
+                                                    <rect key="frame" x="290" y="8" width="77" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1FX-9e-1Mf" firstAttribute="centerY" secondItem="LPf-cf-GOD" secondAttribute="centerY" id="0Pb-Tu-d5T"/>
@@ -77,12 +83,15 @@
                                                 <constraint firstItem="Pxb-IY-p0p" firstAttribute="leading" secondItem="LPf-cf-GOD" secondAttribute="leading" constant="8" id="LW4-b3-DQm"/>
                                                 <constraint firstAttribute="trailing" secondItem="1FX-9e-1Mf" secondAttribute="trailing" constant="8" id="Ou2-Jv-NB7"/>
                                                 <constraint firstAttribute="bottom" secondItem="Pxb-IY-p0p" secondAttribute="bottom" constant="8" id="S5k-R3-1XZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="idK-zz-GD5" secondAttribute="trailing" constant="8" id="T57-yi-Itu"/>
                                                 <constraint firstItem="kUg-eC-yR7" firstAttribute="top" secondItem="V6k-H5-pY1" secondAttribute="bottom" constant="8" id="Uqx-78-nUh"/>
                                                 <constraint firstItem="7n7-2w-qke" firstAttribute="leading" secondItem="LPf-cf-GOD" secondAttribute="leading" constant="8" id="Vhk-s0-Z5m"/>
                                                 <constraint firstItem="6VW-YN-nlc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="V6k-H5-pY1" secondAttribute="trailing" constant="20" id="Zrp-PD-C2z"/>
+                                                <constraint firstItem="idK-zz-GD5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7n7-2w-qke" secondAttribute="trailing" constant="20" id="bMj-yh-mbu"/>
                                                 <constraint firstItem="V6k-H5-pY1" firstAttribute="top" secondItem="7n7-2w-qke" secondAttribute="bottom" constant="8" id="kAt-uY-5KC"/>
                                                 <constraint firstItem="Pxb-IY-p0p" firstAttribute="top" secondItem="1FX-9e-1Mf" secondAttribute="bottom" constant="8" id="q8d-ch-5ak"/>
                                                 <constraint firstItem="kUg-eC-yR7" firstAttribute="leading" secondItem="LPf-cf-GOD" secondAttribute="leading" constant="8" id="r1d-T6-U8n"/>
+                                                <constraint firstItem="idK-zz-GD5" firstAttribute="centerY" secondItem="7n7-2w-qke" secondAttribute="centerY" id="uzJ-uc-f3g"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -90,6 +99,7 @@
                                             <outlet property="destinationLabel" destination="Pxb-IY-p0p" id="7jl-Rr-5hC"/>
                                             <outlet property="paymentLabel" destination="6VW-YN-nlc" id="Hmm-Gl-nRO"/>
                                             <outlet property="requesterLabel" destination="V6k-H5-pY1" id="ZUX-Sb-dEQ"/>
+                                            <outlet property="timeLabel" destination="idK-zz-GD5" id="dhK-LB-gA6"/>
                                             <outlet property="titleLabel" destination="7n7-2w-qke" id="GRs-WD-IZK"/>
                                         </connections>
                                     </tableViewCell>
@@ -118,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0QQ-h1-TU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="-159"/>
+            <point key="canvasLocation" x="1268" y="-159.67016491754123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E63-7M-8om">
