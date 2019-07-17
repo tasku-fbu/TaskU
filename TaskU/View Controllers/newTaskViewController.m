@@ -29,7 +29,7 @@
 }
 
 - (IBAction)didTapNext:(UIButton *)sender {
-    [Task postTask:self.taskName.text withStart:self.startAddress.text withDate:self.taskDate.date withDifficulty:self.taskSize.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text withDate:self.taskDate.date withDifficulty:self.taskSize.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         
         if(succeeded){
             NSLog(@"Posted!");

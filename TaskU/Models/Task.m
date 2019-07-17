@@ -44,12 +44,13 @@
 
 
 //To upload the user task to Parse, get user input from newTaskViewController. Then, call postTask from NewTaskViewController by passing all the required arguments into it
-+ (void) postTask: ( NSString * _Nullable )taskName withStart: ( PFGeoPoint * _Nullable )startAddress withDate: (NSString *_Nullable)taskDate withDifficulty: ( NSString * _Nullable )taskDifficulty withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) postTask: ( NSString * _Nullable )taskName withStart: ( NSString * _Nullable )startAddress withEnd: ( NSString * _Nullable )endAddress withDate: (NSDate *_Nullable)taskDate withDifficulty: ( NSString * _Nullable )taskDifficulty withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Task *newTask = [Task new];
     newTask.requester = [PFUser currentUser];
     newTask.taskName = taskName;
     newTask.startAddress = startAddress;
+    newTask.endAddress = endAddress;
     newTask.taskDate = taskDate;
     newTask.taskDifficulty = taskDifficulty;
     newTask.taskDescription = taskDescription;
