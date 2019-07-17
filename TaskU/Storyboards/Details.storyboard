@@ -20,16 +20,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="U0F-ea-cjQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lIm-UT-9x1"/>
+                    <navigationItem key="navigationItem" id="lIm-UT-9x1">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Flg-rE-geM">
+                            <button key="customView" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aCt-iw-L4F">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt;Back"/>
+                            </button>
+                            <connections>
+                                <action selector="onTapBack:" destination="udf-WG-jmC" id="Dpc-hk-tAj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thf-F8-Om9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871.01449275362324" y="-89.0625"/>
+            <point key="canvasLocation" x="704" y="-89"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DfT-ce-fQC">
             <objects>
-                <navigationController storyboardIdentifier="Details" automaticallyAdjustsScrollViewInsets="NO" id="GBd-2o-pZv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Details" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GBd-2o-pZv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rcZ-oL-ls7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

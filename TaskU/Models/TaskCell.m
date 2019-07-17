@@ -7,6 +7,7 @@
 //
 
 #import "TaskCell.h"
+#import "DetailsViewController.h"
 
 @implementation TaskCell
 
@@ -21,7 +22,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)onClickDetails:(id)sender {
-    
+    [self.delegate didTapDetails:self];
 }
 
 @end

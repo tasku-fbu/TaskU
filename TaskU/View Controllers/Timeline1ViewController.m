@@ -9,6 +9,7 @@
 #import "Timeline1ViewController.h"
 #import "TaskCell.h"
 #import "Task.h"
+#import "DetailsViewController.h"
 
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -79,6 +80,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    cell.delegate = self;
     Task *task = self.tasks[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
@@ -140,6 +142,17 @@
     return self.tasks.count;
 }
 
+
+- (void) didTapDetails:(TaskCell *) cell {
+    
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
+    
+    DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
+     detailsVC.task = cell.task;
+     [self presentViewController:navigationVC animated:YES completion:nil];
+    
+}
 
 /*
 #pragma mark - Navigation
