@@ -27,6 +27,7 @@
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
 		7AF2BDEABCE537A6B60761A2 /* Pods_TaskU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CCEDA8F313441951F05FC8 /* Pods_TaskU.framework */; };
 		B902D13C22DE9A5B0080B87E /* Timeline1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */; };
+		B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,8 @@
 		A582ED8875B8628B159CD99C /* Pods-TaskUUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUUITests/Pods-TaskUUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B6B215909F60E683136A68BB /* Pods-TaskUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.release.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.release.xcconfig"; sourceTree = "<group>"; };
 		B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline1.storyboard; sourceTree = "<group>"; };
+		B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timeline1ViewController.h; sourceTree = "<group>"; };
+		B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Timeline1ViewController.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +139,8 @@
 				0E45A04622DD9308005D798F /* MissionsViewController.m */,
 				0E45A04A22DD9322005D798F /* ProfileViewController.h */,
 				0E45A04B22DD9322005D798F /* ProfileViewController.m */,
+				B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */,
+				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,
+				B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */,
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
 			);
