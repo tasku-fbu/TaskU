@@ -82,7 +82,12 @@
     Task *task = self.tasks[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
-    cell.requesterLabel.text = @"tester";
+    
+    
+    PFUser *user = task[@"requester"];
+    cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
+    
+    
     
     NSNumber *payment = task[@"pay"];
     int pay = [payment intValue];
