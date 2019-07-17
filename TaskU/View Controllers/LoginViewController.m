@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 
+#import "Timeline1ViewController.h"
+
 static NSString *const signUpSegueIdentifier = @"signUpSegue";
 static NSString *const loginSegueIdentifier = @"loginSegue";
 
@@ -47,6 +49,14 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 }
 - (IBAction)loginActionButton:(id)sender {
     [self loginUser]; //verifies the user through parse login authentication
+}
+
+
+- (IBAction)onTestTimeline1:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
+    Timeline1ViewController *myNewVC = (Timeline1ViewController *) [storyboard instantiateViewControllerWithIdentifier:@"Timeline1ViewController"];
+    UIViewController *vc = (UIViewController *) self;
+    [vc presentViewController:myNewVC animated:YES completion:nil];
 }
 
 @end
