@@ -53,7 +53,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 
 - (IBAction)test:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
-    Timeline1ViewController *myNewVC = (Timeline1ViewController *) [storyboard instantiateViewControllerWithIdentifier:@"Timeline1ViewController"];
+    Timeline1ViewController *myNewVC = (Timeline1ViewController *) [storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
     UIViewController *vc = (UIViewController *) self;
     [vc presentViewController:myNewVC animated:YES completion:nil];
 }

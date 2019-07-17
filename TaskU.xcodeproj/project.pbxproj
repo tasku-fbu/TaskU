@@ -30,6 +30,7 @@
 		B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */; };
 		B902D14222DE9F110080B87E /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14122DE9F110080B87E /* TaskCell.m */; };
 		B902D14422DFC3380080B87E /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B902D14322DFC3380080B87E /* Details.storyboard */; };
+		B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14622DFC5230080B87E /* DetailsViewController.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,8 @@
 		B902D14022DE9F110080B87E /* TaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		B902D14122DE9F110080B87E /* TaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		B902D14322DFC3380080B87E /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
+		B902D14522DFC5230080B87E /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		B902D14622DFC5230080B87E /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +149,8 @@
 				0E45A04B22DD9322005D798F /* ProfileViewController.m */,
 				B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */,
 				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
+				B902D14522DFC5230080B87E /* DetailsViewController.h */,
+				B902D14622DFC5230080B87E /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */,
 				0E8EFF5922DD523600B9FE89 /* main.m in Sources */,
 				0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */,
+				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,

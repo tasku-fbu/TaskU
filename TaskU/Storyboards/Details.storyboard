@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="jTB-FP-lwr">
             <objects>
-                <viewController id="udf-WG-jmC" sceneMemberID="viewController">
+                <viewController id="udf-WG-jmC" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VCv-lk-Znt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DfT-ce-fQC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GBd-2o-pZv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Details" automaticallyAdjustsScrollViewInsets="NO" id="GBd-2o-pZv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rcZ-oL-ls7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
