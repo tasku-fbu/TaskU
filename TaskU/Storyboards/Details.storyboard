@@ -26,6 +26,9 @@
                                 <rect key="frame" x="20" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="&lt;Back"/>
+                                <connections>
+                                    <action selector="onTapBack:" destination="udf-WG-jmC" eventType="touchUpInside" id="mqC-VU-YyB"/>
+                                </connections>
                             </button>
                             <connections>
                                 <action selector="onTapBack:" destination="udf-WG-jmC" id="Dpc-hk-tAj"/>

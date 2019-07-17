@@ -19,11 +19,10 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)onTapBack:(id)sender {
-    NSLog(@"backtapped");
+    
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    
 }
+
 
 /*
 #pragma mark - Navigation
