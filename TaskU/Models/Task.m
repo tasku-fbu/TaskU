@@ -7,15 +7,18 @@
 //
 
 #import "Task.h"
+#import "Parse/Parse.h"
+
 
 @implementation Task
 
+@dynamic taskName;
 @dynamic category;
 @dynamic requester;
 @dynamic missioner;
 @dynamic taskImage;
 @dynamic startAddress;
-@dynamic endDate;
+@dynamic taskDate;
 @dynamic taskDescription;
 @dynamic taskDifficulty;
 @dynamic completionStatus;
@@ -39,4 +42,21 @@
     return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
 }
 
+
+//To upload the user task to Parse, get user input from newTaskViewController. Then, call postTask from NewTaskViewController by passing all the required arguments into it
++ (void) postTask: ( NSString * _Nullable )taskName withStart: ( PFGeoPoint * _Nullable )startAddress withDate: (NSString *_Nullable)taskDate withDifficulty: ( NSString * _Nullable )taskDifficulty withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+    
+    Task *newTask = [Task new];
+    newTask.requester = [PFUser currentUser];
+    newTask.taskName = taskName;
+    newTask.startAddress = startAddress;
+    newTask.taskDate = taskDate;
+    newTask.taskDifficulty = taskDifficulty;
+    newTask.taskDescription = taskDescription;
+    
+    //POST Request
+    [newTask saveInBackgroundWithBlock: completion];
+}
+
 @end
+

@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "newTaskViewController.h"
 
 static NSString *const signUpSegueIdentifier = @"signUpSegue";
 static NSString *const loginSegueIdentifier = @"loginSegue";
@@ -48,5 +49,6 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 - (IBAction)loginActionButton:(id)sender {
     [self loginUser]; //verifies the user through parse login authentication
 }
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "newTaskViewController.h"
+#import "Task.h"
 
 @interface newTaskViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *taskName;
@@ -30,6 +31,34 @@
 }
 
 - (IBAction)didTapNext:(UIButton *)sender {
+    
+    [Task postTask:self.taskName.text withStart:self.startAddress.text withDate:self.taskDate.date withDifficulty:self.taskSize.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        
+        if(succeeded){
+            NSLog(@"Posted!");
+            [self dismissViewControllerAnimated:YES completion:nil];
+
+            //ParentViewController is tab bar controller
+           // [self.parentViewController.tabBarController setSelectedIndex:0];
+        } else{
+            NSLog(@"Error posting task: %@", error.localizedDescription);
+            
+        }
+}];
+    
+//    [Task postTask:self.taskName.text withStart:self._startAddress.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//
+//        if(succeeded){
+//            NSLog(@"Posted!");
+//            //ParentViewController is tab bar controller
+//            [self.parentViewController.tabBarController setSelectedIndex:0];
+//        } else{
+//            NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+//
+//        }
+//
+//    }];
+//    + (void) postTask: ( NSString * _Nullable )taskName withStart: ( PFGeoPoint * _Nullable )startAddress withDate: (NSDate *_Nullable)taskDate withDifficulty: ( NSString * _Nullable )taskDifficulty withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }

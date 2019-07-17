@@ -13,7 +13,7 @@
         <!--Describe your task-->
         <scene sceneID="gaF-LK-IuV">
             <objects>
-                <viewController id="eb0-Iy-jYI" customClass="newTaskViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newTask" id="eb0-Iy-jYI" customClass="newTaskViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="krh-Kt-8j8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,12 +142,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyw-xe-wzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="640.57971014492762" y="965.625"/>
+            <point key="canvasLocation" x="770" y="106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cYp-Ho-Mqg">
             <objects>
-                <navigationController storyboardIdentifier="newTaskController" automaticallyAdjustsScrollViewInsets="NO" id="KZK-Oj-sd2" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="newTaskViewController" automaticallyAdjustsScrollViewInsets="NO" id="KZK-Oj-sd2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T8e-ZQ-1kT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
