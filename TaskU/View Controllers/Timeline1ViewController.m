@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray *tasks;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -26,6 +27,10 @@
     self.tableView.dataSource = self;
     
     [self getAllTasks];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     
     
@@ -56,7 +61,7 @@
             self.tasks = [tasks mutableCopy];
             
             [self.tableView reloadData];
-            //[self.refreshControl endRefreshing];
+            [self.refreshControl endRefreshing];
             //[self.activityIndicator stopAnimating];
             
         } else {
