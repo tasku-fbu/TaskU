@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
-#import "newTaskViewController.h"
 
 static NSString *const signUpSegueIdentifier = @"signUpSegue";
 static NSString *const loginSegueIdentifier = @"loginSegue";
@@ -49,13 +48,5 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 - (IBAction)loginActionButton:(id)sender {
     [self loginUser]; //verifies the user through parse login authentication
 }
-
-- (IBAction)didTapNext:(UIButton *)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newTask" bundle:nil];
-    newTaskViewController *myNewVC = (newTaskViewController *) [storyboard instantiateViewControllerWithIdentifier:@"newTaskViewController"];
-    UIViewController *vc = (UIViewController *) self;
-    [vc presentViewController:myNewVC animated:YES completion:nil];
-}
-
 
 @end
