@@ -9,6 +9,7 @@
 #import "Timeline1ViewController.h"
 
 @interface Timeline1ViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
