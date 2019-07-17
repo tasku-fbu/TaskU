@@ -43,16 +43,17 @@
     [query orderByDescending:@"taskDate"];
     [query includeKey:@"reqester"];
     [query includeKey:@"taskDate"];
-    [query includeKey:@"taskTitle"];
+    [query includeKey:@"taskName"];
     [query includeKey:@"taskDifficulty"];
     [query includeKey:@"completionStatus"];
     [query includeKey:@"missioner"];
     [query includeKey:@"startAddress"];
+    [query includeKey:@"endAddress"];
     [query includeKey:@"taskImage"];
     [query includeKey:@"taskDescription"];
     [query includeKey:@"category"];
     
-    //[query whereKey:@"likesCount" greaterThan:@100];
+    //[query whereKey:@"completionStatus equalTo:@1"created"];
     query.limit = 20;
     
     // fetch data asynchronously
