@@ -51,12 +51,4 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     [self loginUser]; //verifies the user through parse login authentication
 }
 
-- (IBAction)test:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
-    Timeline1ViewController *myNewVC = (Timeline1ViewController *) [storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
-    UIViewController *vc = (UIViewController *) self;
-    [vc presentViewController:myNewVC animated:YES completion:nil];
-}
-
-
 @end

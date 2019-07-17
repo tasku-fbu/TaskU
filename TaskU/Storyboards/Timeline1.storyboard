@@ -138,7 +138,7 @@
         <!--Navigation Controller-->
         <scene sceneID="E63-7M-8om">
             <objects>
-                <navigationController storyboardIdentifier="Timeline1" automaticallyAdjustsScrollViewInsets="NO" id="pRY-S7-601" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Timeline1" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pRY-S7-601" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="41u-xC-GzD">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
