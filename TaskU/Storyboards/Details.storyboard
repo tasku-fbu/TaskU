@@ -153,14 +153,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-J8-u3Z">
-                                                    <rect key="frame" x="8" y="8" width="398" height="27.5"/>
+                                                    <rect key="frame" x="20" y="8" width="386" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gI7-J8-u3Z" firstAttribute="leading" secondItem="WAX-Z8-4fg" secondAttribute="leading" constant="8" id="0Qw-kj-kR4"/>
+                                                <constraint firstItem="gI7-J8-u3Z" firstAttribute="leading" secondItem="WAX-Z8-4fg" secondAttribute="leading" constant="20" id="0Qw-kj-kR4"/>
                                                 <constraint firstAttribute="trailing" secondItem="gI7-J8-u3Z" secondAttribute="trailing" constant="8" id="YbF-lg-oNp"/>
                                                 <constraint firstItem="gI7-J8-u3Z" firstAttribute="top" secondItem="WAX-Z8-4fg" secondAttribute="top" constant="8" id="Zfk-lN-paz"/>
                                                 <constraint firstAttribute="bottom" secondItem="gI7-J8-u3Z" secondAttribute="bottom" constant="8" id="xhx-k2-76Z"/>

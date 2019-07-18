@@ -48,7 +48,7 @@
     self.taskidLabel.text = self.task.objectId;
     self.taskNameLabel.text = self.task[@"taskName"];
     self.categoryLabel.text = [NSString stringWithFormat:@"Category: %@",self.task[@"category"]];
-    self.descriptionLabel.text = [NSString stringWithFormat:@"Description: %@", self.task[@"taskDescription"]];
+    self.descriptionLabel.text = [NSString stringWithFormat:@"Description:\n  %@", self.task[@"taskDescription"]];
     
     NSNumber *hour = self.task[@"hours"];
     NSNumber *minute = self.task[@"minutes"];
