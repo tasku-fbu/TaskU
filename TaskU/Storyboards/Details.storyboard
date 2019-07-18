@@ -101,14 +101,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="task name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fm8-cB-YKX">
-                                                    <rect key="frame" x="20" y="12" width="383" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="task name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fm8-cB-YKX">
+                                                    <rect key="frame" x="20" y="8" width="374" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Fm8-cB-YKX" secondAttribute="trailing" constant="20" id="6cc-Y4-lPi"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fm8-cB-YKX" secondAttribute="bottom" constant="8" id="9r3-a2-U0U"/>
+                                                <constraint firstItem="Fm8-cB-YKX" firstAttribute="leading" secondItem="cc2-Rd-ZA0" secondAttribute="leading" constant="20" id="W4C-3C-1B9"/>
+                                                <constraint firstItem="Fm8-cB-YKX" firstAttribute="top" secondItem="cc2-Rd-ZA0" secondAttribute="top" constant="8" id="nUU-oQ-oZG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Hd7-SY-KWO">
@@ -153,7 +158,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-J8-u3Z">
-                                                    <rect key="frame" x="20" y="8" width="386" height="27.5"/>
+                                                    <rect key="frame" x="20" y="8" width="374" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -161,7 +166,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="gI7-J8-u3Z" firstAttribute="leading" secondItem="WAX-Z8-4fg" secondAttribute="leading" constant="20" id="0Qw-kj-kR4"/>
-                                                <constraint firstAttribute="trailing" secondItem="gI7-J8-u3Z" secondAttribute="trailing" constant="8" id="YbF-lg-oNp"/>
+                                                <constraint firstAttribute="trailing" secondItem="gI7-J8-u3Z" secondAttribute="trailing" constant="20" id="YbF-lg-oNp"/>
                                                 <constraint firstItem="gI7-J8-u3Z" firstAttribute="top" secondItem="WAX-Z8-4fg" secondAttribute="top" constant="8" id="Zfk-lN-paz"/>
                                                 <constraint firstAttribute="bottom" secondItem="gI7-J8-u3Z" secondAttribute="bottom" constant="8" id="xhx-k2-76Z"/>
                                             </constraints>
