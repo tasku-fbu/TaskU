@@ -41,6 +41,8 @@
     // Do any additional setup after loading the view.
     self.tableVIew.rowHeight = UITableViewAutomaticDimension;
     [self showingTaskDetails];
+    [self showRequesterInfo];
+    [self showMissionerInfo];
     
 }
 
@@ -86,6 +88,55 @@
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
+
+
+- (void) showRequesterInfo {
+    PFUser *requester = self.task.requester;
+    self.rusernameLabel.text = requester.username;
+    self.rnameLabel.text = requester[@"name"];
+    self.runiversityLabel.text = requester[@"university"];
+    self.remailLabel.text = requester[@"email"];
+    NSNumber *phone = requester[@"phone"];
+    int pnum = [phone intValue];
+    self.rphoneLabel.text = [NSString stringWithFormat:@"Phone: %i.",pnum];
+    
+}
+
+- (void) showMissionerInfo {
+    PFUser *missioner = self.task.missioner;
+    self.musernameLabel.text = missioner.username;
+    self.mnameLabel.text = missioner[@"name"];
+    self.muniversityLabel.text = missioner[@"university"];
+    self.memailLabel.text = missioner[@"email"];
+    NSNumber *phone = missioner[@"phone"];
+    int pnum = [phone intValue];
+    self.mphoneLabel.text = [NSString stringWithFormat:@"Phone: %i.",pnum];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(section == 2)
+    {
+        if(!self.task.missioner)
+            return 0;
+        else
+            return 5;
+    }
+    else if (section == 0)
+    {
+        return 8;
+    } else {
+        return 5;
+    }
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if(!self.task.missioner && section == 2)
+        return [[UIView alloc] initWithFrame:CGRectZero];
+    return nil;
+}
+
 
 /*
 #pragma mark - Navigation

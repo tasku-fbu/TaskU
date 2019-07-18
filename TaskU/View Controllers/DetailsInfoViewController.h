@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailsInfoViewController : UITableViewController //<UITableViewDelegate,UITableViewDataSource>
+@interface DetailsInfoViewController : UITableViewController 
 
 @property (strong, nonatomic) Task *task;
 
