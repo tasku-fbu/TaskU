@@ -1,23 +1,29 @@
 //
-//  ProfileViewController.m
+//  DetailsViewController.m
 //  TaskU
 //
-//  Created by rhaypapenfuzz on 7/15/19.
+//  Created by lucyyyw on 7/17/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "DetailsViewController.h"
 
-@interface ProfileViewController ()
+@interface DetailsViewController ()
 
 @end
 
-@implementation ProfileViewController
+@implementation DetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
+- (IBAction)onTapBack:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

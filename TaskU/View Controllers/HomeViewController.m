@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-
+#import "ProfileViewController.h"
 @interface HomeViewController ()
 
 @end
@@ -17,6 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+- (IBAction)dummyButton:(UIButton *)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newProfile" bundle:nil];
+    ProfileViewController *myNewVC = (ProfileViewController *) [storyboard instantiateViewControllerWithIdentifier:@"newProfileViewController"];
+    UIViewController *vc = (UIViewController *) self;
+    [vc presentViewController:myNewVC animated:YES completion:nil];
 }
 
 /*
