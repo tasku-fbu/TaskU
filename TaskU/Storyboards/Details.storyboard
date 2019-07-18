@@ -152,14 +152,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-J8-u3Z">
-                                                    <rect key="frame" x="20" y="12" width="384" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-J8-u3Z">
+                                                    <rect key="frame" x="8" y="8" width="398" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gI7-J8-u3Z" firstAttribute="leading" secondItem="WAX-Z8-4fg" secondAttribute="leading" constant="8" id="0Qw-kj-kR4"/>
+                                                <constraint firstAttribute="trailing" secondItem="gI7-J8-u3Z" secondAttribute="trailing" constant="8" id="YbF-lg-oNp"/>
+                                                <constraint firstItem="gI7-J8-u3Z" firstAttribute="top" secondItem="WAX-Z8-4fg" secondAttribute="top" constant="8" id="Zfk-lN-paz"/>
+                                                <constraint firstAttribute="bottom" secondItem="gI7-J8-u3Z" secondAttribute="bottom" constant="8" id="xhx-k2-76Z"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uoC-46-I9l">
@@ -429,6 +434,7 @@
                         <outlet property="rphoneLabel" destination="i4l-kB-Oni" id="Dms-eZ-gfS"/>
                         <outlet property="runiversityLabel" destination="uNA-QB-7Gj" id="2EE-on-60i"/>
                         <outlet property="rusernameLabel" destination="Igu-So-aHh" id="Wm5-9B-v3j"/>
+                        <outlet property="tableVIew" destination="CCO-IW-bYg" id="bNn-M7-hoO"/>
                         <outlet property="taskNameLabel" destination="Fm8-cB-YKX" id="8LY-3A-5Hx"/>
                         <outlet property="taskidLabel" destination="ut5-jc-Kpq" id="vmM-eQ-o20"/>
                         <outlet property="timeLabel" destination="t3P-jw-gb8" id="WOf-Bf-Xjz"/>

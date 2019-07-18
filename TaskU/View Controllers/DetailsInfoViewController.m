@@ -9,6 +9,7 @@
 #import "DetailsInfoViewController.h"
 
 @interface DetailsInfoViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *tableVIew;
 
 @property (weak, nonatomic) IBOutlet UILabel *rusernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rnameLabel;
@@ -38,6 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableVIew.rowHeight = UITableViewAutomaticDimension;
     [self showingTaskDetails];
     
 }
