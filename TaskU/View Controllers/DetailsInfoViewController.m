@@ -62,7 +62,7 @@
     
     NSNumber *payment = self.task[@"pay"];
     int pay = [payment intValue];
-    self.payLabel.text = [NSString stringWithFormat:@"Payment amount: %i.",pay];
+    self.payLabel.text = [NSString stringWithFormat:@"Payment amount: $%i.",pay];
     
     NSString *startString = @"";
     if (self.task[@"startAddress"]) {
