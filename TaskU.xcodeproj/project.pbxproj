@@ -23,10 +23,14 @@
 		0E8EFF5922DD523600B9FE89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF5822DD523600B9FE89 /* main.m */; };
 		0E8EFF6322DD523600B9FE89 /* TaskUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6222DD523600B9FE89 /* TaskUTests.m */; };
 		0E8EFF6E22DD523600B9FE89 /* TaskUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */; };
+		0EFEDA9322DFD4F70075A9DD /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */; };
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
-		11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D2F51022DE8C130065D70D /* newTask.storyboard */; };
-		11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
 		7AF2BDEABCE537A6B60761A2 /* Pods_TaskU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CCEDA8F313441951F05FC8 /* Pods_TaskU.framework */; };
+		B902D13C22DE9A5B0080B87E /* Timeline1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */; };
+		B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */; };
+		B902D14222DE9F110080B87E /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14122DE9F110080B87E /* TaskCell.m */; };
+		B902D14422DFC3380080B87E /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B902D14322DFC3380080B87E /* Details.storyboard */; };
+		B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14622DFC5230080B87E /* DetailsViewController.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,16 +82,22 @@
 		0E8EFF6922DD523600B9FE89 /* TaskUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskUUITests.m; sourceTree = "<group>"; };
 		0E8EFF6F22DD523600B9FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		11D2F50B22DE5D520065D70D /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		11D2F50C22DE5D520065D70D /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		11D2F51022DE8C130065D70D /* newTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newTask.storyboard; sourceTree = "<group>"; };
-		11D2F51222DE8CC30065D70D /* newTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = newTaskViewController.h; sourceTree = "<group>"; };
-		11D2F51322DE8CC30065D70D /* newTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = newTaskViewController.m; sourceTree = "<group>"; };
 		1C1CFE7C6C006D8B4608EF80 /* Pods-TaskU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskU.release.xcconfig"; path = "Target Support Files/Pods-TaskU/Pods-TaskU.release.xcconfig"; sourceTree = "<group>"; };
 		2AD1405BED2F0479B121B9D5 /* Pods-TaskU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskU.debug.xcconfig"; path = "Target Support Files/Pods-TaskU/Pods-TaskU.debug.xcconfig"; sourceTree = "<group>"; };
 		88CCEDA8F313441951F05FC8 /* Pods_TaskU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A582ED8875B8628B159CD99C /* Pods-TaskUUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUUITests/Pods-TaskUUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B6B215909F60E683136A68BB /* Pods-TaskUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.release.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.release.xcconfig"; sourceTree = "<group>"; };
+		B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline1.storyboard; sourceTree = "<group>"; };
+		B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timeline1ViewController.h; sourceTree = "<group>"; };
+		B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Timeline1ViewController.m; sourceTree = "<group>"; };
+		B902D14022DE9F110080B87E /* TaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
+		B902D14122DE9F110080B87E /* TaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		B902D14322DFC3380080B87E /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
+		B902D14522DFC5230080B87E /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		B902D14622DFC5230080B87E /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,8 +147,10 @@
 				0E45A04622DD9308005D798F /* MissionsViewController.m */,
 				0E45A04A22DD9322005D798F /* ProfileViewController.h */,
 				0E45A04B22DD9322005D798F /* ProfileViewController.m */,
-				11D2F51222DE8CC30065D70D /* newTaskViewController.h */,
-				11D2F51322DE8CC30065D70D /* newTaskViewController.m */,
+				B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */,
+				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
+				B902D14522DFC5230080B87E /* DetailsViewController.h */,
+				B902D14622DFC5230080B87E /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -153,6 +165,8 @@
 				0E8EFF5222DD523600B9FE89 /* Assets.xcassets */,
 				0E8EFF5422DD523600B9FE89 /* LaunchScreen.storyboard */,
 				0E8EFF5822DD523600B9FE89 /* main.m */,
+				B902D14022DE9F110080B87E /* TaskCell.h */,
+				B902D14122DE9F110080B87E /* TaskCell.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +178,10 @@
 				0E45A04F22DE56C3005D798F /* HomeView.storyboard */,
 				0E45A05222DE5EDA005D798F /* Requests.storyboard */,
 				0E45A05422DE5EF2005D798F /* Missions.storyboard */,
+				0E45A05722DE5F19005D798F /* Profile.storyboard */,
+				B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */,
+				B902D14322DFC3380080B87E /* Details.storyboard */,
+				0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */,
 				11D2F51022DE8C130065D70D /* newTask.storyboard */,
 			);
 			path = Storyboards;
@@ -352,9 +370,13 @@
 			files = (
 				0E8EFF5622DD523600B9FE89 /* LaunchScreen.storyboard in Resources */,
 				0E45A05522DE5EF3005D798F /* Missions.storyboard in Resources */,
+				0EFEDA9322DFD4F70075A9DD /* Profile.storyboard in Resources */,
 				0E8EFF5322DD523600B9FE89 /* Assets.xcassets in Resources */,
+				B902D13C22DE9A5B0080B87E /* Timeline1.storyboard in Resources */,
 				0E8EFF5122DD523500B9FE89 /* Main.storyboard in Resources */,
 				0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */,
+				0E45A05822DE5F19005D798F /* Profile.storyboard in Resources */,
+				B902D14422DFC3380080B87E /* Details.storyboard in Resources */,
 				11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */,
 				0E45A05022DE56C3005D798F /* HomeView.storyboard in Resources */,
 			);
@@ -470,11 +492,13 @@
 				0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */,
 				0E8EFF5922DD523600B9FE89 /* main.m in Sources */,
 				0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */,
+				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
+				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
-				11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,
+				B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */,
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
 			);
