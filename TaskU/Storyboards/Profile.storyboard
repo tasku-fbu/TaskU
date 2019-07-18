@@ -304,21 +304,24 @@
             </objects>
             <point key="canvasLocation" x="751" y="798"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Edit Profile View Controller-->
         <scene sceneID="GK2-qc-59H">
             <objects>
-                <tableViewController id="L2i-Bk-TgT" sceneMemberID="viewController">
+                <tableViewController id="L2i-Bk-TgT" customClass="EditProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="10k-lr-27p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lgs-0o-aoY">
-                            <rect key="frame" x="0.0" y="273" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="317" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Save">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="onSave:" destination="L2i-Bk-TgT" eventType="touchUpInside" id="VCf-YK-arb"/>
+                            </connections>
                         </button>
                         <sections>
                             <tableViewSection id="HHg-f0-hEF">
@@ -366,7 +369,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -414,13 +417,37 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Zea-J0-S6I">
+                                        <rect key="frame" x="0.0" y="211" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zea-J0-S6I" id="Nhf-Hz-YUS">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baX-Kj-hUv">
+                                                    <rect key="frame" x="14" y="12" width="77" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Stanford University" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r9t-uC-TqE">
+                                                    <rect key="frame" x="122" y="7" width="272" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Xrl-db-E9z">
-                                        <rect key="frame" x="0.0" y="211" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="255" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xrl-db-E9z" id="VKf-hy-Aqb">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -437,6 +464,9 @@
                                                     <rect key="frame" x="296" y="7" width="98" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Choose image"/>
+                                                    <connections>
+                                                        <action selector="onTapChooseImage:" destination="L2i-Bk-TgT" eventType="touchUpInside" id="OSp-MM-5Er"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -449,6 +479,13 @@
                             <outlet property="delegate" destination="L2i-Bk-TgT" id="qJF-xu-J1a"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="editedEmail" destination="fgT-W6-Ftn" id="AM8-fS-SRC"/>
+                        <outlet property="editedName" destination="NiF-gl-xs0" id="1Rb-3m-feN"/>
+                        <outlet property="editedPhone" destination="6ac-3c-rKd" id="dxb-rq-VqD"/>
+                        <outlet property="editedUniversity" destination="r9t-uC-TqE" id="EE9-fA-O1I"/>
+                        <outlet property="editedUsername" destination="tT1-aw-NSf" id="Dmz-9X-2zl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tkj-Sd-UPk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

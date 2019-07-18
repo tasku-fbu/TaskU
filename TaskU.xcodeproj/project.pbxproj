@@ -24,6 +24,7 @@
 		0E8EFF6322DD523600B9FE89 /* TaskUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6222DD523600B9FE89 /* TaskUTests.m */; };
 		0E8EFF6E22DD523600B9FE89 /* TaskUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */; };
 		110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */; };
+		110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C127122DFF50B009DC7DB /* EditProfileViewController.m */; };
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
 		11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D2F51022DE8C130065D70D /* newTask.storyboard */; };
 		11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
@@ -82,6 +83,8 @@
 		0E8EFF6F22DD523600B9FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		110C126A22DFD693009DC7DB /* ProfileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
+		110C127022DFF50B009DC7DB /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		110C127122DFF50B009DC7DB /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		11D2F50B22DE5D520065D70D /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		11D2F50C22DE5D520065D70D /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		11D2F51022DE8C130065D70D /* newTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newTask.storyboard; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 				0E45A04B22DD9322005D798F /* ProfileViewController.m */,
 				11D2F51222DE8CC30065D70D /* newTaskViewController.h */,
 				11D2F51322DE8CC30065D70D /* newTaskViewController.m */,
+				110C127022DFF50B009DC7DB /* EditProfileViewController.h */,
+				110C127122DFF50B009DC7DB /* EditProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 				11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
+				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
@@ -659,7 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7R4TAWA36;
+				DEVELOPMENT_TEAM = S7FF4JGN27;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -677,7 +683,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7R4TAWA36;
+				DEVELOPMENT_TEAM = S7FF4JGN27;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
