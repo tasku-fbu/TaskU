@@ -1,8 +1,8 @@
 //
-//  ProfileViewController.h
+//  EditPasswordViewController.h
 //  TaskU
 //
-//  Created by rhaypapenfuzz on 7/15/19.
+//  Created by panzaldo on 7/18/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfileViewController : UIViewController
+@interface EditPasswordViewController : UITableViewController
 
 @end
 

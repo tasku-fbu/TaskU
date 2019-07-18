@@ -1,18 +1,18 @@
 //
-//  HomeViewController.m
+//  EditPasswordViewController.m
 //  TaskU
 //
-//  Created by rhaypapenfuzz on 7/15/19.
+//  Created by panzaldo on 7/18/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "EditPasswordViewController.h"
 
-@interface HomeViewController ()
+@interface EditPasswordViewController ()
 
 @end
 
-@implementation HomeViewController
+@implementation EditPasswordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

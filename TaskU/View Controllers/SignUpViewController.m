@@ -39,9 +39,9 @@
     newUser.username = self.usernameTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
-    newUser[@"name"] = self.universityNameTextField.text;
+    newUser[@"name"] = self.nameTextField.text;
     newUser[@"university"] = self.universityNameTextField.text;
-    newUser[@"phone"] =  [NSNumber numberWithInt: self.phoneNumberTextField];
+    newUser[@"phone"] = [NSNumber numberWithInt:[self.phoneNumberTextField.text intValue]];
     //write statement to double confirm password and avoid error
     
     // set user properties

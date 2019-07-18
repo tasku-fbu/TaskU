@@ -21,14 +21,20 @@
 //@property (weak, nonatomic) IBOutlet UIImageView *chosenImageView;
 @property (strong, nonatomic) UIImage *chosenImage;
 
-
 @end
 
 @implementation EditProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //Load and display current user info
+    PFUser *user = [PFUser currentUser];
+    self.editedName.text = user[@"name"];
+    self.editedEmail.text = user[@"email"];
+    self.editedUsername.text = user.username;
+    self.editedPhone.text = [user[@"phone"] stringValue];
+    self.editedUniversity.text = user[@"university"];
+
 }
 
 -(void)chooseImage{
@@ -82,20 +88,26 @@
 }
 
 
+//Sends updated user info to Parse
+-(void)updateUserInfo{
+    PFUser *user = [PFUser currentUser];
+    user[@"name"] = self.editedName.text;
+    user[@"email"] = self.editedEmail.text;
+    user.username = self.editedUsername.text;
+    user[@"phone"] = [NSNumber numberWithInt:[self.editedPhone.text intValue]];
+    user[@"university"] = self.editedUniversity.text;
+    //TODO: Place some image here
+    //user[@"profileImage"] = [Task getPFFileFromImage:self.chosenImage];
+    [user saveInBackground];
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
 - (IBAction)onTapChooseImage:(UIButton *)sender {
     [self chooseImage];
 }
 
 - (IBAction)onSave:(UIButton *)sender {
-    PFUser *user = [PFUser currentUser];
-    user.username = self.editedUsername.text;
-    user[@"name"] = self.editedName.text;
-    user[@"phone"] = self.editedName.text;
-    user[@"university"] = self.editedName.text;
-    user[@"profileImage"] = [Task getPFFileFromImage:self.chosenImage];
-    [user saveInBackground];
-    [self dismissViewControllerAnimated:YES completion:^{}];
-    
+    [self updateUserInfo];
 }
 
 
