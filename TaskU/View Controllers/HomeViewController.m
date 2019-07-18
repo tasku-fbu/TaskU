@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "Timeline1ViewController.h"
 
 @interface HomeViewController ()
 
@@ -18,6 +19,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+
+- (IBAction)test:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
+    Timeline1ViewController *myNewVC = (Timeline1ViewController *) [storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
+    UIViewController *vc = (UIViewController *) self;
+    [vc presentViewController:myNewVC animated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 
 @interface DetailsViewController ()
+@property (weak, nonatomic) IBOutlet UITabBar *tabBar;
 
 @end
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.tabBar setSelectedItem:[[self.tabBar items] objectAtIndex:1]];
     
 }
 - (IBAction)onTapBack:(id)sender {
