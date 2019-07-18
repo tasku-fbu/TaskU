@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "EditProfileViewController.h"
 
 @interface HomeViewController ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+- (IBAction)onTapButton:(UIButton *)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newProfile" bundle:nil];
+    EditProfileViewController *myNewVC = (EditProfileViewController *) [storyboard instantiateViewControllerWithIdentifier:@"newProfileViewController"];
+    UIViewController *vc = (UIViewController *) self;
+    [vc presentViewController:myNewVC animated:YES completion:nil];
 }
 
 /*

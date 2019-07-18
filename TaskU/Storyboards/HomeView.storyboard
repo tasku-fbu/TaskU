@@ -35,12 +35,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSl-Hv-SZH">
-                                <rect key="frame" x="152" y="563" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMU-SA-Ftp">
+                                <rect key="frame" x="169" y="663" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="dummyButton:" destination="yno-Fg-lXJ" eventType="touchUpInside" id="Hzd-ys-xpp"/>
+                                    <action selector="onTapButton:" destination="yno-Fg-lXJ" eventType="touchUpInside" id="YEj-3f-u1X"/>
                                 </connections>
                             </button>
                         </subviews>

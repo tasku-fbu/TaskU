@@ -28,6 +28,7 @@
 		110C127422E0E6F1009DC7DB /* newProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110C127322E0E6F1009DC7DB /* newProfile.storyboard */; };
 		1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37122E118B1004A235C /* EditPasswordViewController.m */; };
 		1131D37322E12096004A235C /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
+		1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37522E129BC004A235C /* MainProfileViewController.m */; };
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
 		11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D2F51022DE8C130065D70D /* newTask.storyboard */; };
 		7AF2BDEABCE537A6B60761A2 /* Pods_TaskU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CCEDA8F313441951F05FC8 /* Pods_TaskU.framework */; };
@@ -94,6 +95,8 @@
 		110C127322E0E6F1009DC7DB /* newProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = newProfile.storyboard; path = ../../../../.Trash/newProfile.storyboard; sourceTree = "<group>"; };
 		1131D37022E118B1004A235C /* EditPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPasswordViewController.h; sourceTree = "<group>"; };
 		1131D37122E118B1004A235C /* EditPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPasswordViewController.m; sourceTree = "<group>"; };
+		1131D37422E129BC004A235C /* MainProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainProfileViewController.h; sourceTree = "<group>"; };
+		1131D37522E129BC004A235C /* MainProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainProfileViewController.m; sourceTree = "<group>"; };
 		11D2F50B22DE5D520065D70D /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		11D2F50C22DE5D520065D70D /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		11D2F51022DE8C130065D70D /* newTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newTask.storyboard; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				B902D14622DFC5230080B87E /* DetailsViewController.m */,
 				1131D37022E118B1004A235C /* EditPasswordViewController.h */,
 				1131D37122E118B1004A235C /* EditPasswordViewController.m */,
+				1131D37422E129BC004A235C /* MainProfileViewController.h */,
+				1131D37522E129BC004A235C /* MainProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 				0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */,
 				0E8EFF5922DD523600B9FE89 /* main.m in Sources */,
 				0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */,
+				1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */,
 				110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */,
 				1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
