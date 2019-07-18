@@ -46,7 +46,7 @@
         <!--status-->
         <scene sceneID="zNh-P0-dya">
             <objects>
-                <viewController id="49a-8Z-YbV" sceneMemberID="viewController">
+                <viewController id="49a-8Z-YbV" customClass="DetailsStatusViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LhF-Ny-FVe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +80,7 @@
         <!--information-->
         <scene sceneID="cZf-Ge-Aeb">
             <objects>
-                <viewController id="KNl-U5-hup" sceneMemberID="viewController">
+                <viewController id="KNl-U5-hup" customClass="DetailsInfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PAO-m7-Cjm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -10,6 +10,8 @@
 #import "TaskCell.h"
 #import "Task.h"
 #import "DetailsViewController.h"
+#import "DetailsStatusViewController.h"
+#import "DetailsInfoViewController.h"
 
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -150,6 +152,12 @@
     
     DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
      detailsVC.task = cell.task;
+    
+    DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
+    DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
+    statusVC.task = cell.task;
+    infoVC.task = cell.task;
+    
      [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
