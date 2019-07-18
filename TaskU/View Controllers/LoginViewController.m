@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 
+#import "Timeline1ViewController.h"
+
 static NSString *const signUpSegueIdentifier = @"signUpSegue";
 static NSString *const loginSegueIdentifier = @"loginSegue";
 
@@ -72,6 +74,8 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     [self loginUser]; //verifies the user through parse login authentication
 }
 
+
+
 //Alerts the user if unaccepted login information is entered
 - (bool) isSignUpInfoComplete{
     
@@ -123,6 +127,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     
     return true;
 }
+
 
 
 @end
