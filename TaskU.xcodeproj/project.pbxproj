@@ -31,6 +31,8 @@
 		B902D14222DE9F110080B87E /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14122DE9F110080B87E /* TaskCell.m */; };
 		B902D14422DFC3380080B87E /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B902D14322DFC3380080B87E /* Details.storyboard */; };
 		B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14622DFC5230080B87E /* DetailsViewController.m */; };
+		B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14922E01FEC0080B87E /* DetailsStatusViewController.m */; };
+		B902D14D22E01FFD0080B87E /* DetailsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14C22E01FFD0080B87E /* DetailsInfoViewController.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -98,6 +100,10 @@
 		B902D14322DFC3380080B87E /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		B902D14522DFC5230080B87E /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		B902D14622DFC5230080B87E /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		B902D14822E01FEC0080B87E /* DetailsStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsStatusViewController.h; sourceTree = "<group>"; };
+		B902D14922E01FEC0080B87E /* DetailsStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsStatusViewController.m; sourceTree = "<group>"; };
+		B902D14B22E01FFD0080B87E /* DetailsInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsInfoViewController.h; sourceTree = "<group>"; };
+		B902D14C22E01FFD0080B87E /* DetailsInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsInfoViewController.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +157,10 @@
 				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
 				B902D14522DFC5230080B87E /* DetailsViewController.h */,
 				B902D14622DFC5230080B87E /* DetailsViewController.m */,
+				B902D14822E01FEC0080B87E /* DetailsStatusViewController.h */,
+				B902D14922E01FEC0080B87E /* DetailsStatusViewController.m */,
+				B902D14B22E01FFD0080B87E /* DetailsInfoViewController.h */,
+				B902D14C22E01FFD0080B87E /* DetailsInfoViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -178,11 +188,9 @@
 				0E45A04F22DE56C3005D798F /* HomeView.storyboard */,
 				0E45A05222DE5EDA005D798F /* Requests.storyboard */,
 				0E45A05422DE5EF2005D798F /* Missions.storyboard */,
-				0E45A05722DE5F19005D798F /* Profile.storyboard */,
 				B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */,
 				B902D14322DFC3380080B87E /* Details.storyboard */,
 				0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */,
-				11D2F51022DE8C130065D70D /* newTask.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -375,9 +383,7 @@
 				B902D13C22DE9A5B0080B87E /* Timeline1.storyboard in Resources */,
 				0E8EFF5122DD523500B9FE89 /* Main.storyboard in Resources */,
 				0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */,
-				0E45A05822DE5F19005D798F /* Profile.storyboard in Resources */,
 				B902D14422DFC3380080B87E /* Details.storyboard in Resources */,
-				11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */,
 				0E45A05022DE56C3005D798F /* HomeView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,9 +498,11 @@
 				0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */,
 				0E8EFF5922DD523600B9FE89 /* main.m in Sources */,
 				0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */,
+				B902D14D22E01FFD0080B87E /* DetailsInfoViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
+				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,
