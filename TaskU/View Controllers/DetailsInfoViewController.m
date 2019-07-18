@@ -92,7 +92,7 @@
 
 - (void) showRequesterInfo {
     PFUser *requester = self.task.requester;
-    self.rusernameLabel.text = requester.username;
+    self.rusernameLabel.text = requester[@"username"];
     self.rnameLabel.text = requester[@"name"];
     self.runiversityLabel.text = requester[@"university"];
     self.remailLabel.text = requester[@"email"];
@@ -104,7 +104,7 @@
 
 - (void) showMissionerInfo {
     PFUser *missioner = self.task.missioner;
-    self.musernameLabel.text = missioner.username;
+    self.musernameLabel.text = missioner[@"username"];
     self.mnameLabel.text = missioner[@"name"];
     self.muniversityLabel.text = missioner[@"university"];
     self.memailLabel.text = missioner[@"email"];

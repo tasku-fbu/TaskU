@@ -45,7 +45,7 @@
 - (void) getAllTasks {
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query orderByDescending:@"taskDate"];
-    [query includeKey:@"reqester"];
+    [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
     [query includeKey:@"taskName"];
     [query includeKey:@"taskDifficulty"];
