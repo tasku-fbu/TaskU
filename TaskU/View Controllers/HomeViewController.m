@@ -7,17 +7,62 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeCollectionViewCell.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource>
+@property NSArray *categoriesImagesArray;
+@property NSArray *categoriesTextArray;
+@property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
 
 @end
 
 @implementation HomeViewController
 
+@synthesize collection_View;
+static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"Laundry", @"tutoring", @"movingIn", @"shoe_cleaning", @"specialServices",  nil ];
+    self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery", @"Laundry", @"Tutoring", @"Move in", @"Shoe Cleaning",  @"Special Services", nil ];
 }
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+    return 1;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return self.categoriesImagesArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:(100)];
+    
+    //want to resize images later
+    imageView.image = [UIImage imageNamed: [self.categoriesImagesArray objectAtIndex:indexPath.row]];
+    
+    UILabel *label = (UILabel *)[cell viewWithTag:(101)];
+    label.text = [self.categoriesTextArray objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (IBAction)categoryTapAction:(id)sender {
+   /* UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"timeline1" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"timeline1"];
+    
+    DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
+    detailsVC.task = cell.task;
+    [self presentViewController:navigationVC animated:YES completion:nil];
+*/
+    }
 
 /*
 #pragma mark - Navigation
@@ -29,4 +74,19 @@
 }
 */
 
+/*
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+    //HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeViewCollectionCell" forIndexPath:indexPath];
+
+    //cell.homeViewImage.image = nil;
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 6;
+}
+*/
 @end

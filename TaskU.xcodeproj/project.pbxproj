@@ -24,6 +24,8 @@
 		0E8EFF6322DD523600B9FE89 /* TaskUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6222DD523600B9FE89 /* TaskUTests.m */; };
 		0E8EFF6E22DD523600B9FE89 /* TaskUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */; };
 		0EFEDA9322DFD4F70075A9DD /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */; };
+		0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */; };
+		0EFEDA9D22E103FC0075A9DD /* HomeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */; };
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
 		11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D2F51022DE8C130065D70D /* newTask.storyboard */; };
 		11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
@@ -80,6 +82,10 @@
 		0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskUUITests.m; sourceTree = "<group>"; };
 		0E8EFF6F22DD523600B9FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
+		0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
+		0EFEDA9B22E103FC0075A9DD /* HomeCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewController.h; sourceTree = "<group>"; };
+		0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewController.m; sourceTree = "<group>"; };
 		11D2F50B22DE5D520065D70D /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		11D2F50C22DE5D520065D70D /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		11D2F51022DE8C130065D70D /* newTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newTask.storyboard; sourceTree = "<group>"; };
@@ -141,6 +147,8 @@
 				0E45A04B22DD9322005D798F /* ProfileViewController.m */,
 				11D2F51222DE8CC30065D70D /* newTaskViewController.h */,
 				11D2F51322DE8CC30065D70D /* newTaskViewController.m */,
+				0EFEDA9B22E103FC0075A9DD /* HomeCollectionViewController.h */,
+				0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 				0E8EFF5722DD523600B9FE89 /* Info.plist */,
 				0E45A03922DD9182005D798F /* View Controllers */,
 				0E45A05122DE5E7A005D798F /* Storyboards */,
+				0EFEDA9722DFE6160075A9DD /* Views */,
 				0E45A03A22DD91A4005D798F /* Models */,
 			);
 			path = TaskU;
@@ -221,6 +230,15 @@
 				0E8EFF6F22DD523600B9FE89 /* Info.plist */,
 			);
 			path = TaskUUITests;
+			sourceTree = "<group>";
+		};
+		0EFEDA9722DFE6160075A9DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */,
+				0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AB956C80AE2403F898C9CBEA /* Frameworks */ = {
@@ -474,7 +492,9 @@
 				0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */,
 				0E8EFF5922DD523600B9FE89 /* main.m in Sources */,
 				0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */,
+				0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
+				0EFEDA9D22E103FC0075A9DD /* HomeCollectionViewController.m in Sources */,
 				11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
