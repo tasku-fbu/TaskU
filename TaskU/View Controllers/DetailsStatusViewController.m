@@ -48,7 +48,7 @@
 
 - (void) showAcceptLabel {
     PFUser *missioner = self.task[@"missioner"];
-    if (!missioner) {
+    if (!missioner || [missioner isEqual:[NSNull null]]) {
         self.acceptLabel.text = @"Still awaiting for a missioner!!";
         self.acceptLabel.textColor = [UIColor grayColor];
     } else {
@@ -62,18 +62,31 @@
 
 - (void) showAcceptButton {
     PFUser *missioner = self.task[@"missioner"];
-    if (!missioner) {
+    if (!missioner || [missioner isEqual:[NSNull null]]) {
         self.acceptButton.hidden = NO;
+        self.acceptButton.userInteractionEnabled = YES;
         [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
         [self.acceptButton setBackgroundColor:[UIColor colorWithRed:0.0 green:153/255.0 blue:0.0 alpha:1.0]];
         [self.acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    } else if ([missioner isEqual:[PFUser currentUser]]) {
+    } else if ([missioner.objectId isEqual:[PFUser currentUser].objectId]) {
         self.acceptButton.hidden = NO;
+        self.acceptButton.userInteractionEnabled = YES;
         [self.acceptButton setTitle:@"Cancel" forState:UIControlStateNormal];
         [self.acceptButton setBackgroundColor:[UIColor redColor]];
         [self.acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     } else {
         self.acceptButton.hidden = YES;
+        self.acceptButton.userInteractionEnabled = NO;
+    }
+}
+
+- (void) showCompleteButton {
+    PFUser *missioner = self.task[@"missioner"];
+    if (self.task[@"acceptedAt"] && self.task[@"completedAt"] && [[PFUser currentUser] isEqual:missioner]) {
+        self.completeButton.hidden = NO;
+        [self.completeButton setTitle:@"Complete" forState:UIControlStateNormal];
+        [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.1 green:0.25 blue:1 alpha:1.0]];
+        [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
 }
 
@@ -134,7 +147,31 @@
 
 
 - (IBAction)onTapAcceptButton:(id)sender {
+    UIButton *btn = (UIButton *) sender;
+    if (btn.hidden == NO) {
+        if ([btn.currentTitle isEqualToString:@"Accept"]) {
+            PFUser *user = [PFUser currentUser];
+            self.task[@"missioner"] = user;
+            self.task[@"acceptedAt"] = [NSDate date];
+            self.task[@"completionStatus"] = @"accepted";
+            [self.task saveInBackground];
+            [self showAcceptLabel];
+            [self showAcceptButton];
+        } else if ([btn.currentTitle isEqualToString:@"Cancel"]) {
+            self.task[@"missioner"] = [NSNull null];
+            self.task[@"acceptedAt"] = [NSNull null];
+            self.task[@"completionStatus"] = @"created";
+            [self.task saveInBackground];
+            [self showAcceptButton];
+            [self showAcceptLabel];
+        } else {
+            self.acceptButton.hidden = YES;
+            self.acceptButton.userInteractionEnabled = NO;
+        }
+    }
+    
 }
+
 - (IBAction)onTapCompleteButton:(id)sender {
 }
 - (IBAction)onTapPayButton:(id)sender {
