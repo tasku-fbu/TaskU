@@ -88,28 +88,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEL-hR-xRa">
-                                <rect key="frame" x="113" y="355" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEL-hR-xRa">
+                                <rect key="frame" x="111" y="355.5" width="49" height="30"/>
                                 <state key="normal" title="Accept"/>
                                 <connections>
                                     <action selector="onTapAcceptButton:" destination="49a-8Z-YbV" eventType="touchUpInside" id="rzr-s7-HhF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eP-y6-6hf">
-                                <rect key="frame" x="103" y="530" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zx2-FO-23l">
+                                <rect key="frame" x="111" y="711.5" width="113" height="30"/>
+                                <state key="normal" title="Confirm and Pay"/>
+                                <connections>
+                                    <action selector="onTapPayButton:" destination="49a-8Z-YbV" eventType="touchUpInside" id="eHO-c3-YaL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eP-y6-6hf">
+                                <rect key="frame" x="111" y="530.5" width="67" height="30"/>
                                 <state key="normal" title="Complete"/>
                                 <connections>
                                     <action selector="onTapCompleteButton:" destination="49a-8Z-YbV" eventType="touchUpInside" id="tYI-u7-EZC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zx2-FO-23l">
-                                <rect key="frame" x="113" y="711" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="onTapPayButton:" destination="49a-8Z-YbV" eventType="touchUpInside" id="eHO-c3-YaL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -119,17 +116,23 @@
                             <constraint firstItem="aad-IU-vmw" firstAttribute="leading" secondItem="Gr0-Eg-nAx" secondAttribute="trailing" constant="5" id="8fU-bi-VGT"/>
                             <constraint firstAttribute="trailing" secondItem="LkS-Yq-yzV" secondAttribute="trailing" constant="8" id="DnD-0s-upS"/>
                             <constraint firstItem="16A-qz-hS1" firstAttribute="centerY" secondItem="LhF-Ny-FVe" secondAttribute="centerY" multiplier="7.3:10" id="GeS-Ad-4qu"/>
+                            <constraint firstItem="5eP-y6-6hf" firstAttribute="top" secondItem="LkS-Yq-yzV" secondAttribute="bottom" constant="8" id="Jgq-h1-ucz"/>
                             <constraint firstItem="Gr0-Eg-nAx" firstAttribute="height" secondItem="LhF-Ny-FVe" secondAttribute="height" multiplier="4:5" id="Qce-3O-QN8"/>
                             <constraint firstItem="b2E-XE-fUH" firstAttribute="leading" secondItem="Gr0-Eg-nAx" secondAttribute="trailing" constant="5" id="Qdn-1r-ySZ"/>
+                            <constraint firstItem="Zx2-FO-23l" firstAttribute="top" secondItem="b2E-XE-fUH" secondAttribute="bottom" constant="8" id="T0n-iI-CgS"/>
                             <constraint firstItem="16A-qz-hS1" firstAttribute="leading" secondItem="Gr0-Eg-nAx" secondAttribute="trailing" constant="5" id="Wv2-bG-IqJ"/>
                             <constraint firstItem="LkS-Yq-yzV" firstAttribute="centerY" secondItem="LhF-Ny-FVe" secondAttribute="centerY" multiplier="11.2:10" id="Xeb-Gg-obz"/>
                             <constraint firstAttribute="trailing" secondItem="b2E-XE-fUH" secondAttribute="trailing" constant="8" id="a17-J3-xd6"/>
                             <constraint firstItem="b2E-XE-fUH" firstAttribute="centerY" secondItem="LhF-Ny-FVe" secondAttribute="centerY" multiplier="6.1:4" id="aNZ-vW-pif"/>
+                            <constraint firstItem="5eP-y6-6hf" firstAttribute="leading" secondItem="LkS-Yq-yzV" secondAttribute="leading" id="fBy-T3-ifb"/>
+                            <constraint firstItem="rEL-hR-xRa" firstAttribute="leading" secondItem="16A-qz-hS1" secondAttribute="leading" id="ggs-kN-7Kz"/>
                             <constraint firstItem="Gr0-Eg-nAx" firstAttribute="centerY" secondItem="LhF-Ny-FVe" secondAttribute="centerY" id="lZ2-0p-K6g"/>
                             <constraint firstItem="aad-IU-vmw" firstAttribute="centerY" secondItem="LhF-Ny-FVe" secondAttribute="centerY" multiplier="1.1:3" id="lhi-Ff-Byg"/>
                             <constraint firstAttribute="trailing" secondItem="16A-qz-hS1" secondAttribute="trailing" constant="8" id="lqj-7r-46A"/>
+                            <constraint firstItem="Zx2-FO-23l" firstAttribute="leading" secondItem="b2E-XE-fUH" secondAttribute="leading" id="nGA-Cd-aDF"/>
                             <constraint firstItem="LkS-Yq-yzV" firstAttribute="leading" secondItem="Gr0-Eg-nAx" secondAttribute="trailing" constant="5" id="of9-UR-y9G"/>
                             <constraint firstAttribute="trailing" secondItem="aad-IU-vmw" secondAttribute="trailing" constant="8" id="qcN-tN-VhU"/>
+                            <constraint firstItem="rEL-hR-xRa" firstAttribute="top" secondItem="16A-qz-hS1" secondAttribute="bottom" constant="8" id="uYC-Xk-eWn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TPF-6a-huh"/>
                     </view>
