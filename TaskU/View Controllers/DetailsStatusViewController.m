@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *completeButton;
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelRequestButton;
+@property (weak, nonatomic) IBOutlet UIImageView *createIconView;
+@property (weak, nonatomic) IBOutlet UIImageView *acceptIconView;
+@property (weak, nonatomic) IBOutlet UIImageView *completeIconView;
+@property (weak, nonatomic) IBOutlet UIImageView *payIconView;
 
 
 
@@ -355,6 +359,33 @@
     [self showCompleteButton];
     [self showPayButton];
     [self showCancelRequestButton];
+    [self updateStatusIcons];
+}
+
+- (void) updateStatusIcons{
+    NSString *status = self.task[@"completionStatus"];
+    if ([status isEqualToString:@"created"]) {
+        [self.createIconView setImage:[UIImage imageNamed:@"currentStatus"]];
+        [self.acceptIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.completeIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.payIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+    }else if ([status isEqualToString:@"accepted"]) {
+        [self.createIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.acceptIconView setImage:[UIImage imageNamed:@"currentStatus"]];
+        [self.completeIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.payIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+    } else if ([status isEqualToString:@"completed"]) {
+        [self.createIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.acceptIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.completeIconView setImage:[UIImage imageNamed:@"currentStatus"]];
+        [self.payIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+    } else {
+        [self.createIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.acceptIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.completeIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.payIconView setImage:[UIImage imageNamed:@"currentStatus"]];
+    }
+    
 }
 
 /*
