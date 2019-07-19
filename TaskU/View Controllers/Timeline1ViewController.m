@@ -59,6 +59,7 @@
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
     
+    
     //[query whereKey:@"completionStatus equalTo:@1"created"];
     query.limit = 20;
     

@@ -93,24 +93,22 @@
 - (void) showRequesterInfo {
     PFUser *requester = self.task.requester;
     self.rusernameLabel.text = requester[@"username"];
-    self.rnameLabel.text = requester[@"name"];
+    self.rnameLabel.text = [NSString stringWithFormat:@"%@ %@", requester[@"firstName"], requester[@"lastName"]];
     self.runiversityLabel.text = requester[@"university"];
     self.remailLabel.text = requester[@"email"];
-    NSNumber *phone = requester[@"phone"];
-    int pnum = [phone intValue];
-    self.rphoneLabel.text = [NSString stringWithFormat:@"Phone: %i.",pnum];
+    
+    self.rphoneLabel.text = [NSString stringWithFormat:@"Phone: %@.",requester[@"phoneNumber"]];
     
 }
 
 - (void) showMissionerInfo {
     PFUser *missioner = self.task[@"missioner"];
     self.musernameLabel.text = missioner[@"username"];
-    self.mnameLabel.text = missioner[@"name"];
+    self.mnameLabel.text = [NSString stringWithFormat:@"%@ %@", missioner[@"firstName"],missioner[@"lastName"]];
     self.muniversityLabel.text = missioner[@"university"];
     self.memailLabel.text = missioner[@"email"];
-    NSNumber *phone = missioner[@"phone"];
-    int pnum = [phone intValue];
-    self.mphoneLabel.text = [NSString stringWithFormat:@"Phone: %i.",pnum];
+    
+    self.mphoneLabel.text = [NSString stringWithFormat:@"Phone: %@.",missioner[@"phoneNumber"]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
