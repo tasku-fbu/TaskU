@@ -9,6 +9,13 @@
 #import "DetailsStatusViewController.h"
 
 @interface DetailsStatusViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *createLabel;
+@property (weak, nonatomic) IBOutlet UILabel *acceptLabel;
+@property (weak, nonatomic) IBOutlet UILabel *completeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *payLabel;
+@property (weak, nonatomic) IBOutlet UIButton *acceptButton;
+@property (weak, nonatomic) IBOutlet UIButton *completeButton;
+@property (weak, nonatomic) IBOutlet UIButton *payButton;
 
 @end
 
@@ -18,6 +25,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+}
+- (IBAction)onTapAcceptButton:(id)sender {
+}
+- (IBAction)onTapCompleteButton:(id)sender {
+}
+- (IBAction)onTapPayButton:(id)sender {
 }
 
 /*
