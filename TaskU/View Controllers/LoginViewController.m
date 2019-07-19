@@ -75,7 +75,6 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 }
 
 
-
 //Alerts the user if unaccepted login information is entered
 - (bool) isSignUpInfoComplete{
     

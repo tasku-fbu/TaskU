@@ -268,10 +268,10 @@
             </objects>
             <point key="canvasLocation" x="663" y="1424"/>
         </scene>
-        <!--ProfileViewController-->
+        <!--newProfileViewController-->
         <scene sceneID="l8m-0a-8MO">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="vJf-7N-Og5" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="newProfile" referencedIdentifier="newProfileViewController" id="vJf-7N-Og5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="63D-PR-n4W"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOA-8l-mr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
