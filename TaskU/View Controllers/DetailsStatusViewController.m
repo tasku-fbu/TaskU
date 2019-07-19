@@ -98,6 +98,9 @@
             [self.completeButton setTitle:@"Contact missioner" forState:UIControlStateNormal];
             [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } else {
+            self.completeButton.hidden = YES;
+            self.completeButton.userInteractionEnabled = NO;
         }
     } else {
         self.completeButton.hidden = YES;
@@ -116,18 +119,45 @@
         self.completeLabel.text = @"Still awaiting for a missioner!!";
         self.completeLabel.textColor = [UIColor grayColor];
     } else if (!completedAt || [completedAt isEqual:[NSNull null]]) {
-        self.completeLabel.text = [NSString stringWithFormat:@"Still in progress by missioner %@...", missioner[@"username"]];
+        self.completeLabel.text = [NSString stringWithFormat:@"Still in progress by missioner @%@...", missioner[@"username"]];
         self.completeLabel.textColor = [UIColor grayColor];
     } else {
         self.completeLabel.textColor = [UIColor blackColor];
         NSString *username = missioner.username;
         NSString *dateString = [self stringfromDateHelper:completedAt];
-        NSString *display = [NSString stringWithFormat:@"Completed by missioner @%@ at %@", username, dateString];
+        NSString *display = [NSString stringWithFormat:@"Completed by missioner @%@ at @%@", username, dateString];
         self.completeLabel.text = display;
     }
 }
 
 - (void) showPayButton {
+    PFUser *requester = self.task[@"requester"];
+    PFUser *missioner = self.task[@"missioner"];
+    if ([self.task[@"completionStatus"] isEqualToString:@"completed"]) {
+        if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
+            self.payButton.hidden = NO;
+            self.payButton.userInteractionEnabled = YES;
+            [self.payButton setTitle:@"Confirm & Pay" forState:UIControlStateNormal];
+            [self.payButton setBackgroundColor:[UIColor colorWithRed:0.1 green:0.25 blue:1 alpha:1.0]];
+            [self.payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } else if ([[PFUser currentUser].objectId isEqualToString:missioner.objectId]){
+            self.payButton.hidden = NO;
+            self.payButton.userInteractionEnabled = YES;
+            [self.payButton setTitle:@"Contact requester" forState:UIControlStateNormal];
+            [self.payButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
+            [self.payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } else {
+            self.payButton.hidden = YES;
+            self.payButton.userInteractionEnabled = NO;
+        }
+    } else {
+        self.payButton.hidden = YES;
+        self.payButton.userInteractionEnabled = NO;
+    }
+    
+    
+    
+    
 }
 
 - (void) showPayLabel {
@@ -140,10 +170,10 @@
         self.payLabel.text = @"Still awaiting for a missioner!!";
         self.payLabel.textColor = [UIColor grayColor];
     } else if (!completedAt) {
-        self.payLabel.text = [NSString stringWithFormat:@"Still in progress by missioner %@...", missioner[@"username"]];
+        self.payLabel.text = [NSString stringWithFormat:@"Still in progress by missioner @%@...", missioner[@"username"]];
         self.payLabel.textColor = [UIColor grayColor];
     } else if (!paidAt) {
-        self.payLabel.text = [NSString stringWithFormat:@"Still awaiting pay from requester %@...", requester[@"username"]];
+        self.payLabel.text = [NSString stringWithFormat:@"Still awaiting pay from requester @%@...", requester[@"username"]];
         self.payLabel.textColor = [UIColor grayColor];
     } else {
         self.payLabel.textColor = [UIColor blackColor];
@@ -182,7 +212,6 @@
             self.task[@"completionStatus"] = @"created";
             [self.task saveInBackground];
             [self updateView];
-            
         }
     }
     
@@ -211,19 +240,10 @@
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              NSLog(@"cancelCompletion");
                                                          }];
-        
-        
-        // add the OK action to the alert controller
         [alert addAction:okAction];
         [alert addAction:noAction];
         
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
-        
-        
-        
-        
+        [self presentViewController:alert animated:YES completion:nil];
     }
     
     
