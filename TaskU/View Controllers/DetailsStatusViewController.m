@@ -172,15 +172,18 @@
     } else if (!completedAt) {
         self.payLabel.text = [NSString stringWithFormat:@"Still in progress by missioner @%@...", missioner[@"username"]];
         self.payLabel.textColor = [UIColor grayColor];
-    } else if (!paidAt) {
-        self.payLabel.text = [NSString stringWithFormat:@"Still awaiting pay from requester @%@...", requester[@"username"]];
-        self.payLabel.textColor = [UIColor grayColor];
-    } else {
+    } else if ([self.task[@"completionStatus"] isEqualToString:@"paid"]){
         self.payLabel.textColor = [UIColor blackColor];
         NSString *username = requester.username;
         NSString *dateString = [self stringfromDateHelper:paidAt];
         NSString *display = [NSString stringWithFormat:@"Paid by requester @%@ at %@", username, dateString];
         self.payLabel.text = display;
+    } else if ([self.task[@"completionStatus"] isEqualToString:@"pay"]) {
+        self.payLabel.text = [NSString stringWithFormat:@"Confirmed by requester @%@.\nAwaiting requester @%@ to complete payment...", requester[@"username"], requester[@"username"]];
+        self.payLabel.textColor = [UIColor grayColor];
+    }else {
+        self.payLabel.text = [NSString stringWithFormat:@"Still awaiting confirmation from requester @%@...", requester[@"username"]];
+        self.payLabel.textColor = [UIColor grayColor];
     }
 }
 
@@ -251,6 +254,31 @@
     
 }
 - (IBAction)onTapPayButton:(id)sender {
+    UIButton *btn = (UIButton *) sender;
+    if (btn.hidden == NO && [btn.currentTitle isEqualToString:@"Confirm & Pay"]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Continue to pay?"
+                                                                       message:@"You will continue to paying the missioner once you confirm!"
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             NSLog(@"Confirm to pay");
+                                                             self.task[@"completionStatus"] = @"pay";
+                                                             [self.task saveInBackground];
+                                                             [self updateView];
+                                                         }];
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             NSLog(@"cancel to pay");
+                                                         }];
+        [alert addAction:okAction];
+        [alert addAction:noAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void) updateView {
