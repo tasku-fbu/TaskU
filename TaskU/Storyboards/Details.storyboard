@@ -109,6 +109,13 @@
                                     <action selector="onTapCompleteButton:" destination="49a-8Z-YbV" eventType="touchUpInside" id="tYI-u7-EZC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ht1-Il-UfC">
+                                <rect key="frame" x="111" y="193" width="108" height="30"/>
+                                <state key="normal" title="Cancel Request"/>
+                                <connections>
+                                    <action selector="onTapCancelRequest:" destination="49a-8Z-YbV" eventType="touchUpInside" id="Q3k-RL-cnX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -120,6 +127,7 @@
                             <constraint firstItem="Gr0-Eg-nAx" firstAttribute="height" secondItem="LhF-Ny-FVe" secondAttribute="height" multiplier="4:5" id="Qce-3O-QN8"/>
                             <constraint firstItem="b2E-XE-fUH" firstAttribute="leading" secondItem="Gr0-Eg-nAx" secondAttribute="trailing" constant="5" id="Qdn-1r-ySZ"/>
                             <constraint firstItem="Zx2-FO-23l" firstAttribute="top" secondItem="b2E-XE-fUH" secondAttribute="bottom" constant="8" id="T0n-iI-CgS"/>
+                            <constraint firstItem="ht1-Il-UfC" firstAttribute="top" secondItem="aad-IU-vmw" secondAttribute="bottom" constant="8" id="VCY-LW-mdp"/>
                             <constraint firstItem="16A-qz-hS1" firstAttribute="leading" secondItem="Gr0-Eg-nAx" secondAttribute="trailing" constant="5" id="Wv2-bG-IqJ"/>
                             <constraint firstItem="LkS-Yq-yzV" firstAttribute="centerY" secondItem="LhF-Ny-FVe" secondAttribute="centerY" multiplier="11.2:10" id="Xeb-Gg-obz"/>
                             <constraint firstAttribute="trailing" secondItem="b2E-XE-fUH" secondAttribute="trailing" constant="8" id="a17-J3-xd6"/>
@@ -133,6 +141,7 @@
                             <constraint firstItem="LkS-Yq-yzV" firstAttribute="leading" secondItem="Gr0-Eg-nAx" secondAttribute="trailing" constant="5" id="of9-UR-y9G"/>
                             <constraint firstAttribute="trailing" secondItem="aad-IU-vmw" secondAttribute="trailing" constant="8" id="qcN-tN-VhU"/>
                             <constraint firstItem="rEL-hR-xRa" firstAttribute="top" secondItem="16A-qz-hS1" secondAttribute="bottom" constant="8" id="uYC-Xk-eWn"/>
+                            <constraint firstItem="ht1-Il-UfC" firstAttribute="leading" secondItem="aad-IU-vmw" secondAttribute="leading" id="wjD-Iu-JpV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TPF-6a-huh"/>
                     </view>
@@ -140,6 +149,7 @@
                     <connections>
                         <outlet property="acceptButton" destination="rEL-hR-xRa" id="Bgw-PT-Qm1"/>
                         <outlet property="acceptLabel" destination="16A-qz-hS1" id="Jrr-dh-U8u"/>
+                        <outlet property="cancelRequestButton" destination="ht1-Il-UfC" id="4AT-D6-8N5"/>
                         <outlet property="completeButton" destination="5eP-y6-6hf" id="TKX-Q9-kA1"/>
                         <outlet property="completeLabel" destination="LkS-Yq-yzV" id="y2m-Gp-Sz2"/>
                         <outlet property="createLabel" destination="aad-IU-vmw" id="uTX-4j-5tv"/>
@@ -521,7 +531,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="university" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zG6-P8-f0c">
-                                                    <rect key="frame" x="20" y="8" width="335" height="27.5"/>
+                                                    <rect key="frame" x="20" y="8" width="374" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -543,7 +553,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rls-1Z-e5d">
-                                                    <rect key="frame" x="20" y="8" width="335" height="27.5"/>
+                                                    <rect key="frame" x="20" y="8" width="374" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

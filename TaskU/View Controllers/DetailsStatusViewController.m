@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UIButton *completeButton;
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelRequestButton;
 
 
 
@@ -279,6 +280,8 @@
         
         [self presentViewController:alert animated:YES completion:nil];
     }
+}
+- (IBAction)onTapCancelRequest:(id)sender {
 }
 
 - (void) updateView {
