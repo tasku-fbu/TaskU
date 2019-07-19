@@ -12,7 +12,6 @@
 		0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A04222DD92ED005D798F /* RequestsViewController.m */; };
 		0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A04622DD9308005D798F /* MissionsViewController.m */; };
 		0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A04B22DD9322005D798F /* ProfileViewController.m */; };
-		0E45A05022DE56C3005D798F /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E45A04F22DE56C3005D798F /* HomeView.storyboard */; };
 		0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E45A05222DE5EDA005D798F /* Requests.storyboard */; };
 		0E45A05522DE5EF3005D798F /* Missions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E45A05422DE5EF2005D798F /* Missions.storyboard */; };
 		0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF4A22DD523500B9FE89 /* AppDelegate.m */; };
@@ -69,7 +68,6 @@
 		0E45A04622DD9308005D798F /* MissionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissionsViewController.m; sourceTree = "<group>"; };
 		0E45A04A22DD9322005D798F /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		0E45A04B22DD9322005D798F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		0E45A04F22DE56C3005D798F /* HomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		0E45A05222DE5EDA005D798F /* Requests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Requests.storyboard; sourceTree = "<group>"; };
 		0E45A05422DE5EF2005D798F /* Missions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Missions.storyboard; sourceTree = "<group>"; };
 		0E8EFF4622DD523500B9FE89 /* TaskU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				0E8EFF4F22DD523500B9FE89 /* Main.storyboard */,
-				0E45A04F22DE56C3005D798F /* HomeView.storyboard */,
 				0E45A05222DE5EDA005D798F /* Requests.storyboard */,
 				0E45A05422DE5EF2005D798F /* Missions.storyboard */,
 				B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */,
@@ -403,7 +400,6 @@
 				0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */,
 				B902D14422DFC3380080B87E /* Details.storyboard in Resources */,
 				11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */,
-				0E45A05022DE56C3005D798F /* HomeView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
