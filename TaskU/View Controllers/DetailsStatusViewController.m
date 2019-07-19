@@ -59,7 +59,12 @@
 
 - (void) showAcceptButton {
     PFUser *missioner = self.task[@"missioner"];
-    if (!missioner || [missioner isEqual:[NSNull null]]) {
+    PFUser *requester = self.task[@"requester"];
+    
+    if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
+        self.acceptButton.hidden = YES;
+        self.acceptButton.userInteractionEnabled = NO;
+    } else if (!missioner || [missioner isEqual:[NSNull null]]) {
         self.acceptButton.hidden = NO;
         self.acceptButton.userInteractionEnabled = YES;
         [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
