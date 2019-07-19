@@ -27,7 +27,7 @@
     
     [Parse initializeWithConfiguration:config];
     
-    
+/*
      //persistent login feature
      if (PFUser.currentUser) {
      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -35,7 +35,7 @@
      self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
      }
      
-    
+    */
     return YES;
     
 }
