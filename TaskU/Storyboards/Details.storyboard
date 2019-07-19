@@ -52,7 +52,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="croppedtimeline" translatesAutoresizingMaskIntoConstraints="NO" id="Gr0-Eg-nAx">
-                                <rect key="frame" x="8" y="89.5" width="98" height="717.00000000000011"/>
+                                <rect key="frame" x="8" y="89.5" width="98" height="717"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Gr0-Eg-nAx" secondAttribute="height" multiplier="98:717" id="5JO-my-R8J"/>
                                 </constraints>
