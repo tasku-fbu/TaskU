@@ -582,7 +582,9 @@
         <scene sceneID="1ro-ns-Pff">
             <objects>
                 <navigationController storyboardIdentifier="newProfileViewController" title="Profile" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EM0-SF-sa4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="RFt-jR-VVF"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s5P-3z-z8C">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -600,5 +602,6 @@
     <resources>
         <image name="creditcard" width="50" height="50"/>
         <image name="next" width="10" height="14"/>
+        <image name="user" width="22" height="24"/>
     </resources>
 </document>

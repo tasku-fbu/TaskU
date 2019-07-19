@@ -26,11 +26,13 @@
             </objects>
             <point key="canvasLocation" x="977" y="82"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Missions-->
         <scene sceneID="Vgh-UM-09t">
             <objects>
                 <navigationController storyboardIdentifier="MissionsViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TUO-oy-f9p" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Missions" image="tasks" id="kSe-KQ-5to"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3HC-bp-NCm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -45,4 +47,7 @@
             <point key="canvasLocation" x="-114" y="82"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tasks" width="22" height="20"/>
+    </resources>
 </document>
