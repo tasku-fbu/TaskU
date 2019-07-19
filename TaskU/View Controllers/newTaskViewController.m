@@ -9,7 +9,7 @@
 #import "newTaskViewController.h"
 #import "Task.h"
 
-@interface newTaskViewController ()
+@interface newTaskViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *taskName;
 @property (weak, nonatomic) IBOutlet UITextField *startAddress;
 @property (weak, nonatomic) IBOutlet UITextField *endAddress;
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *payAmount;
 @property (strong, nonatomic) UIAlertController *completionAlert;
 @property (strong, nonatomic) UIAlertController *networkAlert;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
 
 @end
 
@@ -50,6 +51,15 @@
                                                         }];
     // add the OK action to the alert controller
     [self.networkAlert addAction:otherErrorAction];
+    
+    // Connect data:
+    self.picker.delegate = self;
+    self.picker.dataSource = self;
+    
+   // NSArray *pickerData;
+    // Input the data into the array
+  //  pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"];
+    
 }
 
 
@@ -101,5 +111,57 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView { 
+    <#code#>
+}
+
+- (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component { 
+    <#code#>
+}
+
+- (void)encodeWithCoder:(nonnull NSCoder *)aCoder { 
+    <#code#>
+}
+
+- (void)traitCollectionDidChange:(nullable UITraitCollection *)previousTraitCollection { 
+    <#code#>
+}
+
+- (void)preferredContentSizeDidChangeForChildContentContainer:(nonnull id<UIContentContainer>)container { 
+    <#code#>
+}
+
+- (CGSize)sizeForChildContentContainer:(nonnull id<UIContentContainer>)container withParentContainerSize:(CGSize)parentSize { 
+    <#code#>
+}
+
+- (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(nonnull id<UIContentContainer>)container { 
+    <#code#>
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator { 
+    <#code#>
+}
+
+- (void)willTransitionToTraitCollection:(nonnull UITraitCollection *)newCollection withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator { 
+    <#code#>
+}
+
+- (void)didUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context withAnimationCoordinator:(nonnull UIFocusAnimationCoordinator *)coordinator { 
+    <#code#>
+}
+
+- (void)setNeedsFocusUpdate { 
+    <#code#>
+}
+
+- (BOOL)shouldUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context { 
+    <#code#>
+}
+
+- (void)updateFocusIfNeeded { 
+    <#code#>
+}
 
 @end
