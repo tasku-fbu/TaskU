@@ -7,6 +7,9 @@
 //
 
 #import "DetailsStatusViewController.h"
+#import "Timeline1ViewController.h"
+
+
 
 @interface DetailsStatusViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *createLabel;
@@ -22,6 +25,10 @@
 
 @end
 
+
+
+
+
 @implementation DetailsStatusViewController
 
 
@@ -30,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     [self showCreateLabel];
     [self updateView];
 }
@@ -281,7 +289,62 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
+
+- (void) showCancelRequestButton {
+    PFUser *requester = self.task[@"requester"];
+    PFUser *me = [PFUser currentUser];
+    if ([me.objectId isEqualToString:requester.objectId]) {
+        self.cancelRequestButton.hidden = NO;
+        self.cancelRequestButton.userInteractionEnabled = YES;
+        [self.cancelRequestButton setTitle:@"Cancel Request" forState:UIControlStateNormal];
+        [self.cancelRequestButton setBackgroundColor:[UIColor redColor]];
+        [self.cancelRequestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+    } else {
+        self.cancelRequestButton.hidden = YES;
+        self.cancelRequestButton.userInteractionEnabled = NO;
+    }
+}
+
+
 - (IBAction)onTapCancelRequest:(id)sender {
+    UIButton *btn = (UIButton *) sender;
+    if (btn.hidden == NO) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm to Cancel Your Request "
+                                                                       message:@"Are you sure that you want to cancel your request?\nYou will not be able to undo cancellation later!"
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             NSLog(@"Confirm to cancel request");
+                                                             
+                                                             [self.task deleteInBackground];
+                                                             [self.delegate didCancelRequest];
+                                                             /*
+                                                             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
+                                                             UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
+                                                             
+                                                             Timeline1ViewController *timeline1VC = (Timeline1ViewController *) navigationVC.topViewController;
+                                                             
+                                                             
+                                                             [self presentViewController:navigationVC animated:YES completion:nil];
+                                                             */
+                                                             [self dismissViewControllerAnimated:YES completion:^{}];
+                                                             
+                                                             
+                                                         }];
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             NSLog(@"cancel to cancel request");
+                                                         }];
+        [alert addAction:okAction];
+        [alert addAction:noAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void) updateView {
@@ -291,6 +354,7 @@
     [self showPayLabel];
     [self showCompleteButton];
     [self showPayButton];
+    [self showCancelRequestButton];
 }
 
 /*

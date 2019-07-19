@@ -11,9 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol CancelRequestOnDetailsDelegate;
+
 @interface DetailsStatusViewController : UIViewController
 
 @property (strong, nonatomic) Task *task;
+@property (strong, nonatomic) id<CancelRequestOnDetailsDelegate> delegate;
+
+@end
+@protocol CancelRequestOnDetailsDelegate
+
+-(void) didCancelRequest;
 
 @end
 
