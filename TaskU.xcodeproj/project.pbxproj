@@ -28,6 +28,9 @@
 		1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37122E118B1004A235C /* EditPasswordViewController.m */; };
 		1131D37322E12096004A235C /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
 		1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37522E129BC004A235C /* MainProfileViewController.m */; };
+		0EFEDA9322DFD4F70075A9DD /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */; };
+		0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */; };
+		0EFEDA9D22E103FC0075A9DD /* HomeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */; };
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
 		11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D2F51022DE8C130065D70D /* newTask.storyboard */; };
 		7AF2BDEABCE537A6B60761A2 /* Pods_TaskU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CCEDA8F313441951F05FC8 /* Pods_TaskU.framework */; };
@@ -95,6 +98,11 @@
 		1131D37122E118B1004A235C /* EditPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPasswordViewController.m; sourceTree = "<group>"; };
 		1131D37422E129BC004A235C /* MainProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainProfileViewController.h; sourceTree = "<group>"; };
 		1131D37522E129BC004A235C /* MainProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainProfileViewController.m; sourceTree = "<group>"; };
+		0EFEDA9222DFD4F70075A9DD /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
+		0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
+		0EFEDA9B22E103FC0075A9DD /* HomeCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewController.h; sourceTree = "<group>"; };
+		0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewController.m; sourceTree = "<group>"; };
 		11D2F50B22DE5D520065D70D /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		11D2F50C22DE5D520065D70D /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		11D2F51022DE8C130065D70D /* newTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newTask.storyboard; sourceTree = "<group>"; };
@@ -166,6 +174,8 @@
 				11D2F51322DE8CC30065D70D /* newTaskViewController.m */,
 				110C127022DFF50B009DC7DB /* EditProfileViewController.h */,
 				110C127122DFF50B009DC7DB /* EditProfileViewController.m */,
+				0EFEDA9B22E103FC0075A9DD /* HomeCollectionViewController.h */,
+				0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */,
 				B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */,
 				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
 				B902D14522DFC5230080B87E /* DetailsViewController.h */,
@@ -238,6 +248,7 @@
 				0E8EFF5722DD523600B9FE89 /* Info.plist */,
 				0E45A03922DD9182005D798F /* View Controllers */,
 				0E45A05122DE5E7A005D798F /* Storyboards */,
+				0EFEDA9722DFE6160075A9DD /* Views */,
 				0E45A03A22DD91A4005D798F /* Models */,
 			);
 			path = TaskU;
@@ -259,6 +270,15 @@
 				0E8EFF6F22DD523600B9FE89 /* Info.plist */,
 			);
 			path = TaskUUITests;
+			sourceTree = "<group>";
+		};
+		0EFEDA9722DFE6160075A9DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */,
+				0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AB956C80AE2403F898C9CBEA /* Frameworks */ = {
@@ -516,6 +536,10 @@
 				1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */,
 				110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */,
 				1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */,
+				0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */,
+				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
+				0EFEDA9D22E103FC0075A9DD /* HomeCollectionViewController.m in Sources */,
+				11D2F51422DE8CC30065D70D /* newTaskViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
