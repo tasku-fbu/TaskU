@@ -87,9 +87,6 @@ static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newTask" bundle:nil];
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"newTaskViewController"];
     
-    // Timeline1ViewController *timeline1VC = (Timeline1ViewController *) navigationVC.topViewController;
-    
-    //timeline1VC.task = cell.task;
     [self presentViewController:navigationVC animated:YES completion:nil];
 
   

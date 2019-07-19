@@ -8,17 +8,19 @@
 
 #import "SignUpViewController.h"
 #import "Parse/Parse.h"
+#import "Task.h"
 
-@interface SignUpViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@interface SignUpViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *universityNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 @property NSUInteger phoneNumberLength;
-
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @end
 
 @implementation SignUpViewController
@@ -39,10 +41,20 @@
     newUser.username = self.usernameTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
-    newUser[@"name"] = self.nameTextField.text;
+    newUser[@"firstName"] = self.firstNameTextField.text;
+    newUser[@"lastName"] = self.lastNameTextField.text;
     newUser[@"university"] = self.universityNameTextField.text;
-    newUser[@"phone"] = [NSNumber numberWithInt:[self.phoneNumberTextField.text intValue]];
+    newUser[@"phoneNumber"] = self.phoneNumberTextField.text;
+    
+
+    PFFileObject *userImage = newUser[@"profilePic"];
+    userImage  = [Task getPFFileFromImage: self.userProfileImage.image];
+    [newUser setObject:userImage forKey:@"profileImage"];
+    
+    [newUser saveInBackground];
+    
     self.phoneNumberLength = [self.phoneNumberTextField.text length];
+    
 
     // set user properties
     if ([self isSignUpInfoComplete] == false){
@@ -94,7 +106,7 @@
         return false;
         
     }
-    else if ([self.nameTextField.text isEqual:@""]){
+    else if ([self.firstNameTextField.text isEqual:@""] || [self.lastNameTextField.text isEqual:@""]){
         
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid name"
@@ -251,6 +263,35 @@
         
     }
     return true;
+}
+
+- (IBAction)chooseImageAction:(id)sender {
+    //Instantiating a UIImagePickerController
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera is not available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    
+}
+
+// implementing the imagePickerController delegate method
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // Gets the image captured by the UIImagePickerController
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    self.userProfileImage.image = editedImage;  //set selected image in uiview to edited image
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

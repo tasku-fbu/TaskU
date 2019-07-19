@@ -38,7 +38,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-rj-NtJ">
                                 <rect key="frame" x="0.0" y="168" width="414" height="728"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fda-iv-p2R">
                                     <size key="itemSize" width="197" height="166"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -61,9 +61,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mi-5F-fA1">
-                                                    <rect key="frame" x="0.0" y="136" width="197" height="30"/>
+                                                    <rect key="frame" x="0.0" y="127" width="197" height="39"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xUs-rL-jbn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="197" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="197" height="39"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIH-ow-ZyF">
@@ -80,7 +80,7 @@
                                                     </view>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="197" id="6Tk-aW-TY8"/>
-                                                        <constraint firstAttribute="height" constant="30" id="Saj-gf-gzm"/>
+                                                        <constraint firstAttribute="height" constant="39" id="Saj-gf-gzm"/>
                                                     </constraints>
                                                     <blurEffect style="light"/>
                                                 </visualEffectView>
@@ -89,9 +89,9 @@
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="5mi-5F-fA1" firstAttribute="leading" secondItem="7wV-aX-SVr" secondAttribute="leading" id="8rQ-wH-4QG"/>
-                                            <constraint firstItem="VIH-ow-ZyF" firstAttribute="top" secondItem="hOw-G1-9mZ" secondAttribute="bottom" constant="8" id="Dam-nY-Tph"/>
+                                            <constraint firstItem="VIH-ow-ZyF" firstAttribute="top" secondItem="hOw-G1-9mZ" secondAttribute="bottom" constant="-1" id="Dam-nY-Tph"/>
                                             <constraint firstItem="hOw-G1-9mZ" firstAttribute="top" secondItem="7wV-aX-SVr" secondAttribute="top" id="ILn-re-fkg"/>
-                                            <constraint firstItem="VIH-ow-ZyF" firstAttribute="top" secondItem="hOw-G1-9mZ" secondAttribute="bottom" constant="8" id="R7Q-nN-bGV"/>
+                                            <constraint firstItem="VIH-ow-ZyF" firstAttribute="top" secondItem="hOw-G1-9mZ" secondAttribute="bottom" constant="-1" id="R7Q-nN-bGV"/>
                                             <constraint firstItem="VIH-ow-ZyF" firstAttribute="centerX" secondItem="hOw-G1-9mZ" secondAttribute="centerX" id="SJb-M1-ES2"/>
                                             <constraint firstItem="hOw-G1-9mZ" firstAttribute="centerX" secondItem="7wV-aX-SVr" secondAttribute="centerX" id="l88-3u-g41"/>
                                             <constraint firstAttribute="trailing" secondItem="5mi-5F-fA1" secondAttribute="trailing" id="qXr-nj-Xvg"/>
@@ -111,7 +111,7 @@
                                 <rect key="frame" x="20" y="118" width="374" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.36922307269999999" green="0.4738630902" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpX-o3-3Qy">
@@ -123,7 +123,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PuE-cq-0ms"/>
                     </view>
                     <navigationItem key="navigationItem" id="NCG-81-325">
