@@ -23,7 +23,6 @@
 		0E8EFF6322DD523600B9FE89 /* TaskUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6222DD523600B9FE89 /* TaskUTests.m */; };
 		0E8EFF6E22DD523600B9FE89 /* TaskUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */; };
 		0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */; };
-		0EFEDA9D22E103FC0075A9DD /* HomeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */; };
 		110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */; };
 		110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C127122DFF50B009DC7DB /* EditProfileViewController.m */; };
 		110C127422E0E6F1009DC7DB /* newProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110C127322E0E6F1009DC7DB /* newProfile.storyboard */; };
@@ -91,8 +90,6 @@
 		0E8EFF6F22DD523600B9FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
 		0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
-		0EFEDA9B22E103FC0075A9DD /* HomeCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewController.h; sourceTree = "<group>"; };
-		0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewController.m; sourceTree = "<group>"; };
 		110C126A22DFD693009DC7DB /* ProfileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		110C127022DFF50B009DC7DB /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
@@ -174,8 +171,6 @@
 				11D2F51322DE8CC30065D70D /* newTaskViewController.m */,
 				110C127022DFF50B009DC7DB /* EditProfileViewController.h */,
 				110C127122DFF50B009DC7DB /* EditProfileViewController.m */,
-				0EFEDA9B22E103FC0075A9DD /* HomeCollectionViewController.h */,
-				0EFEDA9C22E103FC0075A9DD /* HomeCollectionViewController.m */,
 				B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */,
 				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
 				B902D14522DFC5230080B87E /* DetailsViewController.h */,
@@ -210,13 +205,13 @@
 			isa = PBXGroup;
 			children = (
 				0E8EFF4F22DD523500B9FE89 /* Main.storyboard */,
+				1131D37722E14738004A235C /* HomeView.storyboard */,
 				0E45A05222DE5EDA005D798F /* Requests.storyboard */,
 				0E45A05422DE5EF2005D798F /* Missions.storyboard */,
 				B902D13B22DE9A5B0080B87E /* Timeline1.storyboard */,
 				B902D14322DFC3380080B87E /* Details.storyboard */,
 				11D2F51022DE8C130065D70D /* newTask.storyboard */,
 				110C127322E0E6F1009DC7DB /* newProfile.storyboard */,
-				1131D37722E14738004A235C /* HomeView.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -540,7 +535,6 @@
 				1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */,
 				0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
-				0EFEDA9D22E103FC0075A9DD /* HomeCollectionViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
