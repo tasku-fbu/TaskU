@@ -297,7 +297,8 @@
 - (void) showCancelRequestButton {
     PFUser *requester = self.task[@"requester"];
     PFUser *me = [PFUser currentUser];
-    if ([me.objectId isEqualToString:requester.objectId]) {
+    NSString *status = self.task[@"completionStatus"];
+    if ([me.objectId isEqualToString:requester.objectId] && ([status isEqualToString:@"created"] || [status isEqualToString:@"accepted"])) {
         self.cancelRequestButton.hidden = NO;
         self.cancelRequestButton.userInteractionEnabled = YES;
         [self.cancelRequestButton setTitle:@"Cancel Request" forState:UIControlStateNormal];
