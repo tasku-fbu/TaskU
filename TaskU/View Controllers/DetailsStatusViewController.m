@@ -30,10 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self showCreateLabel];
-    [self showAcceptLabel];
-    [self showCompleteLabel];
-    [self showPayLabel];
-    [self showAcceptButton];
+    [self updateView];
 }
 
 - (void) showCreateLabel {
@@ -82,12 +79,27 @@
 
 - (void) showCompleteButton {
     PFUser *missioner = self.task[@"missioner"];
-    if (self.task[@"acceptedAt"] && self.task[@"completedAt"] && [[PFUser currentUser] isEqual:missioner]) {
-        self.completeButton.hidden = NO;
-        [self.completeButton setTitle:@"Complete" forState:UIControlStateNormal];
-        [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.1 green:0.25 blue:1 alpha:1.0]];
-        [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    PFUser *requester = self.task[@"requester"];
+    if (self.task[@"acceptedAt"] && ![self.task[@"acceptedAt"] isEqual:[NSNull null]] && (!self.task[@"completedAt"] || [self.task[@"completedAt"] isEqual:[NSNull null]])) {
+        if ([[PFUser currentUser] isEqual:missioner]) {
+            self.completeButton.hidden = NO;
+            self.completeButton.userInteractionEnabled = YES;
+            [self.completeButton setTitle:@"Complete" forState:UIControlStateNormal];
+            [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.1 green:0.25 blue:1 alpha:1.0]];
+            [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } else if ([[PFUser currentUser] isEqual:requester]) {
+            self.completeButton.hidden = NO;
+            self.completeButton.userInteractionEnabled = YES;
+            [self.completeButton setTitle:@"Contact missioner" forState:UIControlStateNormal];
+            [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
+            [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+    } else {
+        self.completeButton.hidden = YES;
+        self.completeButton.userInteractionEnabled = NO;
     }
+    
+    
 }
 
 
@@ -95,10 +107,10 @@
     PFUser *missioner = self.task[@"missioner"];
     NSDate *completedAt = self.task[@"completedAt"];
     
-    if (!missioner) {
+    if (!missioner || [missioner isEqual:[NSNull null]]) {
         self.completeLabel.text = @"Still awaiting for a missioner!!";
         self.completeLabel.textColor = [UIColor grayColor];
-    } else if (!completedAt) {
+    } else if (!completedAt || [completedAt isEqual:[NSNull null]]) {
         self.completeLabel.text = [NSString stringWithFormat:@"Still in progress by missioner %@...", missioner[@"username"]];
         self.completeLabel.textColor = [UIColor grayColor];
     } else {
@@ -110,13 +122,16 @@
     }
 }
 
+- (void) showPayButton {
+}
+
 - (void) showPayLabel {
     PFUser *requester = self.task[@"requester"];
     PFUser *missioner = self.task[@"missioner"];
     NSDate *completedAt = self.task[@"completedAt"];
     NSDate *paidAt = self.task[@"paidAt"];
     
-    if (!missioner) {
+    if (!missioner || [missioner isEqual:[NSNull null]]) {
         self.payLabel.text = @"Still awaiting for a missioner!!";
         self.payLabel.textColor = [UIColor grayColor];
     } else if (!completedAt) {
@@ -155,18 +170,14 @@
             self.task[@"acceptedAt"] = [NSDate date];
             self.task[@"completionStatus"] = @"accepted";
             [self.task saveInBackground];
-            [self showAcceptLabel];
-            [self showAcceptButton];
+            [self updateView];
         } else if ([btn.currentTitle isEqualToString:@"Cancel"]) {
             self.task[@"missioner"] = [NSNull null];
             self.task[@"acceptedAt"] = [NSNull null];
             self.task[@"completionStatus"] = @"created";
             [self.task saveInBackground];
-            [self showAcceptButton];
-            [self showAcceptLabel];
-        } else {
-            self.acceptButton.hidden = YES;
-            self.acceptButton.userInteractionEnabled = NO;
+            [self updateView];
+            
         }
     }
     
@@ -175,6 +186,15 @@
 - (IBAction)onTapCompleteButton:(id)sender {
 }
 - (IBAction)onTapPayButton:(id)sender {
+}
+
+- (void) updateView {
+    [self showAcceptButton];
+    [self showAcceptLabel];
+    [self showCompleteLabel];
+    [self showPayLabel];
+    [self showCompleteButton];
+    [self showPayButton];
 }
 
 /*
