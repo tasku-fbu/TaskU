@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "HomeCollectionViewCell.h"
 #import "Timeline1ViewController.h"
+#import "newTaskViewController.h"
 
 @interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource>
 @property NSArray *categoriesImagesArray;
@@ -66,14 +67,16 @@ static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
 
     }
 - (IBAction)addTaskAction:(id)sender {
-   /* UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newTask" bundle:nil];
-    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"newTask"];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newTask" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"newTaskViewController"];
     
     // Timeline1ViewController *timeline1VC = (Timeline1ViewController *) navigationVC.topViewController;
+    
     //timeline1VC.task = cell.task;
-
     [self presentViewController:navigationVC animated:YES completion:nil];
-  */
+
+  
 }
 
 
