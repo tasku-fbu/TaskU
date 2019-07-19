@@ -33,6 +33,7 @@
     [self showAcceptLabel];
     [self showCompleteLabel];
     [self showPayLabel];
+    [self showAcceptButton];
 }
 
 - (void) showCreateLabel {
@@ -58,6 +59,24 @@
         self.acceptLabel.text = display;
     }
 }
+
+- (void) showAcceptButton {
+    PFUser *missioner = self.task[@"missioner"];
+    if (!missioner) {
+        self.acceptButton.hidden = NO;
+        [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
+        [self.acceptButton setBackgroundColor:[UIColor colorWithRed:0.0 green:153/255.0 blue:0.0 alpha:1.0]];
+        [self.acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    } else if ([missioner isEqual:[PFUser currentUser]]) {
+        self.acceptButton.hidden = NO;
+        [self.acceptButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        [self.acceptButton setBackgroundColor:[UIColor redColor]];
+        [self.acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    } else {
+        self.acceptButton.hidden = YES;
+    }
+}
+
 
 - (void) showCompleteLabel {
     PFUser *missioner = self.task[@"missioner"];
