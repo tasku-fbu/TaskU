@@ -70,7 +70,7 @@
         [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
         [self.acceptButton setBackgroundColor:[UIColor colorWithRed:0.0 green:153/255.0 blue:0.0 alpha:1.0]];
         [self.acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    } else if ([missioner.objectId isEqual:[PFUser currentUser].objectId]) {
+    } else if ([missioner.objectId isEqual:[PFUser currentUser].objectId] && [self.task[@"completionStatus"] isEqualToString:@"accepted"]) {
         self.acceptButton.hidden = NO;
         self.acceptButton.userInteractionEnabled = YES;
         [self.acceptButton setTitle:@"Cancel" forState:UIControlStateNormal];
@@ -86,13 +86,13 @@
     PFUser *missioner = self.task[@"missioner"];
     PFUser *requester = self.task[@"requester"];
     if (self.task[@"acceptedAt"] && ![self.task[@"acceptedAt"] isEqual:[NSNull null]] && (!self.task[@"completedAt"] || [self.task[@"completedAt"] isEqual:[NSNull null]])) {
-        if ([[PFUser currentUser] isEqual:missioner]) {
+        if ([[PFUser currentUser].objectId isEqual:missioner.objectId]) {
             self.completeButton.hidden = NO;
             self.completeButton.userInteractionEnabled = YES;
             [self.completeButton setTitle:@"Complete" forState:UIControlStateNormal];
             [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.1 green:0.25 blue:1 alpha:1.0]];
             [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        } else if ([[PFUser currentUser] isEqual:requester]) {
+        } else if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
             self.completeButton.hidden = NO;
             self.completeButton.userInteractionEnabled = YES;
             [self.completeButton setTitle:@"Contact missioner" forState:UIControlStateNormal];
@@ -189,6 +189,46 @@
 }
 
 - (IBAction)onTapCompleteButton:(id)sender {
+    UIButton *btn = (UIButton *) sender;
+    if (btn.hidden == NO && [btn.currentTitle isEqualToString:@"Complete"]) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm Completion of Mission"
+                                                                       message:@"Are you sure that you have completed the Mission?\nOnce confirmed you will no longer be able to change the status!"
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             NSLog(@"completedConfirmed");
+                                                             self.task[@"completedAt"] = [NSDate date];
+                                                             self.task[@"completionStatus"] = @"completed";
+                                                             [self.task saveInBackground];
+                                                             [self updateView];
+                                                         }];
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             NSLog(@"cancelCompletion");
+                                                         }];
+        
+        
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        [alert addAction:noAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        
+        
+        
+        
+    }
+    
+    
+    
+    
 }
 - (IBAction)onTapPayButton:(id)sender {
 }
