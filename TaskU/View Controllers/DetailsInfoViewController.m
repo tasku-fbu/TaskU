@@ -103,7 +103,7 @@
 }
 
 - (void) showMissionerInfo {
-    PFUser *missioner = self.task.missioner;
+    PFUser *missioner = self.task[@"missioner"];
     self.musernameLabel.text = missioner[@"username"];
     self.mnameLabel.text = missioner[@"name"];
     self.muniversityLabel.text = missioner[@"university"];
@@ -117,7 +117,7 @@
 {
     if(section == 2)
     {
-        if(!self.task.missioner)
+        if(!self.task[@"missioner"])
             return 0;
         else
             return 5;
@@ -132,7 +132,7 @@
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if(!self.task.missioner && section == 2)
+    if(!self.task[@"missioner"] && section == 2)
         return [[UIView alloc] initWithFrame:CGRectZero];
     return nil;
 }
