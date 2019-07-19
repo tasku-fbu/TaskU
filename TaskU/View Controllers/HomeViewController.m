@@ -10,11 +10,16 @@
 #import "HomeCollectionViewCell.h"
 #import "Timeline1ViewController.h"
 #import "newTaskViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "Parse/Parse.h"
 
 @interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource>
 @property NSArray *categoriesImagesArray;
 @property NSArray *categoriesTextArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
+@property (weak, nonatomic) IBOutlet UIButton *LocationButton;
+@property NSString *userLocation;
 
 @end
 
@@ -25,9 +30,20 @@ static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    PFUser *loggedInUser = [PFUser currentUser];
     // Do any additional setup after loading the view.
+
+    self.userLocation = loggedInUser[@"university"]; //gets the university of current user
+    [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
+
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"Laundry", @"tutoring", @"movingIn", @"shoe_cleaning", @"specialServices",  nil ];
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery", @"Laundry", @"Tutoring", @"Move in", @"Shoe Cleaning",  @"Special Services", nil ];
+}
+
+-(IBAction)LocationButtonAction:(id)sender {
+    PFUser *loggedInUser = [PFUser currentUser];
+    self.userLocation = loggedInUser[@"university"]; //gets the university of current user
+    [self.LocationButton setTitle:self.userLocation forState:UIControlStateSelected];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -79,6 +95,20 @@ static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
   
 }
 
+- (IBAction)LogoutActionButton:(id)sender {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
+
+}
 
 /*
 #pragma mark - Navigation
