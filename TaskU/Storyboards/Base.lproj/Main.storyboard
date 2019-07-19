@@ -359,7 +359,7 @@
         <scene sceneID="IQv-Vs-9si">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="HomeView" storyboardName="HomeView" referencedIdentifier="HomeViewController" id="gWC-fH-ocp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="R6x-Id-dKF"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="R6x-Id-dKF"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KiC-BZ-Ife" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -369,7 +369,7 @@
         <scene sceneID="aEa-Ou-wAX">
             <objects>
                 <viewControllerPlaceholder storyboardName="Requests" referencedIdentifier="RequestsViewController" id="nQZ-tl-Elh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Requests" id="T4v-lI-GZe"/>
+                    <tabBarItem key="tabBarItem" title="Requests" image="requests" id="T4v-lI-GZe"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddQ-61-qCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -379,7 +379,7 @@
         <scene sceneID="Jiv-r1-mmk">
             <objects>
                 <viewControllerPlaceholder storyboardName="Missions" referencedIdentifier="MissionsViewController" id="EMD-iD-1gV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Missions" id="mz1-vD-CEx"/>
+                    <tabBarItem key="tabBarItem" title="Missions" image="tasks" id="mz1-vD-CEx"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9C-VZ-BBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,7 +389,7 @@
         <scene sceneID="l8m-0a-8MO">
             <objects>
                 <viewControllerPlaceholder storyboardName="newProfile" referencedIdentifier="newProfileViewController" id="vJf-7N-Og5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="63D-PR-n4W"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="63D-PR-n4W"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOA-8l-mr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -398,6 +398,9 @@
     </scenes>
     <resources>
         <image name="Logo" width="334" height="136"/>
+        <image name="home" width="23" height="24"/>
+        <image name="requests" width="21" height="24"/>
+        <image name="tasks" width="22" height="20"/>
         <image name="user" width="22" height="24"/>
     </resources>
 </document>
