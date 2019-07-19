@@ -13,7 +13,7 @@
         <!--LoginViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +34,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blU-hm-XlC">
                                 <rect key="frame" x="87" y="531" width="179" height="21"/>
@@ -138,14 +138,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="84t-32-E4B">
                                 <rect key="frame" x="54" y="603" width="307" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tnk-1A-xTW">
                                 <rect key="frame" x="51" y="663" width="74" height="43"/>
@@ -187,7 +187,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJz-1Y-GIs">
-                                <rect key="frame" x="364" y="542" width="17" height="21"/>
+                                <rect key="frame" x="364" y="539" width="17" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.4207326703" blue="0.42304634169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -195,6 +195,20 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHy-hg-1oK">
                                 <rect key="frame" x="364" y="603" width="17" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.4207326703" blue="0.42304634169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bv-YB-Kb7">
+                                <rect key="frame" x="364" y="278" width="17" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.4207326703" blue="0.42304634169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1s-2k-BRw">
+                                <rect key="frame" x="364" y="486" width="17" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.4207326703" blue="0.42304634169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -221,7 +235,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="uLc-vN-b1S">
             <objects>
-                <tabBarController id="2dv-dE-POF" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="AuthenticatedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2dv-dE-POF" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fYN-FU-im9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -242,7 +256,7 @@
         <scene sceneID="IQv-Vs-9si">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="HomeView" storyboardName="HomeView" referencedIdentifier="HomeViewController" id="gWC-fH-ocp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="R6x-Id-dKF"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="R6x-Id-dKF"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KiC-BZ-Ife" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -252,7 +266,7 @@
         <scene sceneID="aEa-Ou-wAX">
             <objects>
                 <viewControllerPlaceholder storyboardName="Requests" referencedIdentifier="RequestsViewController" id="nQZ-tl-Elh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="T4v-lI-GZe"/>
+                    <tabBarItem key="tabBarItem" title="Requests" id="T4v-lI-GZe"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddQ-61-qCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -262,17 +276,17 @@
         <scene sceneID="Jiv-r1-mmk">
             <objects>
                 <viewControllerPlaceholder storyboardName="Missions" referencedIdentifier="MissionsViewController" id="EMD-iD-1gV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="mz1-vD-CEx"/>
+                    <tabBarItem key="tabBarItem" title="Missions" id="mz1-vD-CEx"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9C-VZ-BBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="663" y="1424"/>
         </scene>
-        <!--ProfileViewController-->
+        <!--newProfileViewController-->
         <scene sceneID="l8m-0a-8MO">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="vJf-7N-Og5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="63D-PR-n4W"/>
+                <viewControllerPlaceholder storyboardName="newProfile" referencedIdentifier="newProfileViewController" id="vJf-7N-Og5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="63D-PR-n4W"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOA-8l-mr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

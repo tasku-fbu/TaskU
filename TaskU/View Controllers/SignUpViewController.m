@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
-
+@property NSUInteger phoneNumberLength;
 
 @end
 
@@ -39,11 +39,11 @@
     newUser.username = self.usernameTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
-    newUser[@"name"] = self.universityNameTextField.text;
+    newUser[@"name"] = self.nameTextField.text;
     newUser[@"university"] = self.universityNameTextField.text;
-    newUser[@"phone"] =  [NSNumber numberWithInt: self.phoneNumberTextField];
-    //write statement to double confirm password and avoid error
-    
+    newUser[@"phone"] = [NSNumber numberWithInt:[self.phoneNumberTextField.text intValue]];
+    self.phoneNumberLength = [self.phoneNumberTextField.text length];
+
     // set user properties
     if ([self isSignUpInfoComplete] == false){
         
@@ -77,6 +77,50 @@
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Username"
                                                                        message:@"Please type valid username."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    else if ([self.nameTextField.text isEqual:@""]){
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid name"
+                                                                       message:@"Please type a valid name."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+        
+    }
+    else if (self.phoneNumberLength < 10) {
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid phone number"
+                                                                       message:@"Must be more than 10 characters"
                                                                 preferredStyle:(UIAlertControllerStyleAlert)];
         
         // create an OK action
