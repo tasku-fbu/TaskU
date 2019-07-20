@@ -10,6 +10,8 @@
 #import "TaskCell.h"
 #import "Task.h"
 #import "DetailsViewController.h"
+#import "DetailsStatusViewController.h"
+#import "DetailsInfoViewController.h"
 
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -56,6 +58,7 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
+    
     
     //[query whereKey:@"completionStatus equalTo:@1"created"];
     query.limit = 20;
@@ -150,8 +153,24 @@
     
     DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
      detailsVC.task = cell.task;
+     
+    
+    DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
+    DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
+    statusVC.task = cell.task;
+    infoVC.task = cell.task;
+    statusVC.delegate = self;
      [self presentViewController:navigationVC animated:YES completion:nil];
     
+}
+
+- (IBAction)onBackHome:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) didCancelRequest {
+    [self getAllTasks];
+    [self.tableView reloadData];
 }
 
 /*

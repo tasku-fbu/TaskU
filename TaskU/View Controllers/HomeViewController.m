@@ -14,6 +14,7 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 
+
 @interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource>
 @property NSArray *categoriesImagesArray;
 @property NSArray *categoriesTextArray;
@@ -106,6 +107,9 @@ static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
     }];
 
 }
+
+
+
 
 /*
 #pragma mark - Navigation

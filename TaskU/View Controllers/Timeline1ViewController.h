@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "TaskCell.h"
+#import "DetailsStatusViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Timeline1ViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,TaskCellDelegate>
+@interface Timeline1ViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,TaskCellDelegate, CancelRequestOnDetailsDelegate>
+
+
 
 @end
 

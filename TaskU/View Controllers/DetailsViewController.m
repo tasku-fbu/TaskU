@@ -10,6 +10,7 @@
 
 @interface DetailsViewController ()
 
+
 @end
 
 @implementation DetailsViewController
@@ -17,10 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //[self.tabBar setSelectedItem:[[self.tabBar items] objectAtIndex:1]];
     
 }
 - (IBAction)onTapBack:(id)sender {
-    
+    NSLog(@"on back");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

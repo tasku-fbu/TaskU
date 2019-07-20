@@ -1,5 +1,5 @@
 //
-//  DetailsViewController.h
+//  DetailsInfoViewController.h
 //  TaskU
 //
 //  Created by lucyyyw on 7/17/19.
@@ -11,10 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailsViewController : UITabBarController
+@interface DetailsInfoViewController : UITableViewController 
 
 @property (strong, nonatomic) Task *task;
-
 
 @end
 

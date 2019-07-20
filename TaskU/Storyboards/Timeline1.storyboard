@@ -125,7 +125,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UsA-Wy-wK6"/>
                     </view>
-                    <navigationItem key="navigationItem" id="17b-TU-OcR"/>
+                    <navigationItem key="navigationItem" id="17b-TU-OcR">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="bH0-JF-Zp1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="l7s-aN-SGl">
+                                <rect key="frame" x="16" y="5" width="83" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt;Home">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBackHome:" destination="K54-bz-1Rc" eventType="touchUpInside" id="f5L-th-aMD"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="hpC-ar-y0s" id="TlJ-uX-QNs"/>
                         <outlet property="tableView" destination="LGX-vm-u0e" id="TQW-26-YgT"/>
