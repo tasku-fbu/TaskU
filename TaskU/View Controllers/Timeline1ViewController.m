@@ -125,9 +125,6 @@
         cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
     }
     
-    
-    
-    
     return cell;
 }
 
@@ -182,7 +179,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 
 
 

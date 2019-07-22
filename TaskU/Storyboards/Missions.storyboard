@@ -10,21 +10,45 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Missions View Controller-->
+        <!--My Missions-->
         <scene sceneID="Lu3-6p-Dgm">
             <objects>
                 <viewController id="KfS-4F-R1C" customClass="MissionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="10N-qh-g2V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-7r-LEN">
+                                <rect key="frame" x="101" y="99" width="182" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Current"/>
+                                    <segment title="Completed"/>
+                                </segments>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIL-7M-Xyh">
+                                <rect key="frame" x="0.0" y="136" width="414" height="677"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="OMM-8u-eG9" kind="embed" id="VrA-OR-g7Z"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQS-Bv-nmm">
+                                <rect key="frame" x="0.0" y="136" width="414" height="677"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="8cC-Lb-W1t" kind="embed" id="7Wa-I8-OTi"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cUC-BG-JAj"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Skf-XP-eEj"/>
+                    <navigationItem key="navigationItem" title="My Missions" id="Skf-XP-eEj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kj-y8-uTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="82"/>
+            <point key="canvasLocation" x="976.81159420289862" y="81.696428571428569"/>
         </scene>
         <!--Missions-->
         <scene sceneID="Vgh-UM-09t">
@@ -45,6 +69,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWv-Rv-JBQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-114" y="82"/>
+        </scene>
+        <!--Completed Missions View Controller-->
+        <scene sceneID="mHc-A3-mQn">
+            <objects>
+                <viewController id="OMM-8u-eG9" customClass="CompletedMissionsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cbZ-5i-Yz4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1O9-3q-kHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1330" y="750"/>
+        </scene>
+        <!--Current Missions View Controller-->
+        <scene sceneID="q0O-FV-Hsd">
+            <objects>
+                <viewController id="8cC-Lb-W1t" customClass="CurrentMissionsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hPn-iD-LYR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9rr-C5-cW5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="487" y="750"/>
         </scene>
     </scenes>
     <resources>
