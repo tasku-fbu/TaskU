@@ -204,15 +204,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="completedRequest" rowHeight="331" id="55R-ff-iZG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="completedRequest" rowHeight="331" id="55R-ff-iZG" customClass="TaskCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="331"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="55R-ff-iZG" id="wga-Uo-nUu">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="330.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" text="1hr 30min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJh-Ua-VbD">
-                                                    <rect key="frame" x="168" y="8" width="77" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="1hr 30min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJh-Ua-VbD">
+                                                    <rect key="frame" x="329" y="8" width="77" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -265,6 +265,7 @@
                                                 <constraint firstItem="FMH-z1-Lpo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yjO-fb-zGo" secondAttribute="trailing" constant="20" id="Le7-Sd-lNn"/>
                                                 <constraint firstAttribute="trailing" secondItem="KNa-TO-toK" secondAttribute="trailing" constant="10" id="MWS-wZ-0Yw"/>
                                                 <constraint firstItem="G0n-9D-ntR" firstAttribute="leading" secondItem="wga-Uo-nUu" secondAttribute="leading" constant="8" id="N9R-Si-aYq"/>
+                                                <constraint firstAttribute="trailing" secondItem="XJh-Ua-VbD" secondAttribute="trailing" constant="8" id="SY4-5q-Vl1"/>
                                                 <constraint firstAttribute="trailing" secondItem="EjF-oH-MnR" secondAttribute="trailing" constant="10" id="Sj9-P0-PYm"/>
                                                 <constraint firstItem="KNa-TO-toK" firstAttribute="leading" secondItem="wga-Uo-nUu" secondAttribute="leading" constant="10" id="YEh-w9-QE9"/>
                                                 <constraint firstItem="KNa-TO-toK" firstAttribute="top" secondItem="yjO-fb-zGo" secondAttribute="bottom" constant="8" id="bRZ-XL-sRY"/>
@@ -277,6 +278,14 @@
                                                 <constraint firstAttribute="bottom" secondItem="KNa-TO-toK" secondAttribute="bottom" constant="8" id="xJZ-vb-nq0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="yjO-fb-zGo" id="jgH-7G-98o"/>
+                                            <outlet property="destinationLabel" destination="KNa-TO-toK" id="IoM-dI-HUI"/>
+                                            <outlet property="paymentLabel" destination="EjF-oH-MnR" id="ujg-c6-g34"/>
+                                            <outlet property="requesterLabel" destination="1Xk-m4-HOF" id="SLY-ge-uDS"/>
+                                            <outlet property="timeLabel" destination="XJh-Ua-VbD" id="Xxd-Je-ooz"/>
+                                            <outlet property="titleLabel" destination="G0n-9D-ntR" id="yjy-q5-WiX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
