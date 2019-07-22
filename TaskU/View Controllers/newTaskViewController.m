@@ -23,6 +23,8 @@
 @property (strong, nonatomic) UIAlertController *networkAlert;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSString *chosenCategory;
+
 
 @end
 
@@ -72,7 +74,7 @@
         [self presentViewController:self.completionAlert animated:YES completion:^{
         }];
     } else {
-        [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text withDate:self.taskDate.date withHours:self.hours.text withMinutes:self.minutes.text withPay:self.payAmount.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
+        [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text withCategory: self.chosenCategory withDate:self.taskDate.date withHours:self.hours.text withMinutes:self.minutes.text withPay:self.payAmount.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
             
             if(succeeded){
                 NSLog(@"Posted!");
@@ -122,6 +124,10 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     return self.categories[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    self.chosenCategory = [self.categories objectAtIndex:row];
 }
 
 @end
