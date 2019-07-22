@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7922E520EB0003FD6C /* LocationCell.m */; };
-		0E1F7C7D22E521F70003FD6C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7C22E521F70003FD6C /* MapViewController.m */; };
 		0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */; };
 		0E1F7CFF22E5EC490003FD6C /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */; };
 		0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A03C22DD92B8005D798F /* SignUpViewController.m */; };
@@ -18,6 +17,7 @@
 		0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A04B22DD9322005D798F /* ProfileViewController.m */; };
 		0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E45A05222DE5EDA005D798F /* Requests.storyboard */; };
 		0E45A05522DE5EF3005D798F /* Missions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E45A05422DE5EF2005D798F /* Missions.storyboard */; };
+		0E49EF4C22E6722F000D5006 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E49EF4B22E6722F000D5006 /* MapViewController.m */; };
 		0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF4A22DD523500B9FE89 /* AppDelegate.m */; };
 		0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF4D22DD523500B9FE89 /* LoginViewController.m */; };
 		0E8EFF5122DD523500B9FE89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8EFF4F22DD523500B9FE89 /* Main.storyboard */; };
@@ -68,8 +68,6 @@
 /* Begin PBXFileReference section */
 		0E1F7C7822E520EB0003FD6C /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		0E1F7C7922E520EB0003FD6C /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
-		0E1F7C7B22E521F70003FD6C /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		0E1F7C7C22E521F70003FD6C /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
 		0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
@@ -86,6 +84,8 @@
 		0E45A04B22DD9322005D798F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		0E45A05222DE5EDA005D798F /* Requests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Requests.storyboard; sourceTree = "<group>"; };
 		0E45A05422DE5EF2005D798F /* Missions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Missions.storyboard; sourceTree = "<group>"; };
+		0E49EF4A22E6722F000D5006 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		0E49EF4B22E6722F000D5006 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		0E8EFF4622DD523500B9FE89 /* TaskU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8EFF4922DD523500B9FE89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0E8EFF4A22DD523500B9FE89 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -201,12 +201,12 @@
 				1131D37122E118B1004A235C /* EditPasswordViewController.m */,
 				1131D37422E129BC004A235C /* MainProfileViewController.h */,
 				1131D37522E129BC004A235C /* MainProfileViewController.m */,
-				0E1F7C7B22E521F70003FD6C /* MapViewController.h */,
-				0E1F7C7C22E521F70003FD6C /* MapViewController.m */,
 				0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */,
 				0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */,
 				0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */,
 				0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */,
+				0E49EF4A22E6722F000D5006 /* MapViewController.h */,
+				0E49EF4B22E6722F000D5006 /* MapViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -571,7 +571,6 @@
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
-				0E1F7C7D22E521F70003FD6C /* MapViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
@@ -581,6 +580,7 @@
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
 				0E1F7CFF22E5EC490003FD6C /* MessageViewController.m in Sources */,
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
+				0E49EF4C22E6722F000D5006 /* MapViewController.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
 				0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */,
 			);

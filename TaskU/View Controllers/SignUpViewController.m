@@ -23,19 +23,18 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @end
 
-@interface NSString (emailValidation)
-- (BOOL)isValidEmail;
-@end
-
 @implementation SignUpViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
 - (IBAction)cancelButtonAction:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
+
 - (IBAction)signUpButtonAction:(id)sender {
     
     // initialize a user object
@@ -50,23 +49,14 @@
     newUser[@"university"] = self.universityNameTextField.text;
     newUser[@"phoneNumber"] = self.phoneNumberTextField.text;
     
-
+    
     PFFileObject *userImage = newUser[@"profilePic"];
     userImage  = [Task getPFFileFromImage: self.userProfileImage.image];
     [newUser setObject:userImage forKey:@"profileImage"];
     
-    [newUser saveInBackground];
     
     self.phoneNumberLength = [self.phoneNumberTextField.text length];
     
-    if([self.emailTextField.text isValidEmail]) {
-        /* True */
-        NSLog(@"Valid Email");
-    }
-    //if([self.emailTextField.text isValidEmail]) {
-        /* False */
-      //  NSLog(@"Invalid Email");
-    //}
     // set user properties
     if ([self isSignUpInfoComplete] == false){
         
@@ -89,17 +79,33 @@
     }
 }
 
--(BOOL) NSStringIsValidEmail:(NSString *)checkString
-{
-    BOOL stricterFilter = NO;
-    NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
-    NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
-    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+#pragma mark - email validation format function
+
+- (BOOL)validateEmail:(NSString *)inputText {
+    NSString *emailRegex = @"[A-Z0-9a-z][A-Z0-9a-z._%+-]*@[A-Za-z0-9][A-Za-z0-9.-]*\\.[A-Za-z]{2,6}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:checkString];
+    NSRange aRange;
+    if([emailTest evaluateWithObject:inputText]) {
+        aRange = [inputText rangeOfString:@"." options:NSBackwardsSearch range:NSMakeRange(0, [inputText length])];
+        int indexOfDot = aRange.location;
+        //NSLog(@"aRange.location:%d - %d",aRange.location, indexOfDot);
+        if(aRange.location != NSNotFound) {
+            NSString *topLevelDomain = [inputText substringFromIndex:indexOfDot];
+            topLevelDomain = [topLevelDomain lowercaseString];
+            //NSLog(@"topleveldomains:%@",topLevelDomain);
+            NSSet *TLD;
+            TLD = [NSSet setWithObjects: @".edu", nil];
+            if(topLevelDomain != nil && ([TLD containsObject:topLevelDomain])) {
+                //NSLog(@"TLD contains topLevelDomain:%@",topLevelDomain);
+                return TRUE;
+            }
+            
+        }
+    }
+    return FALSE;
 }
 
-
+#pragma mark - user alerts during sign up
 //Alerts the user if unaccepted sign up information is entered
 - (bool) isSignUpInfoComplete{
     
@@ -192,7 +198,28 @@
         return false;
         
     }
-    
+    else if(![self validateEmail:self.emailTextField.text]) {
+        //Email Address is Invalid.
+        //checks if the email follows the format name@something.edu
+        NSLog(@"Invalid Email");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Email"
+                                                                       message:@"Use a valid .edu email."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+        return false;
+    }
     else if ([self.universityNameTextField.text isEqual:@""]){
         
         
@@ -284,6 +311,7 @@
     return true;
 }
 
+#pragma mark - choosing image upload function
 - (IBAction)chooseImageAction:(id)sender {
     //Instantiating a UIImagePickerController
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -301,7 +329,7 @@
     
 }
 
-// implementing the imagePickerController delegate method
+#pragma mark - // implementation of the imagePickerController delegate method
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Gets the image captured by the UIImagePickerController
