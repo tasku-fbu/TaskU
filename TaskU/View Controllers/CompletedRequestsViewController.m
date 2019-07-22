@@ -151,7 +151,7 @@
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = cell.task;
     infoVC.task = cell.task;
-    //statusVC.delegate = self;
+    
     [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
