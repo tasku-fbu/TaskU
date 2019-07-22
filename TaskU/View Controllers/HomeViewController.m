@@ -15,7 +15,7 @@
 #import "Parse/Parse.h"
 
 
-@interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource, HomeCollectionCellDelegate>
 @property NSArray *categoriesImagesArray;
 @property NSArray *categoriesTextArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
@@ -28,6 +28,7 @@
 
 @synthesize collection_View;
 static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
+static NSString * const messageSegueIdentifier = @"messageSegue";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,16 +74,18 @@ static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
     return cell;
 }
 
-- (IBAction)categoryTapAction:(id)sender {
+//helps us know which collection view cell category was tapped
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
-    
-  // Timeline1ViewController *timeline1VC = (Timeline1ViewController *) navigationVC.topViewController;
-   
-    //timeline1VC.task = cell.task;
-    [self presentViewController:navigationVC animated:YES completion:nil];
+    NSString* chosenCategory = [self.categoriesTextArray objectAtIndex:indexPath.row];
+    NSLog(@"%@ CollectionCell was chosen", chosenCategory);
 
-    }
+    [self presentViewController:navigationVC animated:YES completion:nil];
+}
+
+
 - (IBAction)addTaskAction:(id)sender {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newTask" bundle:nil];
@@ -107,8 +110,10 @@ static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
     }];
 
 }
-
-
+- (IBAction)openMessageChatAction:(id)sender {
+     [self performSegueWithIdentifier: messageSegueIdentifier sender:nil];
+    
+}
 
 
 /*
@@ -121,19 +126,4 @@ static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
 }
 */
 
-/*
-
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    
-    //HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeViewCollectionCell" forIndexPath:indexPath];
-
-    //cell.homeViewImage.image = nil;
-    
-    return cell;
-}
-
-- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 6;
-}
-*/
 @end

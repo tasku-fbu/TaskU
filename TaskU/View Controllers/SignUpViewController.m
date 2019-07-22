@@ -23,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @end
 
+@interface NSString (emailValidation)
+- (BOOL)isValidEmail;
+@end
+
 @implementation SignUpViewController
 
 - (void)viewDidLoad {
@@ -55,7 +59,14 @@
     
     self.phoneNumberLength = [self.phoneNumberTextField.text length];
     
-
+    if([self.emailTextField.text isValidEmail]) {
+        /* True */
+        NSLog(@"Valid Email");
+    }
+    //if([self.emailTextField.text isValidEmail]) {
+        /* False */
+      //  NSLog(@"Invalid Email");
+    //}
     // set user properties
     if ([self isSignUpInfoComplete] == false){
         
@@ -78,7 +89,15 @@
     }
 }
 
-
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = NO;
+    NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
+    NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
 
 
 //Alerts the user if unaccepted sign up information is entered
