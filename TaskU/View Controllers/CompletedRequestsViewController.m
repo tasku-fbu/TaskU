@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.currentTable.delegate = self;
+    self.currentTable.dataSource = self;
 }
 
 
@@ -68,6 +70,61 @@
     
     
     
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"completedRequest"];
+    //cell.delegate = self;
+    Task *task = self.completedTasks[indexPath.row];
+    cell.task = task;
+    cell.titleLabel.text = task[@"taskName"];
+    
+    PFUser *user = task[@"requester"];
+    cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
+    
+    NSNumber *payment = task[@"pay"];
+    int pay = [payment intValue];
+    cell.paymentLabel.text = [NSString stringWithFormat:@"$%i",pay];
+    
+    NSString *startString = @"";
+    if (task[@"startAddress"]) {
+        if (![task[@"startAddress"] isEqualToString:@""]) {
+            startString = [NSString stringWithFormat:@"FROM %@ ", task[@"startAddress"]];
+        }
+    }
+    cell.destinationLabel.text = [NSString stringWithFormat:@"%@TO %@",
+                                  startString,task[@"endAddress"]];
+    
+    
+    NSDate *date = task[@"taskDate"];
+    NSString *dateString = [self stringfromDateHelper:date];
+    cell.dateLabel.text = [NSString stringWithFormat:@"due %@", dateString];
+    
+    
+    NSNumber *hour = task[@"hours"];
+    NSNumber *minute = task[@"minutes"];
+    int hr = [hour intValue];
+    int min = [minute intValue];
+    if (hr == 0) {
+        cell.timeLabel.text = [NSString stringWithFormat:@"%imin", min];
+    } else if (min == 0){
+        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr", hr];
+    } else {
+        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
+    }
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.completedTasks.count;
+}
+
+- (NSString *) stringfromDateHelper: (NSDate *) date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    return dateString;
 }
 
 /*
