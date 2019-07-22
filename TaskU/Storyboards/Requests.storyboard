@@ -139,6 +139,9 @@
                                                         <constraint firstAttribute="width" constant="30" id="hCj-zP-LpH"/>
                                                     </constraints>
                                                     <state key="normal" title="&gt;"/>
+                                                    <connections>
+                                                        <action selector="onClickDetails:" destination="Btm-q5-i6C" eventType="touchUpInside" id="IsO-UB-1XO"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -230,6 +233,9 @@
                                                         <constraint firstAttribute="width" constant="30" id="kc0-Vf-AcK"/>
                                                     </constraints>
                                                     <state key="normal" title="&gt;"/>
+                                                    <connections>
+                                                        <action selector="onClickDetails:" destination="55R-ff-iZG" eventType="touchUpInside" id="Vhi-pl-JNt"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="$payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjF-oH-MnR">
                                                     <rect key="frame" x="326" y="36.5" width="78" height="21"/>

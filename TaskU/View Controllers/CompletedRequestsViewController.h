@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CompletedRequestsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CompletedRequestsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TaskCellDelegate>
 
 @end
 

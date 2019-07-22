@@ -62,7 +62,7 @@
     [query whereKey:@"requester" equalTo:user];
     [query whereKey:@"completionStatus" containedIn:current];
     
-    //query.limit = 0;
+    //query.limit = 20;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         if (tasks != nil) {
@@ -82,7 +82,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"currentRequest"];
-    //cell.delegate = self;
+    cell.delegate = self;
     Task *task = self.currentTasks[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
@@ -135,6 +135,28 @@
     return dateString;
 }
 
+- (void) didTapDetails:(TaskCell *) cell {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
+    
+    DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
+    detailsVC.task = cell.task;
+    
+    
+    DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
+    DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
+    statusVC.task = cell.task;
+    infoVC.task = cell.task;
+    statusVC.delegate = self;
+    [self presentViewController:navigationVC animated:YES completion:nil];
+    
+}
+
+- (void) didCancelRequest {
+    [self getCurrentTasks];
+    [self.currentTable reloadData];
+}
 /*
  #pragma mark - Navigation
  
