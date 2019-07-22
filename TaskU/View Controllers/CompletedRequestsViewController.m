@@ -21,8 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.currentTable.delegate = self;
-    self.currentTable.dataSource = self;
+    self.completedTable.delegate = self;
+    self.completedTable.dataSource = self;
 }
 
 
