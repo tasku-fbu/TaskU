@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskCell.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CurrentMissionsViewController : UIViewController
+@interface CurrentMissionsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,TaskCellDelegate>
 
 @end
 

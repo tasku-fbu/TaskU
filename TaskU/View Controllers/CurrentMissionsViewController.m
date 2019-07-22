@@ -7,6 +7,10 @@
 //
 
 #import "CurrentMissionsViewController.h"
+#import "TaskCell.h"
+#import "DetailsStatusViewController.h"
+#import "DetailsViewController.h"
+#import "DetailsInfoViewController.h"
 
 @interface CurrentMissionsViewController ()
 
