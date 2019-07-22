@@ -9,6 +9,9 @@
 #import "RequestsViewController.h"
 
 @interface RequestsViewController ()
+@property (weak, nonatomic) IBOutlet UIView *completedView;
+@property (weak, nonatomic) IBOutlet UIView *currentView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentctrl;
 
 @end
 
@@ -17,6 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+- (IBAction)showContainerView:(id)sender {
+    if (self.segmentctrl.selectedSegmentIndex == 0) {
+        self.completedView.alpha = 0;
+        self.currentView.alpha = 1;
+    } else {
+        self.completedView.alpha = 1;
+        self.currentView.alpha = 0;
+    }
 }
 
 /*
