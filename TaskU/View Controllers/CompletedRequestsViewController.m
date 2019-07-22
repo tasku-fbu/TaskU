@@ -8,6 +8,9 @@
 
 #import "CompletedRequestsViewController.h"
 #import "TaskCell.h"
+#import "DetailsInfoViewController.h"
+#import "DetailsViewController.h"
+#import "DetailsStatusViewController.h"
 
 @interface CompletedRequestsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *completedTable;
@@ -82,7 +85,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"completedRequest"];
-    //cell.delegate = self;
+    cell.delegate = self;
     Task *task = self.completedTasks[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
@@ -135,6 +138,25 @@
     return dateString;
 }
 
+- (void)didTapDetails:(TaskCell *) cell {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
+    
+    DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
+    detailsVC.task = cell.task;
+    
+    
+    DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
+    DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
+    statusVC.task = cell.task;
+    infoVC.task = cell.task;
+    //statusVC.delegate = self;
+    [self presentViewController:navigationVC animated:YES completion:nil];
+    
+}
+
+
 /*
 #pragma mark - Navigation
 
@@ -144,5 +166,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end
