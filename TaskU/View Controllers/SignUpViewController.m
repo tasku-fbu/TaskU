@@ -284,6 +284,7 @@
     return true;
 }
 
+ #pragma mark - choosing image upload function
 - (IBAction)chooseImageAction:(id)sender {
     //Instantiating a UIImagePickerController
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -301,7 +302,7 @@
     
 }
 
-// implementing the imagePickerController delegate method
+ #pragma mark - // implementation of the imagePickerController delegate method
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Gets the image captured by the UIImagePickerController
