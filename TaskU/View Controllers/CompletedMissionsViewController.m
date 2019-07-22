@@ -9,6 +9,7 @@
 #import "CompletedMissionsViewController.h"
 
 @interface CompletedMissionsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *completedTable;
 
 @end
 

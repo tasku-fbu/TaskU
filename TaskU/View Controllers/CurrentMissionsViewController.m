@@ -13,6 +13,7 @@
 #import "DetailsInfoViewController.h"
 
 @interface CurrentMissionsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *currentTable;
 
 @end
 
