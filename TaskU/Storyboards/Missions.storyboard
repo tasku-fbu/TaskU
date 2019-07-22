@@ -25,6 +25,9 @@
                                     <segment title="Current"/>
                                     <segment title="Completed"/>
                                 </segments>
+                                <connections>
+                                    <action selector="showContainerView:" destination="KfS-4F-R1C" eventType="valueChanged" id="eYm-oh-XhG"/>
+                                </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIL-7M-Xyh">
                                 <rect key="frame" x="0.0" y="136" width="414" height="677"/>
@@ -45,6 +48,11 @@
                         <viewLayoutGuide key="safeArea" id="cUC-BG-JAj"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Missions" id="Skf-XP-eEj"/>
+                    <connections>
+                        <outlet property="completedView" destination="RIL-7M-Xyh" id="Scw-8f-xle"/>
+                        <outlet property="currentView" destination="NQS-Bv-nmm" id="TBe-2h-Pvu"/>
+                        <outlet property="segmentctrl" destination="2Io-7r-LEN" id="bFD-gG-qCw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kj-y8-uTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
