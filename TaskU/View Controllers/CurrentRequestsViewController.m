@@ -72,7 +72,6 @@
             [self.currentTable reloadData];
             [self.refreshControl endRefreshing];
             [self.activityIndicator stopAnimating];
-            
         } else {
             NSLog(@"%@", error.localizedDescription);
         }

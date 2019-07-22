@@ -23,6 +23,15 @@
     // Do any additional setup after loading the view.
     self.completedTable.delegate = self;
     self.completedTable.dataSource = self;
+    
+    [self getCompletedTasks];
+    self.completedTable.rowHeight = UITableViewAutomaticDimension;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getCompletedTasks) forControlEvents:UIControlEventValueChanged];
+    [self.completedTable insertSubview:self.refreshControl atIndex:0];
+    
+    [self.activityIndicator startAnimating];
+    
 }
 
 
@@ -60,7 +69,6 @@
             [self.completedTable reloadData];
             [self.refreshControl endRefreshing];
             [self.activityIndicator stopAnimating];
-            
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
