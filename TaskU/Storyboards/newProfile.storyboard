@@ -557,6 +557,7 @@
         <!--Edit Profile-->
         <scene sceneID="hlX-hD-ZKa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v85-kj-aNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Edit Profile" id="Mb7-RO-ICM" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NSE-YT-q19">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -574,7 +575,6 @@
                         <viewLayoutGuide key="safeArea" id="LJJ-rR-0VT"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v85-kj-aNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2460.8695652173915" y="-1339.2857142857142"/>
         </scene>
