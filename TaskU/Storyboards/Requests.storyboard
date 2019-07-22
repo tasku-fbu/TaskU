@@ -288,6 +288,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="A3e-xo-otK" id="owc-tE-aRg"/>
+                        <outlet property="completedTable" destination="q6f-nw-gLp" id="4FB-rE-5vd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HoY-I0-iFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
