@@ -22,6 +22,7 @@
 @property (strong, nonatomic) UIAlertController *completionAlert;
 @property (strong, nonatomic) UIAlertController *networkAlert;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (strong, nonatomic) NSArray *categories;
 
 @end
 
@@ -56,10 +57,9 @@
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
-   // NSArray *pickerData;
-    // Input the data into the array
-  //  pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"];
-    
+    //Task Categories
+    self.categories = @[@"Delivery", @"Laundry", @"Tutoring", @"Move in", @"Shoe cleaning", @"Special Services"];
+
 }
 
 
@@ -113,55 +113,15 @@
 */
 
 - (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView { 
-    <#code#>
+    return 1;
 }
 
 - (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component { 
-    <#code#>
+    return self.categories.count;
 }
 
-- (void)encodeWithCoder:(nonnull NSCoder *)aCoder { 
-    <#code#>
-}
-
-- (void)traitCollectionDidChange:(nullable UITraitCollection *)previousTraitCollection { 
-    <#code#>
-}
-
-- (void)preferredContentSizeDidChangeForChildContentContainer:(nonnull id<UIContentContainer>)container { 
-    <#code#>
-}
-
-- (CGSize)sizeForChildContentContainer:(nonnull id<UIContentContainer>)container withParentContainerSize:(CGSize)parentSize { 
-    <#code#>
-}
-
-- (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(nonnull id<UIContentContainer>)container { 
-    <#code#>
-}
-
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator { 
-    <#code#>
-}
-
-- (void)willTransitionToTraitCollection:(nonnull UITraitCollection *)newCollection withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator { 
-    <#code#>
-}
-
-- (void)didUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context withAnimationCoordinator:(nonnull UIFocusAnimationCoordinator *)coordinator { 
-    <#code#>
-}
-
-- (void)setNeedsFocusUpdate { 
-    <#code#>
-}
-
-- (BOOL)shouldUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context { 
-    <#code#>
-}
-
-- (void)updateFocusIfNeeded { 
-    <#code#>
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return self.categories[row];
 }
 
 @end
