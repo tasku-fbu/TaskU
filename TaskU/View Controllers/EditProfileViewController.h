@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
-@interface EditProfileViewController : UITableViewController
-
+@protocol editedProfile
+- (void) didEditProfilewithImage: (UIImage* ) image;
+@end
+@interface EditProfileViewController : UITableViewController 
+@property (weak, nonatomic) id <editedProfile> delegate;
 @end
 
 NS_ASSUME_NONNULL_END
+

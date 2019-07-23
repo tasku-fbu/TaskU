@@ -20,8 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // initialize a user object
-    
 }
 
 
@@ -59,6 +57,8 @@
 */
 - (IBAction)onSave:(UIButton *)sender {
     [self checkPassword];
+    [self performSegueWithIdentifier:@"UnwindToProfile2" sender:self];
+
 }
 
 @end

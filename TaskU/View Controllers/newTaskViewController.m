@@ -60,7 +60,7 @@
     self.picker.dataSource = self;
     
     //Task Categories
-    self.categories = @[@"Delivery", @"Laundry", @"Tutoring", @"Move in", @"Shoe cleaning", @"Special Services"];
+    self.categories = @[@"Delivery", @"Groceries", @"Laundry and Cleaning", @"Tutoring", @"Volunteering", @"Other"];
 
 }
 
@@ -68,9 +68,13 @@
 -(void)makePost {
     //NSSet of erroneus hour/minute times and pay (empty field or 0)
     NSSet *errorAmount = [NSSet setWithObjects:@"", @"0", nil];
+    
+    //Payment can't be empty, but can be 0
+    NSSet *zeroPayAmount = [NSSet setWithObjects:@"", nil];
+
 
     //Checks if one of the required fields is empty. Only optional field is Start Address
-    if ([self.taskName.text isEqualToString:@""] || [self.endAddress.text isEqualToString:@""] || [self.taskDescription.text isEqualToString:@""] || [errorAmount containsObject:self.payAmount.text] || ([errorAmount containsObject:self.minutes.text] && [errorAmount containsObject:self.hours.text])){
+    if ([self.taskName.text isEqualToString:@""] || [self.endAddress.text isEqualToString:@""] || [self.taskDescription.text isEqualToString:@""] || [zeroPayAmount containsObject:self.payAmount.text] || ([errorAmount containsObject:self.minutes.text] && [errorAmount containsObject:self.hours.text])){
         [self presentViewController:self.completionAlert animated:YES completion:^{
         }];
     } else {
