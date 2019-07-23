@@ -59,6 +59,8 @@
 */
 - (IBAction)onSave:(UIButton *)sender {
     [self checkPassword];
+    [self performSegueWithIdentifier:@"UnwindToProfile2" sender:self];
+
 }
 
 @end

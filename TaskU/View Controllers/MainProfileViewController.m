@@ -9,11 +9,12 @@
 #import "MainProfileViewController.h"
 #import "Task.h"
 #import <Parse/Parse.h>
-
-
+#import "UIImageView+AFNetworking.h"
+#import "EditProfileViewController.h"
 
 @interface MainProfileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 
 @end
 
@@ -22,15 +23,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     PFUser *user = [PFUser currentUser];
-    self.nameLabel.text = user[@"name"];
+    self.nameLabel.text = user[@"firstName"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //  self.tableView.rowHeight = 44;
+    [self fetchProfileImage];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //EditProfileViewController *vc = [[EditProfileViewController alloc] init];
+  //  vc.delegate = self;
+    //[self.tableView reloadData];
+
 }
 
 
+-(void)fetchProfileImage{
+    PFUser *user = [PFUser currentUser];
+
+    //Set profile image
+    PFFileObject *imageFile = user[@"profileImage"];
+    
+    NSString *urlString = imageFile.url;
+    [self.userProfileImage setImageWithURL:[NSURL URLWithString:urlString]];
+    
+    self.userProfileImage.layer.cornerRadius = 40;
+    self.userProfileImage.clipsToBounds = YES;
+}
+
+//Protocol
+- (void)didEditProfilewithImage:(nonnull UIImage *)image {
+    [self.userProfileImage setImage:image];
+
+}
+
+- (IBAction)unwindToProfile:(UIStoryboardSegue *)unwindSegue
+{
+        UIViewController* sourceViewController = unwindSegue.sourceViewController;
+
+        if ([sourceViewController isKindOfClass:[EditProfileViewController class]])
+        {
+            NSLog(@"Coming from Editing Profile!");
+
+        }
+    
+}
 
 @end
+

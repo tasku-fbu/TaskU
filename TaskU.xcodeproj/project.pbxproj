@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7922E520EB0003FD6C /* LocationCell.m */; };
-		0E1F7C7D22E521F70003FD6C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7C22E521F70003FD6C /* MapViewController.m */; };
 		0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */; };
 		0E1F7CFF22E5EC490003FD6C /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */; };
 		0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A03C22DD92B8005D798F /* SignUpViewController.m */; };
@@ -30,6 +29,7 @@
 		110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */; };
 		110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C127122DFF50B009DC7DB /* EditProfileViewController.m */; };
 		110C127422E0E6F1009DC7DB /* newProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110C127322E0E6F1009DC7DB /* newProfile.storyboard */; };
+		1118352B22E690D50097D3B7 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1118352A22E690D50097D3B7 /* MapViewController.m */; };
 		1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37122E118B1004A235C /* EditPasswordViewController.m */; };
 		1131D37322E12096004A235C /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
 		1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37522E129BC004A235C /* MainProfileViewController.m */; };
@@ -69,7 +69,6 @@
 		0E1F7C7822E520EB0003FD6C /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		0E1F7C7922E520EB0003FD6C /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		0E1F7C7B22E521F70003FD6C /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		0E1F7C7C22E521F70003FD6C /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
 		0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		110C127022DFF50B009DC7DB /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		110C127122DFF50B009DC7DB /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		110C127322E0E6F1009DC7DB /* newProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = newProfile.storyboard; sourceTree = "<group>"; };
+		1118352A22E690D50097D3B7 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		1131D37022E118B1004A235C /* EditPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPasswordViewController.h; sourceTree = "<group>"; };
 		1131D37122E118B1004A235C /* EditPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPasswordViewController.m; sourceTree = "<group>"; };
 		1131D37422E129BC004A235C /* MainProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainProfileViewController.h; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 				1131D37422E129BC004A235C /* MainProfileViewController.h */,
 				1131D37522E129BC004A235C /* MainProfileViewController.m */,
 				0E1F7C7B22E521F70003FD6C /* MapViewController.h */,
-				0E1F7C7C22E521F70003FD6C /* MapViewController.m */,
+				1118352A22E690D50097D3B7 /* MapViewController.m */,
 				0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */,
 				0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */,
 				0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */,
@@ -565,13 +565,13 @@
 				1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */,
 				110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */,
 				1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */,
+				1118352B22E690D50097D3B7 /* MapViewController.m in Sources */,
 				0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
-				0E1F7C7D22E521F70003FD6C /* MapViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
