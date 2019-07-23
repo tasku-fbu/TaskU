@@ -9,10 +9,7 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 
-
-static NSString *const signUpSegueIdentifier = @"signUpSegue";
-static NSString *const loginSegueIdentifier = @"loginSegue";
-
+#pragma mark -  interface and properties
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -21,6 +18,9 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 
 @implementation LoginViewController
 @synthesize usernameTextField;
+static NSString *const signUpSegueIdentifier = @"signUpSegue";
+static NSString *const loginSegueIdentifier = @"loginSegue";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,14 +29,20 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     self.passwordTextField.delegate = self;
 }
 
+#pragma mark - helps dismiss keyboard on touching outside the textfield or clicking the return button 
+
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     return true;
 }
+
 - (IBAction)didTapOutsideTextField:(id)sender {
     [self.view endEditing:YES];
 }
+
+
+#pragma mark - login verification function
 
 - (void)loginUser {
     NSString *username = self.usernameTextField.text;
@@ -78,15 +84,18 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     }
 }
 
+#pragma mark - signup and login button actions
 - (IBAction)signUpButtonAction:(id)sender {
     [self performSegueWithIdentifier: signUpSegueIdentifier sender:nil]; //performs segue to show sign up page
 }
+
 - (IBAction)loginActionButton:(id)sender {
     [self loginUser]; //verifies the user through parse login authentication
 }
 
+#pragma mark - allows user to continue typing password from where they left
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    //allows user to continue typing password from where they left
+    
     NSString *updatedString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
     textField.text = updatedString;
@@ -94,6 +103,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     return NO;
 }
 
+#pragma mark - user login alerts
 //Alerts the user if unaccepted login information is entered
 - (bool) isSignUpInfoComplete{
     

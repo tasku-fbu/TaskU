@@ -39,9 +39,9 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="cWe-E5-6ye">
-                                <rect key="frame" x="87" y="531" width="240.5" height="32"/>
+                                <rect key="frame" x="87" y="531" width="240" height="32"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blU-hm-XlC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blU-hm-XlC">
                                         <rect key="frame" x="0.0" y="0.0" width="174.5" height="32"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Don't have an account?">
@@ -52,8 +52,8 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9N-lQ-8Sf">
-                                        <rect key="frame" x="178.5" y="0.0" width="62" height="32"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9N-lQ-8Sf">
+                                        <rect key="frame" x="178.5" y="0.0" width="61.5" height="32"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Sign Up">
@@ -69,12 +69,11 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240.5" id="84H-dm-jne"/>
                                     <constraint firstAttribute="height" constant="32" id="vrh-M5-jAH"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKJ-x0-XVW">
-                                <rect key="frame" x="114.5" y="592" width="186" height="38"/>
+                                <rect key="frame" x="114" y="592" width="186" height="38"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="186" id="7q8-pt-9gt"/>

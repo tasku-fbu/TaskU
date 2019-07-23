@@ -14,7 +14,7 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 
-
+#pragma mark - interface and properties
 @interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource, HomeCollectionCellDelegate>
 @property NSArray *categoriesImagesArray;
 @property NSArray *categoriesTextArray;
@@ -30,6 +30,7 @@
 static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
 static NSString * const messageSegueIdentifier = @"messageSegue";
 
+#pragma mark - initial view
 - (void)viewDidLoad {
     [super viewDidLoad];
     PFUser *loggedInUser = [PFUser currentUser];
@@ -42,12 +43,15 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery", @"Laundry", @"Tutoring", @"Move in", @"Shoe Cleaning",  @"Special Services", nil ];
 }
 
+#pragma mark - location button action
 -(IBAction)LocationButtonAction:(id)sender {
     PFUser *loggedInUser = [PFUser currentUser];
     self.userLocation = loggedInUser[@"university"]; //gets the university of current user
     [self.LocationButton setTitle:self.userLocation forState:UIControlStateSelected];
 }
 
+
+#pragma mark - collectionview cell datasource and delegate functions implementation
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
     return 1;
@@ -74,7 +78,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     return cell;
 }
 
-//helps us know which collection view cell category was tapped
+#pragma mark - helps us know which collection view cell category was tapped
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
@@ -85,7 +89,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     [self presentViewController:navigationVC animated:YES completion:nil];
 }
 
-
+#pragma mark - redirects us to the newTaskViewController
 - (IBAction)addTaskAction:(id)sender {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newTask" bundle:nil];
@@ -96,6 +100,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
   
 }
 
+#pragma mark - Logs user out
 - (IBAction)LogoutActionButton:(id)sender {
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -110,6 +115,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     }];
 
 }
+#pragma mark - messaging
 - (IBAction)openMessageChatAction:(id)sender {
      [self performSegueWithIdentifier: messageSegueIdentifier sender:nil];
     

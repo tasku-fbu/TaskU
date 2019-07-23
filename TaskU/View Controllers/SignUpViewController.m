@@ -10,6 +10,7 @@
 #import "Parse/Parse.h"
 #import "Task.h"
 
+#pragma mark - interface and properties
 @interface SignUpViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
@@ -26,15 +27,18 @@
 @implementation SignUpViewController
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - cancel returns user to login
 - (IBAction)cancelButtonAction:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+#pragma mark - signup action
 - (IBAction)signUpButtonAction:(id)sender {
     
     // initialize a user object
@@ -79,18 +83,17 @@
     }
 }
 
-#pragma mark - email validation format function
+#pragma mark - email validation format function for .edu ending
 
-- (BOOL)validateEmail:(NSString *)inputText {
+- (BOOL)validateEmail:(NSString *)userEmail {
     NSString *emailRegex = @"[A-Z0-9a-z][A-Z0-9a-z._%+-]*@[A-Za-z0-9][A-Za-z0-9.-]*\\.[A-Za-z]{2,6}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     NSRange aRange;
-    if([emailTest evaluateWithObject:inputText]) {
-        aRange = [inputText rangeOfString:@"." options:NSBackwardsSearch range:NSMakeRange(0, [inputText length])];
-        int indexOfDot = aRange.location;
-        //NSLog(@"aRange.location:%d - %d",aRange.location, indexOfDot);
+    if([emailTest evaluateWithObject:userEmail]) {
+        aRange = [userEmail rangeOfString:@"." options:NSBackwardsSearch range:NSMakeRange(0, [userEmail length])];
+        NSUInteger indexOfDot = aRange.location;
         if(aRange.location != NSNotFound) {
-            NSString *topLevelDomain = [inputText substringFromIndex:indexOfDot];
+            NSString *topLevelDomain = [userEmail substringFromIndex:indexOfDot];
             topLevelDomain = [topLevelDomain lowercaseString];
             //NSLog(@"topleveldomains:%@",topLevelDomain);
             NSSet *TLD;
@@ -105,7 +108,7 @@
     return FALSE;
 }
 
-#pragma mark - user alerts during sign up
+#pragma mark - user alerts during sign up if sign up information doesn't meet our standards
 //Alerts the user if unaccepted sign up information is entered
 - (bool) isSignUpInfoComplete{
     

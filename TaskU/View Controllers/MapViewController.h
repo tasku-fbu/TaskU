@@ -10,7 +10,7 @@
 #import "LocationsViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MapViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, LocationsViewControllerDelegate>
+@interface MapViewController : UIViewController <UITableViewDelegate, UINavigationControllerDelegate, LocationsViewControllerDelegate>
 
 @end
 
