@@ -74,8 +74,9 @@
                 NSLog(@"Error: %@", error.localizedDescription);
             } else {
                 NSLog(@"User registered successfully");
-                
+                newUser[@"contacts"] = [NSArray new];
                 [newUser saveInBackground];
+                
                 // dismiss signUpViewController
                 [self dismissViewControllerAnimated:true completion:nil];
             }
