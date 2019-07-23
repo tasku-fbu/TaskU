@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainProfileViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileViewController : UIViewController
+
+@property (strong,nonatomic) MainProfileViewController *mainProfileVC;
 
 @end
 

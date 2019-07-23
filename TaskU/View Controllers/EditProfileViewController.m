@@ -106,9 +106,13 @@
     user[@"phone"] = [NSNumber numberWithInt:[self.editedPhone.text intValue]];
     user[@"university"] = self.editedUniversity.text;
     //TODO: Place some image here
+    
     user[@"profileImage"] = [Task getPFFileFromImage:self.chosenImage];
+
     [user saveInBackground];
     [self.delegate didEditProfilewithImage:self.chosenImage];
+
+//    [self.delegate didEditProfilewithImage:self.chosenImage];
     
     //[user saveInBackground];
     [self performSegueWithIdentifier:@"UnwindToProfileID" sender:self];

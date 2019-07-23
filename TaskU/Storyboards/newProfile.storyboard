@@ -511,7 +511,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Mb7-RO-ICM" kind="show" identifier="" id="aV8-pw-Rij"/>
+                                            <segue destination="Mb7-RO-ICM" kind="show" identifier="editProfile" id="aV8-pw-Rij"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Idw-Dk-IgL">
@@ -618,7 +618,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="L2i-Bk-TgT" kind="embed" id="hSg-Jg-oXh"/>
+                                    <segue destination="L2i-Bk-TgT" kind="embed" identifier="actuallyEdit" id="hSg-Jg-oXh"/>
                                 </connections>
                             </containerView>
                         </subviews>
