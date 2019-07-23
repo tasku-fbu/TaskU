@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "TaskCell.h"
+#import "DetailsInfoViewController.h"
+#import "DetailsViewController.h"
+#import "DetailsStatusViewController.h"
+
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CurrentMissionsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,TaskCellDelegate>
+@interface CurrentMissionsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,TaskCellDelegate,CancelMissionOnDetailsDelegate>
 
 @end
 

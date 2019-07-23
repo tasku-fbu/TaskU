@@ -148,9 +148,15 @@
     DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = cell.task;
+    statusVC.missionDelegate = self;
     infoVC.task = cell.task;
     [self presentViewController:navigationVC animated:YES completion:nil];
     
+}
+
+- (void) didCancelMission {
+    [self getCurrentTasks];
+    [self.currentTable reloadData];
 }
 
 /*
