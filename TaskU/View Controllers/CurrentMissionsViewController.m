@@ -1,50 +1,48 @@
 //
-//  Timeline1ViewController.m
+//  CurrentMissionsViewController.m
 //  TaskU
 //
-//  Created by lucyyyw on 7/16/19.
+//  Created by lucyyyw on 7/22/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
-#import "Timeline1ViewController.h"
+#import "CurrentMissionsViewController.h"
 #import "TaskCell.h"
-#import "Task.h"
-#import "DetailsViewController.h"
 #import "DetailsStatusViewController.h"
+#import "DetailsViewController.h"
 #import "DetailsInfoViewController.h"
-#import "HomeViewController.h"
 
-@interface Timeline1ViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (strong, nonatomic) NSMutableArray *tasks;
+@interface CurrentMissionsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *currentTable;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
+@property (nonatomic, strong) NSMutableArray *currentTasks;
 @end
 
-@implementation Timeline1ViewController
+@implementation CurrentMissionsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.currentTable.delegate = self;
+    self.currentTable.dataSource = self;
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    [self getCurrentTasks];
     
-    [self getAllTasks];
-    
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.currentTable.rowHeight = UITableViewAutomaticDimension;
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    [self.refreshControl addTarget:self action:@selector(getCurrentTasks) forControlEvents:UIControlEventValueChanged];
+    [self.currentTable insertSubview:self.refreshControl atIndex:0];
     
     [self.activityIndicator startAnimating];
-    
 }
 
-//want to make it a public method in Task, so that it takes in a "category" and gets all tasks in this category
-- (void) getAllTasks {
+- (void) getCurrentTasks{
+    PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    
+    NSArray *current = [NSArray arrayWithObjects: @"created",@"accepted", nil];
+    
     [query orderByDescending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
@@ -60,20 +58,19 @@
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
     
+    [query whereKey:@"missioner" equalTo:user];
+    [query whereKey:@"completionStatus" containedIn:current];
     
-    //[query whereKey:@"completionStatus equalTo:@1"created"];
-    query.limit = 20;
+    //query.limit = 20;
     
-    // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         if (tasks != nil) {
             // do something with the array of object returned by the call
-            self.tasks = [tasks mutableCopy];
+            self.currentTasks = [tasks mutableCopy];
             
-            [self.tableView reloadData];
+            [self.currentTable reloadData];
             [self.refreshControl endRefreshing];
             [self.activityIndicator stopAnimating];
-            
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -83,17 +80,14 @@
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"currentMission"];
     cell.delegate = self;
-    Task *task = self.tasks[indexPath.row];
+    Task *task = self.currentTasks[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
     
-    
     PFUser *user = task[@"requester"];
     cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
-    
-    
     
     NSNumber *payment = task[@"pay"];
     int pay = [payment intValue];
@@ -130,6 +124,10 @@
 }
 
 
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.currentTasks.count;
+}
+
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
@@ -138,37 +136,27 @@
 }
 
 
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tasks.count;
-}
-
-
 - (void) didTapDetails:(TaskCell *) cell {
     
-     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
     
     DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
-     detailsVC.task = cell.task;
-     
+    detailsVC.task = cell.task;
+    
     
     DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = cell.task;
+    statusVC.missionDelegate = self;
     infoVC.task = cell.task;
-    statusVC.delegate = self;
-     [self presentViewController:navigationVC animated:YES completion:nil];
+    [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
 
-- (IBAction)onBackHome:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) didCancelRequest {
-    [self getAllTasks];
-    [self.tableView reloadData];
+- (void) didCancelMission {
+    [self getCurrentTasks];
+    [self.currentTable reloadData];
 }
 
 /*
@@ -180,7 +168,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
 
 @end
