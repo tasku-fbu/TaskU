@@ -14,6 +14,7 @@
 
 @interface CurrentMissionsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *currentTable;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
