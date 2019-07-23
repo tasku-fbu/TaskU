@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7922E520EB0003FD6C /* LocationCell.m */; };
+		0E1F7C7D22E521F70003FD6C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7C22E521F70003FD6C /* MapViewController.m */; };
+		0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */; };
+		0E1F7CFF22E5EC490003FD6C /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */; };
 		0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A03C22DD92B8005D798F /* SignUpViewController.m */; };
 		0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A03F22DD92CF005D798F /* HomeViewController.m */; };
 		0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A04222DD92ED005D798F /* RequestsViewController.m */; };
@@ -66,6 +70,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E1F7C7822E520EB0003FD6C /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		0E1F7C7922E520EB0003FD6C /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
+		0E1F7C7B22E521F70003FD6C /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		0E1F7C7C22E521F70003FD6C /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
+		0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
+		0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		0E45A03B22DD92B8005D798F /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		0E45A03C22DD92B8005D798F /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		0E45A03E22DD92CF005D798F /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -209,6 +221,12 @@
 				B902D1A322E677510080B87E /* CurrentMissionsViewController.m */,
 				B902D1A522E677650080B87E /* CompletedMissionsViewController.h */,
 				B902D1A622E677650080B87E /* CompletedMissionsViewController.m */,
+				0E1F7C7B22E521F70003FD6C /* MapViewController.h */,
+				0E1F7C7C22E521F70003FD6C /* MapViewController.m */,
+				0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */,
+				0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */,
+				0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */,
+				0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -303,6 +321,8 @@
 			children = (
 				0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */,
 				0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */,
+				0E1F7C7822E520EB0003FD6C /* LocationCell.h */,
+				0E1F7C7922E520EB0003FD6C /* LocationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,6 +421,7 @@
 				TargetAttributes = {
 					0E8EFF4522DD523500B9FE89 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					0E8EFF5D22DD523600B9FE89 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -574,6 +595,7 @@
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
 				B902D1A122E61DE20080B87E /* CompletedRequestsViewController.m in Sources */,
+				0E1F7C7D22E521F70003FD6C /* MapViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
@@ -581,7 +603,10 @@
 				B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */,
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
+				0E1F7CFF22E5EC490003FD6C /* MessageViewController.m in Sources */,
+				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
+				0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,8 +778,9 @@
 			baseConfigurationReference = 2AD1405BED2F0479B121B9D5 /* Pods-TaskU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7FF4JGN27;
+				DEVELOPMENT_TEAM = B7R4TAWA36;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -762,6 +788,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -771,8 +799,9 @@
 			baseConfigurationReference = 1C1CFE7C6C006D8B4608EF80 /* Pods-TaskU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7FF4JGN27;
+				DEVELOPMENT_TEAM = B7R4TAWA36;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -780,6 +809,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

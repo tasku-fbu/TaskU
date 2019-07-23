@@ -9,7 +9,6 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 
-#import "Timeline1ViewController.h"
 
 static NSString *const signUpSegueIdentifier = @"signUpSegue";
 static NSString *const loginSegueIdentifier = @"loginSegue";
@@ -21,10 +20,22 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 @end
 
 @implementation LoginViewController
+@synthesize usernameTextField;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.usernameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    return true;
+}
+- (IBAction)didTapOutsideTextField:(id)sender {
+    [self.view endEditing:YES];
 }
 
 - (void)loginUser {
@@ -74,6 +85,14 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     [self loginUser]; //verifies the user through parse login authentication
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    //allows user to continue typing password from where they left
+    NSString *updatedString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    textField.text = updatedString;
+    
+    return NO;
+}
 
 //Alerts the user if unaccepted login information is entered
 - (bool) isSignUpInfoComplete{

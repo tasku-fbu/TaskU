@@ -12,6 +12,7 @@
 #import "DetailsViewController.h"
 #import "DetailsStatusViewController.h"
 #import "DetailsInfoViewController.h"
+#import "HomeViewController.h"
 
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

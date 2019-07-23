@@ -9,7 +9,7 @@
 #import "newTaskViewController.h"
 #import "Task.h"
 
-@interface newTaskViewController ()
+@interface newTaskViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *taskName;
 @property (weak, nonatomic) IBOutlet UITextField *startAddress;
 @property (weak, nonatomic) IBOutlet UITextField *endAddress;
@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *payAmount;
 @property (strong, nonatomic) UIAlertController *completionAlert;
 @property (strong, nonatomic) UIAlertController *networkAlert;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSString *chosenCategory;
+
 
 @end
 
@@ -50,6 +54,14 @@
                                                         }];
     // add the OK action to the alert controller
     [self.networkAlert addAction:otherErrorAction];
+    
+    // Connect data:
+    self.picker.delegate = self;
+    self.picker.dataSource = self;
+    
+    //Task Categories
+    self.categories = @[@"Delivery", @"Laundry", @"Tutoring", @"Move in", @"Shoe cleaning", @"Special Services"];
+
 }
 
 
@@ -62,7 +74,7 @@
         [self presentViewController:self.completionAlert animated:YES completion:^{
         }];
     } else {
-        [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text withDate:self.taskDate.date withHours:self.hours.text withMinutes:self.minutes.text withPay:self.payAmount.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
+        [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text withCategory: self.chosenCategory withDate:self.taskDate.date withHours:self.hours.text withMinutes:self.minutes.text withPay:self.payAmount.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
             
             if(succeeded){
                 NSLog(@"Posted!");
@@ -101,5 +113,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView { 
+    return 1;
+}
+
+- (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component { 
+    return self.categories.count;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return self.categories[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    self.chosenCategory = [self.categories objectAtIndex:row];
+}
 
 @end

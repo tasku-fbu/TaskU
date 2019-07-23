@@ -28,8 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSNumber *pay;
 
 
+
+
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image;
-+ (void) postTask: ( NSString * _Nullable )taskName withStart: ( NSString * _Nullable )startAddress withEnd: ( NSString * _Nullable )endAddress withDate: (NSDate *_Nullable)taskDate withHours: ( NSString * _Nullable )hours withMinutes: ( NSString * _Nullable )minutes withPay: ( NSString * _Nullable )pay withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) postTask: ( NSString * _Nullable )taskName withStart: ( NSString * _Nullable )startAddress withEnd: ( NSString * _Nullable )endAddress withCategory: ( NSString * _Nullable )category withDate: (NSDate *_Nullable)taskDate withHours: ( NSString * _Nullable )hours withMinutes: ( NSString * _Nullable )minutes withPay: ( NSString * _Nullable )pay withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 
