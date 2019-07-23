@@ -60,7 +60,7 @@
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
     
-    
+    [query whereKey:@"category" equalTo:(self.category)];
     //[query whereKey:@"completionStatus equalTo:@1"created"];
     query.limit = 20;
     
@@ -146,19 +146,19 @@
 
 - (void) didTapDetails:(TaskCell *) cell {
     
-     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
     
     DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
-     detailsVC.task = cell.task;
-     
+    detailsVC.task = cell.task;
+    
     
     DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = cell.task;
     infoVC.task = cell.task;
     statusVC.delegate = self;
-     [self presentViewController:navigationVC animated:YES completion:nil];
+    [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
 
@@ -172,14 +172,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 
