@@ -44,6 +44,11 @@
 		B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14622DFC5230080B87E /* DetailsViewController.m */; };
 		B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14922E01FEC0080B87E /* DetailsStatusViewController.m */; };
 		B902D14D22E01FFD0080B87E /* DetailsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D14C22E01FFD0080B87E /* DetailsInfoViewController.m */; };
+		B902D19E22E61DBC0080B87E /* CurrentRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D19D22E61DBC0080B87E /* CurrentRequestsViewController.m */; };
+		B902D1A122E61DE20080B87E /* CompletedRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1A022E61DE20080B87E /* CompletedRequestsViewController.m */; };
+		B902D1A422E677510080B87E /* CurrentMissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1A322E677510080B87E /* CurrentMissionsViewController.m */; };
+		B902D1A722E677650080B87E /* CompletedMissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1A622E677650080B87E /* CompletedMissionsViewController.m */; };
+		B902D1AF22E769110080B87E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1AE22E769110080B87E /* MapViewController.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +141,15 @@
 		B902D14922E01FEC0080B87E /* DetailsStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsStatusViewController.m; sourceTree = "<group>"; };
 		B902D14B22E01FFD0080B87E /* DetailsInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsInfoViewController.h; sourceTree = "<group>"; };
 		B902D14C22E01FFD0080B87E /* DetailsInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsInfoViewController.m; sourceTree = "<group>"; };
+		B902D19C22E61DBC0080B87E /* CurrentRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentRequestsViewController.h; sourceTree = "<group>"; };
+		B902D19D22E61DBC0080B87E /* CurrentRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentRequestsViewController.m; sourceTree = "<group>"; };
+		B902D19F22E61DE20080B87E /* CompletedRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletedRequestsViewController.h; sourceTree = "<group>"; };
+		B902D1A022E61DE20080B87E /* CompletedRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompletedRequestsViewController.m; sourceTree = "<group>"; };
+		B902D1A222E677510080B87E /* CurrentMissionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentMissionsViewController.h; sourceTree = "<group>"; };
+		B902D1A322E677510080B87E /* CurrentMissionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentMissionsViewController.m; sourceTree = "<group>"; };
+		B902D1A522E677650080B87E /* CompletedMissionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletedMissionsViewController.h; sourceTree = "<group>"; };
+		B902D1A622E677650080B87E /* CompletedMissionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompletedMissionsViewController.m; sourceTree = "<group>"; };
+		B902D1AE22E769110080B87E /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,8 +215,17 @@
 				1131D37122E118B1004A235C /* EditPasswordViewController.m */,
 				1131D37422E129BC004A235C /* MainProfileViewController.h */,
 				1131D37522E129BC004A235C /* MainProfileViewController.m */,
+				B902D19C22E61DBC0080B87E /* CurrentRequestsViewController.h */,
+				B902D19D22E61DBC0080B87E /* CurrentRequestsViewController.m */,
+				B902D19F22E61DE20080B87E /* CompletedRequestsViewController.h */,
+				B902D1A022E61DE20080B87E /* CompletedRequestsViewController.m */,
+				B902D1A222E677510080B87E /* CurrentMissionsViewController.h */,
+				B902D1A322E677510080B87E /* CurrentMissionsViewController.m */,
+				B902D1A522E677650080B87E /* CompletedMissionsViewController.h */,
+				B902D1A622E677650080B87E /* CompletedMissionsViewController.m */,
 				0E1F7C7B22E521F70003FD6C /* MapViewController.h */,
 				1118352A22E690D50097D3B7 /* MapViewController.m */,
+				B902D1AE22E769110080B87E /* MapViewController.m */,
 				0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */,
 				0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */,
 				0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */,
@@ -559,6 +582,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */,
+				B902D1A422E677510080B87E /* CurrentMissionsViewController.m in Sources */,
+				B902D1A722E677650080B87E /* CompletedMissionsViewController.m in Sources */,
 				0E8EFF5922DD523600B9FE89 /* main.m in Sources */,
 				0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */,
 				B902D14D22E01FFD0080B87E /* DetailsInfoViewController.m in Sources */,
@@ -569,9 +594,11 @@
 				0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
+				B902D19E22E61DBC0080B87E /* CurrentRequestsViewController.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
+				B902D1A122E61DE20080B87E /* CompletedRequestsViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
@@ -581,6 +608,7 @@
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
 				0E1F7CFF22E5EC490003FD6C /* MessageViewController.m in Sources */,
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
+				B902D1AF22E769110080B87E /* MapViewController.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
 				0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */,
 			);

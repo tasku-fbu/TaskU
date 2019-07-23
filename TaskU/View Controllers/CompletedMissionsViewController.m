@@ -1,50 +1,48 @@
 //
-//  Timeline1ViewController.m
+//  CompletedMissionsViewController.m
 //  TaskU
 //
-//  Created by lucyyyw on 7/16/19.
+//  Created by lucyyyw on 7/22/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
-#import "Timeline1ViewController.h"
+#import "CompletedMissionsViewController.h"
 #import "TaskCell.h"
-#import "Task.h"
+#import "DetailsInfoViewController.h"
 #import "DetailsViewController.h"
 #import "DetailsStatusViewController.h"
-#import "DetailsInfoViewController.h"
-#import "HomeViewController.h"
 
-@interface Timeline1ViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (strong, nonatomic) NSMutableArray *tasks;
+@interface CompletedMissionsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *completedTable;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
-
+@property (strong, nonatomic) NSMutableArray *completedTasks;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
-@implementation Timeline1ViewController
+@implementation CompletedMissionsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.completedTable.delegate = self;
+    self.completedTable.dataSource = self;
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    [self getAllTasks];
-    
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self getCompletedTasks];
+    self.completedTable.rowHeight = UITableViewAutomaticDimension;
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    [self.refreshControl addTarget:self action:@selector(getCompletedTasks) forControlEvents:UIControlEventValueChanged];
+    [self.completedTable insertSubview:self.refreshControl atIndex:0];
     
     [self.activityIndicator startAnimating];
     
 }
 
-//want to make it a public method in Task, so that it takes in a "category" and gets all tasks in this category
-- (void) getAllTasks {
+- (void) getCompletedTasks{
+    PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    
+    NSArray *completed = [NSArray arrayWithObjects: @"completed",@"pay",@"paid", nil];
+    
     [query orderByDescending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
@@ -60,40 +58,39 @@
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
     
+    [query whereKey:@"missioner" equalTo:user];
+    [query whereKey:@"completionStatus" containedIn:completed];
     
-    //[query whereKey:@"completionStatus equalTo:@1"created"];
-    query.limit = 20;
+    //query.limit = 0;
     
-    // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         if (tasks != nil) {
             // do something with the array of object returned by the call
-            self.tasks = [tasks mutableCopy];
+            self.completedTasks = [tasks mutableCopy];
             
-            [self.tableView reloadData];
+            [self.completedTable reloadData];
             [self.refreshControl endRefreshing];
             [self.activityIndicator stopAnimating];
-            
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
         
     }];
+    
+    
+    
+    
 }
 
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"completedMission"];
     cell.delegate = self;
-    Task *task = self.tasks[indexPath.row];
+    Task *task = self.completedTasks[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
     
-    
     PFUser *user = task[@"requester"];
     cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
-    
-    
     
     NSNumber *payment = task[@"pay"];
     int pay = [payment intValue];
@@ -129,6 +126,9 @@
     return cell;
 }
 
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.completedTasks.count;
+}
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -137,39 +137,24 @@
     return dateString;
 }
 
-
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tasks.count;
-}
-
-
-- (void) didTapDetails:(TaskCell *) cell {
+- (void)didTapDetails:(TaskCell *) cell {
     
-     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
     
     DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
-     detailsVC.task = cell.task;
-     
+    detailsVC.task = cell.task;
+    
     
     DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = cell.task;
     infoVC.task = cell.task;
-    statusVC.delegate = self;
-     [self presentViewController:navigationVC animated:YES completion:nil];
+    
+    [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
 
-- (IBAction)onBackHome:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) didCancelRequest {
-    [self getAllTasks];
-    [self.tableView reloadData];
-}
 
 /*
 #pragma mark - Navigation
@@ -180,7 +165,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
 
 @end

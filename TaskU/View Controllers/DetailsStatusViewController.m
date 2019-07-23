@@ -226,6 +226,7 @@
             self.task[@"missioner"] = [NSNull null];
             self.task[@"acceptedAt"] = [NSNull null];
             self.task[@"completionStatus"] = @"created";
+            [self.missionDelegate didCancelMission];
             [self.task saveInBackground];
             [self updateView];
         }

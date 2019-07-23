@@ -1,50 +1,49 @@
 //
-//  Timeline1ViewController.m
+//  CurrentRequestsViewController.m
 //  TaskU
 //
-//  Created by lucyyyw on 7/16/19.
+//  Created by lucyyyw on 7/22/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
-#import "Timeline1ViewController.h"
+#import "CurrentRequestsViewController.h"
 #import "TaskCell.h"
-#import "Task.h"
-#import "DetailsViewController.h"
 #import "DetailsStatusViewController.h"
+#import "DetailsViewController.h"
 #import "DetailsInfoViewController.h"
-#import "HomeViewController.h"
 
-@interface Timeline1ViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (strong, nonatomic) NSMutableArray *tasks;
+@interface CurrentRequestsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *currentTable;
+@property (strong, nonatomic) NSMutableArray *currentTasks;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
 @end
 
-@implementation Timeline1ViewController
+@implementation CurrentRequestsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.currentTable.delegate = self;
+    self.currentTable.dataSource = self;
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    [self getCurrentTasks];
     
-    [self getAllTasks];
-    
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.currentTable.rowHeight = UITableViewAutomaticDimension;
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    [self.refreshControl addTarget:self action:@selector(getCurrentTasks) forControlEvents:UIControlEventValueChanged];
+    [self.currentTable insertSubview:self.refreshControl atIndex:0];
     
     [self.activityIndicator startAnimating];
-    
 }
 
-//want to make it a public method in Task, so that it takes in a "category" and gets all tasks in this category
-- (void) getAllTasks {
+- (void) getCurrentTasks{
+    
+    PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    
+    NSArray *current = [NSArray arrayWithObjects: @"created",@"accepted", nil];
+    
     [query orderByDescending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
@@ -60,20 +59,19 @@
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
     
+    [query whereKey:@"requester" equalTo:user];
+    [query whereKey:@"completionStatus" containedIn:current];
     
-    //[query whereKey:@"completionStatus equalTo:@1"created"];
-    query.limit = 20;
+    //query.limit = 20;
     
-    // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         if (tasks != nil) {
             // do something with the array of object returned by the call
-            self.tasks = [tasks mutableCopy];
+            self.currentTasks = [tasks mutableCopy];
             
-            [self.tableView reloadData];
+            [self.currentTable reloadData];
             [self.refreshControl endRefreshing];
             [self.activityIndicator stopAnimating];
-            
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -83,17 +81,14 @@
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"currentRequest"];
     cell.delegate = self;
-    Task *task = self.tasks[indexPath.row];
+    Task *task = self.currentTasks[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
     
-    
     PFUser *user = task[@"requester"];
     cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
-    
-    
     
     NSNumber *payment = task[@"pay"];
     int pay = [payment intValue];
@@ -129,6 +124,9 @@
     return cell;
 }
 
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.currentTasks.count;
+}
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -137,50 +135,37 @@
     return dateString;
 }
 
-
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tasks.count;
-}
-
-
 - (void) didTapDetails:(TaskCell *) cell {
     
-     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
     
     DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
-     detailsVC.task = cell.task;
-     
+    detailsVC.task = cell.task;
+    
     
     DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = cell.task;
     infoVC.task = cell.task;
     statusVC.delegate = self;
-     [self presentViewController:navigationVC animated:YES completion:nil];
+    [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
 
-- (IBAction)onBackHome:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void) didCancelRequest {
-    [self getAllTasks];
-    [self.tableView reloadData];
+    [self getCurrentTasks];
+    [self.currentTable reloadData];
 }
-
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 @end
