@@ -18,15 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Yv-Y2-6Zx">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yv-Y2-6Zx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <connections>
                                     <segue destination="sHn-aZ-TXJ" kind="embed" id="Oxi-tU-S4W"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Yv-Y2-6Zx" firstAttribute="trailing" secondItem="eMJ-7E-EGH" secondAttribute="trailing" id="CLf-DZ-sin"/>
+                            <constraint firstItem="9Yv-Y2-6Zx" firstAttribute="bottom" secondItem="eMJ-7E-EGH" secondAttribute="bottom" id="SEq-s1-dJp"/>
+                            <constraint firstItem="9Yv-Y2-6Zx" firstAttribute="leading" secondItem="eMJ-7E-EGH" secondAttribute="leading" id="YMd-lP-vmv"/>
+                            <constraint firstItem="9Yv-Y2-6Zx" firstAttribute="top" secondItem="eMJ-7E-EGH" secondAttribute="top" id="YVx-mf-0Kr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eMJ-7E-EGH"/>
                     </view>
                     <navigationItem key="navigationItem" title="All Chats" id="57x-8o-c04"/>
@@ -43,12 +48,11 @@
             <objects>
                 <viewController storyboardIdentifier="allChats" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sHn-aZ-TXJ" customClass="AllChatsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FMq-e2-8jd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-2n-r04">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-2n-r04">
+                                <rect key="frame" x="0.0" y="44" width="414" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="70" id="RZX-cJ-WJZ" customClass="ContactCell">
@@ -100,6 +104,14 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7D7-2n-r04" firstAttribute="top" secondItem="Pps-u2-CZJ" secondAttribute="top" id="HkK-ZY-kqC"/>
+                            <constraint firstItem="7D7-2n-r04" firstAttribute="height" secondItem="Pps-u2-CZJ" secondAttribute="height" id="Y0f-am-NHS"/>
+                            <constraint firstItem="7D7-2n-r04" firstAttribute="trailing" secondItem="Pps-u2-CZJ" secondAttribute="trailing" id="csj-AB-aVh"/>
+                            <constraint firstItem="7D7-2n-r04" firstAttribute="leading" secondItem="Pps-u2-CZJ" secondAttribute="leading" id="eeb-uK-L9F"/>
+                            <constraint firstItem="7D7-2n-r04" firstAttribute="bottom" secondItem="Pps-u2-CZJ" secondAttribute="bottom" id="g2O-Uy-YpV"/>
+                            <constraint firstItem="7D7-2n-r04" firstAttribute="width" secondItem="Pps-u2-CZJ" secondAttribute="width" id="r9c-1B-ouE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Pps-u2-CZJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="ulr-Q4-r78"/>
@@ -109,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUb-tX-V8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.85507246376812" y="834.375"/>
+            <point key="canvasLocation" x="589.85507246376812" y="834.04017857142856"/>
         </scene>
         <!--Chat Messages View Controller-->
         <scene sceneID="wFJ-F5-maT">

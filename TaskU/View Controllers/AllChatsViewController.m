@@ -18,7 +18,7 @@
 //@property (strong, nonatomic) NSMutableArray *allMessages;
 //@property (strong, nonatomic) NSMutableArray *messagesByContact;
 
-@property (strong, nonatomic) NSDictionary *messagesByContact;
+@property (strong, nonatomic) NSMutableDictionary *messagesByContact;
 @end
 
 @implementation AllChatsViewController
@@ -26,30 +26,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getAllMessages];
 }
 
 
 - (void) getAllMessages {
     PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
-    [query1 includeKey:@"sender"];
-    [query1 includeKey:@"createdAt"];
-    [query1 includeKey:@"receiver"];
+    
     [query1 whereKey:@"sender" equalTo:[PFUser currentUser]];
     
     PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
-    [query2 includeKey:@"sender"];
-    [query2 includeKey:@"createdAt"];
-    [query2 includeKey:@"receiver"];
+    
     [query2 whereKey:@"receiver" equalTo:[PFUser currentUser]];
     
     PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1,query2]];
+    [mainQuery includeKey:@"createdAt"];
+    [mainQuery includeKey:@"sender"];
+    [mainQuery includeKey:@"receiver"];
+    [mainQuery includeKey:@"text"];
     [mainQuery orderByAscending:@"createdAt"];
     [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
         if (messages != nil) {
             // do something with the array of object returned by the call
            // self.contacts = [NSMutableArray new];
             //self.messagesByContact = [NSMutableArray new];
-            self.messagesByContact = [NSDictionary new];
+            self.messagesByContact = [NSMutableDictionary new];
             
             [self processMessages: messages];
             
@@ -74,9 +75,18 @@
         } else {
             contact = sender;
         }
-       //if (self.messagesByContact valueForKey:)
+        NSValue *myKey = [NSValue valueWithNonretainedObject:contact];
+        
+        if ([self.messagesByContact objectForKey:myKey]) {
+            NSMutableArray *messagesForContact = [self.messagesByContact objectForKey:myKey];
+            [messagesForContact addObject:message];
+        } else {
+            NSMutableArray *messagesForContact = [NSMutableArray arrayWithObjects:message, nil];
+            [self.messagesByContact setObject:messagesForContact forKey:myKey];
+        }
     }
     
+    NSLog(@"%@",self.messagesByContact);
 }
 
 
