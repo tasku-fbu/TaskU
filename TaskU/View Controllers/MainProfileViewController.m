@@ -64,6 +64,12 @@
 
 }
 
+- (void) didEditProfileName {
+    PFUser *user = [PFUser currentUser];
+    self.nameLabel.text = user[@"firstName"];
+    [self.tableView reloadData];
+}
+
 - (IBAction)unwindToProfile:(UIStoryboardSegue *)unwindSegue
 {
         UIViewController* sourceViewController = unwindSegue.sourceViewController;

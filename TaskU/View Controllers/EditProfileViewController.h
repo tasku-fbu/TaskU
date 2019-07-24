@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol editedProfile
 - (void) didEditProfilewithImage: (UIImage* ) image;
+- (void) didEditProfileName;
 @end
 @interface EditProfileViewController : UITableViewController 
 @property (weak, nonatomic) id <editedProfile> delegate;
