@@ -25,7 +25,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.messageTable.rowHeight = UITableViewAutomaticDimension;
-    
+    self.sendTextView.layer.borderWidth = 5.0f;
+    self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
 }
 
@@ -34,21 +35,21 @@
     PFUser *you = self.contact;
     
     PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
-    [query1 includeKey:@"text"];
-    [query1 includeKey:@"sender"];
-    [query1 includeKey:@"receiver"];
+    
     [query1 whereKey:@"sender" equalTo:me];
     [query1 whereKey:@"receiver" equalTo:you];
     
     PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
-    [query2 includeKey:@"text"];
-    [query2 includeKey:@"sender"];
-    [query2 includeKey:@"receiver"];
+    
     [query2 whereKey:@"sender" equalTo:you];
     [query2 whereKey:@"receiver" equalTo:me];
     
     PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1,query2]];
     [mainQuery orderByAscending:@"createdAt"];
+    [mainQuery includeKey:@"text"];
+    [mainQuery includeKey:@"sender"];
+    [mainQuery includeKey:@"createdAt"];
+    [mainQuery includeKey:@"receiver"];
     
     // fetch data asynchronously
     [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
@@ -134,6 +135,10 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.messages.count;
+}
+
+- (IBAction)onClickBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

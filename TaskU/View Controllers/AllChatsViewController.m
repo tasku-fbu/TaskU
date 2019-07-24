@@ -8,14 +8,17 @@
 
 #import <Parse/Parse.h>
 #import "AllChatsViewController.h"
+#import "Message.h"
+
 
 @interface AllChatsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) NSMutableArray *contacts;
+//@property (strong, nonatomic) NSMutableArray *contacts;
 //@property (strong, nonatomic) NSMutableArray *allMessages;
-@property (strong, nonatomic) NSMutableArray *messagesByContact;
+//@property (strong, nonatomic) NSMutableArray *messagesByContact;
 
+@property (strong, nonatomic) NSDictionary *messagesByContact;
 @end
 
 @implementation AllChatsViewController
@@ -44,6 +47,9 @@
     [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
         if (messages != nil) {
             // do something with the array of object returned by the call
+           // self.contacts = [NSMutableArray new];
+            //self.messagesByContact = [NSMutableArray new];
+            self.messagesByContact = [NSDictionary new];
             
             [self processMessages: messages];
             
@@ -59,6 +65,18 @@
 }
 
 - (void) processMessages:(NSArray *) messages{
+    for (Message *message in messages) {
+        PFUser *sender = message[@"sender"];
+        PFUser *receiver = message[@"receiver"];
+        PFUser *contact;
+        if ( [sender isEqual:[PFUser currentUser]]) {
+            contact = receiver;
+        } else {
+            contact = sender;
+        }
+       // if (self.messagesByContact valueForKey:@")
+    }
+    
 }
 
 
