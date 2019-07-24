@@ -216,11 +216,12 @@
     UIButton *btn = (UIButton *) sender;
     if (btn.hidden == NO) {
         PFUser *missioner = [PFUser currentUser];
-        PFUser *requester = self.task[@"requester"];
+        //PFUser *requester = self.task[@"requester"];
         if ([btn.currentTitle isEqualToString:@"Accept"]) {
             
             self.task[@"missioner"] = missioner;
             
+            /*
             NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
             [temp addObject:requester];
             NSArray *temp2 = [NSArray arrayWithArray:temp];
@@ -229,24 +230,29 @@
             [temp addObject:missioner];
             temp2 = [NSArray arrayWithArray:temp];
             requester[@"contacts"] = temp2;
+            [missioner saveInBackground];
+            [requester saveInBackground];
+            */
             
             self.task[@"acceptedAt"] = [NSDate date];
             self.task[@"completionStatus"] = @"accepted";
-            [missioner saveInBackground];
-            [requester saveInBackground];
+            
             [self.task saveInBackground];
             [self updateView];
         } else if ([btn.currentTitle isEqualToString:@"Cancel"]) {
+            /*
             NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
             [temp removeObject:requester];
             NSArray *temp2 = [NSArray arrayWithArray:temp];
             missioner[@"contacts"] = temp2;
             temp = [requester[@"contacts"] mutableCopy];
+            
             [temp removeObject:missioner];
             temp2 = [NSArray arrayWithArray:temp];
             requester[@"contacts"] = temp2;
             [missioner saveInBackground];
             [requester saveInBackground];
+            */
             self.task[@"missioner"] = [NSNull null];
             self.task[@"acceptedAt"] = [NSNull null];
             self.task[@"completionStatus"] = @"created";

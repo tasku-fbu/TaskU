@@ -51,6 +51,9 @@
 		B902D1B122E7B8F50080B87E /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B902D1B022E7B8F50080B87E /* Message.storyboard */; };
 		B902D1B422E7BA090080B87E /* AllChatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1B322E7BA090080B87E /* AllChatsViewController.m */; };
 		B902D1B722E7BA380080B87E /* ChatMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1B622E7BA380080B87E /* ChatMessagesViewController.m */; };
+		B902D1C422E812D90080B87E /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1C322E812D90080B87E /* ContactCell.m */; };
+		B902D1C722E8131F0080B87E /* YourMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1C622E8131F0080B87E /* YourMessageCell.m */; };
+		B902D1CA22E8133F0080B87E /* MyMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1C922E8133F0080B87E /* MyMessageCell.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -156,6 +159,12 @@
 		B902D1B322E7BA090080B87E /* AllChatsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllChatsViewController.m; sourceTree = "<group>"; };
 		B902D1B522E7BA380080B87E /* ChatMessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMessagesViewController.h; sourceTree = "<group>"; };
 		B902D1B622E7BA380080B87E /* ChatMessagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMessagesViewController.m; sourceTree = "<group>"; };
+		B902D1C222E812D90080B87E /* ContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
+		B902D1C322E812D90080B87E /* ContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
+		B902D1C522E8131F0080B87E /* YourMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YourMessageCell.h; sourceTree = "<group>"; };
+		B902D1C622E8131F0080B87E /* YourMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YourMessageCell.m; sourceTree = "<group>"; };
+		B902D1C822E8133F0080B87E /* MyMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMessageCell.h; sourceTree = "<group>"; };
+		B902D1C922E8133F0080B87E /* MyMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMessageCell.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +266,12 @@
 				110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */,
 				B902D14022DE9F110080B87E /* TaskCell.h */,
 				B902D14122DE9F110080B87E /* TaskCell.m */,
+				B902D1C222E812D90080B87E /* ContactCell.h */,
+				B902D1C322E812D90080B87E /* ContactCell.m */,
+				B902D1C522E8131F0080B87E /* YourMessageCell.h */,
+				B902D1C622E8131F0080B87E /* YourMessageCell.m */,
+				B902D1C822E8133F0080B87E /* MyMessageCell.h */,
+				B902D1C922E8133F0080B87E /* MyMessageCell.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,6 +317,7 @@
 		0E8EFF4822DD523500B9FE89 /* TaskU */ = {
 			isa = PBXGroup;
 			children = (
+				B902D1B822E7EAEF0080B87E /* New Group */,
 				0E8EFF5722DD523600B9FE89 /* Info.plist */,
 				0E45A03922DD9182005D798F /* View Controllers */,
 				0E45A05122DE5E7A005D798F /* Storyboards */,
@@ -348,6 +364,13 @@
 				D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B902D1B822E7EAEF0080B87E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		EC2E1F4B5115CDED7FCB96FC /* Pods */ = {
@@ -593,9 +616,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */,
+				B902D1CA22E8133F0080B87E /* MyMessageCell.m in Sources */,
 				B902D1A422E677510080B87E /* CurrentMissionsViewController.m in Sources */,
 				B902D1A722E677650080B87E /* CompletedMissionsViewController.m in Sources */,
 				0E8EFF5922DD523600B9FE89 /* main.m in Sources */,
+				B902D1C722E8131F0080B87E /* YourMessageCell.m in Sources */,
 				B902D1B422E7BA090080B87E /* AllChatsViewController.m in Sources */,
 				0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */,
 				B902D1B722E7BA380080B87E /* ChatMessagesViewController.m in Sources */,
@@ -612,6 +637,7 @@
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
 				B902D1A122E61DE20080B87E /* CompletedRequestsViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
+				B902D1C422E812D90080B87E /* ContactCell.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,
