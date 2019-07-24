@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
 @property (weak, nonatomic) IBOutlet UITextView *sendTextView;
 
-@property (strong,nonatomic) PFUser *receiver;
+
 @end
 
 @implementation ChatMessagesViewController

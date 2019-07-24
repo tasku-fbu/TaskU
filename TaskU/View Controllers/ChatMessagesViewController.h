@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChatMessagesViewController : UIViewController
 
+@property (strong,nonatomic) PFUser *receiver;
+
 @end
 
 NS_ASSUME_NONNULL_END
