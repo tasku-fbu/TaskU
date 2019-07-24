@@ -45,7 +45,7 @@
         if (messages != nil) {
             // do something with the array of object returned by the call
             
-            
+            [self processMessages: messages];
             
             [self.tableView reloadData];
             //[self.refreshControl endRefreshing];
@@ -56,6 +56,9 @@
         }
         
     }];
+}
+
+- (void) processMessages:(NSArray *) messages{
 }
 
 
