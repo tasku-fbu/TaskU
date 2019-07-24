@@ -11,10 +11,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol MessageSentDelegate;
+
 @interface ChatMessagesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (weak,nonatomic) PFUser *contact;
 
+@property (strong, nonatomic) id<MessageSentDelegate> delegate;
+
+@end
+
+
+
+
+@protocol MessageSentDelegate
+-(void) newMessageSent;
 @end
 
 NS_ASSUME_NONNULL_END
