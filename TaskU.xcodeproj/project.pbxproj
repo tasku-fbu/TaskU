@@ -54,6 +54,7 @@
 		B902D1C422E812D90080B87E /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1C322E812D90080B87E /* ContactCell.m */; };
 		B902D1C722E8131F0080B87E /* YourMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1C622E8131F0080B87E /* YourMessageCell.m */; };
 		B902D1CA22E8133F0080B87E /* MyMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1C922E8133F0080B87E /* MyMessageCell.m */; };
+		B902D1CD22E8140A0080B87E /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1CC22E8140A0080B87E /* Message.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -165,6 +166,8 @@
 		B902D1C622E8131F0080B87E /* YourMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YourMessageCell.m; sourceTree = "<group>"; };
 		B902D1C822E8133F0080B87E /* MyMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMessageCell.h; sourceTree = "<group>"; };
 		B902D1C922E8133F0080B87E /* MyMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMessageCell.m; sourceTree = "<group>"; };
+		B902D1CB22E8140A0080B87E /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		B902D1CC22E8140A0080B87E /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +275,8 @@
 				B902D1C622E8131F0080B87E /* YourMessageCell.m */,
 				B902D1C822E8133F0080B87E /* MyMessageCell.h */,
 				B902D1C922E8133F0080B87E /* MyMessageCell.m */,
+				B902D1CB22E8140A0080B87E /* Message.h */,
+				B902D1CC22E8140A0080B87E /* Message.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -632,6 +637,7 @@
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B902D19E22E61DBC0080B87E /* CurrentRequestsViewController.m in Sources */,
+				B902D1CD22E8140A0080B87E /* Message.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,

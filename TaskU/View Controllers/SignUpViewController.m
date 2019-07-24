@@ -75,13 +75,13 @@
             } else {
                 NSLog(@"User registered successfully");
                 newUser[@"contacts"] = [NSArray new];
-                
+                /*
                 PFACL *acl = [PFACL ACL];
                 [acl setPublicReadAccess:true];
                 [acl setPublicWriteAccess:true];
                 
                 newUser.ACL = acl;
-                
+                */
                 [newUser saveInBackground];
                 
                 // dismiss signUpViewController
