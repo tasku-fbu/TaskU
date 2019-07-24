@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser * _Nonnull sender;
 @property (nonatomic, strong) PFUser * _Nonnull receiver;
 
-+ (void)sendMessage: (NSString * _Nullable) text toSender:(PFUser * _Nullable) receiver withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void)sendMessage: (NSString * _Nullable) text toReceiver:(PFUser * _Nullable) receiver withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

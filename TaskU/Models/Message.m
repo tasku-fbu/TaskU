@@ -18,7 +18,7 @@
     return @"Message";
 }
 
-+ (void)sendMessage: (NSString * _Nullable) text toSender:(PFUser * _Nullable) receiver withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void)sendMessage: (NSString * _Nullable) text toReceiver:(PFUser * _Nullable) receiver withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Message *newMessage = [Message new];
     newMessage.sender = [PFUser currentUser];
     newMessage.text = text;
