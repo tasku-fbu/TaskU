@@ -11,6 +11,9 @@
 @interface AllChatsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) NSMutableArray *contacts;
+@property (strong, nonatomic) NSMutableArray *allMessages;
+
 @end
 
 @implementation AllChatsViewController
@@ -19,6 +22,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+
+- (void) getAllMessages {
+    
+}
+
 
 /*
 #pragma mark - Navigation
