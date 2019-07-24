@@ -8,6 +8,8 @@
 
 #import "DetailsStatusViewController.h"
 #import "Timeline1ViewController.h"
+#import "ChatMessagesViewController.h"
+
 
 
 
@@ -215,14 +217,44 @@
 - (IBAction)onTapAcceptButton:(id)sender {
     UIButton *btn = (UIButton *) sender;
     if (btn.hidden == NO) {
+        PFUser *missioner = [PFUser currentUser];
+        //PFUser *requester = self.task[@"requester"];
         if ([btn.currentTitle isEqualToString:@"Accept"]) {
-            PFUser *user = [PFUser currentUser];
-            self.task[@"missioner"] = user;
+            
+            self.task[@"missioner"] = missioner;
+            
+            /*
+            NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
+            [temp addObject:requester];
+            NSArray *temp2 = [NSArray arrayWithArray:temp];
+            missioner[@"contacts"] = temp2;
+            temp = [requester[@"contacts"] mutableCopy];
+            [temp addObject:missioner];
+            temp2 = [NSArray arrayWithArray:temp];
+            requester[@"contacts"] = temp2;
+            [missioner saveInBackground];
+            [requester saveInBackground];
+            */
+            
             self.task[@"acceptedAt"] = [NSDate date];
             self.task[@"completionStatus"] = @"accepted";
+            
             [self.task saveInBackground];
             [self updateView];
         } else if ([btn.currentTitle isEqualToString:@"Cancel"]) {
+            /*
+            NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
+            [temp removeObject:requester];
+            NSArray *temp2 = [NSArray arrayWithArray:temp];
+            missioner[@"contacts"] = temp2;
+            temp = [requester[@"contacts"] mutableCopy];
+            
+            [temp removeObject:missioner];
+            temp2 = [NSArray arrayWithArray:temp];
+            requester[@"contacts"] = temp2;
+            [missioner saveInBackground];
+            [requester saveInBackground];
+            */
             self.task[@"missioner"] = [NSNull null];
             self.task[@"acceptedAt"] = [NSNull null];
             self.task[@"completionStatus"] = @"created";
@@ -236,31 +268,35 @@
 
 - (IBAction)onTapCompleteButton:(id)sender {
     UIButton *btn = (UIButton *) sender;
-    if (btn.hidden == NO && [btn.currentTitle isEqualToString:@"Complete"]) {
+    if (btn.hidden == NO) {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm Completion of Mission"
-                                                                       message:@"Are you sure that you have completed the Mission?\nOnce confirmed you will no longer be able to change the status!"
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             NSLog(@"completedConfirmed");
-                                                             self.task[@"completedAt"] = [NSDate date];
-                                                             self.task[@"completionStatus"] = @"completed";
-                                                             [self.task saveInBackground];
-                                                             [self updateView];
-                                                         }];
-        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             NSLog(@"cancelCompletion");
-                                                         }];
-        [alert addAction:okAction];
-        [alert addAction:noAction];
-        
-        [self presentViewController:alert animated:YES completion:nil];
+        if ([btn.currentTitle isEqualToString:@"Complete"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm Completion of Mission"
+                                                                           message:@"Are you sure that you have completed the Mission?\nOnce confirmed you will no longer be able to change the status!"
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 NSLog(@"completedConfirmed");
+                                                                 self.task[@"completedAt"] = [NSDate date];
+                                                                 self.task[@"completionStatus"] = @"completed";
+                                                                 [self.task saveInBackground];
+                                                                 [self updateView];
+                                                             }];
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 NSLog(@"cancelCompletion");
+                                                             }];
+            [alert addAction:okAction];
+            [alert addAction:noAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        } else if ([btn.currentTitle isEqualToString:@"Contact missioner"]) {
+            [self contact:self.task[@"missioner"]];
+        }
     }
     
     
@@ -269,30 +305,36 @@
 }
 - (IBAction)onTapPayButton:(id)sender {
     UIButton *btn = (UIButton *) sender;
-    if (btn.hidden == NO && [btn.currentTitle isEqualToString:@"Confirm & Pay"]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Continue to pay?"
-                                                                       message:@"You will continue to paying the missioner once you confirm!"
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             NSLog(@"Confirm to pay");
-                                                             self.task[@"completionStatus"] = @"pay";
-                                                             [self.task saveInBackground];
-                                                             [self updateView];
-                                                         }];
-        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             NSLog(@"cancel to pay");
-                                                         }];
-        [alert addAction:okAction];
-        [alert addAction:noAction];
-        
-        [self presentViewController:alert animated:YES completion:nil];
+    if (btn.hidden == NO) {
+        if ([btn.currentTitle isEqualToString:@"Confirm & Pay"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Continue to pay?"
+                                                                           message:@"You will continue to paying the missioner once you confirm!"
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 NSLog(@"Confirm to pay");
+                                                                 self.task[@"completionStatus"] = @"pay";
+                                                                 [self.task saveInBackground];
+                                                                 [self updateView];
+                                                             }];
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 NSLog(@"cancel to pay");
+                                                             }];
+            [alert addAction:okAction];
+            [alert addAction:noAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        } else if ([btn.currentTitle isEqualToString:@"Contact requester"]) {
+            [self contact:self.task[@"requester"]];
+        }
     }
+    
+    
 }
 
 - (void) showCancelRequestButton {
@@ -387,6 +429,15 @@
         [self.completeIconView setImage:[UIImage imageNamed:@"anyStatus"]];
         [self.payIconView setImage:[UIImage imageNamed:@"currentStatus"]];
     }
+    
+}
+
+
+- (void) contact:(PFUser *) otherUser {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Message" bundle:nil];
+    ChatMessagesViewController *chatMessagesVC = (ChatMessagesViewController *)[storyboard instantiateViewControllerWithIdentifier:@"chatMessages"];
+    chatMessagesVC.contact = otherUser;
+    [self presentViewController:chatMessagesVC animated:YES completion:nil];
     
 }
 

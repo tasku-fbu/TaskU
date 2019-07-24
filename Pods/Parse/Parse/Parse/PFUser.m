@@ -133,8 +133,10 @@ static BOOL revocableSessionEnabled_;
                       @"Cannot initialize a PFUser with a custom class name.");
 }
 
+
 // Checks the properties on the object before saving.
 - (BOOL)_checkSaveParametersWithCurrentUser:(PFUser *)currentUser error:(NSError **)error {
+    
     @synchronized([self lock]) {
         PFPreconditionBailAndSetError(self.objectId || self._lazy,
                                       error,
@@ -147,6 +149,7 @@ static BOOL revocableSessionEnabled_;
                                       NO,
                                       @"User cannot be saved unless they have been authenticated via logIn or signUp");
     }
+     
     return YES;
 }
 
