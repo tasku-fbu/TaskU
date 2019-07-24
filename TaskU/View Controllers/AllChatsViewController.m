@@ -9,7 +9,7 @@
 #import <Parse/Parse.h>
 #import "AllChatsViewController.h"
 #import "Message.h"
-
+#import "ContactCell.h"
 
 @interface AllChatsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -26,6 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    
     [self getAllMessages];
 }
 
@@ -66,6 +70,7 @@
 }
 
 - (void) processMessages:(NSArray *) messages{
+    NSMutableDictionary *dictionary = [NSMutableDictionary new];
     for (Message *message in messages) {
         PFUser *sender = message[@"sender"];
         PFUser *receiver = message[@"receiver"];
@@ -75,18 +80,48 @@
         } else {
             contact = sender;
         }
+        
         NSValue *myKey = [NSValue valueWithNonretainedObject:contact];
         
-        if ([self.messagesByContact objectForKey:myKey]) {
-            NSMutableArray *messagesForContact = [self.messagesByContact objectForKey:myKey];
+        if ([dictionary objectForKey:myKey]) {
+            NSMutableArray *messagesForContact = [dictionary objectForKey:myKey];
             [messagesForContact addObject:message];
         } else {
             NSMutableArray *messagesForContact = [NSMutableArray arrayWithObjects:message, nil];
-            [self.messagesByContact setObject:messagesForContact forKey:myKey];
+            [dictionary setObject:messagesForContact forKey:myKey];
         }
     }
     
-    NSLog(@"%@",self.messagesByContact);
+    
+    //sort the contacts by latest conversation
+    NSArray* sortedKeys = [dictionary keysSortedByValueUsingComparator:^(id first, id second) {
+        Message *latestMessage1 = [(NSMutableArray*)first lastObject];
+        Message *latestMessage2 = [(NSMutableArray*)second lastObject];
+        NSDate *date1 = latestMessage1[@"createdAt"];
+        NSDate *date2 = latestMessage2[@"createdAt"];
+        if ([date1 compare:date2] == NSOrderedAscending) {
+            return (NSComparisonResult)NSOrderedDescending;
+        } else {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+    }];
+    
+    for (NSValue *contact in sortedKeys) {
+        NSArray *tempMessages = [dictionary objectForKey:contact];
+        [self.messagesByContact setObject:tempMessages forKey:contact];
+    }
+    
+    //NSLog(@"%@",self.messagesByContact);
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSArray *keyArr = self.messagesByContact.allKeys;
+    return keyArr.count;
 }
 
 
@@ -99,5 +134,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
 
 @end
