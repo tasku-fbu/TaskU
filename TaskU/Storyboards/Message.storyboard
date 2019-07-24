@@ -106,8 +106,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="YourTextLabel" destination="tcJ-Xh-h1O" id="6gz-zM-Qsf"/>
                                             <outlet property="yourImageView" destination="QXu-q0-aRG" id="Vwo-ra-M4G"/>
+                                            <outlet property="yourTextLabel" destination="tcJ-Xh-h1O" id="VjX-ju-fuI"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myMessage" rowHeight="113" id="cyQ-cX-FzT" customClass="MyMessageCell">

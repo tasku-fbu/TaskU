@@ -8,11 +8,14 @@
 
 #import "ChatMessagesViewController.h"
 #import "Message.h"
+#import "MyMessageCell.h"
+#import "YourMessageCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ChatMessagesViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
 @property (weak, nonatomic) IBOutlet UITextView *sendTextView;
-
+@property (strong, nonatomic) NSMutableArray *messages;
 
 @end
 
@@ -25,7 +28,14 @@
 }
 
 - (void) getMessages{
+    
+    
 }
+
+
+
+
+
 
 - (IBAction)onClickSend:(id)sender {
     NSString *text = self.sendTextView.text;
@@ -50,5 +60,37 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    Message *message = self.messages[indexPath.row];
+    PFUser *me = [PFUser currentUser];
+    PFUser *you = self.receiver;
+    if ([message.sender isEqual:me]) {
+        MyMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myMessage"];
+        
+        PFFileObject *imageFile = me[@"profileImage"];
+        NSString *urlString = imageFile.url;
+        [cell.myImageView setImageWithURL:[NSURL URLWithString:urlString]];
+        
+        cell.myTextLabel.text = message.text;
+        
+        return cell;
+    } else {
+        YourMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"yourMessage"];
+        PFFileObject *imageFile = you[@"profileImage"];
+        NSString *urlString = imageFile.url;
+        [cell.yourImageView setImageWithURL:[NSURL URLWithString:urlString]];
+        
+        cell.yourTextLabel.text = message.text;
+        
+        return cell;
+    }
+    
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.messages.count;
+}
+
 
 @end

@@ -437,7 +437,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Message" bundle:nil];
     ChatMessagesViewController *chatMessagesVC = (ChatMessagesViewController *)[storyboard instantiateViewControllerWithIdentifier:@"chatMessages"];
     chatMessagesVC.receiver = otherUser;
-    
+    [self presentViewController:chatMessagesVC animated:YES completion:nil];
     
 }
 
