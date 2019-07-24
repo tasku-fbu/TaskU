@@ -436,7 +436,7 @@
 - (void) contact:(PFUser *) otherUser {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Message" bundle:nil];
     ChatMessagesViewController *chatMessagesVC = (ChatMessagesViewController *)[storyboard instantiateViewControllerWithIdentifier:@"chatMessages"];
-    chatMessagesVC.receiver = otherUser;
+    chatMessagesVC.contact = otherUser;
     [self presentViewController:chatMessagesVC animated:YES completion:nil];
     
 }
