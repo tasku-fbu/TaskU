@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YourMessageCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *yourImageView;
+@property (weak, nonatomic) IBOutlet UILabel *YourTextLabel;
 
 @end
 

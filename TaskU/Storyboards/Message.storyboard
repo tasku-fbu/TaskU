@@ -50,6 +50,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactProfileImageView" destination="DHB-53-EkH" id="zu2-yu-lnp"/>
+                                            <outlet property="contactUsernameLabel" destination="3Yn-eb-LD3" id="ogY-k1-RRd"/>
+                                            <outlet property="latestTextLabel" destination="hvj-bC-jqU" id="C9E-I7-Wem"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -80,7 +85,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourMessage" rowHeight="99" id="fno-GG-ed4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourMessage" rowHeight="99" id="fno-GG-ed4" customClass="YourMessageCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fno-GG-ed4" id="aGI-37-n8n">
@@ -100,8 +105,12 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="YourTextLabel" destination="tcJ-Xh-h1O" id="6gz-zM-Qsf"/>
+                                            <outlet property="yourImageView" destination="QXu-q0-aRG" id="Vwo-ra-M4G"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myMessage" rowHeight="113" id="cyQ-cX-FzT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myMessage" rowHeight="113" id="cyQ-cX-FzT" customClass="MyMessageCell">
                                         <rect key="frame" x="0.0" y="127" width="414" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cyQ-cX-FzT" id="L6E-lE-5wU">
@@ -121,6 +130,10 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myImageView" destination="78p-YB-EXy" id="ZBd-N7-wco"/>
+                                            <outlet property="myTextLabel" destination="TdX-ed-CoQ" id="vhv-I5-Z9A"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
