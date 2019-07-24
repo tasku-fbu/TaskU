@@ -10,6 +10,7 @@
 #import "AllChatsViewController.h"
 #import "Message.h"
 #import "ContactCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface AllChatsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -75,13 +76,13 @@
         PFUser *sender = message[@"sender"];
         PFUser *receiver = message[@"receiver"];
         PFUser *contact;
-        if ( [sender isEqual:[PFUser currentUser]]) {
+        if ( [sender.objectId isEqual:[PFUser currentUser].objectId]) {
             contact = receiver;
         } else {
             contact = sender;
         }
         
-        NSValue *myKey = [NSValue valueWithNonretainedObject:contact];
+        NSString *myKey = contact.objectId;
         
         if ([dictionary objectForKey:myKey]) {
             NSMutableArray *messagesForContact = [dictionary objectForKey:myKey];
@@ -106,16 +107,32 @@
         }
     }];
     
-    for (NSValue *contact in sortedKeys) {
+    for (NSString *contact in sortedKeys) {
         NSArray *tempMessages = [dictionary objectForKey:contact];
         [self.messagesByContact setObject:tempMessages forKey:contact];
     }
     
-    //NSLog(@"%@",self.messagesByContact);
+    NSLog(@"%@",self.messagesByContact);
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
+    NSString *objectIdContact = self.messagesByContact.allKeys[indexPath.row];
+    
+    
+    PFQuery * query = [PFUser query];
+    [query whereKey:@"objectId" equalTo:objectIdContact];
+    NSArray * results = [query findObjects];
+    PFUser *contact = [results firstObject];
+    
+    cell.contactUsernameLabel.text = contact[@"username"];
+    PFFileObject *imageFile = contact[@"profileImage"];
+    NSString *urlString = imageFile.url;
+    [cell.contactProfileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+    
+    NSArray *tempMessages = [self.messagesByContact objectForKey:objectIdContact];
+    Message *latest = [tempMessages lastObject];
+    cell.latestTextLabel.text = latest[@"text"];
     return cell;
 }
 
