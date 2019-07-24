@@ -9,6 +9,8 @@
 #import "ChatMessagesViewController.h"
 
 @interface ChatMessagesViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *messageTable;
+@property (weak, nonatomic) IBOutlet UITextView *sendTextView;
 
 @end
 
@@ -17,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)onClickSend:(id)sender {
 }
 
 /*

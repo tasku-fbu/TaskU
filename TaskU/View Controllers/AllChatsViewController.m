@@ -9,6 +9,7 @@
 #import "AllChatsViewController.h"
 
 @interface AllChatsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 

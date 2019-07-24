@@ -59,6 +59,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="ulr-Q4-r78"/>
                     <connections>
+                        <outlet property="tableView" destination="7D7-2n-r04" id="d73-ZN-rA4"/>
                         <segue destination="OKb-9N-wT9" kind="show" identifier="showChatMessages" id="0Yy-fS-OCE"/>
                     </connections>
                 </viewController>
@@ -134,11 +135,18 @@
                                 <rect key="frame" x="297" y="772" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="onClickSend:" destination="OKb-9N-wT9" eventType="touchUpInside" id="EsW-ax-fXy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YYr-gt-mz5"/>
                     </view>
+                    <connections>
+                        <outlet property="messageTable" destination="Uqh-tJ-R78" id="hfQ-Bp-88p"/>
+                        <outlet property="sendTextView" destination="nib-gf-YC4" id="f5U-ip-drY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frQ-yk-pUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
