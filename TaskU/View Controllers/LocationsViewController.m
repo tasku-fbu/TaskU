@@ -62,17 +62,6 @@ static NSString * const clientSecret = @"W2AOE1TYC4MHK5SZYOUGX0J3LVRALMPB4CXT3ZH
     [self.delegate locationsViewController:self didPickLocationWithLatitude:(lat) longitude:(lng)];
     
 }
-//setting delegate in prepare for segue questioupd
-
-- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    NSString *newText = [searchBar.text stringByReplacingCharactersInRange:range withString:text];
-    [self fetchLocationsWithQuery:newText nearCity:@"San Francisco"];
-    return true;
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [self fetchLocationsWithQuery:searchBar.text nearCity:@"San Francisco"];
-}
 
 - (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
     NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
@@ -92,6 +81,18 @@ static NSString * const clientSecret = @"W2AOE1TYC4MHK5SZYOUGX0J3LVRALMPB4CXT3ZH
         }
     }];
     [task resume];
+}
+
+//setting delegate in prepare for segue questioupd
+
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    NSString *newText = [searchBar.text stringByReplacingCharactersInRange:range withString:text];
+    [self fetchLocationsWithQuery:newText nearCity:@"San Francisco"];
+    return true;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self fetchLocationsWithQuery:searchBar.text nearCity:@"San Francisco"];
 }
 
 @end

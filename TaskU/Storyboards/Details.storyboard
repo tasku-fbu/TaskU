@@ -631,17 +631,30 @@
                     <tabBarItem key="tabBarItem" title="status" id="Bv2-3S-izN"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
+                        <outlet property="acceptButton" destination="PW9-tv-wJG" id="iia-is-4Ju"/>
+                        <outlet property="acceptIconView" destination="oKY-GL-GPE" id="5BR-pf-Icy"/>
+                        <outlet property="acceptLabel" destination="fLA-YO-NPe" id="Ekc-bF-3LS"/>
+                        <outlet property="cancelRequestButton" destination="hB6-Yf-58L" id="6e7-re-LvL"/>
+                        <outlet property="completeButton" destination="3Rb-qT-Mya" id="dlP-A6-GCB"/>
+                        <outlet property="completeIconView" destination="xdh-5f-gFg" id="w3u-tV-7z3"/>
+                        <outlet property="completeLabel" destination="okU-ry-9de" id="yrm-Sa-K3c"/>
+                        <outlet property="createIconView" destination="Myf-aK-PXu" id="HYE-Au-P3Z"/>
+                        <outlet property="createLabel" destination="bRU-aB-WH0" id="1gl-Ue-M45"/>
                         <outlet property="mapView" destination="Bri-Eb-avc" id="o9R-ro-3bU"/>
+                        <outlet property="payButton" destination="xjH-eZ-tjw" id="p8o-bD-9wE"/>
+                        <outlet property="payIconView" destination="3TF-cZ-Cp8" id="w69-RY-eNm"/>
+                        <outlet property="payLabel" destination="6sM-nT-wD8" id="fi9-8k-ng6"/>
+                        <segue destination="qdL-Uy-idR" kind="show" identifier="fullMapSegue" id="BwY-gp-y6A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4o9-rK-NHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="e8j-v0-7Sm">
                     <connections>
-                        <segue destination="qdL-Uy-idR" kind="show" id="nA7-VM-dGq"/>
+                        <action selector="tapMapAction:" destination="KUf-ky-yGu" id="Kaq-HR-TrN"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2071" y="1105"/>
+            <point key="canvasLocation" x="-2020.289855072464" y="1109.5982142857142"/>
         </scene>
         <!--Locations View Controller-->
         <scene sceneID="SUk-L0-DY5">
@@ -700,9 +713,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addressLabel" destination="3sK-Ly-Brk" id="IW4-GB-afV"/>
-                                            <outlet property="categoryImageView" destination="6Bm-kD-a2F" id="xjv-rO-QyL"/>
-                                            <outlet property="nameLabel" destination="NeR-YP-GBO" id="aj0-qs-vcY"/>
+                                            <outlet property="addressLabel" destination="3sK-Ly-Brk" id="DE6-zO-8R2"/>
+                                            <outlet property="categoryImageView" destination="6Bm-kD-a2F" id="SEN-os-X5L"/>
+                                            <outlet property="nameLabel" destination="NeR-YP-GBO" id="cZF-CD-pB9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

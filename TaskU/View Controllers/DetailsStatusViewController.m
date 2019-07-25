@@ -12,6 +12,7 @@
 
 #import <MapKit/MapKit.h>
 #import "LocationsViewController.h"
+#import "Task.h"
 
 
 @interface DetailsStatusViewController ()
@@ -27,17 +28,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *acceptIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *completeIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *payIconView;
-
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
 @end
-
+static NSString *const fullMapSegueIdentifier = @"fullMapSegue";
 
 
 
 
 @implementation DetailsStatusViewController
-
 
 
 
@@ -53,6 +51,25 @@
     [self.mapView setRegion:howardU animated:false];
 }
 
+- (IBAction)tapMapAction:(id)sender {
+    [self performSegueWithIdentifier:fullMapSegueIdentifier sender:nil];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+    if (annotationView == nil) {
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+        annotationView.canShowCallout = true;
+        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+    }
+    
+    UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
+    imageView.image = [UIImage imageNamed:@"location"];
+    
+    return annotationView;
+}
+
+
 - (void) showCreateLabel {
     PFUser *requester = self.task[@"requester"];
     NSString *username = requester.username;
@@ -61,14 +78,14 @@
     NSString *display = [NSString stringWithFormat:@"Created by requester @%@ at %@", username, dateString];
     self.createLabel.text = display;
 }
-
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Passes the selected object to the new view controller.
     
     UINavigationController *navigationController = [segue destinationViewController];
     LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
     LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
-}
+}*/
 
 - (void) showAcceptLabel {
     PFUser *missioner = self.task[@"missioner"];

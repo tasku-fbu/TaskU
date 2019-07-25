@@ -57,7 +57,8 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     PFUser *loggedInUser = [PFUser currentUser];
     self.userLocation = loggedInUser[@"university"]; //gets the university of current user
     [self.LocationButton setTitle:self.userLocation forState:UIControlStateSelected];
-}/*
+}
+/*
   #pragma mark - collectionview cell datasource and delegate functions implementation
   - (IBAction)profileButtonAction:(id)sender {
   [self animateView];
@@ -96,6 +97,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
   }
   
   */
+
 #pragma mark - collectionview cell datasource and delegate functions implementation
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -160,12 +162,6 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
     }];
-    
-}
-
-#pragma mark - messaging
-- (IBAction)openMessageChatAction:(id)sender {
-    [self performSegueWithIdentifier: messageSegueIdentifier sender:nil];
     
 }
 
