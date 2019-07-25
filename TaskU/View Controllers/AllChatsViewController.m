@@ -149,11 +149,6 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"showMessages"]) {
         ContactCell *tappedCell = (ContactCell*)sender;
-        
-        //NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-        //NSString *objectIdContact = self.messagesByContact.allKeys[indexPath.row];
-        //NSArray *tempMessages = [self.messagesByContact objectForKey:objectIdContact];
-        
         ChatMessagesViewController *chatMessagesController = [segue destinationViewController];
         chatMessagesController.contact = tappedCell.contact;
         
