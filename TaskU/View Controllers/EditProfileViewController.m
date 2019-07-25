@@ -133,6 +133,19 @@
 
 }
 
+- (IBAction)onTapCash:(UIButton *)sender {
+    // Call the Cash App app from TaskU
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *URL = [NSURL URLWithString:@"squarecash://"];
+    [application openURL:URL options:@{} completionHandler:^(BOOL success) {
+        if (success) {
+            NSLog(@"Opened url");
+        }
+    }];
+     
+    
+}
 
 
 @end
