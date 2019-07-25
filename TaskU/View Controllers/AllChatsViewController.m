@@ -28,7 +28,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self getAllMessages];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
     
 }
 
