@@ -85,17 +85,22 @@
         
         NSString *myKey = contact.objectId;
         
+        /*
         if ([dictionary objectForKey:myKey]) {
             NSMutableArray *messagesForContact = [dictionary objectForKey:myKey];
             [messagesForContact addObject:message];
+            
         } else {
             NSMutableArray *messagesForContact = [NSMutableArray arrayWithObjects:message, nil];
             [dictionary setObject:messagesForContact forKey:myKey];
         }
+         */
+        [dictionary setObject:message forKey:myKey];
     }
     
     
     //sort the contacts by latest conversation
+    /*
     NSArray* sortedKeys = [dictionary keysSortedByValueUsingComparator:^(id first, id second) {
         Message *latestMessage1 = [(NSMutableArray*)first lastObject];
         Message *latestMessage2 = [(NSMutableArray*)second lastObject];
@@ -107,10 +112,22 @@
             return (NSComparisonResult)NSOrderedAscending;
         }
     }];
+     */
+    NSArray* sortedKeys = [dictionary keysSortedByValueUsingComparator:^(id first, id second) {
+        Message *latestMessage1 = (Message*) first;
+        Message *latestMessage2 = (Message*) second;
+        NSDate *date1 = latestMessage1[@"createdAt"];
+        NSDate *date2 = latestMessage2[@"createdAt"];
+        if ([date1 compare:date2] == NSOrderedAscending) {
+            return (NSComparisonResult)NSOrderedDescending;
+        } else {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+    }];
     
     for (NSString *contact in sortedKeys) {
-        NSArray *tempMessages = [dictionary objectForKey:contact];
-        [self.messagesByContact setObject:tempMessages forKey:contact];
+        NSArray *tempMessage = [dictionary objectForKey:contact];
+        [self.messagesByContact setObject:tempMessage forKey:contact];
     }
     
     //NSLog(@"%@",self.messagesByContact);
@@ -131,8 +148,11 @@
     NSString *urlString = imageFile.url;
     [cell.contactProfileImageView setImageWithURL:[NSURL URLWithString:urlString]];
     
+    /*
     NSArray *tempMessages = [self.messagesByContact objectForKey:objectIdContact];
     Message *latest = [tempMessages lastObject];
+     */
+    Message *latest = [self.messagesByContact objectForKey:objectIdContact];
     cell.latestTextLabel.text = latest[@"text"];
     
     cell.contact = contact;
