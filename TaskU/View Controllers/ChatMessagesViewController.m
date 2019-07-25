@@ -196,6 +196,9 @@
         //[self.messageTable setContentOffset:bottomOffset animated:NO];
     }
 }
+- (IBAction)onTapOutsideTextView:(id)sender {
+    [self.view endEditing:YES];
+}
 
 
 /*

@@ -77,8 +77,10 @@
         PFUser *contact;
         if ( [sender.objectId isEqual:[PFUser currentUser].objectId]) {
             contact = receiver;
+            
         } else {
             contact = sender;
+            
         }
         
         NSString *myKey = contact.objectId;
@@ -145,6 +147,9 @@
 }
 
 
+- (void) viewDidDisappear:(BOOL)animated {
+    [self.timer invalidate];
+}
 
 #pragma mark - Navigation
 

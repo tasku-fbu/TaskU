@@ -266,6 +266,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="mfe-2K-rgm" firstAttribute="top" secondItem="YYr-gt-mz5" secondAttribute="top" constant="8" id="1CL-aC-1yS"/>
                             <constraint firstItem="nib-gf-YC4" firstAttribute="top" secondItem="Uqh-tJ-R78" secondAttribute="bottom" constant="8" id="5DV-c8-ds3"/>
@@ -282,6 +283,9 @@
                             <constraint firstItem="yur-AS-mff" firstAttribute="centerX" secondItem="ee3-xR-Kgy" secondAttribute="centerX" id="tFk-H9-hSf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YYr-gt-mz5"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="RKw-09-dPz" appends="YES" id="Ykg-Ks-jHV"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="SJo-mp-r4t"/>
                     <connections>
@@ -291,6 +295,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frQ-yk-pUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="RKw-09-dPz">
+                    <connections>
+                        <action selector="onTapOutsideTextView:" destination="OKb-9N-wT9" id="SMj-kz-ZX0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1311.5942028985507" y="841.40625"/>
         </scene>
