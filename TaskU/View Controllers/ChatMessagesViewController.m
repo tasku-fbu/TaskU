@@ -124,6 +124,8 @@
         [cell.myImageView setImageWithURL:[NSURL URLWithString:urlString]];
         
         cell.myTextLabel.text = message.text;
+        cell.bubbleView.layer.cornerRadius = 12;
+        cell.bubbleView.clipsToBounds = true;
         
         return cell;
     } else {
@@ -133,6 +135,8 @@
         [cell.yourImageView setImageWithURL:[NSURL URLWithString:urlString]];
         
         cell.yourTextLabel.text = message.text;
+        cell.bubbleView.layer.cornerRadius = 12;
+        cell.bubbleView.clipsToBounds = true;
         
         return cell;
     }
