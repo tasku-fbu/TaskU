@@ -140,13 +140,28 @@
     
     PFQuery * query = [PFUser query];
     [query whereKey:@"objectId" equalTo:objectIdContact];
-    NSArray * results = [query findObjects];
-    PFUser *contact = [results firstObject];
     
-    cell.contactUsernameLabel.text = contact[@"username"];
-    PFFileObject *imageFile = contact[@"profileImage"];
-    NSString *urlString = imageFile.url;
-    [cell.contactProfileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+        if (users != nil) {
+            
+            PFUser *contact = [users firstObject];
+            cell.contactUsernameLabel.text = contact[@"username"];
+            PFFileObject *imageFile = contact[@"profileImage"];
+            NSString *urlString = imageFile.url;
+            [cell.contactProfileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+            cell.contact = contact;
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        
+    }];
+    
+    
+    
+    
+    
+    
     
     /*
     NSArray *tempMessages = [self.messagesByContact objectForKey:objectIdContact];
@@ -155,7 +170,7 @@
     Message *latest = [self.messagesByContact objectForKey:objectIdContact];
     cell.latestTextLabel.text = latest[@"text"];
     
-    cell.contact = contact;
+    
     return cell;
 }
 
