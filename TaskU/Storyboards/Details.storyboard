@@ -497,6 +497,22 @@
             </objects>
             <point key="canvasLocation" x="-32" y="1047"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hOH-Z8-hfW">
+            <objects>
+                <navigationController id="DLf-yv-5gb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6UO-Rm-Zfa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qdL-Uy-idR" kind="relationship" relationship="rootViewController" id="BQa-lc-ijF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jxu-za-iwc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2829" y="1655"/>
+        </scene>
         <!--status-->
         <scene sceneID="TN0-lH-LVO">
             <objects>
@@ -644,7 +660,7 @@
                         <outlet property="payButton" destination="xjH-eZ-tjw" id="p8o-bD-9wE"/>
                         <outlet property="payIconView" destination="3TF-cZ-Cp8" id="w69-RY-eNm"/>
                         <outlet property="payLabel" destination="6sM-nT-wD8" id="fi9-8k-ng6"/>
-                        <segue destination="qdL-Uy-idR" kind="show" identifier="fullMapSegue" id="BwY-gp-y6A"/>
+                        <segue destination="DLf-yv-5gb" kind="show" identifier="searchLocationSegue" id="2Jo-FG-q0p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4o9-rK-NHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,7 +672,7 @@
             </objects>
             <point key="canvasLocation" x="-2020.289855072464" y="1109.5982142857142"/>
         </scene>
-        <!--Locations View Controller-->
+        <!--Search-->
         <scene sceneID="SUk-L0-DY5">
             <objects>
                 <viewController id="qdL-Uy-idR" customClass="LocationsViewController" sceneMemberID="viewController">
@@ -665,7 +681,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MAG-4q-1nW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="Shi-Pc-WlI">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -730,14 +746,27 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cuk-yg-brm"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Search" id="TWY-sj-Oha">
+                        <barButtonItem key="backBarButtonItem" title="isms" id="k1D-KJ-Fl2"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="OnD-mD-cGM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CDF-cx-Ls5">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt;Back"/>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="qdL-Uy-idR" eventType="touchUpInside" id="GnX-Pu-fAb"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="Shi-Pc-WlI" id="mVs-KX-kP1"/>
+                        <outlet property="searchBar" destination="Shi-Pc-WlI" id="eJx-1p-ZEq"/>
                         <outlet property="tableView" destination="MAG-4q-1nW" id="DUe-S1-OhY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9l-rE-fNG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3088" y="1339"/>
+            <point key="canvasLocation" x="-3726" y="1655"/>
         </scene>
     </scenes>
     <resources>

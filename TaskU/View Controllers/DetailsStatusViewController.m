@@ -29,14 +29,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *completeIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *payIconView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+//@property (weak, nonatomic) NSString *endingAddress;
+//@property (weak, nonatomic) NSString *startingAddress;
 @end
-static NSString *const fullMapSegueIdentifier = @"fullMapSegue";
-
-
-
+static NSString *const fullMapSegueIdentifier = @"searchLocationSegue";
 
 @implementation DetailsStatusViewController
-
 
 
 - (void)viewDidLoad {
@@ -46,9 +45,16 @@ static NSString *const fullMapSegueIdentifier = @"fullMapSegue";
     [self showCreateLabel];
     [self updateView];
     
+    
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
     MKCoordinateRegion howardU = MKCoordinateRegionMake(CLLocationCoordinate2DMake(38.922777, -77.019445), MKCoordinateSpanMake(0.05, 0.05)); //Have set default map to Howard University
     [self.mapView setRegion:howardU animated:false];
+    
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    //annotation.coordinate = CLLocationCoordinate2DMake((double)(38.922777),(double)( -77.019445));
+    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
+    annotation.title = @"Picture!";
+    [self.mapView addAnnotation:annotation];
 }
 
 - (IBAction)tapMapAction:(id)sender {
@@ -69,6 +75,18 @@ static NSString *const fullMapSegueIdentifier = @"fullMapSegue";
     return annotationView;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Passes the selected object to the new view controller.
+    
+    UINavigationController *navigationController = [segue destinationViewController];
+    LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
+    LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
+}
+
+
+- (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
+    
+}
 
 - (void) showCreateLabel {
     PFUser *requester = self.task[@"requester"];
@@ -78,14 +96,8 @@ static NSString *const fullMapSegueIdentifier = @"fullMapSegue";
     NSString *display = [NSString stringWithFormat:@"Created by requester @%@ at %@", username, dateString];
     self.createLabel.text = display;
 }
-/*
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Passes the selected object to the new view controller.
-    
-    UINavigationController *navigationController = [segue destinationViewController];
-    LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
-    LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
-}*/
+
+
 
 - (void) showAcceptLabel {
     PFUser *missioner = self.task[@"missioner"];
@@ -479,5 +491,8 @@ static NSString *const fullMapSegueIdentifier = @"fullMapSegue";
  // Pass the selected object to the new view controller.
  }
  */
+
+
+
 
 @end
