@@ -57,45 +57,47 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     PFUser *loggedInUser = [PFUser currentUser];
     self.userLocation = loggedInUser[@"university"]; //gets the university of current user
     [self.LocationButton setTitle:self.userLocation forState:UIControlStateSelected];
-}/*
-  #pragma mark - collectionview cell datasource and delegate functions implementation
-  - (IBAction)profileButtonAction:(id)sender {
-  [self animateView];
-  }
-  - (void) createInitialSlideView{
-  self.leftViewToSlideIn = [[ProfileSlideView alloc] initWithFrame:CGRectMake(0, 0, 0 , CGRectGetWidth(self.view.frame))];
-  [self.leftViewToSlideIn loadView];
-  self.leftViewToSlideIn.backgroundColor = [UIColor whiteColor];
-  [self.view addSubview:self.leftViewToSlideIn];
-  }
-  
-  - (void) buttonClicked: (id)sender
-  {
-  [self animateView];
-  
-  }
-  
-  - (void) animateView{
-  [UIView animateWithDuration: 0.75 animations:^{
-  self.leftViewToSlideIn.frame = CGRectMake(0,CGRectGetWidth(self.view.frame)-330, 280 , CGRectGetWidth(self.view.frame));
-  }];
-  }
-  
-  
-  - (void) didTapOnPageView:(UITapGestureRecognizer *)sender{
-  // TODO: Call method on delegate
-  [self animateViewBackwards];
-  
-  }
-  
-  - (void) animateViewBackwards{
-  [UIView animateWithDuration: 0.75 animations:^{
-  //self.leftViewToSlideIn.frame = CGRectMake(CGRectGetWidth(self.view.frame), 0, 0 , 400);
-  self.leftViewToSlideIn.frame = CGRectMake(4000, 0, 0, 400);
-  }];
-  }
-  
-  */
+}
+/*
+ #pragma mark - collectionview cell datasource and delegate functions implementation
+ - (IBAction)profileButtonAction:(id)sender {
+ [self animateView];
+ }
+ - (void) createInitialSlideView{
+ self.leftViewToSlideIn = [[ProfileSlideView alloc] initWithFrame:CGRectMake(0, 0, 0 , CGRectGetWidth(self.view.frame))];
+ [self.leftViewToSlideIn loadView];
+ self.leftViewToSlideIn.backgroundColor = [UIColor whiteColor];
+ [self.view addSubview:self.leftViewToSlideIn];
+ }
+ 
+ - (void) buttonClicked: (id)sender
+ {
+ [self animateView];
+ 
+ }
+ 
+ - (void) animateView{
+ [UIView animateWithDuration: 0.75 animations:^{
+ self.leftViewToSlideIn.frame = CGRectMake(0,CGRectGetWidth(self.view.frame)-330, 280 , CGRectGetWidth(self.view.frame));
+ }];
+ }
+ 
+ 
+ - (void) didTapOnPageView:(UITapGestureRecognizer *)sender{
+ // TODO: Call method on delegate
+ [self animateViewBackwards];
+ 
+ }
+ 
+ - (void) animateViewBackwards{
+ [UIView animateWithDuration: 0.75 animations:^{
+ //self.leftViewToSlideIn.frame = CGRectMake(CGRectGetWidth(self.view.frame), 0, 0 , 400);
+ self.leftViewToSlideIn.frame = CGRectMake(4000, 0, 0, 400);
+ }];
+ }
+ 
+ */
+
 #pragma mark - collectionview cell datasource and delegate functions implementation
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -160,12 +162,6 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
     }];
-    
-}
-
-#pragma mark - messaging
-- (IBAction)openMessageChatAction:(id)sender {
-    [self performSegueWithIdentifier: messageSegueIdentifier sender:nil];
     
 }
 
