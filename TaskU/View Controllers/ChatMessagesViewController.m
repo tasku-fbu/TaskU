@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.messageTable.delegate = self;
+    self.messageTable.dataSource = self;
     self.messageTable.rowHeight = UITableViewAutomaticDimension;
     self.sendTextView.layer.borderWidth = 2.0f;
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
@@ -56,7 +58,7 @@
         if (messages != nil) {
             // do something with the array of object returned by the call
             self.messages = [messages mutableCopy];
-            
+            NSLog(@"%@",self.messages);
             [self.messageTable reloadData];
             
             
@@ -110,7 +112,7 @@
     Message *message = self.messages[indexPath.row];
     PFUser *me = [PFUser currentUser];
     PFUser *you = self.contact;
-    if ([message.sender isEqual:me]) {
+    if ([message.sender.objectId isEqualToString:me.objectId]) {
         MyMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myMessage"];
         
         PFFileObject *imageFile = me[@"profileImage"];
