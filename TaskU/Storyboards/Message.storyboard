@@ -100,7 +100,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f2o-iI-YTW">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f2o-iI-YTW">
                                 <rect key="frame" x="188.5" y="344" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
@@ -241,6 +241,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-XC-yKY">
+                                <rect key="frame" x="188.5" y="317" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nib-gf-YC4">
                                 <rect key="frame" x="0.0" y="577" width="414" height="80"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -281,7 +285,9 @@
                             <constraint firstItem="Uqh-tJ-R78" firstAttribute="top" secondItem="mfe-2K-rgm" secondAttribute="bottom" constant="8" id="AGR-zI-qF1"/>
                             <constraint firstItem="yur-AS-mff" firstAttribute="centerY" secondItem="mfe-2K-rgm" secondAttribute="centerY" id="KF5-PI-neq"/>
                             <constraint firstItem="Uqh-tJ-R78" firstAttribute="trailing" secondItem="YYr-gt-mz5" secondAttribute="trailing" id="M39-2R-bn6"/>
+                            <constraint firstItem="T2R-XC-yKY" firstAttribute="centerY" secondItem="Uqh-tJ-R78" secondAttribute="centerY" id="RHA-UT-Dwg"/>
                             <constraint firstItem="9VS-S1-AbT" firstAttribute="top" secondItem="nib-gf-YC4" secondAttribute="bottom" constant="8" id="Vzg-ET-TaN"/>
+                            <constraint firstItem="T2R-XC-yKY" firstAttribute="centerX" secondItem="ee3-xR-Kgy" secondAttribute="centerX" id="XzR-3N-XgR"/>
                             <constraint firstAttribute="trailing" secondItem="9VS-S1-AbT" secondAttribute="trailing" constant="30" id="Z95-rz-TUj"/>
                             <constraint firstItem="mfe-2K-rgm" firstAttribute="leading" secondItem="YYr-gt-mz5" secondAttribute="leading" constant="20" id="ZaE-h0-J0I"/>
                             <constraint firstAttribute="bottom" secondItem="9VS-S1-AbT" secondAttribute="bottom" constant="30" id="faP-Z9-JdG"/>
@@ -296,6 +302,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SJo-mp-r4t"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="T2R-XC-yKY" id="khU-pg-Qfm"/>
                         <outlet property="contactLabel" destination="yur-AS-mff" id="LiN-4P-KzQ"/>
                         <outlet property="messageTable" destination="Uqh-tJ-R78" id="hfQ-Bp-88p"/>
                         <outlet property="sendTextView" destination="nib-gf-YC4" id="f5U-ip-drY"/>
