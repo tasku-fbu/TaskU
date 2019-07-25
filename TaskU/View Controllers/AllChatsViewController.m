@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableDictionary *messagesByContact;
 @property (weak, nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation AllChatsViewController
@@ -30,6 +31,11 @@
     self.tableView.dataSource = self;
     [self getAllMessages];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getAllMessages) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self.activityIndicator startAnimating];
     
 }
 
@@ -59,8 +65,8 @@
                 [self processMessages: messages];
                 
                 [self.tableView reloadData];
-                //[self.refreshControl endRefreshing];
-                //[self.activityIndicator stopAnimating];
+                [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
