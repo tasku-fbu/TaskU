@@ -26,9 +26,10 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.tableView.dataSource = self;
-    //self.tableView.delegate = self;
-    //self.searchBar.delegate = self;
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.searchBar.delegate = self;
 }
 
 /*
@@ -45,12 +46,12 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.results.count;
 }
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
     return cell;
 }
-
+*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // This is the selected venue
     NSDictionary *venue = self.results[indexPath.row];
