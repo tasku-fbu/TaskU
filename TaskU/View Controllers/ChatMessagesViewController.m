@@ -48,7 +48,7 @@
 }
 
 - (void) getMessages{
-    NSLog(@"%@",self.contact);
+    //NSLog(@"%@",self.contact);
     PFUser *me = [PFUser currentUser];
     PFUser *you = self.contact;
     
