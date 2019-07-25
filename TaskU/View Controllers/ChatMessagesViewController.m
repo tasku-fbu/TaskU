@@ -19,7 +19,7 @@
 @property (weak, nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
 
-//@property (nonatomic, assign) BOOL shouldStopTimer;
+
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @property (nonatomic, assign) int numData;
 
@@ -30,7 +30,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.messageTable.frame.size.width, 50)];
+    [self.messageTable setTableFooterView:view];
     
+    self.shouldScrollToLastRow = YES;
     self.contactLabel.text = self.contact.username;
     
     self.messageTable.delegate = self;
@@ -41,7 +44,7 @@
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
-    self.shouldScrollToLastRow = YES;
+    
 }
 
 - (void) getMessages{
@@ -116,6 +119,7 @@
 
 
 - (IBAction)onClickSend:(id)sender {
+    self.shouldScrollToLastRow = YES;
     NSString *text = self.sendTextView.text;
     [Message sendMessage:text toReceiver:self.contact withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
         if (error != nil) {
@@ -128,7 +132,7 @@
         }
     }];
     self.sendTextView.text = @"";
-    self.shouldScrollToLastRow = YES;
+    
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -188,6 +192,8 @@
     {
         self.shouldScrollToLastRow = NO;
         [self.messageTable setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+        //CGPoint bottomOffset = CGPointMake(0, self.messageTable.contentSize.height);
+        //[self.messageTable setContentOffset:bottomOffset animated:NO];
     }
 }
 
