@@ -100,10 +100,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f2o-iI-YTW">
+                                <rect key="frame" x="188.5" y="344" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7D7-2n-r04" firstAttribute="top" secondItem="Pps-u2-CZJ" secondAttribute="top" id="HkK-ZY-kqC"/>
+                            <constraint firstItem="f2o-iI-YTW" firstAttribute="centerX" secondItem="FMq-e2-8jd" secondAttribute="centerX" id="MPS-VV-GVQ"/>
+                            <constraint firstItem="f2o-iI-YTW" firstAttribute="centerY" secondItem="FMq-e2-8jd" secondAttribute="centerY" id="XIN-hE-K2K"/>
                             <constraint firstItem="7D7-2n-r04" firstAttribute="height" secondItem="Pps-u2-CZJ" secondAttribute="height" id="Y0f-am-NHS"/>
                             <constraint firstItem="7D7-2n-r04" firstAttribute="trailing" secondItem="Pps-u2-CZJ" secondAttribute="trailing" id="csj-AB-aVh"/>
                             <constraint firstItem="7D7-2n-r04" firstAttribute="leading" secondItem="Pps-u2-CZJ" secondAttribute="leading" id="eeb-uK-L9F"/>
@@ -114,6 +120,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="ulr-Q4-r78"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="f2o-iI-YTW" id="nEe-vT-p5e"/>
                         <outlet property="tableView" destination="7D7-2n-r04" id="d73-ZN-rA4"/>
                     </connections>
                 </viewController>

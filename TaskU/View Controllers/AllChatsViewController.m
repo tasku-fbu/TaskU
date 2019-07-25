@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary *messagesByContact;
 @property (weak, nonatomic) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation AllChatsViewController
