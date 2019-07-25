@@ -16,10 +16,6 @@
 @interface AllChatsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-//@property (strong, nonatomic) NSMutableArray *contacts;
-//@property (strong, nonatomic) NSMutableArray *allMessages;
-//@property (strong, nonatomic) NSMutableArray *messagesByContact;
-
 @property (strong, nonatomic) NSMutableDictionary *messagesByContact;
 @end
 
@@ -53,9 +49,6 @@
     [mainQuery orderByAscending:@"createdAt"];
     [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
         if (messages != nil) {
-            // do something with the array of object returned by the call
-           // self.contacts = [NSMutableArray new];
-            //self.messagesByContact = [NSMutableArray new];
             self.messagesByContact = [NSMutableDictionary new];
             
             [self processMessages: messages];
@@ -84,35 +77,11 @@
         }
         
         NSString *myKey = contact.objectId;
-        
-        /*
-        if ([dictionary objectForKey:myKey]) {
-            NSMutableArray *messagesForContact = [dictionary objectForKey:myKey];
-            [messagesForContact addObject:message];
-            
-        } else {
-            NSMutableArray *messagesForContact = [NSMutableArray arrayWithObjects:message, nil];
-            [dictionary setObject:messagesForContact forKey:myKey];
-        }
-         */
         [dictionary setObject:message forKey:myKey];
     }
     
     
     //sort the contacts by latest conversation
-    /*
-    NSArray* sortedKeys = [dictionary keysSortedByValueUsingComparator:^(id first, id second) {
-        Message *latestMessage1 = [(NSMutableArray*)first lastObject];
-        Message *latestMessage2 = [(NSMutableArray*)second lastObject];
-        NSDate *date1 = latestMessage1[@"createdAt"];
-        NSDate *date2 = latestMessage2[@"createdAt"];
-        if ([date1 compare:date2] == NSOrderedAscending) {
-            return (NSComparisonResult)NSOrderedDescending;
-        } else {
-            return (NSComparisonResult)NSOrderedAscending;
-        }
-    }];
-     */
     NSArray* sortedKeys = [dictionary keysSortedByValueUsingComparator:^(id first, id second) {
         Message *latestMessage1 = (Message*) first;
         Message *latestMessage2 = (Message*) second;
@@ -158,15 +127,6 @@
     }];
     
     
-    
-    
-    
-    
-    
-    /*
-    NSArray *tempMessages = [self.messagesByContact objectForKey:objectIdContact];
-    Message *latest = [tempMessages lastObject];
-     */
     Message *latest = [self.messagesByContact objectForKey:objectIdContact];
     cell.latestTextLabel.text = latest[@"text"];
     
