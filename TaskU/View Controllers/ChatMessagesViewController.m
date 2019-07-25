@@ -30,6 +30,8 @@
     self.sendTextView.layer.borderWidth = 2.0f;
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
+    
 }
 
 - (void) getMessages{

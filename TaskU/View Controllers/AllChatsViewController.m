@@ -26,9 +26,9 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    
     [self getAllMessages];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
+    
 }
 
 
