@@ -26,6 +26,7 @@
     // Do any additional setup after loading the view.
     self.messageTable.delegate = self;
     self.messageTable.dataSource = self;
+    self.messageTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.messageTable.rowHeight = UITableViewAutomaticDimension;
     self.sendTextView.layer.borderWidth = 2.0f;
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
