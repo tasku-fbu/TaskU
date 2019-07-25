@@ -11,6 +11,7 @@
 #import "Message.h"
 #import "ContactCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ChatMessagesViewController.h"
 
 @interface AllChatsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -112,7 +113,7 @@
         [self.messagesByContact setObject:tempMessages forKey:contact];
     }
     
-    NSLog(@"%@",self.messagesByContact);
+    //NSLog(@"%@",self.messagesByContact);
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -133,6 +134,8 @@
     NSArray *tempMessages = [self.messagesByContact objectForKey:objectIdContact];
     Message *latest = [tempMessages lastObject];
     cell.latestTextLabel.text = latest[@"text"];
+    
+    cell.contact = contact;
     return cell;
 }
 
@@ -142,15 +145,27 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showMessages"]) {
+        ContactCell *tappedCell = (ContactCell*)sender;
+        
+        //NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        //NSString *objectIdContact = self.messagesByContact.allKeys[indexPath.row];
+        //NSArray *tempMessages = [self.messagesByContact objectForKey:objectIdContact];
+        
+        ChatMessagesViewController *chatMessagesController = [segue destinationViewController];
+        chatMessagesController.contact = tappedCell.contact;
+        
+        
+    }
 }
-*/
+
 
 
 

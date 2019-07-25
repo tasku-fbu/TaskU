@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.messageTable.rowHeight = UITableViewAutomaticDimension;
-    self.sendTextView.layer.borderWidth = 5.0f;
+    self.sendTextView.layer.borderWidth = 2.0f;
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
 }

@@ -35,9 +35,6 @@
                         <viewLayoutGuide key="safeArea" id="eMJ-7E-EGH"/>
                     </view>
                     <navigationItem key="navigationItem" title="All Chats" id="57x-8o-c04"/>
-                    <connections>
-                        <segue destination="OKb-9N-wT9" kind="presentation" id="CUM-oO-LUK"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQe-a5-2dv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -98,6 +95,7 @@
                                             <outlet property="contactProfileImageView" destination="DHB-53-EkH" id="zu2-yu-lnp"/>
                                             <outlet property="contactUsernameLabel" destination="3Yn-eb-LD3" id="ogY-k1-RRd"/>
                                             <outlet property="latestTextLabel" destination="hvj-bC-jqU" id="C9E-I7-Wem"/>
+                                            <segue destination="OKb-9N-wT9" kind="presentation" identifier="showMessages" id="mvJ-iQ-j49"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -128,11 +126,11 @@
             <objects>
                 <viewController storyboardIdentifier="chatMessages" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OKb-9N-wT9" customClass="ChatMessagesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ee3-xR-Kgy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-tJ-R78">
-                                <rect key="frame" x="0.0" y="102" width="414" height="638"/>
+                                <rect key="frame" x="0.0" y="102" width="414" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourMessage" rowHeight="99" id="fno-GG-ed4" customClass="YourMessageCell">
@@ -210,7 +208,7 @@
                                 </prototypes>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nib-gf-YC4">
-                                <rect key="frame" x="0.0" y="748" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="577" width="414" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="YZH-fT-nYY"/>
@@ -219,7 +217,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VS-S1-AbT">
-                                <rect key="frame" x="348" y="836" width="36" height="30"/>
+                                <rect key="frame" x="348" y="665" width="36" height="30"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="onClickSend:" destination="OKb-9N-wT9" eventType="touchUpInside" id="EsW-ax-fXy"/>
