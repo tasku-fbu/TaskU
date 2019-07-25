@@ -29,13 +29,10 @@
     //  self.tableView.rowHeight = 44;
     [self fetchProfileImage];
     
-  //  self.editProfileViewController = [[EditProfileViewController alloc] init];
 
-    //Setting the delegate 
-    //self.editProfileViewController.delegate = self;
-    
-    //EditProfileViewController *vc = [[EditProfileViewController alloc] init];
-  //  vc.delegate = self;
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor blackColor],
+       NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
     [self.tableView reloadData];
 
 }
