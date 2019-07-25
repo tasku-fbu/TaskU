@@ -30,8 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *payIconView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-//@property (weak, nonatomic) NSString *endingAddress;
-//@property (weak, nonatomic) NSString *startingAddress;
+
 @end
 static NSString *const fullMapSegueIdentifier = @"searchLocationSegue";
 
@@ -411,15 +410,6 @@ static NSString *const fullMapSegueIdentifier = @"searchLocationSegue";
                                                              
                                                              [self.task deleteInBackground];
                                                              [self.delegate didCancelRequest];
-                                                             /*
-                                                              UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
-                                                              UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
-                                                              
-                                                              Timeline1ViewController *timeline1VC = (Timeline1ViewController *) navigationVC.topViewController;
-                                                              
-                                                              
-                                                              [self presentViewController:navigationVC animated:YES completion:nil];
-                                                              */
                                                              [self dismissViewControllerAnimated:YES completion:^{}];
                                                              
                                                              
