@@ -121,17 +121,21 @@
 - (IBAction)onClickSend:(id)sender {
     self.shouldScrollToLastRow = YES;
     NSString *text = self.sendTextView.text;
-    [Message sendMessage:text toReceiver:self.contact withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
-        if (error != nil) {
-            NSLog(@"User send message failed: %@", error.localizedDescription);
-            
-        } else {
-            NSLog(@"User sent message successfully");
-            [self getMessages];
-            [self.messageTable reloadData];
-        }
-    }];
-    self.sendTextView.text = @"";
+    if (self.contact) {
+        [Message sendMessage:text toReceiver:self.contact withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
+            if (error != nil) {
+                NSLog(@"User send message failed: %@", error.localizedDescription);
+                
+            } else {
+                NSLog(@"User sent message successfully");
+                [self getMessages];
+                [self.messageTable reloadData];
+                self.sendTextView.text = @"";
+            }
+        }];
+    }
+    
+    
     
 }
 

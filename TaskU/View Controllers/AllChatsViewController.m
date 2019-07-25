@@ -146,11 +146,11 @@
     return keyArr.count;
 }
 
-
+/*
 - (void) viewDidDisappear:(BOOL)animated {
     [self.timer invalidate];
 }
-
+*/
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
