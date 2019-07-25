@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7922E520EB0003FD6C /* LocationCell.m */; };
 		0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */; };
-		0E1F7CFF22E5EC490003FD6C /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */; };
 		0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A03C22DD92B8005D798F /* SignUpViewController.m */; };
 		0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A03F22DD92CF005D798F /* HomeViewController.m */; };
 		0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A04222DD92ED005D798F /* RequestsViewController.m */; };
@@ -47,7 +46,6 @@
 		B902D1A122E61DE20080B87E /* CompletedRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1A022E61DE20080B87E /* CompletedRequestsViewController.m */; };
 		B902D1A422E677510080B87E /* CurrentMissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1A322E677510080B87E /* CurrentMissionsViewController.m */; };
 		B902D1A722E677650080B87E /* CompletedMissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1A622E677650080B87E /* CompletedMissionsViewController.m */; };
-		B902D1AF22E769110080B87E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1AE22E769110080B87E /* MapViewController.m */; };
 		B902D1B122E7B8F50080B87E /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B902D1B022E7B8F50080B87E /* Message.storyboard */; };
 		B902D1B422E7BA090080B87E /* AllChatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1B322E7BA090080B87E /* AllChatsViewController.m */; };
 		B902D1B722E7BA380080B87E /* ChatMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1B622E7BA380080B87E /* ChatMessagesViewController.m */; };
@@ -79,11 +77,8 @@
 /* Begin PBXFileReference section */
 		0E1F7C7822E520EB0003FD6C /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		0E1F7C7922E520EB0003FD6C /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
-		0E1F7C7B22E521F70003FD6C /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
-		0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
-		0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		0E45A03B22DD92B8005D798F /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		0E45A03C22DD92B8005D798F /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		0E45A03E22DD92CF005D798F /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -154,7 +149,6 @@
 		B902D1A322E677510080B87E /* CurrentMissionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentMissionsViewController.m; sourceTree = "<group>"; };
 		B902D1A522E677650080B87E /* CompletedMissionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletedMissionsViewController.h; sourceTree = "<group>"; };
 		B902D1A622E677650080B87E /* CompletedMissionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompletedMissionsViewController.m; sourceTree = "<group>"; };
-		B902D1AE22E769110080B87E /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		B902D1B022E7B8F50080B87E /* Message.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
 		B902D1B222E7BA090080B87E /* AllChatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllChatsViewController.h; sourceTree = "<group>"; };
 		B902D1B322E7BA090080B87E /* AllChatsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllChatsViewController.m; sourceTree = "<group>"; };
@@ -220,13 +214,8 @@
 				11D2F51222DE8CC30065D70D /* newTaskViewController.h */,
 				11D2F51322DE8CC30065D70D /* newTaskViewController.m */,
 				110C127022DFF50B009DC7DB /* EditProfileViewController.h */,
-				110C127122DFF50B009DC7DB /* EditProfileViewController.m */,
-				B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */,
-				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
 				B902D14522DFC5230080B87E /* DetailsViewController.h */,
 				B902D14622DFC5230080B87E /* DetailsViewController.m */,
-				B902D14822E01FEC0080B87E /* DetailsStatusViewController.h */,
-				B902D14922E01FEC0080B87E /* DetailsStatusViewController.m */,
 				B902D14B22E01FFD0080B87E /* DetailsInfoViewController.h */,
 				B902D14C22E01FFD0080B87E /* DetailsInfoViewController.m */,
 				1131D37022E118B1004A235C /* EditPasswordViewController.h */,
@@ -241,12 +230,13 @@
 				B902D1A322E677510080B87E /* CurrentMissionsViewController.m */,
 				B902D1A522E677650080B87E /* CompletedMissionsViewController.h */,
 				B902D1A622E677650080B87E /* CompletedMissionsViewController.m */,
-				0E1F7C7B22E521F70003FD6C /* MapViewController.h */,
-				B902D1AE22E769110080B87E /* MapViewController.m */,
+				B902D13D22DE9DE40080B87E /* Timeline1ViewController.h */,
+				B902D13E22DE9DE40080B87E /* Timeline1ViewController.m */,
+				B902D14822E01FEC0080B87E /* DetailsStatusViewController.h */,
+				B902D14922E01FEC0080B87E /* DetailsStatusViewController.m */,
 				0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */,
 				0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */,
-				0E1F7CFD22E5EC490003FD6C /* MessageViewController.h */,
-				0E1F7CFE22E5EC490003FD6C /* MessageViewController.m */,
+				110C127122DFF50B009DC7DB /* EditProfileViewController.m */,
 				B902D1B222E7BA090080B87E /* AllChatsViewController.h */,
 				B902D1B322E7BA090080B87E /* AllChatsViewController.m */,
 				B902D1B522E7BA380080B87E /* ChatMessagesViewController.h */,
@@ -650,9 +640,7 @@
 				B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */,
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
-				0E1F7CFF22E5EC490003FD6C /* MessageViewController.m in Sources */,
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
-				B902D1AF22E769110080B87E /* MapViewController.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
 				0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */,
 			);

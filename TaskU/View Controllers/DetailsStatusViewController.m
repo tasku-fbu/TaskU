@@ -10,7 +10,9 @@
 #import "Timeline1ViewController.h"
 #import "ChatMessagesViewController.h"
 
-
+#import <MapKit/MapKit.h>
+#import "LocationsViewController.h"
+#import "Task.h"
 
 
 @interface DetailsStatusViewController ()
@@ -26,18 +28,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *acceptIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *completeIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *payIconView;
-
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 
 @end
-
-
-
-
+static NSString *const fullMapSegueIdentifier = @"searchLocationSegue";
 
 @implementation DetailsStatusViewController
-
-
 
 
 - (void)viewDidLoad {
@@ -46,6 +43,48 @@
     
     [self showCreateLabel];
     [self updateView];
+    
+    
+    //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
+    MKCoordinateRegion howardU = MKCoordinateRegionMake(CLLocationCoordinate2DMake(38.922777, -77.019445), MKCoordinateSpanMake(0.05, 0.05)); //Have set default map to Howard University
+    [self.mapView setRegion:howardU animated:false];
+    
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    //annotation.coordinate = CLLocationCoordinate2DMake((double)(38.922777),(double)( -77.019445));
+    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
+    annotation.title = @"Picture!";
+    [self.mapView addAnnotation:annotation];
+}
+
+- (IBAction)tapMapAction:(id)sender {
+    [self performSegueWithIdentifier:fullMapSegueIdentifier sender:nil];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+    if (annotationView == nil) {
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+        annotationView.canShowCallout = true;
+        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+    }
+    
+    UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
+    imageView.image = [UIImage imageNamed:@"location"];
+    
+    return annotationView;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Passes the selected object to the new view controller.
+    
+    UINavigationController *navigationController = [segue destinationViewController];
+    LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
+    LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
+}
+
+
+- (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
+    
 }
 
 - (void) showCreateLabel {
@@ -56,6 +95,7 @@
     NSString *display = [NSString stringWithFormat:@"Created by requester @%@ at %@", username, dateString];
     self.createLabel.text = display;
 }
+
 
 
 - (void) showAcceptLabel {
@@ -224,17 +264,17 @@
             self.task[@"missioner"] = missioner;
             
             /*
-            NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
-            [temp addObject:requester];
-            NSArray *temp2 = [NSArray arrayWithArray:temp];
-            missioner[@"contacts"] = temp2;
-            temp = [requester[@"contacts"] mutableCopy];
-            [temp addObject:missioner];
-            temp2 = [NSArray arrayWithArray:temp];
-            requester[@"contacts"] = temp2;
-            [missioner saveInBackground];
-            [requester saveInBackground];
-            */
+             NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
+             [temp addObject:requester];
+             NSArray *temp2 = [NSArray arrayWithArray:temp];
+             missioner[@"contacts"] = temp2;
+             temp = [requester[@"contacts"] mutableCopy];
+             [temp addObject:missioner];
+             temp2 = [NSArray arrayWithArray:temp];
+             requester[@"contacts"] = temp2;
+             [missioner saveInBackground];
+             [requester saveInBackground];
+             */
             
             self.task[@"acceptedAt"] = [NSDate date];
             self.task[@"completionStatus"] = @"accepted";
@@ -243,18 +283,18 @@
             [self updateView];
         } else if ([btn.currentTitle isEqualToString:@"Cancel"]) {
             /*
-            NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
-            [temp removeObject:requester];
-            NSArray *temp2 = [NSArray arrayWithArray:temp];
-            missioner[@"contacts"] = temp2;
-            temp = [requester[@"contacts"] mutableCopy];
-            
-            [temp removeObject:missioner];
-            temp2 = [NSArray arrayWithArray:temp];
-            requester[@"contacts"] = temp2;
-            [missioner saveInBackground];
-            [requester saveInBackground];
-            */
+             NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
+             [temp removeObject:requester];
+             NSArray *temp2 = [NSArray arrayWithArray:temp];
+             missioner[@"contacts"] = temp2;
+             temp = [requester[@"contacts"] mutableCopy];
+             
+             [temp removeObject:missioner];
+             temp2 = [NSArray arrayWithArray:temp];
+             requester[@"contacts"] = temp2;
+             [missioner saveInBackground];
+             [requester saveInBackground];
+             */
             self.task[@"missioner"] = [NSNull null];
             self.task[@"acceptedAt"] = [NSNull null];
             self.task[@"completionStatus"] = @"created";
@@ -370,15 +410,6 @@
                                                              
                                                              [self.task deleteInBackground];
                                                              [self.delegate didCancelRequest];
-                                                             /*
-                                                             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
-                                                             UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
-                                                             
-                                                             Timeline1ViewController *timeline1VC = (Timeline1ViewController *) navigationVC.topViewController;
-                                                             
-                                                             
-                                                             [self presentViewController:navigationVC animated:YES completion:nil];
-                                                             */
                                                              [self dismissViewControllerAnimated:YES completion:^{}];
                                                              
                                                              
@@ -442,13 +473,16 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
 
 @end

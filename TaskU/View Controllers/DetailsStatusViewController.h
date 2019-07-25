@@ -8,17 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "Task.h"
+#import "LocationsViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol CancelRequestOnDetailsDelegate;
 @protocol CancelMissionOnDetailsDelegate;
 
-@interface DetailsStatusViewController : UIViewController
+@interface DetailsStatusViewController : UIViewController < UINavigationControllerDelegate, LocationsViewControllerDelegate>
 
 @property (strong, nonatomic) Task *task;
 @property (strong, nonatomic) id<CancelRequestOnDetailsDelegate> delegate;
 @property (strong, nonatomic) id<CancelMissionOnDetailsDelegate> missionDelegate;
+@property (weak, nonatomic) NSNumber *latitude;
+@property (weak, nonatomic) NSNumber *longitude;
 @end
 
 @protocol CancelRequestOnDetailsDelegate
