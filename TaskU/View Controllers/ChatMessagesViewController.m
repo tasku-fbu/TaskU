@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *sendTextView;
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (weak, nonatomic) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UILabel *contactLabel;
 @end
 
 @implementation ChatMessagesViewController
@@ -24,6 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.contactLabel.text = self.contact.username;
+    
     self.messageTable.delegate = self;
     self.messageTable.dataSource = self;
     self.messageTable.separatorStyle = UITableViewCellSeparatorStyleNone;

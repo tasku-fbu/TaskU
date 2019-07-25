@@ -285,6 +285,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SJo-mp-r4t"/>
                     <connections>
+                        <outlet property="contactLabel" destination="yur-AS-mff" id="LiN-4P-KzQ"/>
                         <outlet property="messageTable" destination="Uqh-tJ-R78" id="hfQ-Bp-88p"/>
                         <outlet property="sendTextView" destination="nib-gf-YC4" id="f5U-ip-drY"/>
                     </connections>
