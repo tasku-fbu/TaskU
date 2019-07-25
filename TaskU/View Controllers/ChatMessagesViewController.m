@@ -18,6 +18,11 @@
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (weak, nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
+
+//@property (nonatomic, assign) BOOL shouldStopTimer;
+@property (nonatomic, assign) BOOL shouldScrollToLastRow;
+@property (nonatomic, assign) int numData;
+
 @end
 
 @implementation ChatMessagesViewController
@@ -35,63 +40,72 @@
     self.sendTextView.layer.borderWidth = 2.0f;
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
-    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
+    self.shouldScrollToLastRow = YES;
 }
 
 - (void) getMessages{
+    NSLog(@"%@",self.contact);
     PFUser *me = [PFUser currentUser];
     PFUser *you = self.contact;
-    NSLog(@"%@",you);
     
-    PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
-    
-    [query1 whereKey:@"sender" equalTo:me];
-    [query1 whereKey:@"receiver" equalTo:you];
-    
-    PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
-    
-    [query2 whereKey:@"sender" equalTo:you];
-    [query2 whereKey:@"receiver" equalTo:me];
-    
-    PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1,query2]];
-    [mainQuery orderByAscending:@"createdAt"];
-    [mainQuery includeKey:@"text"];
-    [mainQuery includeKey:@"sender"];
-    [mainQuery includeKey:@"createdAt"];
-    [mainQuery includeKey:@"receiver"];
-    
-    // fetch data asynchronously
-    [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
-        if (messages != nil) {
-            // do something with the array of object returned by the call
-            self.messages = [messages mutableCopy];
-            NSLog(@"%@",self.messages);
-            [self.messageTable reloadData];
-            
-            
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error"
-                                                                           message:@"Please check your network connection."
-                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
-            
-            // create an OK action
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                               style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction * _Nonnull action) {
-                                                                 // handle response here.
-                                                             }];
-            // add the OK action to the alert controller
-            [alert addAction:okAction];
-            
-            [self presentViewController:alert animated:YES completion:^{
-                // optional code for what happens after the alert controller has finished presenting
-            }];
-        }
+    if (you) {
+        PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
         
-    }];
+        [query1 whereKey:@"sender" equalTo:me];
+        [query1 whereKey:@"receiver" equalTo:you];
+        
+        PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
+        
+        [query2 whereKey:@"sender" equalTo:you];
+        [query2 whereKey:@"receiver" equalTo:me];
+        
+        PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1,query2]];
+        [mainQuery orderByAscending:@"createdAt"];
+        [mainQuery includeKey:@"text"];
+        [mainQuery includeKey:@"sender"];
+        [mainQuery includeKey:@"createdAt"];
+        [mainQuery includeKey:@"receiver"];
+        
+        // fetch data asynchronously
+        [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
+            if (messages != nil) {
+                // do something with the array of object returned by the call
+                self.messages = [messages mutableCopy];
+                //NSLog(@"%@",self.messages);
+                [self.messageTable reloadData];
+                int temp = (int) messages.count;
+                if (temp > self.numData) {
+                    self.numData = temp;
+                    self.shouldScrollToLastRow = YES;
+                }
+                
+                
+            } else {
+                NSLog(@"%@", error.localizedDescription);
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error"
+                                                                               message:@"Please check your network connection."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                
+                // create an OK action
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle response here.
+                                                                 }];
+                // add the OK action to the alert controller
+                [alert addAction:okAction];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    // optional code for what happens after the alert controller has finished presenting
+                }];
+            }
+            
+        }];
+    }
+    
+    
 }
     
 
@@ -114,6 +128,7 @@
         }
     }];
     self.sendTextView.text = @"";
+    self.shouldScrollToLastRow = YES;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -151,9 +166,29 @@
     return self.messages.count;
 }
 
+
+
+
+
 - (IBAction)onClickBack:(id)sender {
     [self.timer invalidate];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    [self.timer invalidate];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    // Scroll table view to the last row
+    if (self.shouldScrollToLastRow)
+    {
+        self.shouldScrollToLastRow = NO;
+        [self.messageTable setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+    }
 }
 
 
