@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
 @property (weak, nonatomic) IBOutlet UITextView *sendTextView;
 @property (strong, nonatomic) NSMutableArray *messages;
-
+@property (weak, nonatomic) NSTimer *timer;
 @end
 
 @implementation ChatMessagesViewController
@@ -30,13 +30,14 @@
     self.sendTextView.layer.borderWidth = 2.0f;
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
     
 }
 
 - (void) getMessages{
     PFUser *me = [PFUser currentUser];
     PFUser *you = self.contact;
+    NSLog(@"%@",you);
     
     PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
     
@@ -142,6 +143,7 @@
 }
 
 - (IBAction)onClickBack:(id)sender {
+    [self.timer invalidate];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
