@@ -23,7 +23,7 @@
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @property (nonatomic, assign) int numData;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation ChatMessagesViewController
@@ -44,12 +44,18 @@
     self.sendTextView.layer.borderWidth = 2.0f;
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getMessages) forControlEvents:UIControlEventValueChanged];
+    [self.messageTable insertSubview:self.refreshControl atIndex:0];
+    [self.activityIndicator startAnimating];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
     
 }
 
 - (void) getMessages{
     //NSLog(@"%@",self.contact);
+    
+    
     PFUser *me = [PFUser currentUser];
     PFUser *you = self.contact;
     
@@ -83,7 +89,8 @@
                     self.numData = temp;
                     self.shouldScrollToLastRow = YES;
                 }
-                
+                [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
