@@ -14,7 +14,7 @@
 #import "LocationsViewController.h"
 #import "Task.h"
 
-
+#pragma mark - interface and properties
 @interface DetailsStatusViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *createLabel;
 @property (weak, nonatomic) IBOutlet UILabel *acceptLabel;
@@ -32,11 +32,12 @@
 
 
 @end
-static NSString *const fullMapSegueIdentifier = @"searchLocationSegue";
+static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 
 @implementation DetailsStatusViewController
 
 
+#pragma mark - Details Status intial View
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -46,8 +47,9 @@ static NSString *const fullMapSegueIdentifier = @"searchLocationSegue";
     
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
-    MKCoordinateRegion howardU = MKCoordinateRegionMake(CLLocationCoordinate2DMake(38.922777, -77.019445), MKCoordinateSpanMake(0.05, 0.05)); //Have set default map to Howard University
-    [self.mapView setRegion:howardU animated:false];
+    //MKCoordinateRegion howardU = MKCoordinateRegionMake(CLLocationCoordinate2DMake(38.922777, -77.019445), MKCoordinateSpanMake(0.05, 0.05)); //Have set default map to Howard University
+   MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]), MKCoordinateSpanMake(0.05, 0.05));
+    [self.mapView setRegion:schoolRegion animated:false];
     
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     //annotation.coordinate = CLLocationCoordinate2DMake((double)(38.922777),(double)( -77.019445));
@@ -56,10 +58,20 @@ static NSString *const fullMapSegueIdentifier = @"searchLocationSegue";
     [self.mapView addAnnotation:annotation];
 }
 
+#pragma mark - Display location search view controller
 - (IBAction)tapMapAction:(id)sender {
-    [self performSegueWithIdentifier:fullMapSegueIdentifier sender:nil];
+    [self performSegueWithIdentifier:searchLocationSegueIdentifier sender:nil];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Passes the selected object to the new view controller.
+    
+    UINavigationController *navigationController = [segue destinationViewController];
+    LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
+    LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
+}
+
+#pragma mark - mapView Annotation
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
     if (annotationView == nil) {
@@ -74,17 +86,31 @@ static NSString *const fullMapSegueIdentifier = @"searchLocationSegue";
     return annotationView;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Passes the selected object to the new view controller.
+#pragma mark - Gets user selected location's coordinates and resets annotation
+- (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
+    self.latitude = latitude;
+    self.longitude = longitude;
     
-    UINavigationController *navigationController = [segue destinationViewController];
-    LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
-    LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
+//    MKPointAnnotation *annotation = [MKPointAnnotation new];
+//    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
+//    annotation.title = @"Picture!";
+//    [self.mapView removeAnnotations:[self.mapView.annotations]];
+//   [self.mapView removeAnnotation:annotation];
+//   [self.mapView addAnnotations:annotation];
+    [self reloadMap];
+    [self dismissViewControllerAnimated:true completion:nil];
+   // [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 }
 
-
-- (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
+-(void) reloadMap {
+    MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]), MKCoordinateSpanMake(0.05, 0.05));
+    [self.mapView setRegion:schoolRegion animated:false];
     
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    //annotation.coordinate = CLLocationCoordinate2DMake((double)(38.922777),(double)( -77.019445));
+    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
+    annotation.title = @"Picture!";
+    [self.mapView addAnnotation:annotation];
 }
 
 - (void) showCreateLabel {

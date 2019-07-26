@@ -16,6 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor blackColor],
+       NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
+  //  [self.tableView reloadData];
     // Do any additional setup after loading the view.
 }
 

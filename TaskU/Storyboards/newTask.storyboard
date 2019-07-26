@@ -9,87 +9,90 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Quicksand-Regular.ttf">
+            <string>Quicksand-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Describe your task-->
         <scene sceneID="gaF-LK-IuV">
             <objects>
                 <viewController id="eb0-Iy-jYI" customClass="newTaskViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="krh-Kt-8j8">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1042"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XSQ-tX-aNU">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="70" width="768" height="972"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ez5-UZ-bAe">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="995"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of your task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnn-5o-rhv">
-                                                <rect key="frame" x="28" y="20" width="140" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="20" width="147" height="22"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BP6-DF-3ql">
-                                                <rect key="frame" x="28" y="49" width="720" height="17"/>
+                                                <rect key="frame" x="14" y="50" width="734" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0K-rh-UbU">
-                                                <rect key="frame" x="0.0" y="97" width="768" height="216"/>
+                                                <rect key="frame" x="0.0" y="103" width="768" height="216"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Starting address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXa-sB-fNf">
-                                                <rect key="frame" x="28" y="304" width="127" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="310" width="129" height="21"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where does the task start?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9b-bR-TY5">
-                                                <rect key="frame" x="28" y="333" width="720" height="17"/>
+                                                <rect key="frame" x="14" y="339" width="734" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="optional" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7l-Zn-rqh">
-                                                <rect key="frame" x="700" y="304" width="39" height="12"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <rect key="frame" x="686" y="310" width="53" height="18"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ending address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tH-Sc-SEJ">
-                                                <rect key="frame" x="28" y="370" width="119" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="381" width="121" height="22"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where does the task end?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iaA-0K-cjp">
-                                                <rect key="frame" x="28" y="399" width="720" height="17"/>
+                                                <rect key="frame" x="14" y="411" width="734" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYd-cW-jn2">
-                                                <rect key="frame" x="28" y="436" width="45" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="453" width="46" height="21"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZbS-TN-LAd">
-                                                <rect key="frame" x="0.0" y="465" width="768" height="216"/>
-                                                <date key="date" timeIntervalSinceReferenceDate="585017419.47661197">
-                                                    <!--2019-07-17 00:50:19 +0000-->
-                                                </date>
-                                            </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4R9-7x-Ioa">
-                                                <rect key="frame" x="28" y="668" width="114" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="685" width="118" height="21"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHH-Qg-PVV">
-                                                <rect key="frame" x="0.0" y="894" width="768" height="30"/>
+                                                <rect key="frame" x="0.0" y="951" width="768" height="34"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="hjE-zb-ckb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <state key="normal" title="See Missioners &amp; Prices ">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -98,7 +101,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9UO-uV-ciX">
-                                                <rect key="frame" x="28" y="697" width="63" height="30"/>
+                                                <rect key="frame" x="14" y="714" width="63" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="63" id="YvH-29-l5d"/>
                                                 </constraints>
@@ -106,63 +109,69 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vW-EA-Gvd">
-                                                <rect key="frame" x="202" y="697" width="28" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tTA-tW-lzp">
-                                                <rect key="frame" x="131" y="697" width="63" height="30"/>
+                                                <rect key="frame" x="117" y="714" width="63" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7K-xh-BFp">
-                                                <rect key="frame" x="28" y="747" width="28" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="764" width="30" height="22"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W7g-cE-PzP">
-                                                <rect key="frame" x="52" y="773" width="63" height="30"/>
+                                                <rect key="frame" x="37" y="791" width="63" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="63" id="zuG-iy-xbF"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHz-nW-y2h">
-                                                <rect key="frame" x="28" y="773" width="11" height="35"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="791" width="10" height="35"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What else should we know?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-5v-a5O">
-                                                <rect key="frame" x="28" y="852" width="720" height="17"/>
+                                                <rect key="frame" x="14" y="870" width="734" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS3-xz-2fS">
-                                                <rect key="frame" x="28" y="823" width="126" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="841" width="127" height="21"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msF-pj-lHb">
-                                                <rect key="frame" x="28" y="86" width="71" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="14" y="92" width="73" height="21"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVN-Y9-dTM">
-                                                <rect key="frame" x="99" y="697" width="16" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="85" y="714" width="16" height="22"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vW-EA-Gvd">
+                                                <rect key="frame" x="188" y="714" width="29" height="22"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZbS-TN-LAd">
+                                                <rect key="frame" x="0.0" y="482" width="768" height="216"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="585017419.47661197">
+                                                    <!--2019-07-17 00:50:19 +0000-->
+                                                </date>
+                                            </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -176,13 +185,12 @@
                                             <constraint firstItem="d7K-xh-BFp" firstAttribute="leading" secondItem="Vnn-5o-rhv" secondAttribute="leading" id="8Tq-NW-ISU"/>
                                             <constraint firstItem="y0K-rh-UbU" firstAttribute="top" secondItem="msF-pj-lHb" secondAttribute="bottom" constant="-10" id="8VJ-zD-t48"/>
                                             <constraint firstItem="1vW-EA-Gvd" firstAttribute="centerY" secondItem="GVN-Y9-dTM" secondAttribute="centerY" id="9EJ-Fv-5ls"/>
-                                            <constraint firstItem="Vnn-5o-rhv" firstAttribute="leading" secondItem="Ez5-UZ-bAe" secondAttribute="leading" constant="28" id="DIK-Ki-wzF"/>
                                             <constraint firstAttribute="trailing" secondItem="y9b-bR-TY5" secondAttribute="trailing" constant="20" id="DLV-7B-l7I"/>
                                             <constraint firstItem="hS3-xz-2fS" firstAttribute="top" secondItem="eHz-nW-y2h" secondAttribute="bottom" constant="15" id="Dnl-Cz-lQy"/>
                                             <constraint firstAttribute="trailing" secondItem="BP6-DF-3ql" secondAttribute="trailing" constant="20" id="Et4-MU-KBp"/>
                                             <constraint firstItem="eHz-nW-y2h" firstAttribute="top" secondItem="d7K-xh-BFp" secondAttribute="bottom" constant="5" id="GQK-hx-YeQ"/>
                                             <constraint firstItem="Vnn-5o-rhv" firstAttribute="top" secondItem="Ez5-UZ-bAe" secondAttribute="top" constant="20" id="Hr9-vh-My5"/>
-                                            <constraint firstItem="zHH-Qg-PVV" firstAttribute="top" secondItem="P0M-5v-a5O" secondAttribute="bottom" constant="25" id="K1o-bL-p6p"/>
+                                            <constraint firstItem="zHH-Qg-PVV" firstAttribute="top" secondItem="P0M-5v-a5O" secondAttribute="bottom" constant="59" id="K1o-bL-p6p"/>
                                             <constraint firstItem="GVN-Y9-dTM" firstAttribute="top" secondItem="4R9-7x-Ioa" secondAttribute="bottom" constant="8" id="K7t-se-hLc"/>
                                             <constraint firstItem="y9b-bR-TY5" firstAttribute="top" secondItem="WXa-sB-fNf" secondAttribute="bottom" constant="8" id="K8D-T6-cKS"/>
                                             <constraint firstItem="W7g-cE-PzP" firstAttribute="top" secondItem="d7K-xh-BFp" secondAttribute="bottom" constant="5" id="KCR-Kx-Pa7"/>
@@ -199,6 +207,7 @@
                                             <constraint firstItem="tTA-tW-lzp" firstAttribute="top" secondItem="9UO-uV-ciX" secondAttribute="top" id="SG5-mZ-q1M"/>
                                             <constraint firstAttribute="trailing" secondItem="iaA-0K-cjp" secondAttribute="trailing" constant="20" id="ScT-LI-CCM"/>
                                             <constraint firstItem="d7l-Zn-rqh" firstAttribute="top" secondItem="WXa-sB-fNf" secondAttribute="top" id="U9t-fI-L2z"/>
+                                            <constraint firstItem="Vnn-5o-rhv" firstAttribute="leading" secondItem="Ez5-UZ-bAe" secondAttribute="leading" constant="14" id="Vgq-G8-Ula"/>
                                             <constraint firstItem="P0M-5v-a5O" firstAttribute="leading" secondItem="hS3-xz-2fS" secondAttribute="leading" id="VkN-Dv-o8z"/>
                                             <constraint firstItem="ZbS-TN-LAd" firstAttribute="top" secondItem="uYd-cW-jn2" secondAttribute="bottom" constant="8" id="Z7B-5e-4sM"/>
                                             <constraint firstItem="GVN-Y9-dTM" firstAttribute="leading" secondItem="9UO-uV-ciX" secondAttribute="trailing" constant="8" id="ZDm-KA-EWQ"/>
@@ -209,6 +218,7 @@
                                             <constraint firstItem="ZbS-TN-LAd" firstAttribute="leading" secondItem="Ez5-UZ-bAe" secondAttribute="leading" id="gWO-oi-b3Z"/>
                                             <constraint firstItem="zHH-Qg-PVV" firstAttribute="leading" secondItem="Ez5-UZ-bAe" secondAttribute="leading" id="gwV-lZ-wTh"/>
                                             <constraint firstItem="iaA-0K-cjp" firstAttribute="top" secondItem="9tH-Sc-SEJ" secondAttribute="bottom" constant="8" id="h7v-oy-Lti"/>
+                                            <constraint firstAttribute="bottom" secondItem="zHH-Qg-PVV" secondAttribute="bottom" constant="10" id="iyE-kL-0Zd"/>
                                             <constraint firstItem="uYd-cW-jn2" firstAttribute="leading" secondItem="Vnn-5o-rhv" secondAttribute="leading" id="izn-tn-y0P"/>
                                             <constraint firstItem="1vW-EA-Gvd" firstAttribute="top" secondItem="GVN-Y9-dTM" secondAttribute="top" id="lia-aU-Pti"/>
                                             <constraint firstItem="msF-pj-lHb" firstAttribute="leading" secondItem="Vnn-5o-rhv" secondAttribute="leading" id="m97-zz-7Y6"/>
@@ -227,21 +237,20 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Ez5-UZ-bAe" firstAttribute="leading" secondItem="XSQ-tX-aNU" secondAttribute="leading" id="1Mz-b3-8Ad"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ez5-UZ-bAe" secondAttribute="trailing" id="7Le-K7-4ql"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ez5-UZ-bAe" secondAttribute="bottom" id="Yig-Fp-BnF"/>
-                                    <constraint firstItem="Ez5-UZ-bAe" firstAttribute="top" secondItem="XSQ-tX-aNU" secondAttribute="top" id="kcf-RS-Fvf"/>
+                                    <constraint firstItem="Ez5-UZ-bAe" firstAttribute="leading" secondItem="XSQ-tX-aNU" secondAttribute="leading" id="bXm-zc-OjK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ez5-UZ-bAe" secondAttribute="trailing" id="km1-4D-hUS"/>
+                                    <constraint firstItem="Ez5-UZ-bAe" firstAttribute="top" secondItem="XSQ-tX-aNU" secondAttribute="top" id="tiD-Vi-doe"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ez5-UZ-bAe" secondAttribute="bottom" id="w9a-Bm-Nq4"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ez5-UZ-bAe" firstAttribute="height" secondItem="krh-Kt-8j8" secondAttribute="height" priority="250" id="FWg-6k-0zG"/>
-                            <constraint firstItem="XSQ-tX-aNU" firstAttribute="leading" secondItem="krh-Kt-8j8" secondAttribute="leading" id="IV2-Aj-sLu"/>
-                            <constraint firstAttribute="trailing" secondItem="XSQ-tX-aNU" secondAttribute="trailing" id="hb8-L5-g59"/>
-                            <constraint firstItem="XSQ-tX-aNU" firstAttribute="top" secondItem="krh-Kt-8j8" secondAttribute="top" id="l0J-Fm-WId"/>
-                            <constraint firstAttribute="bottom" secondItem="XSQ-tX-aNU" secondAttribute="bottom" id="vks-Dg-j6q"/>
-                            <constraint firstItem="Ez5-UZ-bAe" firstAttribute="width" secondItem="krh-Kt-8j8" secondAttribute="width" id="wBh-C3-fjs"/>
+                            <constraint firstItem="XSQ-tX-aNU" firstAttribute="leading" secondItem="nMP-nD-c84" secondAttribute="leading" id="8PR-lq-pcC"/>
+                            <constraint firstItem="Ez5-UZ-bAe" firstAttribute="width" secondItem="krh-Kt-8j8" secondAttribute="width" id="A2Y-4U-GJC"/>
+                            <constraint firstItem="XSQ-tX-aNU" firstAttribute="bottom" secondItem="nMP-nD-c84" secondAttribute="bottom" id="Icf-ze-D2k"/>
+                            <constraint firstItem="XSQ-tX-aNU" firstAttribute="trailing" secondItem="nMP-nD-c84" secondAttribute="trailing" id="KoJ-oD-ERj"/>
+                            <constraint firstItem="XSQ-tX-aNU" firstAttribute="top" secondItem="nMP-nD-c84" secondAttribute="top" id="z7V-ts-7pH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nMP-nD-c84"/>
                     </view>
@@ -253,6 +262,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="768" height="1042"/>
                     <connections>
                         <outlet property="endAddress" destination="iaA-0K-cjp" id="FPe-oy-gwY"/>
                         <outlet property="hours" destination="9UO-uV-ciX" id="ySa-2h-ymc"/>
@@ -267,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyw-xe-wzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="769.53125" y="105.46875"/>
+            <point key="canvasLocation" x="768.11594202898561" y="104.46428571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cYp-Ho-Mqg">
@@ -277,6 +287,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T8e-ZQ-1kT">
                         <rect key="frame" x="0.0" y="20" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="17"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

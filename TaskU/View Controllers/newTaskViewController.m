@@ -33,6 +33,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor blackColor],
+       NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
+    
+    
+    
     //Alert for incomplete user input
     self.completionAlert = [UIAlertController alertControllerWithTitle:@"Error"
                                                      message:@"Please input all the required fields"
@@ -133,5 +139,6 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.chosenCategory = [self.categories objectAtIndex:row];
 }
+
 
 @end

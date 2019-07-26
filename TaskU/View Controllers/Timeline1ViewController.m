@@ -13,12 +13,11 @@
 #import "DetailsStatusViewController.h"
 #import "DetailsInfoViewController.h"
 #import "HomeViewController.h"
-
 #import "LocationsViewController.h"
 
+#pragma mark - interface and properties
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (strong, nonatomic) NSMutableArray *tasks;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -28,6 +27,7 @@
 
 @implementation Timeline1ViewController
 
+#pragma mark - Timeline initial View
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -147,6 +147,7 @@
 }
 
 
+#pragma mark - navigates to details when task is selected, gets geo cordinates to display on the next view controller
 - (void) didTapDetails:(TaskCell *) cell {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
@@ -181,7 +182,9 @@
 
 
 
+#pragma mark - Query Set up (searches for task location using fourSqaure map API)
 - (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
+    city = @"San Francisco";
     static NSString * const clientID = @"44AMDU33GRCGT1ZOPZAQDAG422E3AB4W51SNGHVF4WHEHUYG";
     static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCMFSKWNMXVQ";
     NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
