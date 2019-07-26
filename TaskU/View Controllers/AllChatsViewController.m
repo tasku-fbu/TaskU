@@ -20,6 +20,7 @@
 @property (weak, nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation AllChatsViewController

@@ -51,9 +51,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-2n-r04">
                                 <rect key="frame" x="0.0" y="44" width="414" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="SkO-rF-HuQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="65" id="RZX-cJ-WJZ" customClass="ContactCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="65"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RZX-cJ-WJZ" id="yCy-NW-733">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="64.5"/>
@@ -121,12 +126,13 @@
                     <navigationItem key="navigationItem" title="Chats" id="ulr-Q4-r78"/>
                     <connections>
                         <outlet property="activityIndicator" destination="f2o-iI-YTW" id="nEe-vT-p5e"/>
+                        <outlet property="searchBar" destination="SkO-rF-HuQ" id="tbg-pF-VHI"/>
                         <outlet property="tableView" destination="7D7-2n-r04" id="d73-ZN-rA4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUb-tX-V8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.85507246376812" y="834.04017857142856"/>
+            <point key="canvasLocation" x="88" y="852"/>
         </scene>
         <!--Chat Messages View Controller-->
         <scene sceneID="wFJ-F5-maT">
@@ -315,7 +321,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1311.5942028985507" y="841.40625"/>
+            <point key="canvasLocation" x="914" y="851"/>
         </scene>
         <!--Messages-->
         <scene sceneID="DIn-Mv-TDM">
