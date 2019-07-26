@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AllChatsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface AllChatsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 
 @end
 

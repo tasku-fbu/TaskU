@@ -19,10 +19,12 @@
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *tasks;
+@property (strong, nonatomic) NSArray *filteredData;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *results;
 @property (strong, nonatomic) NSDictionary *venue;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation Timeline1ViewController
@@ -33,6 +35,8 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.searchBar.delegate = self;
+    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     [self getAllTasks];
     
@@ -64,7 +68,11 @@
     [query includeKey:@"minutes"];
 
     [query whereKey:@"category" equalTo:(self.category)];
-    //[query whereKey:@"completionStatus equalTo:@1"created"];
+    [query whereKey:@"completionStatus" equalTo:@"created"];
+    
+    NSDate *now = [NSDate date];
+    [query whereKey:@"taskDate" greaterThanOrEqualTo:now];
+    
     query.limit = 20;
     
     // fetch data asynchronously
@@ -72,7 +80,7 @@
         if (tasks != nil) {
             // do something with the array of object returned by the call
             self.tasks = [tasks mutableCopy];
-            
+            self.filteredData = self.tasks;
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
             [self.activityIndicator stopAnimating];
@@ -88,7 +96,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     cell.delegate = self;
-    Task *task = self.tasks[indexPath.row];
+    Task *task = self.filteredData[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
     
@@ -143,7 +151,43 @@
 
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tasks.count;
+    return self.filteredData.count;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Task *task, NSDictionary *bindings) {
+            NSString *name = task[@"taskName"];
+            NSString *description = task[@"taskDescription"];
+            return ([name.lowercaseString containsString:searchText.lowercaseString] || [description.lowercaseString containsString:searchText.lowercaseString]);
+        }];
+        self.filteredData = [self.tasks filteredArrayUsingPredicate:predicate];
+        
+        
+        
+        //NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.tasks;
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    self.filteredData = self.tasks;
+    [self.tableView reloadData];
 }
 
 

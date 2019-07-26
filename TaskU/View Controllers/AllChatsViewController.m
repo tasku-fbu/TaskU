@@ -18,6 +18,11 @@
 
 @property (strong, nonatomic) NSMutableDictionary *messagesByContact;
 @property (weak, nonatomic) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableDictionary *filteredData;
+@property (strong, nonatomic) NSMutableArray *contacts;
 @end
 
 @implementation AllChatsViewController
@@ -27,8 +32,16 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self getAllMessages];
+    self.searchBar.delegate = self;
+    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self getAllMessagesFirst];
+    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getAllMessages) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self.activityIndicator startAnimating];
     
 }
 
@@ -54,15 +67,91 @@
         [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
             if (messages != nil) {
                 self.messagesByContact = [NSMutableDictionary new];
+                self.contacts = [NSMutableArray new];
                 
                 [self processMessages: messages];
                 
+                //self.filteredData = self.messagesByContact;
                 [self.tableView reloadData];
-                //[self.refreshControl endRefreshing];
-                //[self.activityIndicator stopAnimating];
+                [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
+                                                                               message:@"Please check your network connection."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                
+                // create an OK action
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle response here.
+                                                                 }];
+                // add the OK action to the alert controller
+                [alert addAction:okAction];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    // optional code for what happens after the alert controller has finished presenting
+                }];
+                
+                
+            }
+            
+        }];
+    }
+}
+
+- (void) getAllMessagesFirst {
+    if (![PFUser currentUser]) {
+        [self.timer invalidate];
+    } else {
+        PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
+        
+        [query1 whereKey:@"sender" equalTo:[PFUser currentUser]];
+        
+        PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
+        
+        [query2 whereKey:@"receiver" equalTo:[PFUser currentUser]];
+        
+        PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1,query2]];
+        [mainQuery includeKey:@"createdAt"];
+        [mainQuery includeKey:@"sender"];
+        [mainQuery includeKey:@"receiver"];
+        [mainQuery includeKey:@"text"];
+        [mainQuery orderByAscending:@"createdAt"];
+        [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
+            if (messages != nil) {
+                self.messagesByContact = [NSMutableDictionary new];
+                self.contacts = [NSMutableArray new];
+                
+                [self processMessages: messages];
+                
+                self.filteredData = self.messagesByContact;
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
+                
+            } else {
+                NSLog(@"%@", error.localizedDescription);
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
+                                                                               message:@"Please check your network connection."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                
+                // create an OK action
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle response here.
+                                                                 }];
+                // add the OK action to the alert controller
+                [alert addAction:okAction];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    // optional code for what happens after the alert controller has finished presenting
+                }];
+                
+                
             }
             
         }];
@@ -81,6 +170,9 @@
         } else {
             contact = sender;
             
+        }
+        if (![dictionary valueForKey:contact.objectId]) {
+            [self.contacts addObject:contact];
         }
         
         NSString *myKey = contact.objectId;
@@ -106,13 +198,15 @@
         [self.messagesByContact setObject:tempMessage forKey:contact];
     }
     
+    
     //NSLog(@"%@",self.messagesByContact);
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
-    NSString *objectIdContact = self.messagesByContact.allKeys[indexPath.row];
-    
+    NSString *objectIdContact = self.filteredData.allKeys[indexPath.row];
+    //NSLog(@"%@",self.filteredData.allKeys);
+    //NSLog(@"%@",objectIdContact);
     
     PFQuery * query = [PFUser query];
     [query whereKey:@"objectId" equalTo:objectIdContact];
@@ -134,7 +228,7 @@
     }];
     
     
-    Message *latest = [self.messagesByContact objectForKey:objectIdContact];
+    Message *latest = [self.filteredData objectForKey:objectIdContact];
     cell.latestTextLabel.text = latest[@"text"];
     
     
@@ -142,9 +236,59 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *keyArr = self.messagesByContact.allKeys;
+    NSArray *keyArr = self.filteredData.allKeys;
     return keyArr.count;
 }
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        self.filteredData = [NSMutableDictionary new];
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *contact, NSDictionary *bindings) {
+            NSString *username = contact[@"username"];
+            NSString *first = contact[@"firstName"];
+            NSString *last = contact[@"lastName"];
+            return ([username.lowercaseString containsString:searchText.lowercaseString] || [first.lowercaseString containsString:searchText.lowercaseString] || [last.lowercaseString containsString:searchText.lowercaseString]);
+        }];
+        
+        NSArray *filteredContacts = [self.contacts filteredArrayUsingPredicate:predicate];
+        NSLog(@"%@",filteredContacts);
+        
+        NSMutableArray *filteredKeys = [NSMutableArray new];
+        for (PFUser *contact in filteredContacts) {
+            [filteredKeys addObject:contact.objectId];
+        }
+        for (NSString *contact in filteredKeys) {
+            NSArray *tempMessage = [self.messagesByContact objectForKey:contact];
+            [self.filteredData setObject:tempMessage forKey:contact];
+        }
+        
+        
+        
+        //NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.messagesByContact;
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    self.filteredData = self.messagesByContact;
+    [self.tableView reloadData];
+}
+
 
 /*
 - (void) viewDidDisappear:(BOOL)animated {

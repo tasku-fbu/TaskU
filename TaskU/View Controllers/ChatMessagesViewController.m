@@ -22,7 +22,8 @@
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @property (nonatomic, assign) int numData;
-
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation ChatMessagesViewController
@@ -30,8 +31,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.messageTable.frame.size.width, 50)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.messageTable.frame.size.width, 20)];
     [self.messageTable setTableFooterView:view];
+    
+    self.sendTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     self.shouldScrollToLastRow = YES;
     self.contactLabel.text = self.contact.username;
@@ -43,16 +46,22 @@
     self.sendTextView.layer.borderWidth = 2.0f;
     self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getMessages) forControlEvents:UIControlEventValueChanged];
+    [self.messageTable insertSubview:self.refreshControl atIndex:0];
+    [self.activityIndicator startAnimating];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
     
 }
 
 - (void) getMessages{
     //NSLog(@"%@",self.contact);
+    
+    
     PFUser *me = [PFUser currentUser];
     PFUser *you = self.contact;
     
-    if (you) {
+    //if (you) {
         PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
         
         [query1 whereKey:@"sender" equalTo:me];
@@ -73,21 +82,31 @@
         // fetch data asynchronously
         [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
             if (messages != nil) {
-                // do something with the array of object returned by the call
-                self.messages = [messages mutableCopy];
-                //NSLog(@"%@",self.messages);
-                [self.messageTable reloadData];
+                
                 int temp = (int) messages.count;
                 if (temp > self.numData) {
                     self.numData = temp;
-                    self.shouldScrollToLastRow = YES;
+                    
+                    self.messages = [messages mutableCopy];
+                    
+                    NSLog(@"%@",self.messages);
+                    
+                    [self.messageTable reloadData];
+                    
+                    [self scrollToBottom];
+                    
                 }
+                
+                [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
+                
+                
                 
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
                 
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error"
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
                                                                                message:@"Please check your network connection."
                                                                         preferredStyle:(UIAlertControllerStyleAlert)];
                 
@@ -106,7 +125,7 @@
             }
             
         }];
-    }
+    //}
     
     
 }
@@ -129,10 +148,14 @@
             } else {
                 NSLog(@"User sent message successfully");
                 [self getMessages];
+                
+                //self.shouldScrollToLastRow = YES;
                 [self.messageTable reloadData];
                 self.sendTextView.text = @"";
             }
         }];
+    } else {
+        NSLog(@"Contact nil");
     }
     
     
@@ -187,6 +210,7 @@
     [self.timer invalidate];
 }
 
+/*
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -200,6 +224,8 @@
         //[self.messageTable setContentOffset:bottomOffset animated:NO];
     }
 }
+*/
+ 
 - (IBAction)onTapOutsideTextView:(id)sender {
     [self.view endEditing:YES];
 }
@@ -208,12 +234,34 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    /*
+    [self.messageTable reloadData];
+    NSIndexPath* ip = [NSIndexPath indexPathForRow:[self.messageTable numberOfRowsInSection:0] - 1 inSection:0];
+    [self.messageTable scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    */
+    
+    //[self.messageTable reloadData];
+    //int lastRowNumber = (int *)[self.messageTable numberOfRowsInSection:0] - 1;
+    
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self scrollToBottom];
+}
+
+- (void) scrollToBottom {
+    if (self.messages.count > 0) {
+        NSIndexPath *ip = [NSIndexPath indexPathForRow:self.messages.count - 1 inSection:0];
+        [self.messageTable scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 #pragma mark - keyboard movements
