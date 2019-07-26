@@ -105,7 +105,7 @@
             } else {
                 NSLog(@"%@", error.localizedDescription);
                 
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error"
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
                                                                                message:@"Please check your network connection."
                                                                         preferredStyle:(UIAlertControllerStyleAlert)];
                 
