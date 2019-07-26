@@ -62,7 +62,7 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
-    
+
     [query whereKey:@"category" equalTo:(self.category)];
     //[query whereKey:@"completionStatus equalTo:@1"created"];
     query.limit = 20;

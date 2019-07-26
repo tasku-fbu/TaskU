@@ -47,14 +47,12 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
-    //MKCoordinateRegion howardU = MKCoordinateRegionMake(CLLocationCoordinate2DMake(38.922777, -77.019445), MKCoordinateSpanMake(0.05, 0.05)); //Have set default map to Howard University
    MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]), MKCoordinateSpanMake(0.05, 0.05));
     [self.mapView setRegion:schoolRegion animated:false];
     
     MKPointAnnotation *annotation = [MKPointAnnotation new];
-    //annotation.coordinate = CLLocationCoordinate2DMake((double)(38.922777),(double)( -77.019445));
     annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
-    annotation.title = @"Picture!";
+    annotation.title = @"Here!";
     [self.mapView addAnnotation:annotation];
 }
 
@@ -62,6 +60,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 - (IBAction)tapMapAction:(id)sender {
     [self performSegueWithIdentifier:searchLocationSegueIdentifier sender:nil];
 }
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Passes the selected object to the new view controller.
