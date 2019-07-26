@@ -35,7 +35,7 @@
 static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
 static NSString * const messageSegueIdentifier = @"messageSegue";
 
-#pragma mark - initial view
+#pragma mark - Home initial view
 - (void)viewDidLoad {
     [super viewDidLoad];
     PFUser *loggedInUser = [PFUser currentUser];
@@ -47,17 +47,18 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"groceries", @"tutoring", @"Laundry", @"movingIn", @"specialServices",  nil ];
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
     
-    //[self.view addSubview:self.profileButton];
+    //[self.view addSubview:self.profileButton]; //slideMenu
     // [self createInitialSlideView];
     
 }
 
-#pragma mark - location button action
+#pragma mark - University location button action
 -(IBAction)LocationButtonAction:(id)sender {
     PFUser *loggedInUser = [PFUser currentUser];
     self.userLocation = loggedInUser[@"university"]; //gets the university of current user
     [self.LocationButton setTitle:self.userLocation forState:UIControlStateSelected];
 }
+
 /*
  #pragma mark - collectionview cell datasource and delegate functions implementation
  - (IBAction)profileButtonAction:(id)sender {
@@ -125,7 +126,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     return cell;
 }
 
-#pragma mark - helps us know which collection view cell category was tapped
+#pragma mark - helps us know which collection view cell category was tapped and then navigates
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
@@ -138,7 +139,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     [self presentViewController:navigationVC animated:YES completion:nil];
 }
 
-#pragma mark - redirects us to the newTaskViewController
+#pragma mark - button that redirects us to the newTaskViewController
 - (IBAction)addTaskAction:(id)sender {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newTask" bundle:nil];

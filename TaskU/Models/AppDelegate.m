@@ -27,8 +27,7 @@
     
     [Parse initializeWithConfiguration:config];
     
-
-     //persistent login feature
+  #pragma mark - Persistent user login 
      if (PFUser.currentUser) {
      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
      

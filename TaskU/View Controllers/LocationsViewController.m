@@ -10,19 +10,20 @@
 #import "LocationCell.h"
 #import "Parse/Parse.h"
 
-static NSString * const clientID = @"44AMDU33GRCGT1ZOPZAQDAG422E3AB4W51SNGHVF4WHEHUYG";
-static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCMFSKWNMXVQ";
 
+#pragma mark - interface and properties
 @interface LocationsViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *results;
-
 @end
+
+static NSString * const clientID = @"44AMDU33GRCGT1ZOPZAQDAG422E3AB4W51SNGHVF4WHEHUYG";
+static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCMFSKWNMXVQ";
 
 @implementation LocationsViewController
 
+#pragma mark - Location Search initial View Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -30,6 +31,7 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
+    self.tableView.rowHeight = 55;
 }
 
 /*
@@ -42,16 +44,18 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
  }
  */
 
-
+#pragma mark - tableView  datasource and delegate functions implementation
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.results.count;
 }
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
+    [cell updateWithLocation:self.results[indexPath.row]];
+    
     return cell;
 }
-*/
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // This is the selected venue
     NSDictionary *venue = self.results[indexPath.row];
@@ -64,9 +68,11 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
     
 }
 
+#pragma mark - Query Set up (searches for possible locations using fourSqaure map API)
 - (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
+    city = @"San Francisco";
     NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
-    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&near=%@,CA&query=%@", clientID, clientSecret, city, query];
+    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&near=%@,CA&query=%@&v=20141020", clientID, clientSecret, city, query];
     queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *url = [NSURL URLWithString:[baseURLString stringByAppendingString:queryString]];
@@ -85,9 +91,10 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
 }
 
 - (IBAction)backButtonAction:(id)sender {
-     [self dismissViewControllerAnimated:true completion:nil];
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
+#pragma mark -
 //setting delegate in prepare for segue questioupd
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     PFUser *loggedInUser = [PFUser currentUser];

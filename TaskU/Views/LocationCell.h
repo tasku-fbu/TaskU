@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Location Cell interface and method declaration
 @interface LocationCell : UITableViewCell
 
 - (void)updateWithLocation:(NSDictionary *)location;
