@@ -36,6 +36,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
+    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     [self getAllTasks];
     
@@ -91,7 +92,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     cell.delegate = self;
-    Task *task = self.tasks[indexPath.row];
+    Task *task = self.filteredData[indexPath.row];
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
     
@@ -155,9 +156,12 @@
         
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Task *task, NSDictionary *bindings) {
             NSString *name = task[@"taskName"];
+            
             NSString *description = task[@"taskDescription"];
             
-            return [name containsString:searchText] || [description containsString:searchText];
+            NSLog(@"%@",name);
+            NSLog(@"%i",[name containsString:searchText] || [description containsString:searchText]);
+            return ([name containsString:searchText] || [description containsString:searchText]);
         }];
         self.filteredData = [self.tasks filteredArrayUsingPredicate:predicate];
         
