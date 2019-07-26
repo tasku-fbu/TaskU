@@ -38,9 +38,15 @@
     self.editedUsername.text = user.username;
     self.editedPhone.text = [user[@"phone"] stringValue];
     self.editedUniversity.text = user[@"university"];
-    self.tableView.rowHeight = 44;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 45; // Something reasonable to help ios render your cells
+   // self.tableView.rowHeight = 44;
     
     
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewAutomaticDimension;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -133,6 +139,19 @@
 
 }
 
+- (IBAction)onTapCash:(UIButton *)sender {
+    // Call the Cash App app from TaskU
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *URL = [NSURL URLWithString:@"squarecash://"];
+    [application openURL:URL options:@{} completionHandler:^(BOOL success) {
+        if (success) {
+            NSLog(@"Opened url");
+        }
+    }];
+     
+    
+}
 
 
 @end
