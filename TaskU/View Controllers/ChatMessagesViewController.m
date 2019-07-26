@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.messageTable.frame.size.width, 50)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.messageTable.frame.size.width, 20)];
     [self.messageTable setTableFooterView:view];
     
     
@@ -81,29 +81,26 @@
         // fetch data asynchronously
         [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
             if (messages != nil) {
-                // do something with the array of object returned by the call
-                self.messages = [messages mutableCopy];
                 
-                NSLog(@"%@",self.messages);
-                
-                [self.messageTable reloadData];
-                
-                [self scrollToBottom];
-                
-                /*
                 int temp = (int) messages.count;
                 if (temp > self.numData) {
                     self.numData = temp;
-                    //self.shouldScrollToLastRow = YES;
-                    //[self.messageTable setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+                    
+                    self.messages = [messages mutableCopy];
+                    
+                    NSLog(@"%@",self.messages);
+                    
+                    [self.messageTable reloadData];
+                    
+                    [self scrollToBottom];
                     
                 }
-                */
-                
-                
                 
                 [self.refreshControl endRefreshing];
                 [self.activityIndicator stopAnimating];
+                
+                
+                
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
