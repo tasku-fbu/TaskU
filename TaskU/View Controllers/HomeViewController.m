@@ -21,6 +21,7 @@
 @property NSArray *categoriesTextArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
 @property (weak, nonatomic) IBOutlet UIButton *LocationButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
 
 @property NSString *userLocation;
 
@@ -47,9 +48,23 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"groceries", @"tutoring", @"Laundry", @"movingIn", @"specialServices",  nil ];
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
     
+    //Button configs
+    self.plusButton.layer.cornerRadius = 26;
+    
+    self.plusButton.clipsToBounds = YES;
+    
+    //Collection view padding
+    //top, left, bottom, right
+   // self.collection_View.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+
     //[self.view addSubview:self.profileButton];
     // [self createInitialSlideView];
     
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0; // This is the minimum inter item spacing, can be more
 }
 
 #pragma mark - location button action
@@ -120,6 +135,20 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     UILabel *label = (UILabel *)[cell viewWithTag:(101)];
     label.text = [self.categoriesTextArray objectAtIndex:indexPath.row];
     
+    
+    //Cell shadow
+    cell.contentView.layer.cornerRadius = 2.0f;
+    cell.contentView.layer.borderWidth = 1.0f;
+    cell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
+    cell.contentView.layer.masksToBounds = YES;
+    
+    cell.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
+    cell.layer.shadowRadius = 2.0f;
+    cell.layer.shadowOpacity = 0.5f;
+    cell.layer.masksToBounds = NO;
+    cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
+    
     return cell;
 }
 
@@ -168,6 +197,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     [self performSegueWithIdentifier: messageSegueIdentifier sender:nil];
     
 }
+
 
 
 /*
