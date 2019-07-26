@@ -159,9 +159,9 @@
             
             NSString *description = task[@"taskDescription"];
             
-            NSLog(@"%@",name);
-            NSLog(@"%i",[name containsString:searchText] || [description containsString:searchText]);
-            return ([name containsString:searchText] || [description containsString:searchText]);
+            //NSLog(@"%@",name);
+            //NSLog(@"%i",[name.lowercaseString containsString:searchText.lowercaseString] || [description.lowercaseString containsString:searchText.lowercaseString]);
+            return ([name.lowercaseString containsString:searchText.lowercaseString] || [description.lowercaseString containsString:searchText.lowercaseString]);
         }];
         self.filteredData = [self.tasks filteredArrayUsingPredicate:predicate];
         
