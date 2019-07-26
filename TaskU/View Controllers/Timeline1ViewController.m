@@ -14,13 +14,16 @@
 #import "DetailsInfoViewController.h"
 #import "HomeViewController.h"
 
+#import "LocationsViewController.h"
+
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray *tasks;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
+@property (strong, nonatomic) NSArray *results;
+@property (strong, nonatomic) NSDictionary *venue;
 @end
 
 @implementation Timeline1ViewController
@@ -158,9 +161,48 @@
     statusVC.task = cell.task;
     infoVC.task = cell.task;
     statusVC.delegate = self;
+    
+    //get the coordinates of the selected task
+   [self fetchLocationsWithQuery:cell.task[@"startAddress"] nearCity:cell.task[@"startAddress"]];
+    
+    //NSDictionary *venue = self.results[indexPath.row];
+    NSNumber *lat = [self.venue valueForKeyPath:@"location.lat"];
+    NSNumber *lng = [self.venue valueForKeyPath:@"location.lng"];
+    NSLog(@"%@, %@", lat, lng);
+    
+    // This is the starting coordinates
+    statusVC.latitude = lat;
+    statusVC.longitude = lng;
+    //calling the locationsViewController delegate method with the latitude and longitude of the location the user selects.
+    //[self.delegate locationsViewController:self didPickLocationWithLatitude:(lat) longitude:(lng)];
     [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
+
+
+
+- (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
+    static NSString * const clientID = @"44AMDU33GRCGT1ZOPZAQDAG422E3AB4W51SNGHVF4WHEHUYG";
+    static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCMFSKWNMXVQ";
+    NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
+    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&near=%@,CA&query=%@", clientID, clientSecret, city, query];
+    queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    
+    NSURL *url = [NSURL URLWithString:[baseURLString stringByAppendingString:queryString]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data) {
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"response: %@", responseDictionary);
+            self.venue = [responseDictionary valueForKeyPath:@"response.venues"];
+            [self.tableView reloadData];
+        }
+    }];
+    [task resume];
+}
+
 
 - (IBAction)onBackHome:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -171,7 +213,7 @@
     [self.tableView reloadData];
 }
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -179,7 +221,7 @@
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
  }
- */
+ 
 
 
 
