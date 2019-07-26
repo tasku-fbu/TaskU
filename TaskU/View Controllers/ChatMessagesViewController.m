@@ -34,6 +34,7 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.messageTable.frame.size.width, 50)];
     [self.messageTable setTableFooterView:view];
     
+    
     self.shouldScrollToLastRow = YES;
     self.contactLabel.text = self.contact.username;
     
@@ -59,7 +60,7 @@
     PFUser *me = [PFUser currentUser];
     PFUser *you = self.contact;
     
-    if (you) {
+    //if (you) {
         PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
         
         [query1 whereKey:@"sender" equalTo:me];
@@ -82,13 +83,25 @@
             if (messages != nil) {
                 // do something with the array of object returned by the call
                 self.messages = [messages mutableCopy];
-                //NSLog(@"%@",self.messages);
+                
+                NSLog(@"%@",self.messages);
+                
                 [self.messageTable reloadData];
+                
+                [self scrollToBottom];
+                
+                /*
                 int temp = (int) messages.count;
                 if (temp > self.numData) {
                     self.numData = temp;
-                    self.shouldScrollToLastRow = YES;
+                    //self.shouldScrollToLastRow = YES;
+                    //[self.messageTable setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+                    
                 }
+                */
+                
+                
+                
                 [self.refreshControl endRefreshing];
                 [self.activityIndicator stopAnimating];
                 
@@ -114,7 +127,7 @@
             }
             
         }];
-    }
+    //}
     
     
 }
@@ -137,10 +150,14 @@
             } else {
                 NSLog(@"User sent message successfully");
                 [self getMessages];
+                
+                //self.shouldScrollToLastRow = YES;
                 [self.messageTable reloadData];
                 self.sendTextView.text = @"";
             }
         }];
+    } else {
+        NSLog(@"Contact nil");
     }
     
     
@@ -195,6 +212,7 @@
     [self.timer invalidate];
 }
 
+/*
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -208,6 +226,8 @@
         //[self.messageTable setContentOffset:bottomOffset animated:NO];
     }
 }
+*/
+ 
 - (IBAction)onTapOutsideTextView:(id)sender {
     [self.view endEditing:YES];
 }
@@ -216,12 +236,34 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    /*
+    [self.messageTable reloadData];
+    NSIndexPath* ip = [NSIndexPath indexPathForRow:[self.messageTable numberOfRowsInSection:0] - 1 inSection:0];
+    [self.messageTable scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    */
+    
+    //[self.messageTable reloadData];
+    //int lastRowNumber = (int *)[self.messageTable numberOfRowsInSection:0] - 1;
+    
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self scrollToBottom];
+}
+
+- (void) scrollToBottom {
+    if (self.messages.count > 0) {
+        NSIndexPath *ip = [NSIndexPath indexPathForRow:self.messages.count - 1 inSection:0];
+        [self.messageTable scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 #pragma mark - keyboard movements
