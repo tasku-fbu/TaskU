@@ -35,6 +35,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.searchBar.delegate = self;
     
     [self getAllTasks];
     
@@ -74,7 +75,7 @@
         if (tasks != nil) {
             // do something with the array of object returned by the call
             self.tasks = [tasks mutableCopy];
-            
+            self.filteredData = self.tasks;
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
             [self.activityIndicator stopAnimating];
@@ -145,8 +146,35 @@
 
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tasks.count;
+    return self.filteredData.count;
 }
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Task *task, NSDictionary *bindings) {
+            NSString *name = task[@"taskName"];
+            NSString *description = task[@"taskDescription"];
+            
+            return [name containsString:searchText] || [description containsString:searchText];
+        }];
+        self.filteredData = [self.tasks filteredArrayUsingPredicate:predicate];
+        
+        
+        
+        //NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.tasks;
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
+
 
 
 #pragma mark - navigates to details when task is selected, gets geo cordinates to display on the next view controller
