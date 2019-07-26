@@ -19,10 +19,12 @@
 @interface Timeline1ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *tasks;
+@property (strong, nonatomic) NSArray *filteredData;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *results;
 @property (strong, nonatomic) NSDictionary *venue;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation Timeline1ViewController
