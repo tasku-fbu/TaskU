@@ -34,6 +34,7 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.messageTable.frame.size.width, 20)];
     [self.messageTable setTableFooterView:view];
     
+    self.sendTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     self.shouldScrollToLastRow = YES;
     self.contactLabel.text = self.contact.username;

@@ -156,11 +156,7 @@
         
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Task *task, NSDictionary *bindings) {
             NSString *name = task[@"taskName"];
-            
             NSString *description = task[@"taskDescription"];
-            
-            //NSLog(@"%@",name);
-            //NSLog(@"%i",[name.lowercaseString containsString:searchText.lowercaseString] || [description.lowercaseString containsString:searchText.lowercaseString]);
             return ([name.lowercaseString containsString:searchText.lowercaseString] || [description.lowercaseString containsString:searchText.lowercaseString]);
         }];
         self.filteredData = [self.tasks filteredArrayUsingPredicate:predicate];
