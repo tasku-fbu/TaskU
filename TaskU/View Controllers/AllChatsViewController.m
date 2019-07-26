@@ -205,8 +205,8 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
     NSString *objectIdContact = self.filteredData.allKeys[indexPath.row];
-    NSLog(@"%@",self.filteredData.allKeys);
-    NSLog(@"%@",objectIdContact);
+    //NSLog(@"%@",self.filteredData.allKeys);
+    //NSLog(@"%@",objectIdContact);
     
     PFQuery * query = [PFUser query];
     [query whereKey:@"objectId" equalTo:objectIdContact];

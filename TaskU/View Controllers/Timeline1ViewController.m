@@ -68,7 +68,11 @@
     [query includeKey:@"minutes"];
     
     [query whereKey:@"category" equalTo:(self.category)];
-    //[query whereKey:@"completionStatus equalTo:@1"created"];
+    [query whereKey:@"completionStatus" equalTo:@"created"];
+    
+    NSDate *now = [NSDate date];
+    [query whereKey:@"taskDate" greaterThanOrEqualTo:now];
+    
     query.limit = 20;
     
     // fetch data asynchronously
