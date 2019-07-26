@@ -174,7 +174,17 @@
     
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    self.filteredData = self.tasks;
+    [self.tableView reloadData];
+}
 
 
 #pragma mark - navigates to details when task is selected, gets geo cordinates to display on the next view controller
