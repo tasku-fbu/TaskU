@@ -66,7 +66,7 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
-    
+
     [query whereKey:@"category" equalTo:(self.category)];
     [query whereKey:@"completionStatus" equalTo:@"created"];
     
