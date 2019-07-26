@@ -25,7 +25,10 @@
 @dynamic pay;
 @dynamic hours;
 @dynamic minutes;
-
+@dynamic startLatitude;
+@dynamic startLongitude;
+@dynamic endLatitude;
+@dynamic endLongitude;
 +(nonnull NSString*)parseClassName{
     return @"Task";
 }
@@ -47,7 +50,7 @@
 
 
 //To upload the user task to Parse, get user input from newTaskViewController. Then, call postTask from NewTaskViewController by passing all the required arguments into it
-+ (void) postTask: ( NSString * _Nullable )taskName withStart: ( NSString * _Nullable )startAddress withEnd: ( NSString * _Nullable )endAddress withCategory: ( NSString * _Nullable )category withDate: (NSDate *_Nullable)taskDate withHours: ( NSString * _Nullable )hours withMinutes: ( NSString * _Nullable )minutes withPay: ( NSString * _Nullable )pay withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) postTask: ( NSString * _Nullable )taskName withStart: ( NSString * _Nullable )startAddress withEnd: ( NSString * _Nullable )endAddress withStartLatitude: ( NSNumber * _Nullable )startLatitude withStartLongitude: ( NSNumber * _Nullable )startLongitude withEndLatitude: ( NSNumber * _Nullable )endLatitude withEndLongitude: ( NSNumber * _Nullable )endLongitude withCategory: ( NSString * _Nullable )category withDate: (NSDate *_Nullable)taskDate withHours: ( NSString * _Nullable )hours withMinutes: ( NSString * _Nullable )minutes withPay: ( NSString * _Nullable )pay withDescription: ( NSString * _Nullable )taskDescription withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Task *newTask = [Task new];
     newTask.requester = [PFUser currentUser];
@@ -63,11 +66,15 @@
     newTask.minutes = [NSNumber numberWithInt:[minutes intValue]];
     
     newTask.pay = [NSNumber numberWithInt:[pay intValue]];
-
-
+    
+    newTask.startLatitude = startLatitude;
+    newTask.startLongitude = startLongitude;
+    newTask.endLatitude = endLatitude;
+    newTask.endLongitude = endLongitude;
+   
     //POST Request
     [newTask saveInBackgroundWithBlock: completion];
 }
-
+// withStartCoordinates: ( NSArray * _Nullable )startCoordinates withEndCoordinates: ( NSArray * _Nullable )endCoordinates
 @end
 

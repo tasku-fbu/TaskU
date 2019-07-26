@@ -12,9 +12,7 @@
 #pragma mark - interface and properties
 @interface LocationCell()
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) NSDictionary *location;
+
 @end
 
 @implementation LocationCell
