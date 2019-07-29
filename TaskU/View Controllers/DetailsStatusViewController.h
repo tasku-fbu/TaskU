@@ -20,8 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Task *task;
 @property (strong, nonatomic) id<CancelRequestOnDetailsDelegate> delegate;
 @property (strong, nonatomic) id<CancelMissionOnDetailsDelegate> missionDelegate;
-@property (weak, nonatomic) NSNumber *latitude;
-@property (weak, nonatomic) NSNumber *longitude;
+@property (strong, nonatomic) NSNumber *startLatitude;
+@property (strong, nonatomic) NSNumber *startLongitude;
+@property (strong, nonatomic) NSNumber *endLatitude;
+@property (strong, nonatomic) NSNumber *endLongitude;
 @end
 
 @protocol CancelRequestOnDetailsDelegate
