@@ -66,7 +66,7 @@
     newTask.minutes = [NSNumber numberWithInt:[minutes intValue]];
     
     newTask.pay = [NSNumber numberWithInt:[pay intValue]];
-    
+    NSLog(@"%@ %@ %@ %@",startLongitude , startLongitude, endLongitude, endLongitude);
     newTask.startLatitude = startLatitude;
     newTask.startLongitude = startLongitude;
     newTask.endLatitude = endLatitude;

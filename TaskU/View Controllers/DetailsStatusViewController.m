@@ -29,7 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *completeIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *payIconView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
+@property (weak, nonatomic) NSNumber *latitude;
+@property (weak, nonatomic) NSNumber *longitude;
 
 @end
 static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
@@ -47,12 +48,17 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
-   MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]), MKCoordinateSpanMake(0.05, 0.05));
+    NSLog(@"%@ %@ %@ %@", self.task.startLatitude, self.task.startLongitude, self.task.endLatitude, self.task.endLongitude);
+    MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]), MKCoordinateSpanMake(1.9, 1.9));
     [self.mapView setRegion:schoolRegion animated:false];
-    
+
     MKPointAnnotation *annotation = [MKPointAnnotation new];
-    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
-    annotation.title = @"Here!";
+    
+    annotation.coordinate = CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]);
+    annotation.title = @"Starts Here!";
+    [self.mapView addAnnotation:annotation];
+    
+    annotation.coordinate = CLLocationCoordinate2DMake([self.task.startLatitude  doubleValue], [self.task.startLongitude doubleValue]);    annotation.title = @"Delivery Point!";
     [self.mapView addAnnotation:annotation];
 }
 
@@ -76,7 +82,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     if (annotationView == nil) {
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
         annotationView.canShowCallout = true;
-        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 5.0, 5.0)];
     }
     
     UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
@@ -89,13 +95,6 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 - (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
     self.latitude = latitude;
     self.longitude = longitude;
-    
-//    MKPointAnnotation *annotation = [MKPointAnnotation new];
-//    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
-//    annotation.title = @"Picture!";
-//    [self.mapView removeAnnotations:[self.mapView.annotations]];
-//   [self.mapView removeAnnotation:annotation];
-//   [self.mapView addAnnotations:annotation];
     [self reloadMap];
     [self dismissViewControllerAnimated:true completion:nil];
    // [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
