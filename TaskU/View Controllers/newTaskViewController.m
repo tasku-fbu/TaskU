@@ -8,8 +8,10 @@
 
 #import "newTaskViewController.h"
 #import "Task.h"
+#import "LocationsViewController.h"
+#import "newTaskViewController.h"
 
-@interface newTaskViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface newTaskViewController () <UIPickerViewDelegate, UIPickerViewDataSource, LocationsViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *taskName;
 @property (weak, nonatomic) IBOutlet UITextField *startAddress;
 @property (weak, nonatomic) IBOutlet UITextField *endAddress;
@@ -24,10 +26,14 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) NSString *chosenCategory;
-
-
+@property (weak, nonatomic) NSNumber *startLatitude;
+@property (weak, nonatomic) NSNumber *startLongitude;
+@property (weak, nonatomic) NSNumber *endLatitude;
+@property (weak, nonatomic) NSNumber *endLongitude;
+@property (assign, nonatomic) BOOL isThisStartAddress;
 @end
 
+static NSString *const addressSegueIdentifier = @"addressSegue";
 @implementation newTaskViewController
 
 - (void)viewDidLoad {
@@ -69,8 +75,52 @@
     self.categories = @[@"Delivery", @"Groceries", @"Laundry and Cleaning", @"Tutoring", @"Volunteering", @"Other"];
 
 }
+- (IBAction)startAddressAction:(id)sender {
+    self.isThisStartAddress = TRUE;
+    [self performSegueWithIdentifier: addressSegueIdentifier sender:nil]; //performs segue to LocationViewController
 
+}
+- (IBAction)endAddressAction:(id)sender {
+     self.isThisStartAddress = FALSE;
+     [self performSegueWithIdentifier: addressSegueIdentifier sender:nil]; //performs segue to LocationViewController
+}
+- (IBAction)clearStartAddreess:(id)sender {
+}
 
+#pragma mark - Gets user selected location's name of place and address
+- (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithName:(nonnull NSString *) locationName address:(nonnull NSString *)locationAddress {
+    if(self.isThisStartAddress){
+        self.startAddress.text = locationAddress;
+    }
+    else
+    {
+        self.endAddress.text = locationAddress;
+    }
+    
+}
+#pragma mark - Gets user selected location's coordinates and resets annotation
+- (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
+    if(self.isThisStartAddress) {
+       self.startLatitude = latitude;
+       self.startLongitude = longitude;
+    }
+    else{
+        self.endLatitude = latitude;
+        self.endLongitude = longitude;
+    }
+
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:addressSegueIdentifier]) {
+        LocationsViewController *locationVC = [segue destinationViewController];
+        //editVC.delegate = self.mainProfileVC;
+        locationVC.isNewTaskViewController = TRUE;
+        locationVC.delegate = self;
+    }
+}
 -(void)makePost {
     //NSSet of erroneus hour/minute times and pay (empty field or 0)
     NSSet *errorAmount = [NSSet setWithObjects:@"", @"0", nil];
@@ -83,8 +133,10 @@
     if ([self.taskName.text isEqualToString:@""] || [self.endAddress.text isEqualToString:@""] || [self.taskDescription.text isEqualToString:@""] || [zeroPayAmount containsObject:self.payAmount.text] || ([errorAmount containsObject:self.minutes.text] && [errorAmount containsObject:self.hours.text])){
         [self presentViewController:self.completionAlert animated:YES completion:^{
         }];
-    } else {
-        [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text withCategory: self.chosenCategory withDate:self.taskDate.date withHours:self.hours.text withMinutes:self.minutes.text withPay:self.payAmount.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
+    } else { 
+        [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text
+         withStartLatitude:self.startLatitude withStartLongitude:self.startLongitude withEndLatitude:self.endLatitude withEndLongitude:self.endLongitude
+          withCategory: self.chosenCategory withDate:self.taskDate.date withHours:self.hours.text withMinutes:self.minutes.text withPay:self.payAmount.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
             
             if(succeeded){
                 NSLog(@"Posted!");
@@ -101,8 +153,6 @@
         }];
     }
 }
-
-
 
 
 - (IBAction)didTapClose:(UIBarButtonItem *)sender {

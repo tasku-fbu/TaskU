@@ -12,8 +12,9 @@
 
 #import <MapKit/MapKit.h>
 #import "LocationsViewController.h"
+#import "Task.h"
 
-
+#pragma mark - interface and properties
 @interface DetailsStatusViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *createLabel;
 @property (weak, nonatomic) IBOutlet UILabel *acceptLabel;
@@ -27,20 +28,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *acceptIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *completeIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *payIconView;
-
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
+
 @end
-
-
-
-
+static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 
 @implementation DetailsStatusViewController
 
 
-
-
+#pragma mark - Details Status intial View
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -48,9 +45,71 @@
     [self showCreateLabel];
     [self updateView];
     
+    
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
-    MKCoordinateRegion howardU = MKCoordinateRegionMake(CLLocationCoordinate2DMake(38.922777, -77.019445), MKCoordinateSpanMake(0.05, 0.05)); //Have set default map to Howard University
-    [self.mapView setRegion:howardU animated:false];
+   MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]), MKCoordinateSpanMake(0.05, 0.05));
+    [self.mapView setRegion:schoolRegion animated:false];
+    
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
+    annotation.title = @"Here!";
+    [self.mapView addAnnotation:annotation];
+}
+
+#pragma mark - Display location search view controller
+- (IBAction)tapMapAction:(id)sender {
+    [self performSegueWithIdentifier:searchLocationSegueIdentifier sender:nil];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Passes the selected object to the new view controller.
+    
+    UINavigationController *navigationController = [segue destinationViewController];
+    LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
+    LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
+}
+
+#pragma mark - mapView Annotation
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+    if (annotationView == nil) {
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+        annotationView.canShowCallout = true;
+        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+    }
+    
+    UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
+    imageView.image = [UIImage imageNamed:@"location"];
+    
+    return annotationView;
+}
+
+#pragma mark - Gets user selected location's coordinates and resets annotation
+- (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
+    self.latitude = latitude;
+    self.longitude = longitude;
+    
+//    MKPointAnnotation *annotation = [MKPointAnnotation new];
+//    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
+//    annotation.title = @"Picture!";
+//    [self.mapView removeAnnotations:[self.mapView.annotations]];
+//   [self.mapView removeAnnotation:annotation];
+//   [self.mapView addAnnotations:annotation];
+    [self reloadMap];
+    [self dismissViewControllerAnimated:true completion:nil];
+   // [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+}
+
+-(void) reloadMap {
+    MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]), MKCoordinateSpanMake(0.05, 0.05));
+    [self.mapView setRegion:schoolRegion animated:false];
+    
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    //annotation.coordinate = CLLocationCoordinate2DMake((double)(38.922777),(double)( -77.019445));
+    annotation.coordinate = CLLocationCoordinate2DMake([self.latitude doubleValue],[self.longitude doubleValue]);
+    annotation.title = @"Picture!";
+    [self.mapView addAnnotation:annotation];
 }
 
 - (void) showCreateLabel {
@@ -62,13 +121,7 @@
     self.createLabel.text = display;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Passes the selected object to the new view controller.
-    
-    UINavigationController *navigationController = [segue destinationViewController];
-    LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
-    LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
-}
+
 
 - (void) showAcceptLabel {
     PFUser *missioner = self.task[@"missioner"];
@@ -382,15 +435,6 @@
                                                              
                                                              [self.task deleteInBackground];
                                                              [self.delegate didCancelRequest];
-                                                             /*
-                                                              UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
-                                                              UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
-                                                              
-                                                              Timeline1ViewController *timeline1VC = (Timeline1ViewController *) navigationVC.topViewController;
-                                                              
-                                                              
-                                                              [self presentViewController:navigationVC animated:YES completion:nil];
-                                                              */
                                                              [self dismissViewControllerAnimated:YES completion:^{}];
                                                              
                                                              
@@ -462,5 +506,8 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+
+
 
 @end

@@ -9,19 +9,20 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 
-
-static NSString *const signUpSegueIdentifier = @"signUpSegue";
-static NSString *const loginSegueIdentifier = @"loginSegue";
-
+#pragma mark - interface and properties
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
+static NSString *const signUpSegueIdentifier = @"signUpSegue";
+static NSString *const loginSegueIdentifier = @"loginSegue";
+
 @implementation LoginViewController
 @synthesize usernameTextField;
 
+#pragma mark - Login Initial View
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -29,6 +30,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     self.passwordTextField.delegate = self;
 }
 
+#pragma mark - configuration for external touch and keyboard return key as user logs in
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
@@ -38,6 +40,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     [self.view endEditing:YES];
 }
 
+#pragma mark - login verification block
 - (void)loginUser {
     NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
@@ -78,6 +81,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     }
 }
 
+#pragma mark - buttons to login or move to sign up page
 - (IBAction)signUpButtonAction:(id)sender {
     [self performSegueWithIdentifier: signUpSegueIdentifier sender:nil]; //performs segue to show sign up page
 }
@@ -94,7 +98,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     return NO;
 }
 
-//Alerts the user if unaccepted login information is entered
+#pragma mark - user alerts during login if login information doesn't meet our standards
 - (bool) isSignUpInfoComplete{
     
     if ([self.usernameTextField.text isEqual:@""]){

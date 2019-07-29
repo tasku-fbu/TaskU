@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Collection View properties and Delegate Declaration
 @interface HomeCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *homeViewImage;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImages;

@@ -9,16 +9,20 @@
 #import <Parse/Parse.h>
 #import "AllChatsViewController.h"
 #import "Message.h"
-
+#import "ContactCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "ChatMessagesViewController.h"
 
 @interface AllChatsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-//@property (strong, nonatomic) NSMutableArray *contacts;
-//@property (strong, nonatomic) NSMutableArray *allMessages;
-//@property (strong, nonatomic) NSMutableArray *messagesByContact;
-
-@property (strong, nonatomic) NSDictionary *messagesByContact;
+@property (strong, nonatomic) NSMutableDictionary *messagesByContact;
+@property (weak, nonatomic) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableDictionary *filteredData;
+@property (strong, nonatomic) NSMutableArray *contacts;
 @end
 
 @implementation AllChatsViewController
@@ -26,68 +30,289 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.searchBar.delegate = self;
+    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self getAllMessagesFirst];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getAllMessages) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self.activityIndicator startAnimating];
+    
 }
 
 
 - (void) getAllMessages {
-    PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
-    [query1 includeKey:@"sender"];
-    [query1 includeKey:@"createdAt"];
-    [query1 includeKey:@"receiver"];
-    [query1 whereKey:@"sender" equalTo:[PFUser currentUser]];
-    
-    PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
-    [query2 includeKey:@"sender"];
-    [query2 includeKey:@"createdAt"];
-    [query2 includeKey:@"receiver"];
-    [query2 whereKey:@"receiver" equalTo:[PFUser currentUser]];
-    
-    PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1,query2]];
-    [mainQuery orderByAscending:@"createdAt"];
-    [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
-        if (messages != nil) {
-            // do something with the array of object returned by the call
-           // self.contacts = [NSMutableArray new];
-            //self.messagesByContact = [NSMutableArray new];
-            self.messagesByContact = [NSDictionary new];
+    if (![PFUser currentUser]) {
+        [self.timer invalidate];
+    } else {
+        PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
+        
+        [query1 whereKey:@"sender" equalTo:[PFUser currentUser]];
+        
+        PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
+        
+        [query2 whereKey:@"receiver" equalTo:[PFUser currentUser]];
+        
+        PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1,query2]];
+        [mainQuery includeKey:@"createdAt"];
+        [mainQuery includeKey:@"sender"];
+        [mainQuery includeKey:@"receiver"];
+        [mainQuery includeKey:@"text"];
+        [mainQuery orderByAscending:@"createdAt"];
+        [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
+            if (messages != nil) {
+                self.messagesByContact = [NSMutableDictionary new];
+                self.contacts = [NSMutableArray new];
+                
+                [self processMessages: messages];
+                
+                //self.filteredData = self.messagesByContact;
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
+                
+            } else {
+                NSLog(@"%@", error.localizedDescription);
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
+                                                                               message:@"Please check your network connection."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                
+                // create an OK action
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle response here.
+                                                                 }];
+                // add the OK action to the alert controller
+                [alert addAction:okAction];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    // optional code for what happens after the alert controller has finished presenting
+                }];
+                
+                
+            }
             
-            [self processMessages: messages];
+        }];
+    }
+}
+
+- (void) getAllMessagesFirst {
+    if (![PFUser currentUser]) {
+        [self.timer invalidate];
+    } else {
+        PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
+        
+        [query1 whereKey:@"sender" equalTo:[PFUser currentUser]];
+        
+        PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
+        
+        [query2 whereKey:@"receiver" equalTo:[PFUser currentUser]];
+        
+        PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1,query2]];
+        [mainQuery includeKey:@"createdAt"];
+        [mainQuery includeKey:@"sender"];
+        [mainQuery includeKey:@"receiver"];
+        [mainQuery includeKey:@"text"];
+        [mainQuery orderByAscending:@"createdAt"];
+        [mainQuery findObjectsInBackgroundWithBlock:^(NSArray *messages, NSError *error) {
+            if (messages != nil) {
+                self.messagesByContact = [NSMutableDictionary new];
+                self.contacts = [NSMutableArray new];
+                
+                [self processMessages: messages];
+                
+                self.filteredData = self.messagesByContact;
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
+                
+            } else {
+                NSLog(@"%@", error.localizedDescription);
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
+                                                                               message:@"Please check your network connection."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                
+                // create an OK action
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle response here.
+                                                                 }];
+                // add the OK action to the alert controller
+                [alert addAction:okAction];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    // optional code for what happens after the alert controller has finished presenting
+                }];
+                
+                
+            }
             
-            [self.tableView reloadData];
-            //[self.refreshControl endRefreshing];
-            //[self.activityIndicator stopAnimating];
+        }];
+    }
+}
+
+- (void) processMessages:(NSArray *) messages{
+    NSMutableDictionary *dictionary = [NSMutableDictionary new];
+    for (Message *message in messages) {
+        PFUser *sender = message[@"sender"];
+        PFUser *receiver = message[@"receiver"];
+        PFUser *contact;
+        if ( [sender.objectId isEqual:[PFUser currentUser].objectId]) {
+            contact = receiver;
+            
+        } else {
+            contact = sender;
+            
+        }
+        if (![dictionary valueForKey:contact.objectId]) {
+            [self.contacts addObject:contact];
+        }
+        
+        NSString *myKey = contact.objectId;
+        [dictionary setObject:message forKey:myKey];
+    }
+    
+    
+    //sort the contacts by latest conversation
+    NSArray* sortedKeys = [dictionary keysSortedByValueUsingComparator:^(id first, id second) {
+        Message *latestMessage1 = (Message*) first;
+        Message *latestMessage2 = (Message*) second;
+        NSDate *date1 = latestMessage1[@"createdAt"];
+        NSDate *date2 = latestMessage2[@"createdAt"];
+        if ([date1 compare:date2] == NSOrderedAscending) {
+            return (NSComparisonResult)NSOrderedDescending;
+        } else {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+    }];
+    
+    for (NSString *contact in sortedKeys) {
+        NSArray *tempMessage = [dictionary objectForKey:contact];
+        [self.messagesByContact setObject:tempMessage forKey:contact];
+    }
+    
+    
+    //NSLog(@"%@",self.messagesByContact);
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
+    NSString *objectIdContact = self.filteredData.allKeys[indexPath.row];
+    //NSLog(@"%@",self.filteredData.allKeys);
+    //NSLog(@"%@",objectIdContact);
+    
+    PFQuery * query = [PFUser query];
+    [query whereKey:@"objectId" equalTo:objectIdContact];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+        if (users != nil) {
+            
+            PFUser *contact = [users firstObject];
+            cell.contactUsernameLabel.text = contact[@"username"];
+            PFFileObject *imageFile = contact[@"profileImage"];
+            NSString *urlString = imageFile.url;
+            [cell.contactProfileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+            cell.contact = contact;
             
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
         
     }];
+    
+    
+    Message *latest = [self.filteredData objectForKey:objectIdContact];
+    cell.latestTextLabel.text = latest[@"text"];
+    
+    
+    return cell;
 }
 
-- (void) processMessages:(NSArray *) messages{
-    for (Message *message in messages) {
-        PFUser *sender = message[@"sender"];
-        PFUser *receiver = message[@"receiver"];
-        PFUser *contact;
-        if ( [sender isEqual:[PFUser currentUser]]) {
-            contact = receiver;
-        } else {
-            contact = sender;
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSArray *keyArr = self.filteredData.allKeys;
+    return keyArr.count;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        self.filteredData = [NSMutableDictionary new];
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *contact, NSDictionary *bindings) {
+            NSString *username = contact[@"username"];
+            NSString *first = contact[@"firstName"];
+            NSString *last = contact[@"lastName"];
+            return ([username.lowercaseString containsString:searchText.lowercaseString] || [first.lowercaseString containsString:searchText.lowercaseString] || [last.lowercaseString containsString:searchText.lowercaseString]);
+        }];
+        
+        NSArray *filteredContacts = [self.contacts filteredArrayUsingPredicate:predicate];
+        NSLog(@"%@",filteredContacts);
+        
+        NSMutableArray *filteredKeys = [NSMutableArray new];
+        for (PFUser *contact in filteredContacts) {
+            [filteredKeys addObject:contact.objectId];
         }
-       //if (self.messagesByContact valueForKey:)
+        for (NSString *contact in filteredKeys) {
+            NSArray *tempMessage = [self.messagesByContact objectForKey:contact];
+            [self.filteredData setObject:tempMessage forKey:contact];
+        }
+        
+        
+        
+        //NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.messagesByContact;
     }
     
+    [self.tableView reloadData];
+    
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    self.filteredData = self.messagesByContact;
+    [self.tableView reloadData];
 }
 
 
 /*
+- (void) viewDidDisappear:(BOOL)animated {
+    [self.timer invalidate];
+}
+*/
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showMessages"]) {
+        ContactCell *tappedCell = (ContactCell*)sender;
+        ChatMessagesViewController *chatMessagesController = [segue destinationViewController];
+        chatMessagesController.contact = tappedCell.contact;
+        
+        
+    }
 }
-*/
+
+
+
+
+
 
 @end

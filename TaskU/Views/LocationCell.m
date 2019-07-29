@@ -9,12 +9,10 @@
 #import "LocationCell.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
+#pragma mark - interface and properties
 @interface LocationCell()
-
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) NSDictionary *location;
+
 @end
 
 @implementation LocationCell
@@ -30,6 +28,7 @@
     // Configure the view for the selected state
 }
 
+#pragma mark - updates cells locations as user types in search bar
 - (void)updateWithLocation:(NSDictionary *)location {
     self.nameLabel.text = location[@"name"];
     self.addressLabel.text = [location valueForKeyPath:@"location.address"];
