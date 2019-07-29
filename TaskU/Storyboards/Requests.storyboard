@@ -48,9 +48,8 @@
                                     <segue destination="Pil-79-1q5" kind="embed" id="6zN-z4-1JG"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-6m-Z5C">
-                                <rect key="frame" x="116" y="99" width="182" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-6m-Z5C">
+                                <rect key="frame" x="125.5" y="96" width="163" height="29"/>
                                 <segments>
                                     <segment title="Current"/>
                                     <segment title="Completed"/>
@@ -61,6 +60,10 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hE4-6m-Z5C" firstAttribute="top" secondItem="KvN-hy-vL0" secondAttribute="top" constant="8" id="708-ji-Dnz"/>
+                            <constraint firstItem="hE4-6m-Z5C" firstAttribute="centerX" secondItem="Fry-Rh-H02" secondAttribute="centerX" id="PF4-M3-79v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KvN-hy-vL0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Requests" image="requests" id="74H-hg-0oF"/>
@@ -184,6 +187,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aKp-wE-WEC"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="5aq-BI-Vgg" id="jO5-HJ-AVf"/>
@@ -302,6 +306,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2QD-3G-aaL"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="A3e-xo-otK" id="owc-tE-aRg"/>
