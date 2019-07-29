@@ -208,16 +208,21 @@
     statusVC.delegate = self;
     
     //get the coordinates of the selected task
-   [self fetchLocationsWithQuery:cell.task[@"startAddress"] nearCity:cell.task[@"startAddress"]];
-    
+   //[self fetchLocationsWithQuery:cell.task[@"startAddress"] nearCity:cell.task[@"startAddress"]];
+    /*
     //NSDictionary *venue = self.results[indexPath.row];
-    NSNumber *lat = [self.venue valueForKeyPath:@"location.lat"];
-    NSNumber *lng = [self.venue valueForKeyPath:@"location.lng"];
-    NSLog(@"%@, %@", lat, lng);
+    NSNumber *startLat = cell.task.startLatitude; //[@"startLatitude"]; //[self.venue valueForKeyPath:@"location.lat"];
+    NSNumber *startLng = cell.task.startLongitude; //[@"startLongitude"]; //[self.venue valueForKeyPath:@"location.lng"];
+    NSNumber *endLat = cell.task.endLatitude; //[@"endLatitude"];
+    NSNumber *endLng = cell.task.endLongitude; //[@"endLongitude"];
+    NSLog(@"startLat: %@, startLng: %@, endLat: %@ endLng: %@ ", startLat, startLng, endLat, endLng);
     
     // This is the starting coordinates
-    statusVC.latitude = lat;
-    statusVC.longitude = lng;
+    statusVC.startLatitude = startLat;
+    statusVC.startLongitude = startLng;
+    statusVC.endLatitude = endLat;
+    statusVC.endLongitude = endLng;
+     */
     //calling the locationsViewController delegate method with the latitude and longitude of the location the user selects.
     //[self.delegate locationsViewController:self didPickLocationWithLatitude:(lat) longitude:(lng)];
     [self presentViewController:navigationVC animated:YES completion:nil];

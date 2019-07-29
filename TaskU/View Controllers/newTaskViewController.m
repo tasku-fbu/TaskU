@@ -26,10 +26,10 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) NSString *chosenCategory;
-@property (weak, nonatomic) NSNumber *startLatitude;
-@property (weak, nonatomic) NSNumber *startLongitude;
-@property (weak, nonatomic) NSNumber *endLatitude;
-@property (weak, nonatomic) NSNumber *endLongitude;
+@property (strong, nonatomic) NSNumber *startLatitude;
+@property (strong, nonatomic) NSNumber *startLongitude;
+@property (strong, nonatomic) NSNumber *endLatitude;
+@property (strong, nonatomic) NSNumber *endLongitude;
 @property (assign, nonatomic) BOOL isThisStartAddress;
 @end
 
@@ -84,7 +84,15 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
      self.isThisStartAddress = FALSE;
      [self performSegueWithIdentifier: addressSegueIdentifier sender:nil]; //performs segue to LocationViewController
 }
-- (IBAction)clearStartAddreess:(id)sender {
+- (IBAction)clearStartAddress:(id)sender {
+    self.startAddress.text = nil;
+    self.startLatitude = nil;
+    self.startLongitude = nil;
+}
+- (IBAction)clearEndAddress:(id)sender {
+    self.endAddress.text = nil;
+    self.endLatitude = nil;
+    self.endLongitude = nil;
 }
 
 #pragma mark - Gets user selected location's name of place and address
@@ -100,6 +108,7 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
 }
 #pragma mark - Gets user selected location's coordinates and resets annotation
 - (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
+     NSLog( @"Location latitude is: %@. Location longitude is: %@",latitude, longitude);
     if(self.isThisStartAddress) {
        self.startLatitude = latitude;
        self.startLongitude = longitude;
@@ -133,7 +142,8 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
     if ([self.taskName.text isEqualToString:@""] || [self.endAddress.text isEqualToString:@""] || [self.taskDescription.text isEqualToString:@""] || [zeroPayAmount containsObject:self.payAmount.text] || ([errorAmount containsObject:self.minutes.text] && [errorAmount containsObject:self.hours.text])){
         [self presentViewController:self.completionAlert animated:YES completion:^{
         }];
-    } else { 
+    } else {
+        NSLog(@"%@ %@ %@ %@",self.startLatitude , self.startLongitude, self.endLatitude, self.endLongitude);
         [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text
          withStartLatitude:self.startLatitude withStartLongitude:self.startLongitude withEndLatitude:self.endLatitude withEndLongitude:self.endLongitude
           withCategory: self.chosenCategory withDate:self.taskDate.date withHours:self.hours.text withMinutes:self.minutes.text withPay:self.payAmount.text withDescription:self.taskDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
