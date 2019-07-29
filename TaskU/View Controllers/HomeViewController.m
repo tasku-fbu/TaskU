@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
 @property (weak, nonatomic) IBOutlet UIButton *LocationButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 
 @property NSString *userLocation;
 
@@ -53,19 +54,38 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     
     self.plusButton.clipsToBounds = YES;
     
-    //Collection view padding
-    //top, left, bottom, right
-   // self.collection_View.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    //Programatically sizing cols
+    CGFloat spacing = 15;
+    UICollectionViewFlowLayout *flow = (UICollectionViewFlowLayout*)self.collection_View.collectionViewLayout;
+    flow.sectionInset = UIEdgeInsetsMake(100, spacing, 0, spacing);
+    CGFloat itemsPerRow = 2;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat oneMore = itemsPerRow + 1;
+    CGFloat width = screenRect.size.width - spacing * oneMore;
+    CGFloat height = (width / itemsPerRow) - 31;
 
-    //[self.view addSubview:self.profileButton];
-    // [self createInitialSlideView];
+    flow.itemSize = CGSizeMake(floor(height + 31), height);
+    flow.minimumInteritemSpacing = spacing;
+    flow.minimumLineSpacing = spacing;
+
+    
+    
+    //Navigation Controller Font
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor blackColor],
+       NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
+    
+    
+    //Navigation Controller Font
+    [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
+
+  
+
     
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 0; // This is the minimum inter item spacing, can be more
-}
+
 
 #pragma mark - location button action
 -(IBAction)LocationButtonAction:(id)sender {
