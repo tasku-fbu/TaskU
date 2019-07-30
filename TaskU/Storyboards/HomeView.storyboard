@@ -81,9 +81,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-rj-NtJ">
-                                <rect key="frame" x="0.0" y="81" width="375" height="697"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-rj-NtJ">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fda-iv-p2R">
                                     <size key="itemSize" width="199" height="158"/>
@@ -182,8 +181,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="top" secondItem="PuE-cq-0ms" secondAttribute="top" id="L3Q-5J-u31"/>
+                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="bottom" secondItem="PuE-cq-0ms" secondAttribute="bottom" id="NqF-cK-Xn8"/>
+                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="leading" secondItem="PuE-cq-0ms" secondAttribute="leading" id="RgY-5q-zJk"/>
                             <constraint firstItem="PuE-cq-0ms" firstAttribute="bottom" secondItem="nPV-C9-PNA" secondAttribute="bottom" constant="30" id="Tuv-VJ-a9I"/>
                             <constraint firstItem="PuE-cq-0ms" firstAttribute="trailing" secondItem="nPV-C9-PNA" secondAttribute="trailing" constant="40" id="ZUK-tp-rSF"/>
+                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="trailing" secondItem="PuE-cq-0ms" secondAttribute="trailing" id="mmx-0a-CO7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PuE-cq-0ms"/>
                     </view>
@@ -192,7 +195,7 @@
                             <barButtonItem title="Item" image="location" id="uKQ-mU-A1R"/>
                             <barButtonItem title="Item" style="plain" id="0hq-Uq-SEd">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apH-vt-SWW">
-                                    <rect key="frame" x="51" y="5" width="92" height="34"/>
+                                    <rect key="frame" x="54" y="5" width="92" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                     <state key="normal" title="Location"/>
