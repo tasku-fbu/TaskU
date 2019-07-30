@@ -7,6 +7,8 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeHeaderView.h"
+#import "UIButtonExtension.h"
 #import "HomeCollectionViewCell.h"
 #import "Timeline1ViewController.h"
 #import "newTaskViewController.h"
@@ -49,27 +51,29 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"groceries", @"tutoring", @"Laundry", @"movingIn", @"specialServices",  nil ];
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
 
-     //Button configs
+    
+    //Button configs
+    self.plusButton.layer.shadowColor = [UIColor grayColor].CGColor;
+    self.plusButton.layer.shadowOffset = CGSizeMake(10, 10);
+    self.plusButton.layer.shadowOpacity = 0.5;
+    self.plusButton.layer.shadowRadius = 5;
+    self.plusButton.layer.masksToBounds = NO;
     self.plusButton.layer.cornerRadius = 26;
-
-    self.plusButton.clipsToBounds = YES;
-
-
+    self.plusButton.backgroundColor = [UIColor colorNamed:@"blue"];
+ 
     //Programatically sizing cols
     CGFloat spacing = 15;
     UICollectionViewFlowLayout *flow = (UICollectionViewFlowLayout*)self.collection_View.collectionViewLayout;
-    flow.sectionInset = UIEdgeInsetsMake(100, spacing, 0, spacing);
+    flow.sectionInset = UIEdgeInsetsMake(0, spacing, 0, spacing);
     CGFloat itemsPerRow = 2;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat oneMore = itemsPerRow + 1;
     CGFloat width = screenRect.size.width - spacing * oneMore;
-    CGFloat height = (width / itemsPerRow) - 31;
+    CGFloat height = (width / itemsPerRow) ;
 
-    flow.itemSize = CGSizeMake(floor(height + 31), height);
+    flow.itemSize = CGSizeMake(floor(height ), height);
     flow.minimumInteritemSpacing = spacing;
     flow.minimumLineSpacing = spacing;
-
-
 
     //Navigation Controller Font
     [self.navigationController.navigationBar setTitleTextAttributes:
@@ -80,18 +84,36 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     //Navigation Controller Font
     [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
 
-
-
-
 }
 
 
+//Implementation for Header of Collection View
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+       HomeHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeHeaderView" forIndexPath:indexPath];
+        NSString *title = [[NSString alloc]initWithFormat:@"I can help with..."];
+        headerView.title.text = title;
+        
+        reusableview = headerView;
+    }
+    
+    if (kind == UICollectionElementKindSectionFooter) {
+        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
+        
+        reusableview = footerview;
+    }
+    
+    return reusableview;
+    
+}
 
 #pragma mark - location button action
     //[self.view addSubview:self.profileButton]; //slideMenu
     // [self createInitialSlideView];
 
-}
+
 
 #pragma mark - University location button action
 -(IBAction)LocationButtonAction:(id)sender {

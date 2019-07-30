@@ -32,6 +32,8 @@
 		1131D37322E12096004A235C /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
 		1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37522E129BC004A235C /* MainProfileViewController.m */; };
 		1131D37822E14738004A235C /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1131D37722E14738004A235C /* HomeView.storyboard */; };
+		1177A79422EFB08B00D1561F /* UIButtonExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 118987B222EFA0A7007F75C5 /* UIButtonExtension.m */; };
+		118987AF22EF967E007F75C5 /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 118987AE22EF967E007F75C5 /* HomeHeaderView.m */; };
 		118F6A3E22E93CF300299B25 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 118F6A3A22E93CF300299B25 /* Quicksand-Medium.ttf */; };
 		118F6A3F22E93CF300299B25 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 118F6A3B22E93CF300299B25 /* Quicksand-Regular.ttf */; };
 		118F6A4022E93CF300299B25 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 118F6A3C22E93CF300299B25 /* Quicksand-Light.ttf */; };
@@ -135,6 +137,10 @@
 		1131D37422E129BC004A235C /* MainProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainProfileViewController.h; sourceTree = "<group>"; };
 		1131D37522E129BC004A235C /* MainProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainProfileViewController.m; sourceTree = "<group>"; };
 		1131D37722E14738004A235C /* HomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
+		118987AD22EF967E007F75C5 /* HomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeaderView.h; sourceTree = "<group>"; };
+		118987AE22EF967E007F75C5 /* HomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderView.m; sourceTree = "<group>"; };
+		118987B122EFA0A7007F75C5 /* UIButtonExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIButtonExtension.h; sourceTree = "<group>"; };
+		118987B222EFA0A7007F75C5 /* UIButtonExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIButtonExtension.m; sourceTree = "<group>"; };
 		118F6A3A22E93CF300299B25 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
 		118F6A3B22E93CF300299B25 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
 		118F6A3C22E93CF300299B25 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 		0E8EFF4822DD523500B9FE89 /* TaskU */ = {
 			isa = PBXGroup;
 			children = (
+				118987B022EFA085007F75C5 /* Extensions */,
 				118F6A3922E93CC800299B25 /* Fonts */,
 				B902D1B822E7EAEF0080B87E /* New Group */,
 				0E8EFF5722DD523600B9FE89 /* Info.plist */,
@@ -380,8 +387,19 @@
 				0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */,
 				0E1F7C7822E520EB0003FD6C /* LocationCell.h */,
 				0E1F7C7922E520EB0003FD6C /* LocationCell.m */,
+				118987AD22EF967E007F75C5 /* HomeHeaderView.h */,
+				118987AE22EF967E007F75C5 /* HomeHeaderView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		118987B022EFA085007F75C5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				118987B122EFA0A7007F75C5 /* UIButtonExtension.h */,
+				118987B222EFA0A7007F75C5 /* UIButtonExtension.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		118F6A3922E93CC800299B25 /* Fonts */ = {
@@ -694,6 +712,7 @@
 				B902D14D22E01FFD0080B87E /* DetailsInfoViewController.m in Sources */,
 				1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */,
 				110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */,
+				118987AF22EF967E007F75C5 /* HomeHeaderView.m in Sources */,
 				1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */,
 				0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
@@ -713,6 +732,7 @@
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
+				1177A79422EFB08B00D1561F /* UIButtonExtension.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
 				0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */,
 			);
@@ -824,6 +844,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -876,6 +897,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -888,15 +910,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7FF4JGN27;
-				DEVELOPMENT_TEAM = GG765643Z3;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pauanzaldo.TaskU;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucyyyw.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -911,15 +931,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7FF4JGN27;
-				DEVELOPMENT_TEAM = GG765643Z3;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pauanzaldo.TaskU;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucyyyw.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
