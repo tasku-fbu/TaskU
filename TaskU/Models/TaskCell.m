@@ -25,4 +25,12 @@
     [self.delegate didTapDetails:self];
 }
 
+- (instancetype) initWithTask:(Task *)task {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 @end
