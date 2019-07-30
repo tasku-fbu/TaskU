@@ -132,8 +132,9 @@
             startString = [NSString stringWithFormat:@"FROM %@ ", task[@"startAddress"]];
         }
     }
-    cell.destinationLabel.text = [NSString stringWithFormat:@"%@TO %@",
-                                  startString,task[@"endAddress"]];
+    cell.startLabel.text = startString;
+    cell.destinationLabel.text = [NSString stringWithFormat:@"TO %@",
+                                  task[@"endAddress"]];
     
     
     NSDate *date = task[@"taskDate"];
