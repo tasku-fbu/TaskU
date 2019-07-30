@@ -177,6 +177,9 @@
                                     <constraint firstAttribute="height" constant="56" id="NwG-Wh-Ub0"/>
                                 </constraints>
                                 <state key="normal" image="Image"/>
+                                <connections>
+                                    <action selector="addTaskAction:" destination="s1x-pU-5ie" eventType="touchUpInside" id="9dw-K2-dsp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,7 +198,7 @@
                             <barButtonItem title="Item" image="location" id="uKQ-mU-A1R"/>
                             <barButtonItem title="Item" style="plain" id="0hq-Uq-SEd">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apH-vt-SWW">
-                                    <rect key="frame" x="54" y="5" width="92" height="34"/>
+                                    <rect key="frame" x="51" y="5" width="92" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                     <state key="normal" title="Location"/>
