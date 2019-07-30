@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-7r-LEN">
-                                <rect key="frame" x="101" y="99" width="182" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-7r-LEN">
+                                <rect key="frame" x="125.5" y="96" width="163" height="29"/>
                                 <segments>
                                     <segment title="Current"/>
                                     <segment title="Completed"/>
@@ -29,22 +28,34 @@
                                     <action selector="showContainerView:" destination="KfS-4F-R1C" eventType="valueChanged" id="eYm-oh-XhG"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIL-7M-Xyh">
-                                <rect key="frame" x="0.0" y="136" width="414" height="677"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIL-7M-Xyh">
+                                <rect key="frame" x="0.0" y="132" width="414" height="689"/>
                                 <connections>
                                     <segue destination="OMM-8u-eG9" kind="embed" id="VrA-OR-g7Z"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQS-Bv-nmm">
-                                <rect key="frame" x="0.0" y="136" width="414" height="677"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQS-Bv-nmm">
+                                <rect key="frame" x="0.0" y="132" width="414" height="689"/>
                                 <connections>
                                     <segue destination="8cC-Lb-W1t" kind="embed" id="7Wa-I8-OTi"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NQS-Bv-nmm" firstAttribute="top" secondItem="2Io-7r-LEN" secondAttribute="bottom" constant="8" id="5mB-PV-Cxm"/>
+                            <constraint firstItem="NQS-Bv-nmm" firstAttribute="bottom" secondItem="cUC-BG-JAj" secondAttribute="bottom" constant="8" id="7H0-Sr-zN9"/>
+                            <constraint firstItem="RIL-7M-Xyh" firstAttribute="top" secondItem="2Io-7r-LEN" secondAttribute="bottom" constant="8" id="EMo-tf-HLX"/>
+                            <constraint firstItem="RIL-7M-Xyh" firstAttribute="leading" secondItem="cUC-BG-JAj" secondAttribute="leading" id="Geh-lg-Fa1"/>
+                            <constraint firstItem="NQS-Bv-nmm" firstAttribute="width" secondItem="cUC-BG-JAj" secondAttribute="width" id="HQW-Dv-Jw3"/>
+                            <constraint firstItem="RIL-7M-Xyh" firstAttribute="trailing" secondItem="cUC-BG-JAj" secondAttribute="trailing" id="OdL-By-zw6"/>
+                            <constraint firstItem="RIL-7M-Xyh" firstAttribute="width" secondItem="cUC-BG-JAj" secondAttribute="width" id="V0r-5q-m1N"/>
+                            <constraint firstItem="NQS-Bv-nmm" firstAttribute="leading" secondItem="cUC-BG-JAj" secondAttribute="leading" id="VIZ-OL-Yft"/>
+                            <constraint firstItem="NQS-Bv-nmm" firstAttribute="trailing" secondItem="cUC-BG-JAj" secondAttribute="trailing" id="Wsz-r8-kyq"/>
+                            <constraint firstItem="2Io-7r-LEN" firstAttribute="centerX" secondItem="10N-qh-g2V" secondAttribute="centerX" id="lt4-ki-yXL"/>
+                            <constraint firstItem="RIL-7M-Xyh" firstAttribute="bottom" secondItem="cUC-BG-JAj" secondAttribute="bottom" constant="8" id="qIz-iL-piC"/>
+                            <constraint firstItem="2Io-7r-LEN" firstAttribute="top" secondItem="cUC-BG-JAj" secondAttribute="top" constant="8" id="t6g-m8-AMV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cUC-BG-JAj"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Missions" id="Skf-XP-eEj"/>
@@ -83,12 +94,11 @@
             <objects>
                 <viewController id="OMM-8u-eG9" customClass="CompletedMissionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbZ-5i-Yz4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="689"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A0L-0M-3a2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A0L-0M-3a2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="completedMission" rowHeight="467" id="YnG-lI-ltD" customClass="TaskCell">
@@ -186,6 +196,12 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="A0L-0M-3a2" firstAttribute="top" secondItem="Ykn-f8-j2b" secondAttribute="top" id="8NM-eA-FkN"/>
+                            <constraint firstItem="Ykn-f8-j2b" firstAttribute="trailing" secondItem="A0L-0M-3a2" secondAttribute="trailing" id="QZk-yX-Brv"/>
+                            <constraint firstItem="A0L-0M-3a2" firstAttribute="bottom" secondItem="Ykn-f8-j2b" secondAttribute="bottom" id="ekP-bE-o42"/>
+                            <constraint firstItem="A0L-0M-3a2" firstAttribute="leading" secondItem="Ykn-f8-j2b" secondAttribute="leading" id="pWr-E6-Wm6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ykn-f8-j2b"/>
                     </view>
                     <connections>
@@ -202,12 +218,11 @@
             <objects>
                 <viewController id="8cC-Lb-W1t" customClass="CurrentMissionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hPn-iD-LYR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="689"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lrL-oc-7k3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lrL-oc-7k3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currentMission" rowHeight="448" id="kVt-In-Gbn" customClass="TaskCell">
@@ -305,6 +320,12 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lrL-oc-7k3" firstAttribute="leading" secondItem="BAA-dB-4vW" secondAttribute="leading" id="IU1-Gl-pGm"/>
+                            <constraint firstItem="BAA-dB-4vW" firstAttribute="trailing" secondItem="lrL-oc-7k3" secondAttribute="trailing" id="fyg-1r-Q6k"/>
+                            <constraint firstItem="lrL-oc-7k3" firstAttribute="bottom" secondItem="BAA-dB-4vW" secondAttribute="bottom" id="hry-Sn-I9P"/>
+                            <constraint firstItem="lrL-oc-7k3" firstAttribute="top" secondItem="BAA-dB-4vW" secondAttribute="top" id="zPw-fW-DRX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BAA-dB-4vW"/>
                     </view>
                     <connections>
