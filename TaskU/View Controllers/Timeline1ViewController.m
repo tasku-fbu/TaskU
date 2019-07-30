@@ -36,12 +36,19 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     self.searchBar.delegate = self;
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     [self getAllTasks];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView.hidden = true;
+    self.tableView.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -109,6 +116,14 @@
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(TaskCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    cell.cellView.layer.cornerRadius = 16;
+    cell.cellView.clipsToBounds = true;
+    //cell.cellView.backgroundColor = [UIColor lightGrayColor];
+    cell.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    
+    
+    
     cell.delegate = self;
     Task *task = self.filteredData[indexPath.row];
     cell.task = task;
@@ -126,13 +141,18 @@
     int pay = [payment intValue];
     cell.paymentLabel.text = [NSString stringWithFormat:@"$%i",pay];
     
-    NSString *startString = @"";
+    NSString *startString = @"Your choice!";
+    cell.startLabel.font = [UIFont italicSystemFontOfSize:17.0f];
     if (task[@"startAddress"]) {
         if (![task[@"startAddress"] isEqualToString:@""]) {
             startString = [NSString stringWithFormat:@"FROM %@ ", task[@"startAddress"]];
+            cell.startLabel.text = startString;
+            [cell.startLabel setFont:[UIFont fontWithName:@"Quicksand-Regular" size:18.0f]];
         }
+        
     }
     cell.startLabel.text = startString;
+    
     cell.destinationLabel.text = [NSString stringWithFormat:@"TO %@",
                                   task[@"endAddress"]];
     
