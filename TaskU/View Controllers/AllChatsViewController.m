@@ -21,8 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSMutableDictionary *filteredData;
+@property (strong, nonatomic) NSMutableArray *filteredData;
 @property (strong, nonatomic) NSMutableArray *contacts;
+@property (strong, nonatomic) NSMutableArray *contactIds;
 @end
 
 @implementation AllChatsViewController
@@ -69,10 +70,11 @@
             if (messages != nil) {
                 self.messagesByContact = [NSMutableDictionary new];
                 self.contacts = [NSMutableArray new];
+                self.contactIds = [NSMutableArray new];
                 
                 [self processMessages: messages];
                 
-                self.filteredData = self.messagesByContact;
+                self.filteredData = self.contactIds;
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
                 [self.activityIndicator stopAnimating];
@@ -126,10 +128,11 @@
             if (messages != nil) {
                 self.messagesByContact = [NSMutableDictionary new];
                 self.contacts = [NSMutableArray new];
+                self.contactIds = [NSMutableArray new];
                 
                 [self processMessages: messages];
                 
-                self.filteredData = self.messagesByContact;
+                self.filteredData = self.contactIds;
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
                 [self.activityIndicator stopAnimating];
@@ -179,35 +182,51 @@
         
         NSString *myKey = contact.objectId;
         [dictionary setObject:message forKey:myKey];
+        
+        
     }
+    
     
     
     //sort the contacts by latest conversation
     NSArray* sortedKeys = [dictionary keysSortedByValueUsingComparator:^(id first, id second) {
         Message *latestMessage1 = (Message*) first;
         Message *latestMessage2 = (Message*) second;
-        NSDate *date1 = latestMessage1[@"createdAt"];
-        NSDate *date2 = latestMessage2[@"createdAt"];
+        NSDate *date1 = latestMessage1.createdAt;
+        NSDate *date2 = latestMessage2.createdAt;
         if ([date1 compare:date2] == NSOrderedAscending) {
             return (NSComparisonResult)NSOrderedDescending;
         } else {
             return (NSComparisonResult)NSOrderedAscending;
         }
     }];
+    NSLog(@"%@",sortedKeys);
+    self.contactIds = [sortedKeys mutableCopy];
+    self.messagesByContact = dictionary;
     
+    /*
+    self.messagesByContact = [NSMutableDictionary new];
     for (NSString *contact in sortedKeys) {
-        NSArray *tempMessage = [dictionary objectForKey:contact];
+        Message *tempMessage = [dictionary objectForKey:contact];
         [self.messagesByContact setObject:tempMessage forKey:contact];
-        //NSLog(@"%@",tempMessage);
+        
+     
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
+        NSString *dateString = [dateFormatter stringFromDate:tempMessage.createdAt];
+        
+        NSLog(@"%@ createdAt %@ \n\n", tempMessage.text, dateString);
+     
     }
-    
+    NSLog(@"%@", self.messagesByContact.allKeys);
+    */
     
     //NSLog(@"%@",self.messagesByContact);
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
-    NSString *objectIdContact = self.filteredData.allKeys[indexPath.row];
+    NSString *objectIdContact = self.filteredData[indexPath.row];
     //NSLog(@"%@",self.filteredData.allKeys);
     //NSLog(@"%@",objectIdContact);
     
@@ -231,7 +250,7 @@
     }];
     
     
-    Message *latest = [self.filteredData objectForKey:objectIdContact];
+    Message *latest = [self.messagesByContact objectForKey:objectIdContact];
     cell.latestTextLabel.text = latest[@"text"];
     //NSLog(@"%@ %@",cell.contactUsernameLabel.text, cell.latestTextLabel.text);
     
@@ -240,8 +259,8 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *keyArr = self.filteredData.allKeys;
-    return keyArr.count;
+    //NSArray *keyArr = self.filteredData.allKeys;
+    return self.filteredData.count;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -249,7 +268,7 @@
     if (searchText.length != 0) {
         [self.timer invalidate];
         self.timer = nil;
-        self.filteredData = [NSMutableDictionary new];
+        self.filteredData = [NSMutableArray new];
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *contact, NSDictionary *bindings) {
             NSString *username = contact[@"username"];
             NSString *first = contact[@"firstName"];
@@ -258,24 +277,27 @@
         }];
         
         NSArray *filteredContacts = [self.contacts filteredArrayUsingPredicate:predicate];
-        NSLog(@"%@",filteredContacts);
+        
+        //NSLog(@"%@",filteredContacts);
         
         NSMutableArray *filteredKeys = [NSMutableArray new];
         for (PFUser *contact in filteredContacts) {
             [filteredKeys addObject:contact.objectId];
         }
+        self.filteredData = filteredKeys;
+        /*
         for (NSString *contact in filteredKeys) {
             NSArray *tempMessage = [self.messagesByContact objectForKey:contact];
             [self.filteredData setObject:tempMessage forKey:contact];
         }
-        
+        */
         
         
         //NSLog(@"%@", self.filteredData);
         
     }
     else {
-        self.filteredData = self.messagesByContact;
+        self.filteredData = self.contactIds;
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
     }
     
@@ -291,7 +313,7 @@
     self.searchBar.showsCancelButton = NO;
     self.searchBar.text = @"";
     [self.searchBar resignFirstResponder];
-    self.filteredData = self.messagesByContact;
+    self.filteredData = self.contactIds;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
     [self.tableView reloadData];
     
