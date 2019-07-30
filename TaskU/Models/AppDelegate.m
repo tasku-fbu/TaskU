@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
-
+#import "UIButtonExtension.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [UIButtonExtension class];
+
     //Initialize Parse in AppDelegate to point to our own server:
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         
@@ -26,6 +28,8 @@
     }];
     
     [Parse initializeWithConfiguration:config];
+
+
     
   #pragma mark - Persistent user login 
      if (PFUser.currentUser) {
@@ -64,6 +68,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 
 @end
