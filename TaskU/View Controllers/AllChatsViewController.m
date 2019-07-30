@@ -49,6 +49,7 @@
 - (void) getAllMessages {
     if (![PFUser currentUser]) {
         [self.timer invalidate];
+        self.timer = nil;
     } else {
         PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
         
@@ -71,7 +72,7 @@
                 
                 [self processMessages: messages];
                 
-                //self.filteredData = self.messagesByContact;
+                self.filteredData = self.messagesByContact;
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
                 [self.activityIndicator stopAnimating];
@@ -105,6 +106,7 @@
 - (void) getAllMessagesFirst {
     if (![PFUser currentUser]) {
         [self.timer invalidate];
+        self.timer = nil;
     } else {
         PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
         
@@ -196,6 +198,7 @@
     for (NSString *contact in sortedKeys) {
         NSArray *tempMessage = [dictionary objectForKey:contact];
         [self.messagesByContact setObject:tempMessage forKey:contact];
+        //NSLog(@"%@",tempMessage);
     }
     
     
@@ -230,6 +233,7 @@
     
     Message *latest = [self.filteredData objectForKey:objectIdContact];
     cell.latestTextLabel.text = latest[@"text"];
+    //NSLog(@"%@ %@",cell.contactUsernameLabel.text, cell.latestTextLabel.text);
     
     
     return cell;
@@ -243,7 +247,8 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
     if (searchText.length != 0) {
-        
+        [self.timer invalidate];
+        self.timer = nil;
         self.filteredData = [NSMutableDictionary new];
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *contact, NSDictionary *bindings) {
             NSString *username = contact[@"username"];
@@ -271,6 +276,7 @@
     }
     else {
         self.filteredData = self.messagesByContact;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
     }
     
     [self.tableView reloadData];
@@ -286,7 +292,10 @@
     self.searchBar.text = @"";
     [self.searchBar resignFirstResponder];
     self.filteredData = self.messagesByContact;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
     [self.tableView reloadData];
+    
+    
 }
 
 
