@@ -14,6 +14,7 @@
 #import "DetailsInfoViewController.h"
 #import "HomeViewController.h"
 #import "LocationsViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 #pragma mark - interface and properties
 @interface Timeline1ViewController ()
@@ -95,6 +96,19 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    
+    if (!cell) {
+        [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    }
+    
+    
+    
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(TaskCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.delegate = self;
     Task *task = self.filteredData[indexPath.row];
     cell.task = task;
@@ -104,7 +118,9 @@
     PFUser *user = task[@"requester"];
     cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
     
-    
+    PFFileObject *imageFile = user[@"profileImage"];
+    NSString *urlString = imageFile.url;
+    [cell.requesterProfile setImageWithURL:[NSURL URLWithString:urlString]];
     
     NSNumber *payment = task[@"pay"];
     int pay = [payment intValue];
@@ -136,8 +152,6 @@
     } else {
         cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
     }
-    
-    return cell;
 }
 
 

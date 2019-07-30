@@ -71,9 +71,6 @@
                                                         <constraint firstAttribute="width" constant="30" id="YpB-rO-AbY"/>
                                                     </constraints>
                                                     <state key="normal" title="&gt;"/>
-                                                    <connections>
-                                                        <action selector="onClickDetails:" destination="vxn-6z-0o6" eventType="touchUpInside" id="jo7-cw-eZ9"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="1hr 30min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idK-zz-GD5">
                                                     <rect key="frame" x="290" y="8" width="77" height="20.5"/>
@@ -104,14 +101,6 @@
                                                 <constraint firstItem="idK-zz-GD5" firstAttribute="centerY" secondItem="7n7-2w-qke" secondAttribute="centerY" id="uzJ-uc-f3g"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateLabel" destination="kUg-eC-yR7" id="Xx3-oF-ccy"/>
-                                            <outlet property="destinationLabel" destination="Pxb-IY-p0p" id="7jl-Rr-5hC"/>
-                                            <outlet property="paymentLabel" destination="6VW-YN-nlc" id="Hmm-Gl-nRO"/>
-                                            <outlet property="requesterLabel" destination="V6k-H5-pY1" id="ZUX-Sb-dEQ"/>
-                                            <outlet property="timeLabel" destination="idK-zz-GD5" id="dhK-LB-gA6"/>
-                                            <outlet property="titleLabel" destination="7n7-2w-qke" id="GRs-WD-IZK"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
