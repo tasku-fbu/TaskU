@@ -45,12 +45,21 @@
     //self.searchBar.layer.borderColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1].CGColor;
     //self.searchBar.layer.borderWidth = 1;
     
+    UITextView * textField = [self.searchBar.subviews objectAtIndex:0];
+    textField.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    textField.layer.shadowOffset = CGSizeZero;
+    textField.layer.shadowRadius = 3.0f;
+    textField.layer.shadowOpacity = 1;
+    textField.layer.masksToBounds = NO;
+    
+
+    /*
     self.searchBar.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     self.searchBar.layer.shadowOffset = CGSizeMake(0,1.5f);
     self.searchBar.layer.shadowRadius = 2.0f;
     self.searchBar.layer.shadowOpacity = 0.5f;
     self.searchBar.layer.masksToBounds = NO;
-    
+    */
     
     
     
