@@ -108,15 +108,9 @@
         [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     }
-    
-    
-    
-    return cell;
-}
-
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(TaskCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    cell.delegate = self;
+    Task *task = self.filteredData[indexPath.row];
+    /*
     cell.cellView.layer.cornerRadius = 16;
     cell.cellView.clipsToBounds = true;
     //cell.cellView.backgroundColor = [UIColor lightGrayColor];
@@ -124,18 +118,10 @@
     
     
     
-    cell.delegate = self;
-    Task *task = self.filteredData[indexPath.row];
+    
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
     
-    
-    PFUser *user = task[@"requester"];
-    cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
-    
-    PFFileObject *imageFile = user[@"profileImage"];
-    NSString *urlString = imageFile.url;
-    [cell.requesterProfile setImageWithURL:[NSURL URLWithString:urlString]];
     
     NSNumber *payment = task[@"pay"];
     int pay = [payment intValue];
@@ -173,7 +159,12 @@
     } else {
         cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
     }
+     */
+    [cell showCell:cell withTask:task];
+    
+    return cell;
 }
+
 
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {

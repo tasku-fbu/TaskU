@@ -25,12 +25,63 @@
     [self.delegate didTapDetails:self];
 }
 
-- (instancetype) initWithTask:(Task *)task {
-    self = [super init];
-    if (self) {
+- (void) showCell:(TaskCell*) cell withTask: (Task*) task {
+    cell.cellView.layer.cornerRadius = 16;
+    cell.cellView.clipsToBounds = true;
+    //cell.cellView.backgroundColor = [UIColor lightGrayColor];
+    cell.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    
+    
+    
+    
+    
+    cell.task = task;
+    cell.titleLabel.text = task[@"taskName"];
+    
+    
+    NSNumber *payment = task[@"pay"];
+    int pay = [payment intValue];
+    cell.paymentLabel.text = [NSString stringWithFormat:@"$%i",pay];
+    
+    NSString *startString = @"Your choice!";
+    cell.startLabel.font = [UIFont italicSystemFontOfSize:17.0f];
+    if (task[@"startAddress"]) {
+        if (![task[@"startAddress"] isEqualToString:@""]) {
+            startString = [NSString stringWithFormat:@"FROM %@ ", task[@"startAddress"]];
+            cell.startLabel.text = startString;
+            [cell.startLabel setFont:[UIFont fontWithName:@"Quicksand-Regular" size:18.0f]];
+        }
         
     }
-    return self;
+    cell.startLabel.text = startString;
+    
+    cell.destinationLabel.text = [NSString stringWithFormat:@"TO %@",
+                                  task[@"endAddress"]];
+    
+    
+    NSDate *date = task[@"taskDate"];
+    NSString *dateString = [self stringfromDateHelper:date];
+    cell.dateLabel.text = [NSString stringWithFormat:@"due %@", dateString];
+    
+    
+    NSNumber *hour = task[@"hours"];
+    NSNumber *minute = task[@"minutes"];
+    int hr = [hour intValue];
+    int min = [minute intValue];
+    if (hr == 0) {
+        cell.timeLabel.text = [NSString stringWithFormat:@"%imin", min];
+    } else if (min == 0){
+        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr", hr];
+    } else {
+        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
+    }
+}
+
+- (NSString *) stringfromDateHelper: (NSDate *) date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    return dateString;
 }
 
 @end
