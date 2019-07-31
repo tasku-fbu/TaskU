@@ -80,45 +80,17 @@
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"currentMission"];
+    
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    
+    if (!cell) {
+        [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    }
     cell.delegate = self;
     Task *task = self.currentTasks[indexPath.row];
-    cell.task = task;
-    cell.titleLabel.text = task[@"taskName"];
     
-    PFUser *user = task[@"requester"];
-    cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
-    
-    NSNumber *payment = task[@"pay"];
-    int pay = [payment intValue];
-    cell.paymentLabel.text = [NSString stringWithFormat:@"$%i",pay];
-    
-    NSString *startString = @"";
-    if (task[@"startAddress"]) {
-        if (![task[@"startAddress"] isEqualToString:@""]) {
-            startString = [NSString stringWithFormat:@"FROM %@ ", task[@"startAddress"]];
-        }
-    }
-    cell.destinationLabel.text = [NSString stringWithFormat:@"%@TO %@",
-                                  startString,task[@"endAddress"]];
-    
-    
-    NSDate *date = task[@"taskDate"];
-    NSString *dateString = [self stringfromDateHelper:date];
-    cell.dateLabel.text = [NSString stringWithFormat:@"due %@", dateString];
-    
-    
-    NSNumber *hour = task[@"hours"];
-    NSNumber *minute = task[@"minutes"];
-    int hr = [hour intValue];
-    int min = [minute intValue];
-    if (hr == 0) {
-        cell.timeLabel.text = [NSString stringWithFormat:@"%imin", min];
-    } else if (min == 0){
-        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr", hr];
-    } else {
-        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
-    }
+    [cell showCell:cell withTask:task];
     
     return cell;
 }
