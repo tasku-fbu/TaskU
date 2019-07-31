@@ -20,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UINavigationBar *bar = [self.navigationController navigationBar];
+    [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
+    [self.navigationController.navigationBar setTranslucent:NO];
+    //self.view.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    //[self.navigationController.navigationBar addSubview:self.segmentctrl];
 }
 - (IBAction)showContainerView:(id)sender {
     if (self.segmentctrl.selectedSegmentIndex == 0) {

@@ -94,8 +94,8 @@
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     
     if (!cell) {
-        [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+        [tableView registerNib:[UINib nibWithNibName:@"RequestCellView" bundle:nil] forCellReuseIdentifier:@"RequestCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"RequestCell"];
     }
     cell.delegate = self;
     Task *task = self.completedTasks[indexPath.row];

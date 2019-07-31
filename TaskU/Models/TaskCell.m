@@ -77,16 +77,17 @@
     cell.cellView.layer.cornerRadius = 16;
     cell.cellView.clipsToBounds = true;
     //cell.cellView.backgroundColor = [UIColor lightGrayColor];
-    cell.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    //cell.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
     
     cell.task = task;
     cell.titleLabel.text = task[@"taskName"];
     
-    
+    /*
     NSNumber *payment = task[@"pay"];
     int pay = [payment intValue];
     cell.paymentLabel.text = [NSString stringWithFormat:@"$%i",pay];
-    
+    */
+     
     NSString *startString = @"Your choice!";
     cell.startLabel.font = [UIFont italicSystemFontOfSize:17.0f];
     if (task[@"startAddress"]) {
@@ -107,7 +108,11 @@
     NSString *dateString = [self stringfromDateHelper:date];
     cell.dateLabel.text = [NSString stringWithFormat:@"due %@", dateString];
     
+    NSString *statusString = task[@"completionStatus"];
+    cell.statusLabel.text = statusString;
     
+    
+    /*
     NSNumber *hour = task[@"hours"];
     NSNumber *minute = task[@"minutes"];
     int hr = [hour intValue];
@@ -119,6 +124,7 @@
     } else {
         cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
     }
+     */
 }
 
 - (void) showMissionCell:(TaskCell*) cell withMission: (Task*) task {

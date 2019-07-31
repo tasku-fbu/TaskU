@@ -24,6 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    
+    
     self.currentTable.delegate = self;
     self.currentTable.dataSource = self;
     
@@ -33,8 +37,8 @@
     self.currentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.currentTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.currentTable.tableFooterView.hidden = true;
-    self.currentTable.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
-    
+    //self.currentTable.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    //self.currentTable.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getCurrentTasks) forControlEvents:UIControlEventValueChanged];
@@ -90,8 +94,8 @@
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     
     if (!cell) {
-        [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+        [tableView registerNib:[UINib nibWithNibName:@"RequestCellView" bundle:nil] forCellReuseIdentifier:@"RequestCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"RequestCell"];
     }
     cell.delegate = self;
     Task *task = self.currentTasks[indexPath.row];
