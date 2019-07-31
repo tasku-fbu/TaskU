@@ -71,6 +71,8 @@
 		B902D1C722E8131F0080B87E /* YourMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1C622E8131F0080B87E /* YourMessageCell.m */; };
 		B902D1CA22E8133F0080B87E /* MyMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1C922E8133F0080B87E /* MyMessageCell.m */; };
 		B902D1CD22E8140A0080B87E /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1CC22E8140A0080B87E /* Message.m */; };
+		B935548522F0AA150088A419 /* TaskCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B935548422F0AA150088A419 /* TaskCellView.xib */; };
+		B935548722F13B930088A419 /* RequestCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B935548622F13B930088A419 /* RequestCellView.xib */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -200,6 +202,8 @@
 		B902D1C922E8133F0080B87E /* MyMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMessageCell.m; sourceTree = "<group>"; };
 		B902D1CB22E8140A0080B87E /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		B902D1CC22E8140A0080B87E /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		B935548422F0AA150088A419 /* TaskCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCellView.xib; sourceTree = "<group>"; };
+		B935548622F13B930088A419 /* RequestCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestCellView.xib; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -389,6 +393,8 @@
 				0E1F7C7922E520EB0003FD6C /* LocationCell.m */,
 				118987AD22EF967E007F75C5 /* HomeHeaderView.h */,
 				118987AE22EF967E007F75C5 /* HomeHeaderView.m */,
+				B935548422F0AA150088A419 /* TaskCellView.xib */,
+				B935548622F13B930088A419 /* RequestCellView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -564,8 +570,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1131D37822E14738004A235C /* HomeView.storyboard in Resources */,
+				B935548722F13B930088A419 /* RequestCellView.xib in Resources */,
 				110C127422E0E6F1009DC7DB /* newProfile.storyboard in Resources */,
 				0E8EFF5622DD523600B9FE89 /* LaunchScreen.storyboard in Resources */,
+				B935548522F0AA150088A419 /* TaskCellView.xib in Resources */,
 				118F6A4022E93CF300299B25 /* Quicksand-Light.ttf in Resources */,
 				118F6A4E22E93D8200299B25 /* FreigSanProLigIt.otf in Resources */,
 				118F6A5922E93D8200299B25 /* FreigSanProSemIt.otf in Resources */,
