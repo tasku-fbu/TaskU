@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<TaskCellDelegate> delegate;
 
 - (void) showCell:(TaskCell*) taskCell withTask: (Task*) task ;
+- (void) showRequestCell:(TaskCell*) cell withRequest: (Task*) task;
+- (void) showMissionCell:(TaskCell*) cell withMission: (Task*) task;
 
 @end
 
