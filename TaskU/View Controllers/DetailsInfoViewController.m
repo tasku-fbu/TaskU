@@ -7,6 +7,7 @@
 //
 
 #import "DetailsInfoViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DetailsInfoViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableVIew;
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *runiversityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *remailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rphoneLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *rProfileImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *taskidLabel;
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
@@ -23,21 +25,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *payLabel;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dueLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *hourLabel;
-@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *musernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mnameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *muniversityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *memailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mphoneLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *mProfileImage;
 
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *requesterTopView;
 
 
 
@@ -49,26 +51,30 @@
     [super viewDidLoad];
 
     self.tableVIew.rowHeight = UITableViewAutomaticDimension;
-
     
-    
-    //Rounded corners only on top and bottom cell
-    self.topView.layer.cornerRadius = 10;
-    self.topView.layer.masksToBounds = YES;
-    self.topView.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner;
-    
-    self.view1.layer.cornerRadius = 10;
-    self.view1.layer.masksToBounds = YES;
-    self.view1.layer.maskedCorners = kCALayerMaxXMaxYCorner | kCALayerMinXMaxYCorner;
-    
+    //Sets round corners for section cells
+    [self viewFormatterHelper:self.topView];
+    [self viewFormatterHelper:self.view1];
+    [self viewFormatterHelper:self.requesterTopView];
     
     [self showingTaskDetails];
     [self showRequesterInfo];
     [self showMissionerInfo];
     
+    
 }
 
-
+- (void)viewFormatterHelper: (UIView *) view {
+    view.layer.cornerRadius = 10;
+    view.layer.masksToBounds = YES;
+    
+    if([view isEqual:self.topView]){
+        view.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner;
+    }
+    else if([view isEqual:self.view1]){
+        view.layer.maskedCorners = kCALayerMaxXMaxYCorner | kCALayerMinXMaxYCorner;
+    }
+}
 
 
 - (void) showingTaskDetails {
@@ -96,61 +102,63 @@
     int pay = [payment intValue];
     self.payLabel.text = [NSString stringWithFormat:@"$%i",pay];
     
-    NSString *startString = @"";
+    NSString *startString = @"FROM Your choice!";
+
     if (self.task[@"startAddress"]) {
         if (![self.task[@"startAddress"] isEqualToString:@""]) {
             startString = [NSString stringWithFormat:@"FROM %@ ", self.task[@"startAddress"]];
+            self.startAddressLabel.text = startString;
+          //  [self.startAddressLabel setFont:[UIFont fontWithName:@"Quicksand-Regular" size:18.0f]];
         }
     }
-    self.addressLabel.text = self.task[@"endAddress"];
-    
-
+    self.startAddressLabel.text = startString;
+    self.endAddressLabel.text = [NSString stringWithFormat:@"TO %@ ", self.task[@"endAddress"]];
     
     NSDate *date = self.task[@"taskDate"];
-    NSString *dateString = [self stringfromDateHelper:date];
-    NSString *dateString2 = [self stringfromDateHelper2:date];
-
-  //  self.dueLabel.text = [NSString stringWithFormat:@"due %@.", dateString];
-    self.hourLabel.text = dateString;
-    self.monthLabel.text = dateString2;
-
+    self.dueLabel.text = [self stringfromDateHelper:date];
 
 }
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm"];
+    [dateFormatter setDateFormat:@"EEE, MMM d @ HH:mm a"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
 
-- (NSString *) stringfromDateHelper2: (NSDate *) date {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM.d"];
-    NSString *dateString2 = [dateFormatter stringFromDate:date];
-    return dateString2;
-}
-
-
 - (void) showRequesterInfo {
     PFUser *requester = self.task.requester;
-    self.rusernameLabel.text = requester[@"username"];
+    self.rusernameLabel.text = [NSString stringWithFormat:@"@%@",requester[@"username"]];
     self.rnameLabel.text = [NSString stringWithFormat:@"%@ %@", requester[@"firstName"], requester[@"lastName"]];
     self.runiversityLabel.text = requester[@"university"];
     self.remailLabel.text = requester[@"email"];
     
-    self.rphoneLabel.text = [NSString stringWithFormat:@" %@.",requester[@"phoneNumber"]];
+    self.rphoneLabel.text = [NSString stringWithFormat:@" %@",requester[@"phoneNumber"]];
+    PFFileObject *imageFile = requester[@"profileImage"];
+    
+    NSString *urlString = imageFile.url;
+    [self.rProfileImage setImageWithURL:[NSURL URLWithString:urlString]];
+    
+    self.rProfileImage.layer.cornerRadius = 40;
+    self.rProfileImage.clipsToBounds = YES;
     
 }
 
 - (void) showMissionerInfo {
     PFUser *missioner = self.task[@"missioner"];
-    self.musernameLabel.text = missioner[@"username"];
+    self.musernameLabel.text = [NSString stringWithFormat:@"@%@",missioner[@"username"]];
     self.mnameLabel.text = [NSString stringWithFormat:@"%@ %@", missioner[@"firstName"],missioner[@"lastName"]];
     self.muniversityLabel.text = missioner[@"university"];
     self.memailLabel.text = missioner[@"email"];
     
-    self.mphoneLabel.text = [NSString stringWithFormat:@"Phone: %@.",missioner[@"phoneNumber"]];
+    self.mphoneLabel.text = [NSString stringWithFormat:@"Phone: %@",missioner[@"phoneNumber"]];
+    
+    PFFileObject *imageFile = missioner[@"profileImage"];
+    NSString *urlString = imageFile.url;
+    [self.mProfileImage setImageWithURL:[NSURL URLWithString:urlString]];
+    
+    self.mProfileImage.layer.cornerRadius = 40;
+    self.mProfileImage.clipsToBounds = YES;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -164,7 +172,7 @@
     }
     else if (section == 0)
     {
-        return 7;
+        return 9;
     } else {
         return 1;
     }
