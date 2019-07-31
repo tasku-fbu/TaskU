@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-7r-LEN">
-                                <rect key="frame" x="125.5" y="96" width="163" height="29"/>
+                                <rect key="frame" x="146.5" y="96" width="121" height="29"/>
                                 <segments>
                                     <segment title="Current"/>
-                                    <segment title="Completed"/>
+                                    <segment title="History"/>
                                 </segments>
                                 <connections>
                                     <action selector="showContainerView:" destination="KfS-4F-R1C" eventType="valueChanged" id="eYm-oh-XhG"/>

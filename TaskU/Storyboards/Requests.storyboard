@@ -47,10 +47,10 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-6m-Z5C">
-                                <rect key="frame" x="125.5" y="96" width="163" height="29"/>
+                                <rect key="frame" x="146.5" y="96" width="121" height="29"/>
                                 <segments>
                                     <segment title="Current"/>
-                                    <segment title="Completed"/>
+                                    <segment title="History"/>
                                 </segments>
                                 <connections>
                                     <action selector="showContainerView:" destination="lyu-xd-TGn" eventType="valueChanged" id="8Xv-87-y7q"/>
