@@ -79,7 +79,7 @@
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
+    [dateFormatter setDateFormat:@"EEE, MMM d @ HH:mm a"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
