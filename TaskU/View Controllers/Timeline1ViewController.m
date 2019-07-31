@@ -40,6 +40,19 @@
     
     self.searchBar.delegate = self;
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchBar.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    self.searchBar.barTintColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    //self.searchBar.layer.borderColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1].CGColor;
+    //self.searchBar.layer.borderWidth = 1;
+    
+    self.searchBar.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.searchBar.layer.shadowOffset = CGSizeMake(0,1.5f);
+    self.searchBar.layer.shadowRadius = 2.0f;
+    self.searchBar.layer.shadowOpacity = 0.5f;
+    self.searchBar.layer.masksToBounds = NO;
+    
+    
+    
     
     [self getAllTasks];
     
