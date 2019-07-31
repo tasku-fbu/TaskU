@@ -93,7 +93,6 @@
     [cell showCell:cell withTask:task];
     
     
-    
     return cell;
 }
 
