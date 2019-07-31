@@ -26,11 +26,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dueLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *hourLabel;
+@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *musernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mnameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *muniversityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *memailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mphoneLabel;
+
+
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *view1;
+
+
 
 @end
 
@@ -38,35 +47,54 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
     self.tableVIew.rowHeight = UITableViewAutomaticDimension;
+
+    
+    
+    //Rounded corners only on top and bottom cell
+    self.topView.layer.cornerRadius = 10;
+    self.topView.layer.masksToBounds = YES;
+    self.topView.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner;
+    
+    self.view1.layer.cornerRadius = 10;
+    self.view1.layer.masksToBounds = YES;
+    self.view1.layer.maskedCorners = kCALayerMaxXMaxYCorner | kCALayerMinXMaxYCorner;
+    
+    
     [self showingTaskDetails];
     [self showRequesterInfo];
     [self showMissionerInfo];
     
 }
 
+
+
+
 - (void) showingTaskDetails {
-    self.taskidLabel.text = self.task.objectId;
+    
+    self.taskidLabel.text = [NSString stringWithFormat:@"ID: %@", self.task.objectId];
+
+    //self.taskidLabel.text = self.task.objectId;
     self.taskNameLabel.text = self.task[@"taskName"];
-    self.categoryLabel.text = [NSString stringWithFormat:@"Category: %@",self.task[@"category"]];
-    self.descriptionLabel.text = [NSString stringWithFormat:@"Description:\n  %@", self.task[@"taskDescription"]];
+    self.categoryLabel.text = self.task[@"category"];
+     self.descriptionLabel.text = self.task[@"taskDescription"];
     
     NSNumber *hour = self.task[@"hours"];
     NSNumber *minute = self.task[@"minutes"];
     int hr = [hour intValue];
     int min = [minute intValue];
     if (hr == 0) {
-        self.timeLabel.text = [NSString stringWithFormat:@"Estimated to be completed within %imin", min];
+        self.timeLabel.text = [NSString stringWithFormat:@"%imin", min];
     } else if (min == 0){
-        self.timeLabel.text = [NSString stringWithFormat:@"Estimated to be completed within %ihr", hr];
+        self.timeLabel.text = [NSString stringWithFormat:@"%ihr", hr];
     } else {
-        self.timeLabel.text = [NSString stringWithFormat:@"Estimated to be completed within %ihr %imin", hr,min];
+        self.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
     }
     
     NSNumber *payment = self.task[@"pay"];
     int pay = [payment intValue];
-    self.payLabel.text = [NSString stringWithFormat:@"Payment amount: $%i.",pay];
+    self.payLabel.text = [NSString stringWithFormat:@"$%i",pay];
     
     NSString *startString = @"";
     if (self.task[@"startAddress"]) {
@@ -74,19 +102,33 @@
             startString = [NSString stringWithFormat:@"FROM %@ ", self.task[@"startAddress"]];
         }
     }
-    self.addressLabel.text = [NSString stringWithFormat:@"%@TO %@",
-                                  startString,self.task[@"endAddress"]];
+    self.addressLabel.text = self.task[@"endAddress"];
+    
+
     
     NSDate *date = self.task[@"taskDate"];
     NSString *dateString = [self stringfromDateHelper:date];
-    self.dueLabel.text = [NSString stringWithFormat:@"Due by %@.", dateString];
+    NSString *dateString2 = [self stringfromDateHelper2:date];
+
+  //  self.dueLabel.text = [NSString stringWithFormat:@"due %@.", dateString];
+    self.hourLabel.text = dateString;
+    self.monthLabel.text = dateString2;
+
+
 }
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
+    [dateFormatter setDateFormat:@"HH:mm"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
+}
+
+- (NSString *) stringfromDateHelper2: (NSDate *) date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM.d"];
+    NSString *dateString2 = [dateFormatter stringFromDate:date];
+    return dateString2;
 }
 
 
@@ -97,7 +139,7 @@
     self.runiversityLabel.text = requester[@"university"];
     self.remailLabel.text = requester[@"email"];
     
-    self.rphoneLabel.text = [NSString stringWithFormat:@"Phone: %@.",requester[@"phoneNumber"]];
+    self.rphoneLabel.text = [NSString stringWithFormat:@" %@.",requester[@"phoneNumber"]];
     
 }
 
@@ -118,13 +160,13 @@
         if(!self.task[@"missioner"])
             return 0;
         else
-            return 5;
+            return 1;
     }
     else if (section == 0)
     {
-        return 8;
+        return 7;
     } else {
-        return 5;
+        return 1;
     }
 }
 
@@ -134,6 +176,8 @@
         return [[UIView alloc] initWithFrame:CGRectZero];
     return nil;
 }
+
+
 
 
 /*
