@@ -32,6 +32,11 @@
 @property (weak, nonatomic) NSNumber *latitude;
 @property (weak, nonatomic) NSNumber *longitude;
 
+@property (weak, nonatomic) IBOutlet UIButton *createButton;
+@property (weak, nonatomic) IBOutlet UIButton *acceptMissionButton;
+@property (weak, nonatomic) IBOutlet UIButton *completedMissionButton;
+@property (weak, nonatomic) IBOutlet UIButton *paidMissionButton;
+
 @end
 static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 
@@ -45,7 +50,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     
     [self showCreateLabel];
     [self updateView];
-    
+    [self buttonRadiusHelper];
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
     NSLog(@"%@ %@ %@ %@", self.task.startLatitude, self.task.startLongitude, self.task.endLatitude, self.task.endLongitude);
@@ -67,6 +72,12 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     [self performSegueWithIdentifier:searchLocationSegueIdentifier sender:nil];
 }
 
+-(void)buttonRadiusHelper{
+    self.createButton.layer.cornerRadius = 18;
+    self.acceptMissionButton.layer.cornerRadius = 18;
+    self.acceptMissionButton.layer.cornerRadius = 18;
+    self.paidMissionButton.layer.cornerRadius = 18;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Passes the selected object to the new view controller.
@@ -405,12 +416,13 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     PFUser *requester = self.task[@"requester"];
     PFUser *me = [PFUser currentUser];
     NSString *status = self.task[@"completionStatus"];
+    self.cancelRequestButton.layer.cornerRadius = 10;
     if ([me.objectId isEqualToString:requester.objectId] && ([status isEqualToString:@"created"] || [status isEqualToString:@"accepted"])) {
         self.cancelRequestButton.hidden = NO;
         self.cancelRequestButton.userInteractionEnabled = YES;
         [self.cancelRequestButton setTitle:@"Cancel Request" forState:UIControlStateNormal];
-        [self.cancelRequestButton setBackgroundColor:[UIColor redColor]];
-        [self.cancelRequestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //    [self.cancelRequestButton setBackgroundColor:[UIColor redColor]];
+  //      [self.cancelRequestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
     } else {
         self.cancelRequestButton.hidden = YES;
