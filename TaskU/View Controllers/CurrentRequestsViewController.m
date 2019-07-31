@@ -30,6 +30,9 @@
     [self getCurrentTasks];
     
     self.currentTable.rowHeight = UITableViewAutomaticDimension;
+    
+    
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getCurrentTasks) forControlEvents:UIControlEventValueChanged];
     [self.currentTable insertSubview:self.refreshControl atIndex:0];
