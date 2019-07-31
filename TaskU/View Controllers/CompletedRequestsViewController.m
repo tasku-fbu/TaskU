@@ -100,7 +100,7 @@
     cell.delegate = self;
     Task *task = self.completedTasks[indexPath.row];
     
-    [cell showCell:cell withTask:task];
+    [cell showRequestCell:cell withRequest:task];
     
     return cell;
 }

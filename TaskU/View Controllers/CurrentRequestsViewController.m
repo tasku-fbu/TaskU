@@ -96,7 +96,7 @@
     cell.delegate = self;
     Task *task = self.currentTasks[indexPath.row];
     
-    [cell showCell:cell withTask:task];
+    [cell showRequestCell:cell withRequest:task];
     
     
     return cell;
