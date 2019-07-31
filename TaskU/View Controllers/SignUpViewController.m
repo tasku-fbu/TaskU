@@ -336,7 +336,9 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
     
 }
-
+- (IBAction)tapOutsideTextField:(id)sender {
+    [self.view endEditing:YES];
+}
 #pragma mark - // implementation of the imagePickerController delegate method
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
