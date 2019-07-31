@@ -16,6 +16,7 @@
 		0E45A04C22DD9322005D798F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45A04B22DD9322005D798F /* ProfileViewController.m */; };
 		0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E45A05222DE5EDA005D798F /* Requests.storyboard */; };
 		0E45A05522DE5EF3005D798F /* Missions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E45A05422DE5EF2005D798F /* Missions.storyboard */; };
+		0E45EBB322EFB84E000F404A /* TaskUTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E45EBB222EFB84E000F404A /* TaskUTextField.m */; };
 		0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF4A22DD523500B9FE89 /* AppDelegate.m */; };
 		0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF4D22DD523500B9FE89 /* LoginViewController.m */; };
 		0E8EFF5122DD523500B9FE89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8EFF4F22DD523500B9FE89 /* Main.storyboard */; };
@@ -107,6 +108,8 @@
 		0E45A04B22DD9322005D798F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		0E45A05222DE5EDA005D798F /* Requests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Requests.storyboard; sourceTree = "<group>"; };
 		0E45A05422DE5EF2005D798F /* Missions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Missions.storyboard; sourceTree = "<group>"; };
+		0E45EBB122EFB84E000F404A /* TaskUTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskUTextField.h; sourceTree = "<group>"; };
+		0E45EBB222EFB84E000F404A /* TaskUTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskUTextField.m; sourceTree = "<group>"; };
 		0E8EFF4622DD523500B9FE89 /* TaskU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8EFF4922DD523500B9FE89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0E8EFF4A22DD523500B9FE89 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				B902D1C922E8133F0080B87E /* MyMessageCell.m */,
 				B902D1CB22E8140A0080B87E /* Message.h */,
 				B902D1CC22E8140A0080B87E /* Message.m */,
+				0E45EBB122EFB84E000F404A /* TaskUTextField.h */,
+				0E45EBB222EFB84E000F404A /* TaskUTextField.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -696,6 +701,7 @@
 				110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */,
 				1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */,
 				0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */,
+				0E45EBB322EFB84E000F404A /* TaskUTextField.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B902D19E22E61DBC0080B87E /* CurrentRequestsViewController.m in Sources */,
@@ -888,13 +894,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GG765643Z3;
+				DEVELOPMENT_TEAM = B7R4TAWA36;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucyyyw.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -909,13 +915,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GG765643Z3;
+				DEVELOPMENT_TEAM = B7R4TAWA36;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucyyyw.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

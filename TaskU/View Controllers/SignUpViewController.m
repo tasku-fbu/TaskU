@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "Parse/Parse.h"
 #import "Task.h"
+#import "TaskUTextField.h"
 
 #pragma mark - interface and properties
 @interface SignUpViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 @property NSUInteger phoneNumberLength;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
+@property (weak, nonatomic) IBOutlet UITextField *nextField;
+
 @end
 
 @implementation SignUpViewController
@@ -336,6 +339,9 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
     
 }
+- (IBAction)tapOutsideTextField:(id)sender {
+    [self.view endEditing:YES];
+}
 
 #pragma mark - // implementation of the imagePickerController delegate method
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -349,6 +355,45 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - configuration for external touch and keyboard return key as user logs in
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    /*if ([textField isKindOfClass:[TaskUTextField class]]) {
+        UITextField *nextField = [(TaskUTextField *)textField nextField];
+        
+        if (nextField) {
+            dispatch_async(dispatch_get_current_queue(), ^{
+                [nextField becomeFirstResponder];
+            });
+        }
+        else {
+            [textField resignFirstResponder];
+        }
+    }
+    
+    return YES;*/
+    /*NSInteger nextTag = textField.tag + 1;
+    // Try to find next responder
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    if (nextResponder) {
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    return NO; // We do not want UITextField to insert line-breaks.*/
+/*
+    [self.firstNameTextField resignFirstResponder];
+    [self.lastNameTextField resignFirstResponder];
+    [self.usernameTextField resignFirstResponder];
+    [self.emailTextField
+        resignFirstResponder];
+    [self.universityNameTextField resignFirstResponder];
+    [self.phoneNumberTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.confirmPasswordTextField resignFirstResponder];*/
+    return true;
+}
 /*
  #pragma mark - Navigation
  
