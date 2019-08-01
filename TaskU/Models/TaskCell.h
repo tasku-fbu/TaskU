@@ -23,10 +23,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *destinationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *requesterProfile;
+@property (weak, nonatomic) IBOutlet UILabel *startLabel;
+@property (weak, nonatomic) IBOutlet UIView *cellView;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
 
 @property (strong, nonatomic) Task *task;
 
 @property (nonatomic, weak) id<TaskCellDelegate> delegate;
+
+- (void) showCell:(TaskCell*) taskCell withTask: (Task*) task ;
+- (void) showRequestCell:(TaskCell*) cell withRequest: (Task*) task;
+- (void) showMissionCell:(TaskCell*) cell withMission: (Task*) task;
 
 @end
 

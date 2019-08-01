@@ -177,16 +177,19 @@
                                     <constraint firstAttribute="height" constant="56" id="NwG-Wh-Ub0"/>
                                 </constraints>
                                 <state key="normal" image="Image"/>
+                                <connections>
+                                    <action selector="addTaskAction:" destination="s1x-pU-5ie" eventType="touchUpInside" id="9dw-K2-dsp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="top" secondItem="PuE-cq-0ms" secondAttribute="top" id="L3Q-5J-u31"/>
-                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="bottom" secondItem="PuE-cq-0ms" secondAttribute="bottom" id="NqF-cK-Xn8"/>
-                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="leading" secondItem="PuE-cq-0ms" secondAttribute="leading" id="RgY-5q-zJk"/>
+                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="trailing" secondItem="PuE-cq-0ms" secondAttribute="trailing" id="P9n-0B-0AM"/>
                             <constraint firstItem="PuE-cq-0ms" firstAttribute="bottom" secondItem="nPV-C9-PNA" secondAttribute="bottom" constant="30" id="Tuv-VJ-a9I"/>
                             <constraint firstItem="PuE-cq-0ms" firstAttribute="trailing" secondItem="nPV-C9-PNA" secondAttribute="trailing" constant="40" id="ZUK-tp-rSF"/>
-                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="trailing" secondItem="PuE-cq-0ms" secondAttribute="trailing" id="mmx-0a-CO7"/>
+                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="leading" secondItem="PuE-cq-0ms" secondAttribute="leading" id="a7l-lM-ikm"/>
+                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="bottom" secondItem="PuE-cq-0ms" secondAttribute="bottom" id="agM-ze-nWX"/>
+                            <constraint firstItem="0u4-rj-NtJ" firstAttribute="top" secondItem="PuE-cq-0ms" secondAttribute="top" id="bDj-j4-O1N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PuE-cq-0ms"/>
                     </view>

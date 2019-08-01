@@ -14,6 +14,7 @@
 #import "DetailsInfoViewController.h"
 #import "HomeViewController.h"
 #import "LocationsViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 #pragma mark - interface and properties
 @interface Timeline1ViewController ()
@@ -35,12 +36,42 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView.hidden = true;
+    self.tableView.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    
     self.searchBar.delegate = self;
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchBar.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    self.searchBar.barTintColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    //self.searchBar.layer.borderColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1].CGColor;
+    //self.searchBar.layer.borderWidth = 1;
+    
+    UITextView * textField = [self.searchBar.subviews objectAtIndex:0];
+    textField.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    textField.layer.shadowOffset = CGSizeZero;
+    textField.layer.shadowRadius = 3.0f;
+    textField.layer.shadowOpacity = 1;
+    textField.layer.masksToBounds = NO;
+    
+
+    /*
+    self.searchBar.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.searchBar.layer.shadowOffset = CGSizeMake(0,1.5f);
+    self.searchBar.layer.shadowRadius = 2.0f;
+    self.searchBar.layer.shadowOpacity = 0.5f;
+    self.searchBar.layer.masksToBounds = NO;
+    */
+    
+    
     
     [self getAllTasks];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -95,58 +126,20 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    
+    if (!cell) {
+        [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    }
     cell.delegate = self;
     Task *task = self.filteredData[indexPath.row];
-    cell.task = task;
-    cell.titleLabel.text = task[@"taskName"];
     
-    
-    PFUser *user = task[@"requester"];
-    cell.requesterLabel.text = [NSString stringWithFormat:@"@%@", user.username];
-    
-    
-    
-    NSNumber *payment = task[@"pay"];
-    int pay = [payment intValue];
-    cell.paymentLabel.text = [NSString stringWithFormat:@"$%i",pay];
-    
-    NSString *startString = @"";
-    if (task[@"startAddress"]) {
-        if (![task[@"startAddress"] isEqualToString:@""]) {
-            startString = [NSString stringWithFormat:@"FROM %@ ", task[@"startAddress"]];
-        }
-    }
-    cell.destinationLabel.text = [NSString stringWithFormat:@"%@TO %@",
-                                  startString,task[@"endAddress"]];
-    
-    
-    NSDate *date = task[@"taskDate"];
-    NSString *dateString = [self stringfromDateHelper:date];
-    cell.dateLabel.text = [NSString stringWithFormat:@"due %@", dateString];
-    
-    
-    NSNumber *hour = task[@"hours"];
-    NSNumber *minute = task[@"minutes"];
-    int hr = [hour intValue];
-    int min = [minute intValue];
-    if (hr == 0) {
-        cell.timeLabel.text = [NSString stringWithFormat:@"%imin", min];
-    } else if (min == 0){
-        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr", hr];
-    } else {
-        cell.timeLabel.text = [NSString stringWithFormat:@"%ihr %imin", hr,min];
-    }
+    [cell showCell:cell withTask:task];
     
     return cell;
 }
 
 
-- (NSString *) stringfromDateHelper: (NSDate *) date {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    return dateString;
-}
 
 
 
