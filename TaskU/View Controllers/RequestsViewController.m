@@ -34,11 +34,12 @@
     self.segmentView.layer.cornerRadius = 8;
     self.segmentView.clipsToBounds = true;
     
+    
     [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
     bar.translucent = false;
     bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
     [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
-    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
     
     //self.view.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
     //[self.navigationController.navigationBar addSubview:self.segmentctrl];
