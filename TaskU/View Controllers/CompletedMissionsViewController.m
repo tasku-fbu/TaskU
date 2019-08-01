@@ -46,10 +46,17 @@
 
 - (void) getCompletedTasks{
     PFUser *user = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     
+    PFQuery *query1 = [PFQuery queryWithClassName:@"Task"];
     NSArray *completed = [NSArray arrayWithObjects: @"completed",@"pay",@"paid", nil];
+    [query1 whereKey:@"completionStatus" containedIn:completed];
     
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Task"];
+    [query2 whereKey:@"completionStatus" equalTo:@"created"];
+    NSDate *now = [NSDate date];
+    [query2 whereKey:@"taskDate" lessThanOrEqualTo:now];
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
     [query orderByDescending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
@@ -64,9 +71,8 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
-    
     [query whereKey:@"missioner" equalTo:user];
-    [query whereKey:@"completionStatus" containedIn:completed];
+    
     
     //query.limit = 0;
     
