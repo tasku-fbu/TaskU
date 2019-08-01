@@ -113,11 +113,11 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MissionCell"];
     
     if (!cell) {
-        [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+        [tableView registerNib:[UINib nibWithNibName:@"MissionCellView" bundle:nil] forCellReuseIdentifier:@"MissionCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"MissionCell"];
     }
     cell.delegate = self;
     Task *task = self.completedTasks[indexPath.row];
