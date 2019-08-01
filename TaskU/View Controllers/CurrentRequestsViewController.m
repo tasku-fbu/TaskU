@@ -84,7 +84,7 @@
             [self.activityIndicator stopAnimating];
         } else {
             NSLog(@"%@", error.localizedDescription);
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot fetch current requests"
                                                                            message:@"Please check your network connection."
                                                                     preferredStyle:(UIAlertControllerStyleAlert)];
             
