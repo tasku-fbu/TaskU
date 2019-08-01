@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentctrl;
 @property (weak, nonatomic) IBOutlet UIView *completedView;
 @property (weak, nonatomic) IBOutlet UIView *currentView;
+@property (weak, nonatomic) IBOutlet UIView *helperView;
+@property (weak, nonatomic) IBOutlet UIView *segmentView;
 
 @end
 

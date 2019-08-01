@@ -19,6 +19,15 @@ xcuserdata/
 *.xcuserstate
  .DS_Store
 TaskU.xcworkspace/xcuserdata/rhaypapenfuzz.xcuserdatad/UserInterfaceState.xcuserstate
+Mapbox-iOS-SDK
+MapboxNavigationNative
+MapboxCoreNavigation
+MapboxDirections.swift
+MapboxMobileEvents
+MapboxNavigation
+MapboxNavigationNative
+MapboxSpeech
+Mapbox
 
 
 ## Other

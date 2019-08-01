@@ -66,7 +66,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     [self showCreateLabel];
     [self updateView];
     [self buttonRadiusHelper];
-    [self contactInfoButton];
+    [self showContactInfoButton];
     
     self.cancelRequestButton.layer.cornerRadius = 10;
     self.acceptButton.layer.cornerRadius = 10;
@@ -100,15 +100,46 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     self.contactMissioner.layer.cornerRadius = 10;
 
 }
+- (IBAction)OnClickContactMissioner:(id)sender {
+    [self contact:self.task[@"missioner"]];
+}
+- (IBAction)OnClickContactRequester:(id)sender {
+    [self contact:self.task[@"requester"]];
+}
 
 //Contact button hidden unless someone accepted  task
--(void)contactInfoButton{
+-(void)showContactInfoButton{
     self.contactMissioner.hidden = YES;
     self.contactRequester.hidden = YES;
+    self.contactMissioner.userInteractionEnabled = NO;
+    self.contactRequester.userInteractionEnabled = NO;
     
     [self.contactMissioner.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:12.0f]];
     
     [self.contactRequester.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:12.0f]];
+    
+    NSString *status = self.task[@"completionStatus"];
+    PFUser *me = [PFUser currentUser];
+    PFUser *requester = self.task[@"requester"];
+    PFUser *missioner = self.task[@"missioner"];
+    if (missioner) {
+        if (![status isEqualToString:@"paid"]) {
+            if ([me.objectId isEqualToString:requester.objectId]) {
+                self.contactMissioner.hidden = NO;
+                self.contactMissioner.userInteractionEnabled = YES;
+            } else if ([me.objectId isEqualToString:missioner.objectId]){
+                self.contactRequester.hidden = NO;
+                self.contactRequester.userInteractionEnabled = YES;
+            }
+            
+            
+            
+            
+            
+        }
+    }
+    
+    
 }
 
 
@@ -220,13 +251,13 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [self updateButtonStatusHelper:self.completeButton];
             
         } else if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
-            self.completeButton.hidden = NO;
-            self.completeButton.userInteractionEnabled = YES;
-            
-            
+            self.completeButton.hidden = YES;
+            self.completeButton.userInteractionEnabled = NO;
+            /*
             [self.completeButton setTitle:@"Contact missioner" forState:UIControlStateNormal];
             [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+             */
         } else {
             self.completeButton.hidden = YES;
             self.completeButton.userInteractionEnabled = NO;
@@ -418,6 +449,13 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
                                                                  self.task[@"completionStatus"] = @"pay";
                                                                  [self.task saveInBackground];
                                                                  [self updateView];
+                                                                 UIApplication *application = [UIApplication sharedApplication];
+                                                                 NSURL *URL = [NSURL URLWithString:@"squarecash://"];
+                                                                 [application openURL:URL options:@{} completionHandler:^(BOOL success) {
+                                                                     if (success) {
+                                                                         NSLog(@"Opened url");
+                                                                     }
+                                                                 }];
                                                              }];
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                                style:UIAlertActionStyleDefault

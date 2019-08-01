@@ -18,14 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mO8-xK-IW1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mO8-xK-IW1" userLabel="helperView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXI-8n-KwC">
-                                        <rect key="frame" x="20" y="20" width="121" height="28"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXI-8n-KwC">
+                                        <rect key="frame" x="146.5" y="8" width="121" height="28"/>
                                         <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-7r-LEN">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-7r-LEN">
                                                 <rect key="frame" x="0.0" y="0.0" width="121" height="29"/>
                                                 <segments>
                                                     <segment title="Current"/>
@@ -38,20 +37,31 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="2Io-7r-LEN" firstAttribute="top" secondItem="VXI-8n-KwC" secondAttribute="top" id="3jU-fc-0Le"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Io-7r-LEN" secondAttribute="bottom" id="9Ss-5G-zYA"/>
+                                            <constraint firstItem="2Io-7r-LEN" firstAttribute="width" secondItem="VXI-8n-KwC" secondAttribute="width" id="HzF-Gp-ATY"/>
+                                            <constraint firstItem="2Io-7r-LEN" firstAttribute="height" secondItem="VXI-8n-KwC" secondAttribute="height" id="Nqj-NS-4wp"/>
+                                            <constraint firstItem="2Io-7r-LEN" firstAttribute="leading" secondItem="VXI-8n-KwC" secondAttribute="leading" id="nyl-cu-oAt"/>
                                             <constraint firstItem="2Io-7r-LEN" firstAttribute="centerX" secondItem="VXI-8n-KwC" secondAttribute="centerX" id="tK0-qx-4jR"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Io-7r-LEN" secondAttribute="trailing" id="wZ7-Fn-8CI"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="VXI-8n-KwC" firstAttribute="top" secondItem="mO8-xK-IW1" secondAttribute="top" constant="8" id="9cZ-Zp-ICq"/>
+                                    <constraint firstItem="VXI-8n-KwC" firstAttribute="centerX" secondItem="mO8-xK-IW1" secondAttribute="centerX" id="Ye5-nv-dBK"/>
+                                    <constraint firstAttribute="bottom" secondItem="VXI-8n-KwC" secondAttribute="bottom" constant="8" id="y4A-vx-KrY"/>
+                                </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIL-7M-Xyh">
-                                <rect key="frame" x="0.0" y="132" width="414" height="689"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIL-7M-Xyh">
+                                <rect key="frame" x="0.0" y="140" width="414" height="681"/>
                                 <connections>
                                     <segue destination="OMM-8u-eG9" kind="embed" id="VrA-OR-g7Z"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQS-Bv-nmm">
-                                <rect key="frame" x="0.0" y="132" width="414" height="689"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQS-Bv-nmm">
+                                <rect key="frame" x="0.0" y="140" width="414" height="681"/>
                                 <connections>
                                     <segue destination="8cC-Lb-W1t" kind="embed" id="7Wa-I8-OTi"/>
                                 </connections>
@@ -60,13 +70,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NQS-Bv-nmm" firstAttribute="bottom" secondItem="cUC-BG-JAj" secondAttribute="bottom" constant="8" id="7H0-Sr-zN9"/>
+                            <constraint firstItem="mO8-xK-IW1" firstAttribute="leading" secondItem="cUC-BG-JAj" secondAttribute="leading" id="7hk-UF-G1p"/>
+                            <constraint firstItem="mO8-xK-IW1" firstAttribute="trailing" secondItem="cUC-BG-JAj" secondAttribute="trailing" id="DZH-4Q-jvm"/>
                             <constraint firstItem="RIL-7M-Xyh" firstAttribute="leading" secondItem="cUC-BG-JAj" secondAttribute="leading" id="Geh-lg-Fa1"/>
                             <constraint firstItem="NQS-Bv-nmm" firstAttribute="width" secondItem="cUC-BG-JAj" secondAttribute="width" id="HQW-Dv-Jw3"/>
                             <constraint firstItem="RIL-7M-Xyh" firstAttribute="trailing" secondItem="cUC-BG-JAj" secondAttribute="trailing" id="OdL-By-zw6"/>
                             <constraint firstItem="RIL-7M-Xyh" firstAttribute="width" secondItem="cUC-BG-JAj" secondAttribute="width" id="V0r-5q-m1N"/>
                             <constraint firstItem="NQS-Bv-nmm" firstAttribute="leading" secondItem="cUC-BG-JAj" secondAttribute="leading" id="VIZ-OL-Yft"/>
                             <constraint firstItem="NQS-Bv-nmm" firstAttribute="trailing" secondItem="cUC-BG-JAj" secondAttribute="trailing" id="Wsz-r8-kyq"/>
+                            <constraint firstItem="NQS-Bv-nmm" firstAttribute="top" secondItem="mO8-xK-IW1" secondAttribute="bottom" constant="8" id="p7y-IW-Wei"/>
                             <constraint firstItem="RIL-7M-Xyh" firstAttribute="bottom" secondItem="cUC-BG-JAj" secondAttribute="bottom" constant="8" id="qIz-iL-piC"/>
+                            <constraint firstItem="mO8-xK-IW1" firstAttribute="top" secondItem="cUC-BG-JAj" secondAttribute="top" id="uaq-Pm-cBW"/>
+                            <constraint firstItem="RIL-7M-Xyh" firstAttribute="top" secondItem="mO8-xK-IW1" secondAttribute="bottom" constant="8" id="v3H-FB-lGt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cUC-BG-JAj"/>
                     </view>
@@ -74,6 +89,8 @@
                     <connections>
                         <outlet property="completedView" destination="RIL-7M-Xyh" id="Scw-8f-xle"/>
                         <outlet property="currentView" destination="NQS-Bv-nmm" id="TBe-2h-Pvu"/>
+                        <outlet property="helperView" destination="mO8-xK-IW1" id="GZj-7O-c00"/>
+                        <outlet property="segmentView" destination="VXI-8n-KwC" id="Dkw-04-rYe"/>
                         <outlet property="segmentctrl" destination="2Io-7r-LEN" id="bFD-gG-qCw"/>
                     </connections>
                 </viewController>
@@ -106,11 +123,11 @@
             <objects>
                 <viewController id="OMM-8u-eG9" customClass="CompletedMissionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbZ-5i-Yz4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="689"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="681"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A0L-0M-3a2">
-                                <rect key="frame" x="0.0" y="44" width="414" height="611"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="467" id="YnG-lI-ltD" customClass="TaskCell">
@@ -152,11 +169,11 @@
             <objects>
                 <viewController id="8cC-Lb-W1t" customClass="CurrentMissionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hPn-iD-LYR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="689"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="681"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lrL-oc-7k3">
-                                <rect key="frame" x="0.0" y="44" width="414" height="611"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="448" id="kVt-In-Gbn" customClass="TaskCell">
