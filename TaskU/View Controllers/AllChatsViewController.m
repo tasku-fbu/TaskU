@@ -200,7 +200,7 @@
             return (NSComparisonResult)NSOrderedAscending;
         }
     }];
-    NSLog(@"%@",sortedKeys);
+    //NSLog(@"%@",sortedKeys);
     self.contactIds = [sortedKeys mutableCopy];
     self.messagesByContact = dictionary;
     

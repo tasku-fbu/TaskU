@@ -89,7 +89,7 @@
                     
                     self.messages = [messages mutableCopy];
                     
-                    NSLog(@"%@",self.messages);
+                    //NSLog(@"%@",self.messages);
                     
                     [self.messageTable reloadData];
                     
