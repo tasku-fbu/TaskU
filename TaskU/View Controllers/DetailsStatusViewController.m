@@ -240,7 +240,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 
 - (void) showCompleteButton {
     PFUser *missioner = self.task[@"missioner"];
-    PFUser *requester = self.task[@"requester"];
+    //PFUser *requester = self.task[@"requester"];
     self.completeButton.layer.cornerRadius = 10;
 
     if (self.task[@"acceptedAt"] && ![self.task[@"acceptedAt"] isEqual:[NSNull null]] && (!self.task[@"completedAt"] || [self.task[@"completedAt"] isEqual:[NSNull null]])) {
@@ -250,15 +250,16 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [self.completeButton setTitle:@"Complete" forState:UIControlStateNormal];
             [self updateButtonStatusHelper:self.completeButton];
             
-        } else if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
+        } /*
+        else if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
             self.completeButton.hidden = YES;
             self.completeButton.userInteractionEnabled = NO;
-            /*
+            
             [self.completeButton setTitle:@"Contact missioner" forState:UIControlStateNormal];
             [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-             */
-        } else {
+            
+        } */else {
             self.completeButton.hidden = YES;
             self.completeButton.userInteractionEnabled = NO;
         }
@@ -309,17 +310,27 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             
             [self updateButtonStatusHelper:self.payButton];
         
-        } else if ([[PFUser currentUser].objectId isEqualToString:missioner.objectId]){
+        } /*else if ([[PFUser currentUser].objectId isEqualToString:missioner.objectId]){
             self.payButton.hidden = NO;
             self.payButton.userInteractionEnabled = YES;
             [self.payButton setTitle:@"Contact Requester" forState:UIControlStateNormal];
             [self.payButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        } else {
+        } */else {
             self.payButton.hidden = YES;
             self.payButton.userInteractionEnabled = NO;
         }
-    } else {
+    } else if ([self.task[@"completionStatus"] isEqualToString:@"pay"]) {
+        if ([[PFUser currentUser].objectId isEqual:missioner.objectId]) {
+            self.payButton.hidden = NO;
+            self.payButton.userInteractionEnabled = YES;
+            [self.payButton setTitle:@"Confirm payment received" forState:UIControlStateNormal];
+            [self updateButtonStatusHelper:self.payButton];
+        }
+    }
+    
+    
+    else {
         self.payButton.hidden = YES;
         self.payButton.userInteractionEnabled = NO;
     }
