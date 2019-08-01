@@ -65,6 +65,9 @@
     
     [query whereKey:@"missioner" equalTo:user];
     [query whereKey:@"completionStatus" containedIn:current];
+    NSDate *now = [NSDate date];
+    [query whereKey:@"taskDate" greaterThanOrEqualTo:now];
+    
     
     //query.limit = 20;
     
