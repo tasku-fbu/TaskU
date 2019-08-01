@@ -1,0 +1,7 @@
+Mapbox-iOS-SDK filter=lfs diff=lfs merge=lfs -text
+MapboxNavigationNative filter=lfs diff=lfs merge=lfs -text
+MapboxCoreNavigation filter=lfs diff=lfs merge=lfs -text
+MapboxDirections.swift filter=lfs diff=lfs merge=lfs -text
+MapboxMobileEvents filter=lfs diff=lfs merge=lfs -text
+MapboxNavigation filter=lfs diff=lfs merge=lfs -text
+MapboxSpeech filter=lfs diff=lfs merge=lfs -text
