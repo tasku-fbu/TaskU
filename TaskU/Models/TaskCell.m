@@ -118,7 +118,7 @@
     NSString *statusString = task[@"completionStatus"];
     if ([statusString isEqualToString:@"pay"]) {
         cell.statusLabel.text = @"pay processing";
-    } {
+    } else {
         cell.statusLabel.text = statusString;
     }
     [cell.statusLabel setTextColor:[self colorFromStatus:statusString]];
@@ -184,10 +184,19 @@
     NSString *statusString = task[@"completionStatus"];
     if ([statusString isEqualToString:@"pay"]) {
         cell.statusLabel.text = @"pay processing";
-    } {
+    } else {
         cell.statusLabel.text = statusString;
     }
     [cell.statusLabel setTextColor:[self colorFromStatus:statusString]];
+    
+    
+    if ([statusString isEqualToString:@"accepted"]) {
+        PFUser *user = task[@"missioner"];
+        if ([[PFUser currentUser].objectId isEqualToString:user.objectId]) {
+            cell.statusLabel.text = [NSString stringWithFormat:@"due %@",[self stringfromDateHelper: date]];
+            [cell.statusLabel setTextColor:[UIColor redColor]];
+        }
+    }
     
     
     /*
