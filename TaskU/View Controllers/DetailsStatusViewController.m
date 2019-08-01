@@ -16,21 +16,41 @@
 
 #pragma mark - interface and properties
 @interface DetailsStatusViewController ()
+
+//Labels
 @property (weak, nonatomic) IBOutlet UILabel *createLabel;
 @property (weak, nonatomic) IBOutlet UILabel *acceptLabel;
 @property (weak, nonatomic) IBOutlet UILabel *completeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *payLabel;
+
+//Action Buttons
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UIButton *completeButton;
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelRequestButton;
+
+//Contact buttons
+@property (weak, nonatomic) IBOutlet UIButton *contactMissioner;
+@property (weak, nonatomic) IBOutlet UIButton *contactRequester;
+
+
+//Past Views
 @property (weak, nonatomic) IBOutlet UIImageView *createIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *acceptIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *completeIconView;
 @property (weak, nonatomic) IBOutlet UIImageView *payIconView;
+
+//Map View Properties
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) NSNumber *latitude;
 @property (weak, nonatomic) NSNumber *longitude;
+
+
+//Side buttons to display timeline
+@property (weak, nonatomic) IBOutlet UIButton *createButton;
+@property (weak, nonatomic) IBOutlet UIButton *acceptMissionButton;
+@property (weak, nonatomic) IBOutlet UIButton *completedMissionButton;
+@property (weak, nonatomic) IBOutlet UIButton *paidMissionButton;
 
 @end
 static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
@@ -45,7 +65,11 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     
     [self showCreateLabel];
     [self updateView];
+    [self buttonRadiusHelper];
+    [self contactInfoButton];
     
+    self.cancelRequestButton.layer.cornerRadius = 10;
+    self.acceptButton.layer.cornerRadius = 10;
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
     NSLog(@"%@ %@ %@ %@", self.task.startLatitude, self.task.startLongitude, self.task.endLatitude, self.task.endLongitude);
@@ -65,6 +89,26 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 #pragma mark - Display location search view controller
 - (IBAction)tapMapAction:(id)sender {
     [self performSegueWithIdentifier:searchLocationSegueIdentifier sender:nil];
+}
+
+-(void)buttonRadiusHelper{
+    self.createButton.layer.cornerRadius = 18;
+    self.acceptMissionButton.layer.cornerRadius = 18;
+    self.acceptMissionButton.layer.cornerRadius = 18;
+    self.paidMissionButton.layer.cornerRadius = 18;
+    
+    self.contactMissioner.layer.cornerRadius = 10;
+
+}
+
+//Contact button hidden unless someone accepted  task
+-(void)contactInfoButton{
+    self.contactMissioner.hidden = YES;
+    self.contactRequester.hidden = YES;
+    
+    [self.contactMissioner.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:12.0f]];
+    
+    [self.contactRequester.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:12.0f]];
 }
 
 
@@ -116,7 +160,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     NSString *username = requester.username;
     
     NSString *dateString = [self stringfromDateHelper:self.task.createdAt];
-    NSString *display = [NSString stringWithFormat:@"Created by requester @%@ at %@", username, dateString];
+    NSString *display = [NSString stringWithFormat:@"Created by requester @%@ on %@", username, dateString];
     self.createLabel.text = display;
 }
 
@@ -125,13 +169,13 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 - (void) showAcceptLabel {
     PFUser *missioner = self.task[@"missioner"];
     if (!missioner || [missioner isEqual:[NSNull null]]) {
-        self.acceptLabel.text = @"Still awaiting for a missioner!!";
+        self.acceptLabel.text = @"Still awaiting for a missioner!";
         self.acceptLabel.textColor = [UIColor grayColor];
     } else {
         self.acceptLabel.textColor = [UIColor blackColor];
         NSString *username = missioner.username;
         NSString *dateString = [self stringfromDateHelper:self.task[@"acceptedAt"]];
-        NSString *display = [NSString stringWithFormat:@"Accepted by missioner @%@ at %@", username, dateString];
+        NSString *display = [NSString stringWithFormat:@"Accepted by missioner @%@ on %@", username, dateString];
         self.acceptLabel.text = display;
     }
 }
@@ -139,7 +183,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 - (void) showAcceptButton {
     PFUser *missioner = self.task[@"missioner"];
     PFUser *requester = self.task[@"requester"];
-    
+    self.acceptButton.layer.cornerRadius = 10;
     if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
         self.acceptButton.hidden = YES;
         self.acceptButton.userInteractionEnabled = NO;
@@ -147,14 +191,16 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
         self.acceptButton.hidden = NO;
         self.acceptButton.userInteractionEnabled = YES;
         [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
-        [self.acceptButton setBackgroundColor:[UIColor colorWithRed:0.0 green:153/255.0 blue:0.0 alpha:1.0]];
-        [self.acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+      
+        [self updateButtonStatusHelper:self.acceptButton];
+
     } else if ([missioner.objectId isEqual:[PFUser currentUser].objectId] && [self.task[@"completionStatus"] isEqualToString:@"accepted"]) {
         self.acceptButton.hidden = NO;
         self.acceptButton.userInteractionEnabled = YES;
         [self.acceptButton setTitle:@"Cancel" forState:UIControlStateNormal];
         [self.acceptButton setBackgroundColor:[UIColor redColor]];
         [self.acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+         [self.cancelRequestButton.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:17.0f]];
     } else {
         self.acceptButton.hidden = YES;
         self.acceptButton.userInteractionEnabled = NO;
@@ -164,16 +210,20 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 - (void) showCompleteButton {
     PFUser *missioner = self.task[@"missioner"];
     PFUser *requester = self.task[@"requester"];
+    self.completeButton.layer.cornerRadius = 10;
+
     if (self.task[@"acceptedAt"] && ![self.task[@"acceptedAt"] isEqual:[NSNull null]] && (!self.task[@"completedAt"] || [self.task[@"completedAt"] isEqual:[NSNull null]])) {
         if ([[PFUser currentUser].objectId isEqual:missioner.objectId]) {
             self.completeButton.hidden = NO;
             self.completeButton.userInteractionEnabled = YES;
             [self.completeButton setTitle:@"Complete" forState:UIControlStateNormal];
-            [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.1 green:0.25 blue:1 alpha:1.0]];
-            [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [self updateButtonStatusHelper:self.completeButton];
+            
         } else if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
             self.completeButton.hidden = NO;
             self.completeButton.userInteractionEnabled = YES;
+            
+            
             [self.completeButton setTitle:@"Contact missioner" forState:UIControlStateNormal];
             [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -190,15 +240,22 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 }
 
 
+//Sets the button color to be green, round corners and white text
+-(void) updateButtonStatusHelper: (UIButton *) button {
+    [button setBackgroundColor:[UIColor colorNamed:@"darkGreen"]];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:17.0f]];
+}
+
 - (void) showCompleteLabel {
     PFUser *missioner = self.task[@"missioner"];
     NSDate *completedAt = self.task[@"completedAt"];
     
     if (!missioner || [missioner isEqual:[NSNull null]]) {
-        self.completeLabel.text = @"Still awaiting for a missioner!!";
+        self.completeLabel.text = @"Still awaiting for a missioner!";
         self.completeLabel.textColor = [UIColor grayColor];
     } else if (!completedAt || [completedAt isEqual:[NSNull null]]) {
-        self.completeLabel.text = [NSString stringWithFormat:@"Still in progress by missioner @%@...", missioner[@"username"]];
+        self.completeLabel.text = [NSString stringWithFormat:@"Still in progress by missioner @%@", missioner[@"username"]];
         self.completeLabel.textColor = [UIColor grayColor];
     } else {
         self.completeLabel.textColor = [UIColor blackColor];
@@ -212,17 +269,19 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 - (void) showPayButton {
     PFUser *requester = self.task[@"requester"];
     PFUser *missioner = self.task[@"missioner"];
+    self.payButton.layer.cornerRadius = 10;
     if ([self.task[@"completionStatus"] isEqualToString:@"completed"]) {
         if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
             self.payButton.hidden = NO;
             self.payButton.userInteractionEnabled = YES;
             [self.payButton setTitle:@"Confirm & Pay" forState:UIControlStateNormal];
-            [self.payButton setBackgroundColor:[UIColor colorWithRed:0.1 green:0.25 blue:1 alpha:1.0]];
-            [self.payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            [self updateButtonStatusHelper:self.payButton];
+        
         } else if ([[PFUser currentUser].objectId isEqualToString:missioner.objectId]){
             self.payButton.hidden = NO;
             self.payButton.userInteractionEnabled = YES;
-            [self.payButton setTitle:@"Contact requester" forState:UIControlStateNormal];
+            [self.payButton setTitle:@"Contact Requester" forState:UIControlStateNormal];
             [self.payButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         } else {
@@ -234,9 +293,6 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
         self.payButton.userInteractionEnabled = NO;
     }
     
-    
-    
-    
 }
 
 - (void) showPayLabel {
@@ -246,10 +302,10 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     NSDate *paidAt = self.task[@"paidAt"];
     
     if (!missioner || [missioner isEqual:[NSNull null]]) {
-        self.payLabel.text = @"Still awaiting for a missioner!!";
+        self.payLabel.text = @"Still awaiting for a missioner!";
         self.payLabel.textColor = [UIColor grayColor];
     } else if (!completedAt) {
-        self.payLabel.text = [NSString stringWithFormat:@"Still in progress by missioner @%@...", missioner[@"username"]];
+        self.payLabel.text = [NSString stringWithFormat:@"Still in progress by missioner @%@", missioner[@"username"]];
         self.payLabel.textColor = [UIColor grayColor];
     } else if ([self.task[@"completionStatus"] isEqualToString:@"paid"]){
         self.payLabel.textColor = [UIColor blackColor];
@@ -270,11 +326,10 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
+    [dateFormatter setDateFormat:@"EEE, MMM d @ HH:mm a"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
-
 
 
 
@@ -282,43 +337,23 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     UIButton *btn = (UIButton *) sender;
     if (btn.hidden == NO) {
         PFUser *missioner = [PFUser currentUser];
-        //PFUser *requester = self.task[@"requester"];
         if ([btn.currentTitle isEqualToString:@"Accept"]) {
             
             self.task[@"missioner"] = missioner;
             
-            /*
-             NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
-             [temp addObject:requester];
-             NSArray *temp2 = [NSArray arrayWithArray:temp];
-             missioner[@"contacts"] = temp2;
-             temp = [requester[@"contacts"] mutableCopy];
-             [temp addObject:missioner];
-             temp2 = [NSArray arrayWithArray:temp];
-             requester[@"contacts"] = temp2;
-             [missioner saveInBackground];
-             [requester saveInBackground];
-             */
             
             self.task[@"acceptedAt"] = [NSDate date];
             self.task[@"completionStatus"] = @"accepted";
             
             [self.task saveInBackground];
             [self updateView];
+            
+            //Contact button shows and links to messaging
+            self.contactRequester.hidden = NO;
+         //   [self contact:self.task[@"missioner"]];
+            
         } else if ([btn.currentTitle isEqualToString:@"Cancel"]) {
-            /*
-             NSMutableArray *temp = [missioner[@"contacts"] mutableCopy];
-             [temp removeObject:requester];
-             NSArray *temp2 = [NSArray arrayWithArray:temp];
-             missioner[@"contacts"] = temp2;
-             temp = [requester[@"contacts"] mutableCopy];
-             
-             [temp removeObject:missioner];
-             temp2 = [NSArray arrayWithArray:temp];
-             requester[@"contacts"] = temp2;
-             [missioner saveInBackground];
-             [requester saveInBackground];
-             */
+            
             self.task[@"missioner"] = [NSNull null];
             self.task[@"acceptedAt"] = [NSNull null];
             self.task[@"completionStatus"] = @"created";
@@ -358,7 +393,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [alert addAction:noAction];
             
             [self presentViewController:alert animated:YES completion:nil];
-        } else if ([btn.currentTitle isEqualToString:@"Contact missioner"]) {
+        } else if ([btn.currentTitle isEqualToString:@"Contact Missioner"]) {
             [self contact:self.task[@"missioner"]];
         }
     }
@@ -393,7 +428,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [alert addAction:noAction];
             
             [self presentViewController:alert animated:YES completion:nil];
-        } else if ([btn.currentTitle isEqualToString:@"Contact requester"]) {
+        } else if ([btn.currentTitle isEqualToString:@"Contact Requester"]) {
             [self contact:self.task[@"requester"]];
         }
     }
@@ -405,13 +440,15 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     PFUser *requester = self.task[@"requester"];
     PFUser *me = [PFUser currentUser];
     NSString *status = self.task[@"completionStatus"];
+    self.cancelRequestButton.layer.cornerRadius = 10;
     if ([me.objectId isEqualToString:requester.objectId] && ([status isEqualToString:@"created"] || [status isEqualToString:@"accepted"])) {
         self.cancelRequestButton.hidden = NO;
         self.cancelRequestButton.userInteractionEnabled = YES;
-        [self.cancelRequestButton setTitle:@"Cancel Request" forState:UIControlStateNormal];
+        [self.cancelRequestButton setTitle:@"Cancel" forState:UIControlStateNormal];
         [self.cancelRequestButton setBackgroundColor:[UIColor redColor]];
         [self.cancelRequestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
+        [self.cancelRequestButton.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:17.0f]];
+
     } else {
         self.cancelRequestButton.hidden = YES;
         self.cancelRequestButton.userInteractionEnabled = NO;
@@ -464,29 +501,51 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 - (void) updateStatusIcons{
     NSString *status = self.task[@"completionStatus"];
     if ([status isEqualToString:@"created"]) {
-        [self.createIconView setImage:[UIImage imageNamed:@"currentStatus"]];
-        [self.acceptIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.completeIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.payIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+    
+        //Current Status activated
+        [self.createButton setImage:[UIImage imageNamed:@"checkmark"] forState:UIControlStateNormal];
+        self.createButton.backgroundColor = [UIColor colorNamed:@"blue"];
+
+        
+        //Other status deactivated
+        [self.acceptMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        self.acceptMissionButton.backgroundColor = [UIColor clearColor];
+
+        [self.completedMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        [self.paidMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+     
     }else if ([status isEqualToString:@"accepted"]) {
-        [self.createIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.acceptIconView setImage:[UIImage imageNamed:@"currentStatus"]];
-        [self.completeIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.payIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.acceptMissionButton setImage:[UIImage imageNamed:@"checkmark"] forState:UIControlStateNormal];
+        self.acceptMissionButton.backgroundColor = [UIColor colorNamed:@"blue"];
+        
+        [self.createButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        self.createButton.backgroundColor = [UIColor whiteColor];
+
+        [self.completedMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        [self.paidMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        
     } else if ([status isEqualToString:@"completed"]) {
-        [self.createIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.acceptIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.completeIconView setImage:[UIImage imageNamed:@"currentStatus"]];
-        [self.payIconView setImage:[UIImage imageNamed:@"anyStatus"]];
+        [self.completedMissionButton setImage:[UIImage imageNamed:@"checkmark"] forState:UIControlStateNormal];
+        self.completedMissionButton.backgroundColor = [UIColor colorNamed:@"blue"];
+
+        
+        [self.createButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        [self.acceptMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        self.acceptMissionButton.backgroundColor = [UIColor clearColor];
+
+        [self.paidMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        
     } else {
-        [self.createIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.acceptIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.completeIconView setImage:[UIImage imageNamed:@"anyStatus"]];
-        [self.payIconView setImage:[UIImage imageNamed:@"currentStatus"]];
+        [self.paidMissionButton setImage:[UIImage imageNamed:@"checkmark"] forState:UIControlStateNormal];
+        self.paidMissionButton.backgroundColor = [UIColor colorNamed:@"blue"];
+
+        
+        [self.createButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        [self.acceptMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        [self.completedMissionButton setImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
     }
     
 }
-
 
 - (void) contact:(PFUser *) otherUser {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Message" bundle:nil];
@@ -495,17 +554,6 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     [self presentViewController:chatMessagesVC animated:YES completion:nil];
     
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 
 
 
