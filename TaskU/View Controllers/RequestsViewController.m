@@ -12,6 +12,8 @@
 @property (weak, nonatomic) IBOutlet UIView *completedView;
 @property (weak, nonatomic) IBOutlet UIView *currentView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentctrl;
+@property (weak, nonatomic) IBOutlet UIView *helperView;
+@property (weak, nonatomic) IBOutlet UIView *segmentView;
 
 @end
 
@@ -21,11 +23,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     UINavigationBar *bar = [self.navigationController navigationBar];
+    
+    CGFloat width = [UIScreen mainScreen].bounds.size.width * 0.4;
+    [self.segmentctrl setWidth:width forSegmentAtIndex:0];
+    [self.segmentctrl setWidth:width forSegmentAtIndex:1];
+    self.segmentctrl.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.segmentctrl.layer.borderWidth = 2.0f;
+    self.segmentctrl.layer.cornerRadius = 8;
+    self.segmentctrl.clipsToBounds = true;
+    self.segmentView.layer.cornerRadius = 8;
+    self.segmentView.clipsToBounds = true;
+    
     [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
-    [self.navigationController.navigationBar setTranslucent:NO];
+    bar.translucent = false;
+    bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
     //self.view.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
     //[self.navigationController.navigationBar addSubview:self.segmentctrl];
+    
+    self.helperView.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
 }
+
 - (IBAction)showContainerView:(id)sender {
     if (self.segmentctrl.selectedSegmentIndex == 0) {
         self.completedView.alpha = 0;
