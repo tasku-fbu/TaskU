@@ -822,11 +822,15 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbf-su-ug0">
-                                                <rect key="frame" x="4" y="711" width="56" height="22"/>
+                                                <rect key="frame" x="14" y="704" width="36" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="ktI-wL-ABv"/>
+                                                    <constraint firstAttribute="width" constant="36" id="m07-ML-iTg"/>
+                                                </constraints>
                                                 <state key="normal" image="dot"/>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44I-te-VoD">
-                                                <rect key="frame" x="31" y="615.5" width="2" height="95.5"/>
+                                                <rect key="frame" x="31" y="615.5" width="2" height="88.5"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2P7-ue-vgF">
@@ -865,7 +869,6 @@
                                             <constraint firstItem="Bri-Eb-avc" firstAttribute="leading" secondItem="qoq-Qk-Zag" secondAttribute="leading" id="0FJ-kw-SCo"/>
                                             <constraint firstItem="PW9-tv-wJG" firstAttribute="top" secondItem="fLA-YO-NPe" secondAttribute="bottom" constant="8" id="1WP-74-uVV"/>
                                             <constraint firstItem="PW9-tv-wJG" firstAttribute="trailing" secondItem="fLA-YO-NPe" secondAttribute="trailing" id="1mE-Hu-1hR"/>
-                                            <constraint firstItem="44I-te-VoD" firstAttribute="leading" secondItem="qoq-Qk-Zag" secondAttribute="leading" constant="31" id="2H1-Br-joh"/>
                                             <constraint firstItem="xjH-eZ-tjw" firstAttribute="trailing" secondItem="3Rb-qT-Mya" secondAttribute="trailing" id="2XL-c8-qri"/>
                                             <constraint firstItem="bRU-aB-WH0" firstAttribute="leading" secondItem="dgX-0j-PWj" secondAttribute="trailing" constant="18" id="2kk-cL-XA2"/>
                                             <constraint firstItem="bRU-aB-WH0" firstAttribute="top" secondItem="JZV-Go-t8m" secondAttribute="bottom" constant="21" id="3lo-ja-OsF"/>
@@ -878,10 +881,9 @@
                                             <constraint firstItem="xjH-eZ-tjw" firstAttribute="top" secondItem="6sM-nT-wD8" secondAttribute="bottom" constant="8" id="AjY-F9-JOU"/>
                                             <constraint firstItem="3Rb-qT-Mya" firstAttribute="height" secondItem="PW9-tv-wJG" secondAttribute="height" id="Ath-hw-Qul"/>
                                             <constraint firstItem="SHg-5C-prt" firstAttribute="leading" secondItem="H85-np-lOW" secondAttribute="leading" id="BW7-fa-FwY"/>
-                                            <constraint firstItem="vbf-su-ug0" firstAttribute="trailing" secondItem="MpF-JP-jYK" secondAttribute="trailing" constant="10" id="BrK-he-tPL"/>
                                             <constraint firstItem="3Rb-qT-Mya" firstAttribute="top" secondItem="okU-ry-9de" secondAttribute="bottom" constant="8" id="CEt-EA-Y78"/>
                                             <constraint firstItem="7Ak-tF-p0c" firstAttribute="leading" secondItem="aZo-rO-mdm" secondAttribute="leading" id="Cja-p7-g0l"/>
-                                            <constraint firstItem="vbf-su-ug0" firstAttribute="width" secondItem="MpF-JP-jYK" secondAttribute="width" constant="20" id="DHw-hZ-8pw"/>
+                                            <constraint firstItem="44I-te-VoD" firstAttribute="leading" secondItem="SHg-5C-prt" secondAttribute="leading" id="Crx-3P-5B8"/>
                                             <constraint firstItem="3Rb-qT-Mya" firstAttribute="trailing" secondItem="PW9-tv-wJG" secondAttribute="trailing" id="DQ4-Ti-x5x"/>
                                             <constraint firstItem="6sM-nT-wD8" firstAttribute="top" secondItem="3Rb-qT-Mya" secondAttribute="bottom" constant="40" id="Dgq-IB-Foe"/>
                                             <constraint firstItem="hB6-Yf-58L" firstAttribute="top" secondItem="bRU-aB-WH0" secondAttribute="bottom" constant="8" id="ECm-IP-k7x"/>
@@ -905,7 +907,9 @@
                                             <constraint firstItem="2P7-ue-vgF" firstAttribute="top" secondItem="dgX-0j-PWj" secondAttribute="bottom" constant="81" id="RgQ-Xh-KLQ"/>
                                             <constraint firstItem="vbf-su-ug0" firstAttribute="top" secondItem="44I-te-VoD" secondAttribute="bottom" id="SSG-6z-QPa"/>
                                             <constraint firstItem="PW9-tv-wJG" firstAttribute="height" secondItem="hB6-Yf-58L" secondAttribute="height" id="Sto-Ia-E1P"/>
+                                            <constraint firstItem="vbf-su-ug0" firstAttribute="trailing" secondItem="MpF-JP-jYK" secondAttribute="trailing" id="Tiu-zU-Cg3"/>
                                             <constraint firstItem="6sM-nT-wD8" firstAttribute="leading" secondItem="okU-ry-9de" secondAttribute="leading" id="UJQ-Xn-HLv"/>
+                                            <constraint firstItem="vbf-su-ug0" firstAttribute="leading" secondItem="MpF-JP-jYK" secondAttribute="leading" id="Ub8-5U-HQh"/>
                                             <constraint firstItem="MpF-JP-jYK" firstAttribute="leading" secondItem="2P7-ue-vgF" secondAttribute="leading" id="WXs-Ph-mjd"/>
                                             <constraint firstItem="MpF-JP-jYK" firstAttribute="top" secondItem="SHg-5C-prt" secondAttribute="bottom" id="X7G-BY-CIB"/>
                                             <constraint firstItem="7Ak-tF-p0c" firstAttribute="width" secondItem="aZo-rO-mdm" secondAttribute="width" id="bry-6p-ldg"/>
@@ -964,11 +968,13 @@
                         <outlet property="cancelRequestButton" destination="hB6-Yf-58L" id="MIe-fh-kb3"/>
                         <outlet property="completeButton" destination="3Rb-qT-Mya" id="dlP-A6-GCB"/>
                         <outlet property="completeLabel" destination="okU-ry-9de" id="yrm-Sa-K3c"/>
+                        <outlet property="completedMissionButton" destination="MpF-JP-jYK" id="Xcj-4b-AHg"/>
                         <outlet property="contactMissioner" destination="aZo-rO-mdm" id="s93-2k-nqu"/>
                         <outlet property="contactRequester" destination="7Ak-tF-p0c" id="G6i-5R-wDi"/>
                         <outlet property="createButton" destination="dgX-0j-PWj" id="mwP-0B-Q4h"/>
                         <outlet property="createLabel" destination="bRU-aB-WH0" id="1gl-Ue-M45"/>
                         <outlet property="mapView" destination="Bri-Eb-avc" id="o9R-ro-3bU"/>
+                        <outlet property="paidMissionButton" destination="vbf-su-ug0" id="jtl-Hb-w68"/>
                         <outlet property="payButton" destination="xjH-eZ-tjw" id="p8o-bD-9wE"/>
                         <outlet property="payLabel" destination="6sM-nT-wD8" id="fi9-8k-ng6"/>
                     </connections>

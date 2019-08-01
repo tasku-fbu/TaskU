@@ -96,8 +96,10 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     self.acceptMissionButton.layer.cornerRadius = 18;
     self.acceptMissionButton.layer.cornerRadius = 18;
     self.paidMissionButton.layer.cornerRadius = 18;
+    self.completedMissionButton.layer.cornerRadius = 18;
     
     self.contactMissioner.layer.cornerRadius = 10;
+    self.contactRequester.layer.cornerRadius = 10;
 
 }
 - (IBAction)OnClickContactMissioner:(id)sender {
@@ -131,7 +133,6 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
                 self.contactRequester.hidden = NO;
                 self.contactRequester.userInteractionEnabled = YES;
             }
-            
             
             
             
@@ -254,11 +255,11 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
         else if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
             self.completeButton.hidden = YES;
             self.completeButton.userInteractionEnabled = NO;
-            
+           
             [self.completeButton setTitle:@"Contact missioner" forState:UIControlStateNormal];
             [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            
+           
         } */else {
             self.completeButton.hidden = YES;
             self.completeButton.userInteractionEnabled = NO;
@@ -435,8 +436,6 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [alert addAction:noAction];
             
             [self presentViewController:alert animated:YES completion:nil];
-        } else if ([btn.currentTitle isEqualToString:@"Contact Missioner"]) {
-            [self contact:self.task[@"missioner"]];
         }
     }
     
@@ -477,8 +476,30 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [alert addAction:noAction];
             
             [self presentViewController:alert animated:YES completion:nil];
-        } else if ([btn.currentTitle isEqualToString:@"Contact Requester"]) {
-            [self contact:self.task[@"requester"]];
+        } else if ([btn.currentTitle isEqualToString:@"Confirm payment received"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm payment received"
+                                                                           message:@"Once confirmed you will not be able to cancel confirmation."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 NSLog(@"Confirm payment received");
+                                                                 self.task[@"completionStatus"] = @"paid";
+                                                                 self.task[@"paidAt"] = [NSDate date];
+                                                                 [self.task saveInBackground];
+                                                                 [self updateView];
+                                                                 
+                                                             }];
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 NSLog(@"cancel confirming payment received");
+                                                             }];
+            [alert addAction:okAction];
+            [alert addAction:noAction];
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }
     
