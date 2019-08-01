@@ -48,7 +48,7 @@
     PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     
-    NSArray *completed = [NSArray arrayWithObjects: @"completed",@"pay",@"paid", nil];
+    NSArray *completed = [NSArray arrayWithObjects: @"completed",@"pay",@"paid",@"expired", nil];
     
     [query orderByDescending:@"taskDate"];
     [query includeKey:@"requester"];
@@ -67,6 +67,7 @@
     
     [query whereKey:@"requester" equalTo:user];
     [query whereKey:@"completionStatus" containedIn:completed];
+    
     
     //query.limit = 0;
     

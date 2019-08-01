@@ -108,8 +108,20 @@
     NSString *dateString = [self stringfromDateHelper:date];
     cell.dateLabel.text = [NSString stringWithFormat:@"due %@", dateString];
     
+    NSDate *now = [NSDate date];
+    if ([task[@"completionStatus"] isEqualToString:@"created"]) {
+        if ([date compare: now] == NSOrderedAscending) {
+            task[@"completionStatus"] = @"expired";
+            [task saveInBackground];
+        }
+    }
     NSString *statusString = task[@"completionStatus"];
-    cell.statusLabel.text = statusString;
+    if ([statusString isEqualToString:@"pay"]) {
+        cell.statusLabel.text = @"pay processing";
+    } {
+        cell.statusLabel.text = statusString;
+    }
+    [cell.statusLabel setTextColor:[self colorFromStatus:statusString]];
     
     
     /*
@@ -180,6 +192,22 @@
     [dateFormatter setDateFormat:@"EEE, MMM d @ HH:mm a"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
+}
+
+- (UIColor *) colorFromStatus: (NSString *) status {
+    if ([status isEqualToString:@"created"]) {
+        return [UIColor grayColor];
+    } else if ([status isEqualToString:@"accepted"]) {
+        return [UIColor purpleColor];
+    } else if ([status isEqualToString:@"completed"]) {
+        return [UIColor blueColor];
+    } else if ([status isEqualToString:@"pay"]) {
+        return [UIColor orangeColor];
+    } else if ([status isEqualToString:@"paid"]) {
+        return [UIColor greenColor];
+    } else {
+        return [UIColor redColor];
+    }
 }
 
 @end

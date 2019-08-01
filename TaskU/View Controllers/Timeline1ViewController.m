@@ -98,6 +98,7 @@
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
 
+    [query whereKey:@"requester" notEqualTo:[PFUser currentUser]];
     [query whereKey:@"category" equalTo:(self.category)];
     [query whereKey:@"completionStatus" equalTo:@"created"];
     
