@@ -41,14 +41,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzn-un-cQU">
-                                <rect key="frame" x="10" y="10" width="102" height="28"/>
-                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="22"/>
+                                <rect key="frame" x="10" y="10" width="92" height="25"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="FROM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUh-aO-4Es">
-                                <rect key="frame" x="37" y="73" width="366" height="22"/>
-                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="18"/>
+                                <rect key="frame" x="37" y="74" width="366" height="20"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -67,14 +67,14 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="show status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf0-zF-Fhn">
-                                <rect key="frame" x="415" y="10" width="98" height="23"/>
-                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="18"/>
+                                <rect key="frame" x="431" y="10" width="82" height="19"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="TO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzD-Oj-rCH">
-                                <rect key="frame" x="37" y="108" width="24.5" height="22.5"/>
-                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="18"/>
+                                <rect key="frame" x="37" y="106.5" width="22" height="25"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -92,6 +92,7 @@
                             <constraint firstItem="jLO-th-pw1" firstAttribute="top" secondItem="VtW-d3-FKu" secondAttribute="bottom" constant="10" id="EAY-GB-cBF"/>
                             <constraint firstItem="pzn-un-cQU" firstAttribute="leading" secondItem="5B8-eU-33q" secondAttribute="leading" constant="10" id="GwF-Xj-vR6"/>
                             <constraint firstItem="pzn-un-cQU" firstAttribute="top" secondItem="5B8-eU-33q" secondAttribute="top" constant="10" id="P4C-Vx-sy9"/>
+                            <constraint firstAttribute="bottom" secondItem="QzD-Oj-rCH" secondAttribute="bottom" constant="10" id="Qpf-pW-HTt"/>
                             <constraint firstItem="jLO-th-pw1" firstAttribute="leading" secondItem="5B8-eU-33q" secondAttribute="leading" constant="12" id="Rji-e6-AFH"/>
                             <constraint firstAttribute="bottom" secondItem="jLO-th-pw1" secondAttribute="bottom" constant="10" id="UXb-gj-FSZ"/>
                             <constraint firstItem="VtW-d3-FKu" firstAttribute="top" secondItem="pzn-un-cQU" secondAttribute="bottom" constant="15" id="XWf-fu-scC"/>

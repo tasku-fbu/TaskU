@@ -89,12 +89,12 @@
     */
      
     NSString *startString = @"Your choice!";
-    cell.startLabel.font = [UIFont italicSystemFontOfSize:17.0f];
+    cell.startLabel.font = [UIFont italicSystemFontOfSize:14.0f];
     if (task[@"startAddress"]) {
         if (![task[@"startAddress"] isEqualToString:@""]) {
             startString = [NSString stringWithFormat:@"FROM %@ ", task[@"startAddress"]];
             cell.startLabel.text = startString;
-            [cell.startLabel setFont:[UIFont fontWithName:@"Quicksand-Regular" size:18.0f]];
+            [cell.startLabel setFont:[UIFont fontWithName:@"Quicksand-Regular" size:16.0f]];
         }
         
     }
