@@ -33,7 +33,7 @@
     self.currentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.currentTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.currentTable.tableFooterView.hidden = true;
-    self.currentTable.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    //self.currentTable.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getCurrentTasks) forControlEvents:UIControlEventValueChanged];
