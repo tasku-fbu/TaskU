@@ -52,6 +52,9 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     [self updateView];
     [self buttonRadiusHelper];
     
+    self.cancelRequestButton.layer.cornerRadius = 10;
+    self.acceptButton.layer.cornerRadius = 10;
+    
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
     NSLog(@"%@ %@ %@ %@", self.task.startLatitude, self.task.startLongitude, self.task.endLatitude, self.task.endLongitude);
     MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]), MKCoordinateSpanMake(1.9, 1.9));
@@ -411,24 +414,24 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     
     
 }
-
-- (void) showCancelRequestButton {
-    PFUser *requester = self.task[@"requester"];
-    PFUser *me = [PFUser currentUser];
-    NSString *status = self.task[@"completionStatus"];
-    self.cancelRequestButton.layer.cornerRadius = 10;
-    if ([me.objectId isEqualToString:requester.objectId] && ([status isEqualToString:@"created"] || [status isEqualToString:@"accepted"])) {
-        self.cancelRequestButton.hidden = NO;
-        self.cancelRequestButton.userInteractionEnabled = YES;
-        [self.cancelRequestButton setTitle:@"Cancel Request" forState:UIControlStateNormal];
-    //    [self.cancelRequestButton setBackgroundColor:[UIColor redColor]];
-  //      [self.cancelRequestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
-    } else {
-        self.cancelRequestButton.hidden = YES;
-        self.cancelRequestButton.userInteractionEnabled = NO;
-    }
-}
+//
+//- (void) showCancelRequestButton {
+//    PFUser *requester = self.task[@"requester"];
+//    PFUser *me = [PFUser currentUser];
+//    NSString *status = self.task[@"completionStatus"];
+//    self.cancelRequestButton.layer.cornerRadius = 10;
+//    if ([me.objectId isEqualToString:requester.objectId] && ([status isEqualToString:@"created"] || [status isEqualToString:@"accepted"])) {
+//        self.cancelRequestButton.hidden = NO;
+//        self.cancelRequestButton.userInteractionEnabled = YES;
+//        [self.cancelRequestButton setTitle:@"Cancel Request" forState:UIControlStateNormal];
+//        [self.cancelRequestButton setBackgroundColor:[UIColor redColor]];
+//        [self.cancelRequestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//
+//    } else {
+//        self.cancelRequestButton.hidden = YES;
+//        self.cancelRequestButton.userInteractionEnabled = NO;
+//    }
+//}
 
 
 - (IBAction)onTapCancelRequest:(id)sender {
@@ -463,13 +466,13 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 }
 
 - (void) updateView {
-    [self showAcceptButton];
+//    [self showAcceptButton];
     [self showAcceptLabel];
     [self showCompleteLabel];
     [self showPayLabel];
     [self showCompleteButton];
     [self showPayButton];
-    [self showCancelRequestButton];
+  //  [self showCancelRequestButton];
     [self updateStatusIcons];
 }
 
