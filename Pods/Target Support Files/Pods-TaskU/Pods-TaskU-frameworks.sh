@@ -167,7 +167,17 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_dsym "${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM"
   install_bcsymbolmap "${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/1BF93521-4C77-3633-A539-01336F1D64E9.bcsymbolmap"
   install_bcsymbolmap "${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/9D189C8A-78FE-3297-847F-34B05A3A6906.bcsymbolmap"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxCoreNavigation/MapboxCoreNavigation.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxDirections.swift/MapboxDirections.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxNavigation/MapboxNavigation.framework"
+  install_framework "${PODS_ROOT}/MapboxNavigationNative/MapboxNavigationNative.framework"
+  install_dsym "${PODS_ROOT}/MapboxNavigationNative/MapboxNavigationNative.framework.dSYM"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxSpeech/MapboxSpeech.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Parse/Parse.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Solar/Solar.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Turf/Turf.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
@@ -176,7 +186,17 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_dsym "${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM"
   install_bcsymbolmap "${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/1BF93521-4C77-3633-A539-01336F1D64E9.bcsymbolmap"
   install_bcsymbolmap "${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/9D189C8A-78FE-3297-847F-34B05A3A6906.bcsymbolmap"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxCoreNavigation/MapboxCoreNavigation.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxDirections.swift/MapboxDirections.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxNavigation/MapboxNavigation.framework"
+  install_framework "${PODS_ROOT}/MapboxNavigationNative/MapboxNavigationNative.framework"
+  install_dsym "${PODS_ROOT}/MapboxNavigationNative/MapboxNavigationNative.framework.dSYM"
+  install_framework "${BUILT_PRODUCTS_DIR}/MapboxSpeech/MapboxSpeech.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Parse/Parse.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Solar/Solar.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Turf/Turf.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
