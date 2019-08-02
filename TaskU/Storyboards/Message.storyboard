@@ -13,7 +13,7 @@
         <!--All Chats-->
         <scene sceneID="t4X-qo-CGG">
             <objects>
-                <viewController id="HXi-lK-mgl" sceneMemberID="viewController">
+                <viewController id="HXi-lK-mgl" customClass="chatFirstViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pTs-cw-vM9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
