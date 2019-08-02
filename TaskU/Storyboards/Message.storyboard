@@ -41,7 +41,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="All Chats" id="57x-8o-c04">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="xwG-8s-WWC">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cer-4N-Joh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cer-4N-Joh">
                                 <rect key="frame" x="20" y="5" width="92" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
@@ -123,7 +123,7 @@
                                             <outlet property="contactProfileImageView" destination="DHB-53-EkH" id="zu2-yu-lnp"/>
                                             <outlet property="contactUsernameLabel" destination="3Yn-eb-LD3" id="ogY-k1-RRd"/>
                                             <outlet property="latestTextLabel" destination="hvj-bC-jqU" id="C9E-I7-Wem"/>
-                                            <segue destination="OKb-9N-wT9" kind="presentation" identifier="showMessages" id="mvJ-iQ-j49"/>
+                                            <segue destination="wd3-Ij-0P3" kind="presentation" identifier="showMessages" id="mvJ-iQ-j49"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -166,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-tJ-R78">
-                                <rect key="frame" x="0.0" y="102" width="414" height="467"/>
+                                <rect key="frame" x="0.0" y="146" width="414" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourMessage" id="fno-GG-ed4" customClass="YourMessageCell">
@@ -271,7 +271,7 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-XC-yKY">
-                                <rect key="frame" x="188.5" y="317" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="339" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nib-gf-YC4">
@@ -291,7 +291,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfe-2K-rgm">
-                                <rect key="frame" x="20" y="52" width="30" height="42"/>
+                                <rect key="frame" x="20" y="96" width="30" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="&lt; "/>
                                 <connections>
@@ -299,7 +299,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yur-AS-mff">
-                                <rect key="frame" x="174" y="62.5" width="66" height="21"/>
+                                <rect key="frame" x="174" y="106.5" width="66" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -344,7 +344,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="110" y="1468"/>
+            <point key="canvasLocation" x="1015.9420289855074" y="1467.5223214285713"/>
         </scene>
         <!--Messages-->
         <scene sceneID="DIn-Mv-TDM">
@@ -365,6 +365,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMY-XX-FSE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-204" y="119"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wT0-eT-oLc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wd3-Ij-0P3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pZd-Kf-qOz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OKb-9N-wT9" kind="relationship" relationship="rootViewController" id="udz-zj-5ck"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o22-88-Vc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108.69565217391305" y="1467.8571428571429"/>
         </scene>
     </scenes>
     <resources>
