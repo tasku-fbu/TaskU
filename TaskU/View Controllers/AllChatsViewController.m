@@ -249,6 +249,8 @@
             PFFileObject *imageFile = contact[@"profileImage"];
             NSString *urlString = imageFile.url;
             [cell.contactProfileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+            cell.contactProfileImageView.layer.cornerRadius = 20;
+            cell.contactProfileImageView.clipsToBounds = YES;
             cell.contact = contact;
             
         } else {
