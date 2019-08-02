@@ -89,7 +89,7 @@
                     
                     self.messages = [messages mutableCopy];
                     
-                    NSLog(@"%@",self.messages);
+                    //NSLog(@"%@",self.messages);
                     
                     [self.messageTable reloadData];
                     
@@ -172,6 +172,8 @@
         PFFileObject *imageFile = me[@"profileImage"];
         NSString *urlString = imageFile.url;
         [cell.myImageView setImageWithURL:[NSURL URLWithString:urlString]];
+        cell.myImageView.layer.cornerRadius = 17.5;
+        cell.myImageView.clipsToBounds = YES;
         
         cell.myTextLabel.text = message.text;
         cell.bubbleView.layer.cornerRadius = 12;
@@ -183,6 +185,8 @@
         PFFileObject *imageFile = you[@"profileImage"];
         NSString *urlString = imageFile.url;
         [cell.yourImageView setImageWithURL:[NSURL URLWithString:urlString]];
+        cell.yourImageView.layer.cornerRadius = 17.5;
+        cell.yourImageView.clipsToBounds = YES;
         
         cell.yourTextLabel.text = message.text;
         cell.bubbleView.layer.cornerRadius = 12;
