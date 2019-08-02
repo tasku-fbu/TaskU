@@ -31,11 +31,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchBar.barTintColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    self.searchBar.layer.borderWidth = 1;
+    self.searchBar.layer.borderColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0].CGColor;
+    
     [self getAllMessagesFirst];
+    
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -200,7 +208,7 @@
             return (NSComparisonResult)NSOrderedAscending;
         }
     }];
-    NSLog(@"%@",sortedKeys);
+    //NSLog(@"%@",sortedKeys);
     self.contactIds = [sortedKeys mutableCopy];
     self.messagesByContact = dictionary;
     
@@ -241,6 +249,8 @@
             PFFileObject *imageFile = contact[@"profileImage"];
             NSString *urlString = imageFile.url;
             [cell.contactProfileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+            cell.contactProfileImageView.layer.cornerRadius = 20;
+            cell.contactProfileImageView.clipsToBounds = YES;
             cell.contact = contact;
             
         } else {

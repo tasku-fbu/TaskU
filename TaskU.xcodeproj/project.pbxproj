@@ -74,6 +74,8 @@
 		B902D1CD22E8140A0080B87E /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1CC22E8140A0080B87E /* Message.m */; };
 		B935548522F0AA150088A419 /* TaskCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B935548422F0AA150088A419 /* TaskCellView.xib */; };
 		B935548722F13B930088A419 /* RequestCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B935548622F13B930088A419 /* RequestCellView.xib */; };
+		B93554C722F347620088A419 /* MissionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B93554C622F347620088A419 /* MissionCellView.xib */; };
+		B93554CA22F3BB960088A419 /* chatFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554C922F3BB960088A419 /* chatFirstViewController.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -207,6 +209,9 @@
 		B902D1CC22E8140A0080B87E /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		B935548422F0AA150088A419 /* TaskCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCellView.xib; sourceTree = "<group>"; };
 		B935548622F13B930088A419 /* RequestCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestCellView.xib; sourceTree = "<group>"; };
+		B93554C622F347620088A419 /* MissionCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCellView.xib; sourceTree = "<group>"; };
+		B93554C822F3BB960088A419 /* chatFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chatFirstViewController.h; sourceTree = "<group>"; };
+		B93554C922F3BB960088A419 /* chatFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chatFirstViewController.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,6 +291,8 @@
 				B902D1B322E7BA090080B87E /* AllChatsViewController.m */,
 				B902D1B522E7BA380080B87E /* ChatMessagesViewController.h */,
 				B902D1B622E7BA380080B87E /* ChatMessagesViewController.m */,
+				B93554C822F3BB960088A419 /* chatFirstViewController.h */,
+				B93554C922F3BB960088A419 /* chatFirstViewController.m */,
 				0E2A70EF22F36F9E0006B879 /* NavigationViewController.h */,
 				0E2A70F022F36F9E0006B879 /* NavigationViewController.m */,
 			);
@@ -400,6 +407,7 @@
 				118987AE22EF967E007F75C5 /* HomeHeaderView.m */,
 				B935548422F0AA150088A419 /* TaskCellView.xib */,
 				B935548622F13B930088A419 /* RequestCellView.xib */,
+				B93554C622F347620088A419 /* MissionCellView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -595,6 +603,7 @@
 				B902D1B122E7B8F50080B87E /* Message.storyboard in Resources */,
 				118F6A5822E93D8200299B25 /* FreigSanProBookIt.otf in Resources */,
 				118F6A4F22E93D8200299B25 /* FreigSanProMed.otf in Resources */,
+				B93554C722F347620088A419 /* MissionCellView.xib in Resources */,
 				118F6A5122E93D8200299B25 /* FreigSanProBlk.otf in Resources */,
 				118F6A5722E93D8200299B25 /* FreigSanProSem.otf in Resources */,
 				0E8EFF5122DD523500B9FE89 /* Main.storyboard in Resources */,
@@ -725,6 +734,7 @@
 				B902D1B722E7BA380080B87E /* ChatMessagesViewController.m in Sources */,
 				B902D14D22E01FFD0080B87E /* DetailsInfoViewController.m in Sources */,
 				1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */,
+				B93554CA22F3BB960088A419 /* chatFirstViewController.m in Sources */,
 				110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */,
 				118987AF22EF967E007F75C5 /* HomeHeaderView.m in Sources */,
 				1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */,
@@ -924,13 +934,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GG765643Z3;
 				DEVELOPMENT_TEAM = B7R4TAWA36;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucyyyw.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -945,13 +956,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GG765643Z3;
 				DEVELOPMENT_TEAM = B7R4TAWA36;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucyyyw.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

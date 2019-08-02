@@ -66,7 +66,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     [self showCreateLabel];
     [self updateView];
     [self buttonRadiusHelper];
-    [self contactInfoButton];
+    [self showContactInfoButton];
     
     self.cancelRequestButton.layer.cornerRadius = 10;
     self.acceptButton.layer.cornerRadius = 10;
@@ -96,19 +96,51 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     self.acceptMissionButton.layer.cornerRadius = 18;
     self.acceptMissionButton.layer.cornerRadius = 18;
     self.paidMissionButton.layer.cornerRadius = 18;
+    self.completedMissionButton.layer.cornerRadius = 18;
     
     self.contactMissioner.layer.cornerRadius = 10;
+    self.contactRequester.layer.cornerRadius = 10;
 
+}
+- (IBAction)OnClickContactMissioner:(id)sender {
+    [self contact:self.task[@"missioner"]];
+}
+- (IBAction)OnClickContactRequester:(id)sender {
+    [self contact:self.task[@"requester"]];
 }
 
 //Contact button hidden unless someone accepted  task
--(void)contactInfoButton{
+-(void)showContactInfoButton{
     self.contactMissioner.hidden = YES;
     self.contactRequester.hidden = YES;
+    self.contactMissioner.userInteractionEnabled = NO;
+    self.contactRequester.userInteractionEnabled = NO;
     
     [self.contactMissioner.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:12.0f]];
     
     [self.contactRequester.titleLabel setFont:[UIFont fontWithName:@"Quicksand" size:12.0f]];
+    
+    NSString *status = self.task[@"completionStatus"];
+    PFUser *me = [PFUser currentUser];
+    PFUser *requester = self.task[@"requester"];
+    PFUser *missioner = self.task[@"missioner"];
+    if (missioner) {
+        if (![status isEqualToString:@"paid"]) {
+            if ([me.objectId isEqualToString:requester.objectId]) {
+                self.contactMissioner.hidden = NO;
+                self.contactMissioner.userInteractionEnabled = YES;
+            } else if ([me.objectId isEqualToString:missioner.objectId]){
+                self.contactRequester.hidden = NO;
+                self.contactRequester.userInteractionEnabled = YES;
+            }
+            
+            
+            
+            
+        }
+    }
+    
+    
 }
 
 
@@ -209,7 +241,7 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
 
 - (void) showCompleteButton {
     PFUser *missioner = self.task[@"missioner"];
-    PFUser *requester = self.task[@"requester"];
+    //PFUser *requester = self.task[@"requester"];
     self.completeButton.layer.cornerRadius = 10;
 
     if (self.task[@"acceptedAt"] && ![self.task[@"acceptedAt"] isEqual:[NSNull null]] && (!self.task[@"completedAt"] || [self.task[@"completedAt"] isEqual:[NSNull null]])) {
@@ -219,15 +251,16 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [self.completeButton setTitle:@"Complete" forState:UIControlStateNormal];
             [self updateButtonStatusHelper:self.completeButton];
             
-        } else if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
-            self.completeButton.hidden = NO;
-            self.completeButton.userInteractionEnabled = YES;
-            
-            
+        } /*
+        else if ([[PFUser currentUser].objectId isEqual:requester.objectId]) {
+            self.completeButton.hidden = YES;
+            self.completeButton.userInteractionEnabled = NO;
+           
             [self.completeButton setTitle:@"Contact missioner" forState:UIControlStateNormal];
             [self.completeButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.completeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        } else {
+           
+        } */else {
             self.completeButton.hidden = YES;
             self.completeButton.userInteractionEnabled = NO;
         }
@@ -278,17 +311,27 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             
             [self updateButtonStatusHelper:self.payButton];
         
-        } else if ([[PFUser currentUser].objectId isEqualToString:missioner.objectId]){
+        } /*else if ([[PFUser currentUser].objectId isEqualToString:missioner.objectId]){
             self.payButton.hidden = NO;
             self.payButton.userInteractionEnabled = YES;
             [self.payButton setTitle:@"Contact Requester" forState:UIControlStateNormal];
             [self.payButton setBackgroundColor:[UIColor colorWithRed:0.9 green:0.3 blue:0 alpha:1.0]];
             [self.payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        } else {
+        } */else {
             self.payButton.hidden = YES;
             self.payButton.userInteractionEnabled = NO;
         }
-    } else {
+    } else if ([self.task[@"completionStatus"] isEqualToString:@"pay"]) {
+        if ([[PFUser currentUser].objectId isEqual:missioner.objectId]) {
+            self.payButton.hidden = NO;
+            self.payButton.userInteractionEnabled = YES;
+            [self.payButton setTitle:@"Confirm payment received" forState:UIControlStateNormal];
+            [self updateButtonStatusHelper:self.payButton];
+        }
+    }
+    
+    
+    else {
         self.payButton.hidden = YES;
         self.payButton.userInteractionEnabled = NO;
     }
@@ -393,8 +436,6 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [alert addAction:noAction];
             
             [self presentViewController:alert animated:YES completion:nil];
-        } else if ([btn.currentTitle isEqualToString:@"Contact Missioner"]) {
-            [self contact:self.task[@"missioner"]];
         }
     }
     
@@ -418,6 +459,13 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
                                                                  self.task[@"completionStatus"] = @"pay";
                                                                  [self.task saveInBackground];
                                                                  [self updateView];
+                                                                 UIApplication *application = [UIApplication sharedApplication];
+                                                                 NSURL *URL = [NSURL URLWithString:@"squarecash://"];
+                                                                 [application openURL:URL options:@{} completionHandler:^(BOOL success) {
+                                                                     if (success) {
+                                                                         NSLog(@"Opened url");
+                                                                     }
+                                                                 }];
                                                              }];
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                                style:UIAlertActionStyleDefault
@@ -428,8 +476,30 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
             [alert addAction:noAction];
             
             [self presentViewController:alert animated:YES completion:nil];
-        } else if ([btn.currentTitle isEqualToString:@"Contact Requester"]) {
-            [self contact:self.task[@"requester"]];
+        } else if ([btn.currentTitle isEqualToString:@"Confirm payment received"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm payment received"
+                                                                           message:@"Once confirmed you will not be able to cancel confirmation."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 NSLog(@"Confirm payment received");
+                                                                 self.task[@"completionStatus"] = @"paid";
+                                                                 self.task[@"paidAt"] = [NSDate date];
+                                                                 [self.task saveInBackground];
+                                                                 [self updateView];
+                                                                 
+                                                             }];
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 NSLog(@"cancel confirming payment received");
+                                                             }];
+            [alert addAction:okAction];
+            [alert addAction:noAction];
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }
     

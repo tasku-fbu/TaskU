@@ -98,6 +98,7 @@
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
 
+    [query whereKey:@"requester" notEqualTo:[PFUser currentUser]];
     [query whereKey:@"category" equalTo:(self.category)];
     [query whereKey:@"completionStatus" equalTo:@"created"];
     
@@ -118,6 +119,22 @@
             
         } else {
             NSLog(@"%@", error.localizedDescription);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
+                                                                           message:@"Please check your network connection."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 // handle response here.
+                                                             }];
+            // add the OK action to the alert controller
+            [alert addAction:okAction];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
         }
         
     }];

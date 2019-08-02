@@ -30,10 +30,10 @@
     [self getCurrentTasks];
     
     self.currentTable.rowHeight = UITableViewAutomaticDimension;
-    self.currentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.currentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.currentTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.currentTable.tableFooterView.hidden = true;
-    self.currentTable.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    //self.currentTable.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getCurrentTasks) forControlEvents:UIControlEventValueChanged];
@@ -65,6 +65,9 @@
     
     [query whereKey:@"missioner" equalTo:user];
     [query whereKey:@"completionStatus" containedIn:current];
+    NSDate *now = [NSDate date];
+    [query whereKey:@"taskDate" greaterThanOrEqualTo:now];
+    
     
     //query.limit = 20;
     
@@ -78,6 +81,22 @@
             [self.activityIndicator stopAnimating];
         } else {
             NSLog(@"%@", error.localizedDescription);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot fetch current missions"
+                                                                           message:@"Please check your network connection."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 // handle response here.
+                                                             }];
+            // add the OK action to the alert controller
+            [alert addAction:okAction];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
         }
         
     }];
@@ -86,11 +105,11 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MissionCell"];
     
     if (!cell) {
-        [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+        [tableView registerNib:[UINib nibWithNibName:@"MissionCellView" bundle:nil] forCellReuseIdentifier:@"MissionCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"MissionCell"];
     }
     cell.delegate = self;
     Task *task = self.currentTasks[indexPath.row];

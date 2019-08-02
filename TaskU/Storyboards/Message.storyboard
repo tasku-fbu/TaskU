@@ -9,11 +9,16 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Quicksand-Regular.ttf">
+            <string>Quicksand-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--All Chats-->
         <scene sceneID="t4X-qo-CGG">
             <objects>
-                <viewController id="HXi-lK-mgl" sceneMemberID="viewController">
+                <viewController id="HXi-lK-mgl" customClass="chatFirstViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pTs-cw-vM9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +39,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eMJ-7E-EGH"/>
                     </view>
-                    <navigationItem key="navigationItem" title="All Chats" id="57x-8o-c04"/>
+                    <navigationItem key="navigationItem" title="All Chats" id="57x-8o-c04">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="xwG-8s-WWC">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cer-4N-Joh">
+                                <rect key="frame" x="20" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="nmp-Wn-RFc">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qeE-97-NEJ">
+                                <rect key="frame" x="375" y="11" width="19" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="compose"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQe-a5-2dv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -65,27 +88,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DHB-53-EkH">
-                                                    <rect key="frame" x="8" y="12.5" width="40" height="40"/>
+                                                    <rect key="frame" x="16" y="12.5" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="O0L-Hb-ptB"/>
                                                         <constraint firstAttribute="height" constant="40" id="QjG-7M-u9W"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yn-eb-LD3">
-                                                    <rect key="frame" x="56" y="8" width="81" height="20.5"/>
+                                                    <rect key="frame" x="64" y="8" width="81" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your latest conversation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvj-bC-jqU">
-                                                    <rect key="frame" x="56" y="34.5" width="350" height="18"/>
+                                                    <rect key="frame" x="64" y="34.5" width="342" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="DHB-53-EkH" firstAttribute="leading" secondItem="yCy-NW-733" secondAttribute="leading" constant="8" id="5qd-Rn-LDU"/>
+                                                <constraint firstItem="DHB-53-EkH" firstAttribute="leading" secondItem="yCy-NW-733" secondAttribute="leading" constant="16" id="5qd-Rn-LDU"/>
                                                 <constraint firstItem="DHB-53-EkH" firstAttribute="centerY" secondItem="yCy-NW-733" secondAttribute="centerY" id="6e8-D2-0Tq"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Yn-eb-LD3" secondAttribute="trailing" constant="8" id="FLd-Vx-Skz"/>
                                                 <constraint firstItem="3Yn-eb-LD3" firstAttribute="top" secondItem="yCy-NW-733" secondAttribute="top" constant="8" id="JEj-jk-RmU"/>
@@ -132,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUb-tX-V8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88" y="852"/>
+            <point key="canvasLocation" x="87" y="825"/>
         </scene>
         <!--Chat Messages View Controller-->
         <scene sceneID="wFJ-F5-maT">
@@ -321,13 +344,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="914" y="851"/>
+            <point key="canvasLocation" x="110" y="1468"/>
         </scene>
         <!--Messages-->
         <scene sceneID="DIn-Mv-TDM">
             <objects>
                 <navigationController storyboardIdentifier="Message" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ofg-8n-bO9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" id="ZHb-6x-la9"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="messages" id="ZHb-6x-la9"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2S2-SC-pzU">
@@ -344,4 +367,8 @@
             <point key="canvasLocation" x="-204" y="119"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="compose" width="19" height="19"/>
+        <image name="messages" width="24" height="23"/>
+    </resources>
 </document>
