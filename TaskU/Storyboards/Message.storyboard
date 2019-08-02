@@ -166,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-tJ-R78">
-                                <rect key="frame" x="0.0" y="88" width="414" height="481"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourMessage" id="fno-GG-ed4" customClass="YourMessageCell">
@@ -271,7 +271,7 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-XC-yKY">
-                                <rect key="frame" x="188.5" y="310" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="315" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nib-gf-YC4">
@@ -300,7 +300,7 @@
                             <constraint firstItem="T2R-XC-yKY" firstAttribute="centerY" secondItem="Uqh-tJ-R78" secondAttribute="centerY" id="RHA-UT-Dwg"/>
                             <constraint firstItem="9VS-S1-AbT" firstAttribute="top" secondItem="nib-gf-YC4" secondAttribute="bottom" constant="8" id="Vzg-ET-TaN"/>
                             <constraint firstItem="T2R-XC-yKY" firstAttribute="centerX" secondItem="ee3-xR-Kgy" secondAttribute="centerX" id="XzR-3N-XgR"/>
-                            <constraint firstItem="Uqh-tJ-R78" firstAttribute="top" secondItem="YYr-gt-mz5" secondAttribute="top" id="YRO-cS-95u"/>
+                            <constraint firstItem="Uqh-tJ-R78" firstAttribute="top" secondItem="YYr-gt-mz5" secondAttribute="top" constant="10" id="YRO-cS-95u"/>
                             <constraint firstAttribute="trailing" secondItem="9VS-S1-AbT" secondAttribute="trailing" constant="30" id="Z95-rz-TUj"/>
                             <constraint firstAttribute="bottom" secondItem="9VS-S1-AbT" secondAttribute="bottom" constant="30" id="faP-Z9-JdG"/>
                             <constraint firstItem="nib-gf-YC4" firstAttribute="leading" secondItem="YYr-gt-mz5" secondAttribute="leading" id="hJX-hZ-s89"/>
@@ -317,7 +317,9 @@
                                 <rect key="frame" x="20" y="1" width="30" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="&lt; "/>
+                                <state key="normal" title="&lt; ">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onClickBack:" destination="OKb-9N-wT9" eventType="touchUpInside" id="ODf-QR-VPe"/>
                                 </connections>
