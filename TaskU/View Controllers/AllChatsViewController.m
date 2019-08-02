@@ -39,6 +39,8 @@
     self.searchBar.delegate = self;
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchBar.barTintColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    self.searchBar.layer.borderWidth = 1;
+    self.searchBar.layer.borderColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0].CGColor;
     
     [self getAllMessagesFirst];
     
