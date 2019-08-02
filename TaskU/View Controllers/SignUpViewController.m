@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 @property NSUInteger phoneNumberLength;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
+@property (weak, nonatomic) IBOutlet UIButton *chooseImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+
 @end
 
 @implementation SignUpViewController
@@ -30,7 +33,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //Profile Image is hidden by default
+    self.userProfileImage.hidden = YES;
+    
+    self.userProfileImage.layer.cornerRadius = 50;
+    self.chooseImageButton.layer.cornerRadius = 50;
+    self.signUpButton.layer.cornerRadius = 10;
+
 }
 
 #pragma mark - cancel returns user to login
@@ -347,8 +357,11 @@
     
     self.userProfileImage.image = editedImage;  //set selected image in uiview to edited image
     
-    // Dismiss UIImagePickerController to go back to your original view controller
+    // Dismiss UIImagePickerController to go back to  original view controller
+    self.userProfileImage.hidden = NO;
+
     [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 /*
