@@ -5,3 +5,4 @@ MapboxDirections.swift filter=lfs diff=lfs merge=lfs -text
 MapboxMobileEvents filter=lfs diff=lfs merge=lfs -text
 MapboxNavigation filter=lfs diff=lfs merge=lfs -text
 MapboxSpeech filter=lfs diff=lfs merge=lfs -text
+Mapbox filter=lfs diff=lfs merge=lfs -text

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,29 +45,31 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VlE-TP-nrG">
                                                 <rect key="frame" x="40" y="381" width="334" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B7K-aJ-t1f">
                                                 <rect key="frame" x="40" y="450" width="334" height="30"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mId-hm-eQa">
-                                                <rect key="frame" x="85.5" y="518" width="243.5" height="34"/>
+                                                <rect key="frame" x="84.5" y="518" width="245.5" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gE1-h6-PQv">
                                                         <rect key="frame" x="0.0" y="0.0" width="178.5" height="34"/>
                                                         <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="16"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpW-6W-73F">
-                                                        <rect key="frame" x="182.5" y="0.0" width="61" height="34"/>
-                                                        <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                        <state key="normal" title="Sign Up"/>
+                                                        <rect key="frame" x="182.5" y="0.0" width="63" height="34"/>
+                                                        <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="17"/>
+                                                        <state key="normal" title="Sign Up">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="signUpButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ksx-oA-8jD"/>
                                                         </connections>
@@ -75,14 +78,14 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1p-z3-r7X">
                                                 <rect key="frame" x="111" y="572" width="192" height="38"/>
-                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="192" id="4Fi-0V-qrI"/>
                                                     <constraint firstAttribute="height" constant="38" id="Ryr-gL-Kvv"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <state key="normal" title="Login">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="blue"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="loginActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eD7-nb-Mxq"/>
@@ -133,10 +136,11 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="I1p-z3-r7X" id="DeJ-jD-LlQ"/>
                         <outlet property="passwordTextField" destination="B7K-aJ-t1f" id="LUZ-ai-5i5"/>
                         <outlet property="usernameTextField" destination="VlE-TP-nrG" id="uhH-1e-cG3"/>
                         <segue destination="2dv-dE-POF" kind="show" identifier="loginSegue" id="qlH-zN-obZ"/>
-                        <segue destination="hQA-xe-Vo2" kind="show" identifier="signUpSegue" id="y91-bf-EuV"/>
+                        <segue destination="l4k-LX-ose" kind="show" identifier="signUpSegue" id="y91-bf-EuV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -157,178 +161,191 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPX-ZA-WuH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-NF-iav">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="894"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="vfu-gf-82g">
-                                                <rect key="frame" x="87" y="82" width="237" height="61"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We help you complete your task easily and comfortably" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymb-ix-NxS">
-                                                <rect key="frame" x="87" y="139" width="280" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="17"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JNv-9h-F5I">
+                                                <rect key="frame" x="26" y="211" width="136" height="22"/>
                                                 <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JNv-9h-F5I">
-                                                <rect key="frame" x="20" y="332" width="153" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAu-f9-9AM">
-                                                <rect key="frame" x="20" y="729" width="330" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="254" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAu-f9-9AM">
+                                                <rect key="frame" x="26" y="605" width="153" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btc-W1-8yC">
-                                                <rect key="frame" x="20" y="769" width="74" height="43"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="19"/>
-                                                <state key="normal" title="Cancel">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="cancelButtonAction:" destination="hQA-xe-Vo2" eventType="touchUpInside" id="vcB-YI-5ZP"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woA-Xj-xPq">
-                                                <rect key="frame" x="197" y="769" width="127" height="43"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="24"/>
-                                                <state key="normal" title="Sign Up">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="signUpButtonAction:" destination="hQA-xe-Vo2" eventType="touchUpInside" id="4BR-Pb-yAW"/>
-                                                </connections>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BNl-0E-DNw">
-                                                <rect key="frame" x="20" y="663" width="330" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BNl-0E-DNw">
+                                                <rect key="frame" x="26" y="539" width="126" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter University Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PWr-AC-I1f">
-                                                <rect key="frame" x="18" y="532" width="332" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter University Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PWr-AC-I1f">
+                                                <rect key="frame" x="26" y="407.5" width="180" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter University Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNs-v9-q4M">
-                                                <rect key="frame" x="18" y="465" width="332" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter University Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNs-v9-q4M">
+                                                <rect key="frame" x="26" y="342" width="175" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QZH-Hj-f61">
-                                                <rect key="frame" x="18" y="398" width="332" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QZH-Hj-f61">
+                                                <rect key="frame" x="26" y="277" width="131" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDS-qp-JAS">
-                                                <rect key="frame" x="18" y="304" width="86" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDS-qp-JAS">
+                                                <rect key="frame" x="26" y="183" width="86" height="22"/>
                                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUl-My-AWJ">
-                                                <rect key="frame" x="209" y="304" width="86" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUl-My-AWJ">
+                                                <rect key="frame" x="288" y="183" width="86" height="22"/>
                                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ubA-ON-bAv">
-                                                <rect key="frame" x="209" y="332" width="141" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Last Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ubA-ON-bAv">
+                                                <rect key="frame" x="238" y="211" width="136" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhB-oK-nCA">
-                                                <rect key="frame" x="18" y="370" width="82" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhB-oK-nCA">
+                                                <rect key="frame" x="26" y="249" width="82" height="22"/>
                                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja5-Jr-anr">
-                                                <rect key="frame" x="20" y="436" width="72" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja5-Jr-anr">
+                                                <rect key="frame" x="26" y="315" width="43" height="21"/>
                                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="University" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl7-aN-YSD">
-                                                <rect key="frame" x="18" y="503" width="96" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl7-aN-YSD">
+                                                <rect key="frame" x="26" y="380" width="78" height="21.5"/>
                                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f57-sK-joi">
-                                                <rect key="frame" x="18" y="570" width="131" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f57-sK-joi">
+                                                <rect key="frame" x="26" y="445.5" width="118" height="21.5"/>
                                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvd-KO-5VW">
-                                                <rect key="frame" x="18" y="635" width="76" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPo-os-1te">
-                                                <rect key="frame" x="18" y="701" width="143" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWD-tH-zoy">
-                                                <rect key="frame" x="191" y="221" width="133" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWD-tH-zoy">
+                                                <rect key="frame" x="157" y="63" width="100" height="100"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Choose Image">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="1KR-Ls-XWd"/>
+                                                    <constraint firstAttribute="height" constant="100" id="aNb-Ia-ziQ"/>
+                                                </constraints>
+                                                <state key="normal" image="newUser">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="chooseImageAction:" destination="hQA-xe-Vo2" eventType="touchUpInside" id="vkC-HF-px5"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uPa-mX-Zuy">
-                                                <rect key="frame" x="20" y="597" width="330" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uPa-mX-Zuy">
+                                                <rect key="frame" x="26" y="473" width="170" height="22"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="E3f-aS-PZR">
-                                                <rect key="frame" x="33" y="199" width="128" height="79"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="E3f-aS-PZR">
+                                                <rect key="frame" x="157" y="63" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="NEn-Zg-pK4"/>
+                                                    <constraint firstAttribute="width" constant="100" id="PMM-1Z-82V"/>
+                                                </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="taskU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT5-tc-437">
+                                                <rect key="frame" x="165" y="20" width="84" height="38"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="30"/>
+                                                <color key="textColor" name="blue"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvd-KO-5VW">
+                                                <rect key="frame" x="26" y="511" width="76" height="22"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
+                                                <color key="textColor" name="blue"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woA-Xj-xPq">
+                                                <rect key="frame" x="124" y="647" width="166" height="42"/>
+                                                <color key="backgroundColor" name="blue"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="24"/>
+                                                <state key="normal" title="Sign Up"/>
+                                                <connections>
+                                                    <action selector="signUpButtonAction:" destination="hQA-xe-Vo2" eventType="touchUpInside" id="4BR-Pb-yAW"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPo-os-1te">
+                                                <rect key="frame" x="26" y="569" width="153" height="22"/>
+                                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
+                                                <color key="textColor" name="blue"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="894" id="npd-Di-vfW"/>
+                                            <constraint firstAttribute="trailing" secondItem="UUl-My-AWJ" secondAttribute="trailing" constant="40" id="0KX-Xv-dHB"/>
+                                            <constraint firstItem="lNs-v9-q4M" firstAttribute="top" secondItem="Ja5-Jr-anr" secondAttribute="bottom" constant="6" id="0TL-wY-T7o"/>
+                                            <constraint firstItem="QZH-Hj-f61" firstAttribute="leading" secondItem="pDS-qp-JAS" secondAttribute="leading" id="3Ck-0C-yhS"/>
+                                            <constraint firstItem="pDS-qp-JAS" firstAttribute="leading" secondItem="ovg-NF-iav" secondAttribute="leading" constant="26" id="3p8-Z6-RMX"/>
+                                            <constraint firstItem="f57-sK-joi" firstAttribute="top" secondItem="PWr-AC-I1f" secondAttribute="bottom" constant="16" id="5sz-7O-xlu"/>
+                                            <constraint firstItem="lNs-v9-q4M" firstAttribute="leading" secondItem="Ja5-Jr-anr" secondAttribute="leading" id="6DU-nF-jm6"/>
+                                            <constraint firstItem="Xl7-aN-YSD" firstAttribute="leading" secondItem="pDS-qp-JAS" secondAttribute="leading" id="6aA-11-ftY"/>
+                                            <constraint firstItem="uPa-mX-Zuy" firstAttribute="top" secondItem="f57-sK-joi" secondAttribute="bottom" constant="6" id="CTf-oh-7OJ"/>
+                                            <constraint firstItem="tPo-os-1te" firstAttribute="top" secondItem="BNl-0E-DNw" secondAttribute="bottom" constant="16" id="DoF-8J-HUn"/>
+                                            <constraint firstItem="ubA-ON-bAv" firstAttribute="bottom" secondItem="JNv-9h-F5I" secondAttribute="bottom" id="Dq5-bd-K6a"/>
+                                            <constraint firstItem="tPo-os-1te" firstAttribute="leading" secondItem="pDS-qp-JAS" secondAttribute="leading" id="FpB-0z-Ci1"/>
+                                            <constraint firstItem="PWr-AC-I1f" firstAttribute="leading" secondItem="Xl7-aN-YSD" secondAttribute="leading" id="Gaz-aJ-9hS"/>
+                                            <constraint firstItem="JNv-9h-F5I" firstAttribute="leading" secondItem="pDS-qp-JAS" secondAttribute="leading" id="Gu7-W8-dGz"/>
+                                            <constraint firstItem="pDS-qp-JAS" firstAttribute="top" secondItem="E3f-aS-PZR" secondAttribute="bottom" constant="20" id="KXz-W4-odp"/>
+                                            <constraint firstItem="BNl-0E-DNw" firstAttribute="leading" secondItem="vvd-KO-5VW" secondAttribute="leading" id="Ke6-NY-2y2"/>
+                                            <constraint firstItem="QZH-Hj-f61" firstAttribute="top" secondItem="RhB-oK-nCA" secondAttribute="bottom" constant="6" id="LD8-r4-jFd"/>
+                                            <constraint firstItem="vvd-KO-5VW" firstAttribute="top" secondItem="uPa-mX-Zuy" secondAttribute="bottom" constant="16" id="OdB-40-DVo"/>
+                                            <constraint firstItem="BNl-0E-DNw" firstAttribute="top" secondItem="vvd-KO-5VW" secondAttribute="bottom" constant="6" id="P03-72-3Pj"/>
+                                            <constraint firstItem="eAu-f9-9AM" firstAttribute="leading" secondItem="tPo-os-1te" secondAttribute="leading" id="P2H-VH-hJH"/>
+                                            <constraint firstItem="ubA-ON-bAv" firstAttribute="top" secondItem="JNv-9h-F5I" secondAttribute="top" id="RFO-ej-Fys"/>
+                                            <constraint firstAttribute="trailing" secondItem="woA-Xj-xPq" secondAttribute="trailing" constant="124" id="S4O-5v-4UW"/>
+                                            <constraint firstItem="E3f-aS-PZR" firstAttribute="top" secondItem="mT5-tc-437" secondAttribute="bottom" constant="5" id="T8Q-ee-qNu"/>
+                                            <constraint firstItem="mT5-tc-437" firstAttribute="centerX" secondItem="ovg-NF-iav" secondAttribute="centerX" id="UHz-oY-lxf"/>
+                                            <constraint firstItem="woA-Xj-xPq" firstAttribute="leading" secondItem="ovg-NF-iav" secondAttribute="leading" constant="124" id="VYu-Gz-4F5"/>
+                                            <constraint firstItem="PWr-AC-I1f" firstAttribute="top" secondItem="Xl7-aN-YSD" secondAttribute="bottom" constant="6" id="XDg-vb-rFU"/>
+                                            <constraint firstItem="AWD-tH-zoy" firstAttribute="top" secondItem="mT5-tc-437" secondAttribute="bottom" constant="5" id="aIC-aK-9Qi"/>
+                                            <constraint firstItem="JNv-9h-F5I" firstAttribute="top" secondItem="pDS-qp-JAS" secondAttribute="bottom" constant="6" id="aKL-2o-23X"/>
+                                            <constraint firstItem="UUl-My-AWJ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="pDS-qp-JAS" secondAttribute="trailing" constant="176" id="bLC-fR-2Kq"/>
+                                            <constraint firstItem="woA-Xj-xPq" firstAttribute="top" secondItem="eAu-f9-9AM" secondAttribute="bottom" constant="20" id="bQV-Sd-2MO"/>
+                                            <constraint firstItem="Ja5-Jr-anr" firstAttribute="top" secondItem="QZH-Hj-f61" secondAttribute="bottom" constant="16" id="cB8-CV-fSn"/>
+                                            <constraint firstItem="uPa-mX-Zuy" firstAttribute="leading" secondItem="f57-sK-joi" secondAttribute="leading" id="dac-Kq-qxD"/>
+                                            <constraint firstItem="f57-sK-joi" firstAttribute="leading" secondItem="pDS-qp-JAS" secondAttribute="leading" id="etB-Vm-5wF"/>
+                                            <constraint firstItem="Xl7-aN-YSD" firstAttribute="top" secondItem="lNs-v9-q4M" secondAttribute="bottom" constant="16" id="ff2-7a-J64"/>
+                                            <constraint firstItem="RhB-oK-nCA" firstAttribute="leading" secondItem="pDS-qp-JAS" secondAttribute="leading" id="fj3-Zi-kAv"/>
+                                            <constraint firstItem="AWD-tH-zoy" firstAttribute="centerX" secondItem="ovg-NF-iav" secondAttribute="centerX" id="g2H-cu-bo5"/>
+                                            <constraint firstItem="UUl-My-AWJ" firstAttribute="top" secondItem="pDS-qp-JAS" secondAttribute="top" id="iGc-Re-J0H"/>
+                                            <constraint firstItem="E3f-aS-PZR" firstAttribute="centerX" secondItem="ovg-NF-iav" secondAttribute="centerX" id="kqX-YZ-tJW"/>
+                                            <constraint firstItem="ubA-ON-bAv" firstAttribute="trailing" secondItem="UUl-My-AWJ" secondAttribute="trailing" id="lWM-wJ-vMg"/>
+                                            <constraint firstItem="Ja5-Jr-anr" firstAttribute="leading" secondItem="pDS-qp-JAS" secondAttribute="leading" id="pLy-Vy-dvw"/>
+                                            <constraint firstItem="RhB-oK-nCA" firstAttribute="top" secondItem="JNv-9h-F5I" secondAttribute="bottom" constant="16" id="sW1-Jh-95J"/>
+                                            <constraint firstItem="eAu-f9-9AM" firstAttribute="top" secondItem="tPo-os-1te" secondAttribute="bottom" constant="6" id="tJF-Oc-iKf"/>
+                                            <constraint firstItem="vvd-KO-5VW" firstAttribute="leading" secondItem="pDS-qp-JAS" secondAttribute="leading" id="vEu-M9-g8t"/>
+                                            <constraint firstItem="mT5-tc-437" firstAttribute="top" secondItem="ovg-NF-iav" secondAttribute="top" constant="20" id="zvY-ai-93f"/>
                                         </constraints>
-                                        <viewLayoutGuide key="safeArea" id="Zwn-ab-dvP"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="rL5-gg-l61" appends="YES" id="zaq-Vc-YUo"/>
                                         </connections>
@@ -344,21 +361,39 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="xPX-ZA-WuH" secondAttribute="bottom" id="3Sh-F8-gWZ"/>
-                            <constraint firstItem="xPX-ZA-WuH" firstAttribute="top" secondItem="uCA-3G-fDo" secondAttribute="top" id="W0t-kK-7Aq"/>
-                            <constraint firstItem="xPX-ZA-WuH" firstAttribute="leading" secondItem="uCA-3G-fDo" secondAttribute="leading" id="f8O-MA-ANA"/>
-                            <constraint firstAttribute="trailing" secondItem="xPX-ZA-WuH" secondAttribute="trailing" id="mKP-Fm-XNC"/>
+                            <constraint firstItem="xPX-ZA-WuH" firstAttribute="leading" secondItem="bVp-5c-7xG" secondAttribute="leading" id="9WZ-Rf-8xI"/>
+                            <constraint firstItem="ovg-NF-iav" firstAttribute="height" secondItem="uCA-3G-fDo" secondAttribute="height" priority="999" id="D1q-DO-0hc"/>
+                            <constraint firstItem="xPX-ZA-WuH" firstAttribute="top" secondItem="bVp-5c-7xG" secondAttribute="top" id="FQa-Me-73O"/>
                             <constraint firstItem="ovg-NF-iav" firstAttribute="width" secondItem="uCA-3G-fDo" secondAttribute="width" id="qrU-Bx-y2f"/>
+                            <constraint firstItem="xPX-ZA-WuH" firstAttribute="trailing" secondItem="bVp-5c-7xG" secondAttribute="trailing" id="u9t-LQ-pEq"/>
+                            <constraint firstItem="bVp-5c-7xG" firstAttribute="bottom" secondItem="xPX-ZA-WuH" secondAttribute="bottom" id="y7f-ag-L7r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bVp-5c-7xG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="aZw-r7-pGN">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="XkC-4v-TEp">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Btc-W1-8yC">
+                                <rect key="frame" x="20" y="8" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="19"/>
+                                <state key="normal" image="close">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonAction:" destination="hQA-xe-Vo2" eventType="touchUpInside" id="vcB-YI-5ZP"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="chooseImageButton" destination="AWD-tH-zoy" id="AUd-tK-WwY"/>
                         <outlet property="confirmPasswordTextField" destination="eAu-f9-9AM" id="cef-DE-KxU"/>
                         <outlet property="emailTextField" destination="lNs-v9-q4M" id="qP7-FA-Tnd"/>
                         <outlet property="firstNameTextField" destination="JNv-9h-F5I" id="Unl-8D-snV"/>
                         <outlet property="lastNameTextField" destination="ubA-ON-bAv" id="8Ra-g5-Qht"/>
                         <outlet property="passwordTextField" destination="BNl-0E-DNw" id="bLr-mS-fzT"/>
                         <outlet property="phoneNumberTextField" destination="uPa-mX-Zuy" id="72c-MD-Y3F"/>
+                        <outlet property="signUpButton" destination="woA-Xj-xPq" id="j8i-al-yNl"/>
                         <outlet property="universityNameTextField" destination="PWr-AC-I1f" id="cZM-hc-FQq"/>
                         <outlet property="userProfileImage" destination="E3f-aS-PZR" id="RG5-Os-8wS"/>
                         <outlet property="usernameTextField" destination="QZH-Hj-f61" id="Qkp-f4-oYY"/>
@@ -371,7 +406,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="621.73913043478262" y="-560.49107142857144"/>
+            <point key="canvasLocation" x="1531.8840579710145" y="-560.49107142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="uLc-vN-b1S">
@@ -444,12 +479,34 @@
             </objects>
             <point key="canvasLocation" x="2036" y="1368"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bTd-oS-K19">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l4k-LX-ose" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qQo-Nm-VsN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hQA-xe-Vo2" kind="relationship" relationship="rootViewController" id="5rh-W6-tiM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z4m-q3-6dW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="621.73913043478262" y="-560.49107142857144"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="334" height="136"/>
+        <image name="close" width="28" height="28"/>
         <image name="home" width="23" height="24"/>
+        <image name="newUser" width="40" height="34"/>
         <image name="requests" width="21" height="24"/>
         <image name="tasks" width="22" height="20"/>
         <image name="user" width="22" height="24"/>
+        <namedColor name="blue">
+            <color red="0.2196078431372549" green="0.59215686274509804" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
