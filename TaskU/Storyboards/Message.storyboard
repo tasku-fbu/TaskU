@@ -327,7 +327,7 @@
         <scene sceneID="DIn-Mv-TDM">
             <objects>
                 <navigationController storyboardIdentifier="Message" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ofg-8n-bO9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" id="ZHb-6x-la9"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="messages" id="ZHb-6x-la9"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2S2-SC-pzU">
@@ -344,4 +344,7 @@
             <point key="canvasLocation" x="-204" y="119"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="messages" width="24" height="23"/>
+    </resources>
 </document>
