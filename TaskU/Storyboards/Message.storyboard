@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUb-tX-V8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="232" y="816"/>
+            <point key="canvasLocation" x="87" y="825"/>
         </scene>
         <!--Chat Messages View Controller-->
         <scene sceneID="wFJ-F5-maT">
@@ -344,7 +344,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="914" y="851"/>
+            <point key="canvasLocation" x="110" y="1468"/>
         </scene>
         <!--Messages-->
         <scene sceneID="DIn-Mv-TDM">
