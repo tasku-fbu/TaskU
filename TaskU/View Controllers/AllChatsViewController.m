@@ -38,7 +38,10 @@
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchBar.barTintColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    
     [self getAllMessagesFirst];
+    
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
     self.refreshControl = [[UIRefreshControl alloc] init];
