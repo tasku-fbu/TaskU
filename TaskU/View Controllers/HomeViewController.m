@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "ChooseLocationPopUpViewController.h"
 //#import "ProfileSlideView.h"
 
 #pragma mark - interface and properties
@@ -26,7 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 
-@property NSString *userLocation;
+@property NSString *userCity;
+@property NSString *userState;
 
 //@property(nonatomic, strong) ProfileSlideView *leftViewToSlideIn;
 //@property (weak, nonatomic) IBOutlet UIButton *profileButton;
@@ -38,6 +40,7 @@
 @synthesize collection_View;
 static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
 static NSString * const messageSegueIdentifier = @"messageSegue";
+static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
 
 #pragma mark - Home initial view
 - (void)viewDidLoad {
@@ -45,9 +48,16 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     PFUser *loggedInUser = [PFUser currentUser];
     // Do any additional setup after loading the view.
 
-    self.userLocation = loggedInUser[@"university"]; //gets the university of current user
-    [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
-
+    self.userCity = loggedInUser[@"city"]; //gets the city of current user
+    self.userState = loggedInUser[@"state"];
+    self.userLocation = [NSString stringWithFormat:@"%@, %@", self.userCity, self.userState];
+    
+    if([self.userCity isEqualToString:@""] || [self.userState isEqualToString:@""]){
+        
+    }
+    else{
+        [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
+    }
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"groceries", @"tutoring", @"Laundry", @"movingIn", @"specialServices",  nil ];
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
 
@@ -109,18 +119,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     
 }
 
-#pragma mark - location button action
-    //[self.view addSubview:self.profileButton]; //slideMenu
-    // [self createInitialSlideView];
-
-
-
-#pragma mark - University location button action
--(IBAction)LocationButtonAction:(id)sender {
-    PFUser *loggedInUser = [PFUser currentUser];
-    self.userLocation = loggedInUser[@"university"]; //gets the university of current user
-    [self.LocationButton setTitle:self.userLocation forState:UIControlStateSelected];
-}
+#pragma mark - Profile Slide menu
 
 /*
  #pragma mark - collectionview cell datasource and delegate functions implementation
@@ -243,7 +242,21 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
 
 }
 
+- (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue
+{
+    UIViewController* sourceViewController = unwindSegue.sourceViewController;
+    
+    if ([sourceViewController isKindOfClass:[ChooseLocationPopUpViewController class]])
+    {
+        NSLog(@"Coming from Choose Location PopUpViewController");
+        ChooseLocationPopUpViewController *vc = (ChooseLocationPopUpViewController*) unwindSegue.sourceViewController;
+        self.userLocation = vc.userLocation;
+        
+        [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
 
+    }
+    
+}
 
 /*
  #pragma mark - Navigation
