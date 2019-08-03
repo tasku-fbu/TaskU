@@ -25,6 +25,7 @@
 		0E8EFF5922DD523600B9FE89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF5822DD523600B9FE89 /* main.m */; };
 		0E8EFF6322DD523600B9FE89 /* TaskUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6222DD523600B9FE89 /* TaskUTests.m */; };
 		0E8EFF6E22DD523600B9FE89 /* TaskUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */; };
+		0EE7243A22F3AE820002C61D /* ChooseLocationPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE7243922F3AE820002C61D /* ChooseLocationPopUpViewController.m */; };
 		0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */; };
 		110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */; };
 		110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C127122DFF50B009DC7DB /* EditProfileViewController.m */; };
@@ -132,6 +133,8 @@
 		0E8EFF6922DD523600B9FE89 /* TaskUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskUUITests.m; sourceTree = "<group>"; };
 		0E8EFF6F22DD523600B9FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EE7243822F3AE820002C61D /* ChooseLocationPopUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseLocationPopUpViewController.h; sourceTree = "<group>"; };
+		0EE7243922F3AE820002C61D /* ChooseLocationPopUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseLocationPopUpViewController.m; sourceTree = "<group>"; };
 		0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
 		0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
 		110C126A22DFD693009DC7DB /* ProfileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				B93554C922F3BB960088A419 /* chatFirstViewController.m */,
 				0E2A70EF22F36F9E0006B879 /* NavigationViewController.h */,
 				0E2A70F022F36F9E0006B879 /* NavigationViewController.m */,
+				0EE7243822F3AE820002C61D /* ChooseLocationPopUpViewController.h */,
+				0EE7243922F3AE820002C61D /* ChooseLocationPopUpViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -755,6 +760,7 @@
 				B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */,
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
+				0EE7243A22F3AE820002C61D /* ChooseLocationPopUpViewController.m in Sources */,
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
 				1177A79422EFB08B00D1561F /* UIButtonExtension.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
