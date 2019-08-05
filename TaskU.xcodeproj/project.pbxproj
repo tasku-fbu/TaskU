@@ -29,6 +29,7 @@
 		110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */; };
 		110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C127122DFF50B009DC7DB /* EditProfileViewController.m */; };
 		110C127422E0E6F1009DC7DB /* newProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110C127322E0E6F1009DC7DB /* newProfile.storyboard */; };
+		112BC36322F66760000538DA /* TestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 112BC36222F66760000538DA /* TestingViewController.m */; };
 		1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37122E118B1004A235C /* EditPasswordViewController.m */; };
 		1131D37322E12096004A235C /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
 		1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37522E129BC004A235C /* MainProfileViewController.m */; };
@@ -51,6 +52,8 @@
 		118F6A5722E93D8200299B25 /* FreigSanProSem.otf in Resources */ = {isa = PBXBuildFile; fileRef = 118F6A4B22E93D8200299B25 /* FreigSanProSem.otf */; };
 		118F6A5822E93D8200299B25 /* FreigSanProBookIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 118F6A4C22E93D8200299B25 /* FreigSanProBookIt.otf */; };
 		118F6A5922E93D8200299B25 /* FreigSanProSemIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 118F6A4D22E93D8200299B25 /* FreigSanProSemIt.otf */; };
+		11B2BA0522F5018C008FCABF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B2BA0322F5018C008FCABF /* SWRevealViewController.m */; };
+		11B2BA0822F50283008FCABF /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B2BA0722F50283008FCABF /* SideMenuViewController.m */; };
 		11D2F50D22DE5D520065D70D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F50C22DE5D520065D70D /* Task.m */; };
 		11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D2F51022DE8C130065D70D /* newTask.storyboard */; };
 		7AF2BDEABCE537A6B60761A2 /* Pods_TaskU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CCEDA8F313441951F05FC8 /* Pods_TaskU.framework */; };
@@ -137,6 +140,8 @@
 		110C127022DFF50B009DC7DB /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		110C127122DFF50B009DC7DB /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		110C127322E0E6F1009DC7DB /* newProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = newProfile.storyboard; sourceTree = "<group>"; };
+		112BC36122F66760000538DA /* TestingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestingViewController.h; sourceTree = "<group>"; };
+		112BC36222F66760000538DA /* TestingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestingViewController.m; sourceTree = "<group>"; };
 		1131D37022E118B1004A235C /* EditPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPasswordViewController.h; sourceTree = "<group>"; };
 		1131D37122E118B1004A235C /* EditPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPasswordViewController.m; sourceTree = "<group>"; };
 		1131D37422E129BC004A235C /* MainProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainProfileViewController.h; sourceTree = "<group>"; };
@@ -162,6 +167,10 @@
 		118F6A4B22E93D8200299B25 /* FreigSanProSem.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProSem.otf; sourceTree = "<group>"; };
 		118F6A4C22E93D8200299B25 /* FreigSanProBookIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProBookIt.otf; sourceTree = "<group>"; };
 		118F6A4D22E93D8200299B25 /* FreigSanProSemIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProSemIt.otf; sourceTree = "<group>"; };
+		11B2BA0322F5018C008FCABF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		11B2BA0422F5018C008FCABF /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		11B2BA0622F50283008FCABF /* SideMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
+		11B2BA0722F50283008FCABF /* SideMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		11D2F50B22DE5D520065D70D /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		11D2F50C22DE5D520065D70D /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		11D2F51022DE8C130065D70D /* newTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newTask.storyboard; sourceTree = "<group>"; };
@@ -244,6 +253,7 @@
 		0E45A03922DD9182005D798F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				11B2BA0922F62E20008FCABF /* SWRevealViewController */,
 				0E8EFF4C22DD523500B9FE89 /* LoginViewController.h */,
 				0E8EFF4D22DD523500B9FE89 /* LoginViewController.m */,
 				0E45A03B22DD92B8005D798F /* SignUpViewController.h */,
@@ -284,10 +294,13 @@
 				0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */,
 				B902D1B222E7BA090080B87E /* AllChatsViewController.h */,
 				B902D1B322E7BA090080B87E /* AllChatsViewController.m */,
-				B902D1B522E7BA380080B87E /* ChatMessagesViewController.h */,
 				B902D1B622E7BA380080B87E /* ChatMessagesViewController.m */,
 				0E2A70EF22F36F9E0006B879 /* NavigationViewController.h */,
 				0E2A70F022F36F9E0006B879 /* NavigationViewController.m */,
+				11B2BA0622F50283008FCABF /* SideMenuViewController.h */,
+				11B2BA0722F50283008FCABF /* SideMenuViewController.m */,
+				112BC36122F66760000538DA /* TestingViewController.h */,
+				112BC36222F66760000538DA /* TestingViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -322,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				0E8EFF4F22DD523500B9FE89 /* Main.storyboard */,
+				B902D1B522E7BA380080B87E /* ChatMessagesViewController.h */,
 				1131D37722E14738004A235C /* HomeView.storyboard */,
 				0E45A05222DE5EDA005D798F /* Requests.storyboard */,
 				0E45A05422DE5EF2005D798F /* Missions.storyboard */,
@@ -434,6 +448,15 @@
 				118F6A3B22E93CF300299B25 /* Quicksand-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		11B2BA0922F62E20008FCABF /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11B2BA0422F5018C008FCABF /* SWRevealViewController.h */,
+				11B2BA0322F5018C008FCABF /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		AB956C80AE2403F898C9CBEA /* Frameworks */ = {
@@ -733,6 +756,7 @@
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B902D19E22E61DBC0080B87E /* CurrentRequestsViewController.m in Sources */,
 				B902D1CD22E8140A0080B87E /* Message.m in Sources */,
+				11B2BA0822F50283008FCABF /* SideMenuViewController.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
@@ -742,10 +766,12 @@
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,
+				112BC36322F66760000538DA /* TestingViewController.m in Sources */,
 				B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */,
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
+				11B2BA0522F5018C008FCABF /* SWRevealViewController.m in Sources */,
 				1177A79422EFB08B00D1561F /* UIButtonExtension.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
 				0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */,
@@ -925,6 +951,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7FF4JGN27;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -946,6 +973,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7FF4JGN27;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

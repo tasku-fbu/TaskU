@@ -1,16 +1,16 @@
-//  HomeViewController.h
+//
+//  TestingViewController.h
 //  TaskU
 //
-//  Created by rhaypapenfuzz on 7/15/19.
+//  Created by panzaldo on 8/3/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "EditProfileViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : UIViewController  <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TestingViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideButton;
 
 @end

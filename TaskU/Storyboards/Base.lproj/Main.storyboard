@@ -429,10 +429,10 @@
             </objects>
             <point key="canvasLocation" x="138" y="544"/>
         </scene>
-        <!--HomeViewController-->
+        <!--SWRevealViewController-->
         <scene sceneID="IQv-Vs-9si">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="HomeView" storyboardName="HomeView" referencedIdentifier="HomeViewController" id="gWC-fH-ocp" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="HomeView" storyboardName="HomeView" referencedIdentifier="SWRevealViewController" id="gWC-fH-ocp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="R6x-Id-dKF"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KiC-BZ-Ife" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -29,8 +29,14 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    
+    
     if ([segue.identifier isEqualToString:@"actuallyEdit"]) {
-        EditProfileViewController *editVC = [segue destinationViewController];
+        
+        UINavigationController *navController = segue.destinationViewController;
+       // PhotoViewController *photoController = [navController childViewControllers].firstObject;
+        
+        EditProfileViewController *editVC = [navController childViewControllers].firstObject; //[segue destinationViewController];
         editVC.delegate = self.mainProfileVC;
     }
 }
