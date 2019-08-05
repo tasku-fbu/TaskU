@@ -19,6 +19,8 @@
 @property (weak, nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *sendHelperView;
+@property (weak, nonatomic) IBOutlet UIView *sendTextHelperView;
 
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
