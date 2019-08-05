@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (weak, nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
 
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
@@ -31,13 +32,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //self.navigationController.navigationBar.topItem.title = self.contact.username;
+    self.navigationItem.title = self.contact.username;
+    UINavigationBar *bar = [self.navigationController navigationBar];
+    [bar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [bar setShadowImage:[[UIImage alloc] init]];
+    [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
+    bar.translucent = false;
+    bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
+    
+   
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.messageTable.frame.size.width, 20)];
     [self.messageTable setTableFooterView:view];
     
     self.sendTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     self.shouldScrollToLastRow = YES;
-    self.contactLabel.text = self.contact.username;
+    
+    
+    //[self.sendTextView sizeToFit];
+    self.sendTextView.scrollEnabled = false;
+    //self.sendTextView.delegate = self;
+    
+    UIApplication.sharedApplication.keyWindow.backgroundColor = [UIColor whiteColor];
+    
     
     self.messageTable.delegate = self;
     self.messageTable.dataSource = self;
@@ -53,6 +73,24 @@
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
     
 }
+/*
+- (void)textViewDidChange:(UITextView *)textView
+{
+    NSUInteger maxNumberOfLines = 3;
+    NSUInteger numLines = textView.contentSize.height/textView.font.lineHeight;
+    if (numLines >= maxNumberOfLines)
+    {
+        
+        CGRect frame = self.sendTextView.frame;
+        frame.size.height = maxNumberOfLines * textView.font.lineHeight;
+        self.sendTextView.frame = frame;
+        self.sendTextView.scrollEnabled = true;
+    } else if (numLines == maxNumberOfLines - 1){
+        [self.sendTextView sizeToFit];
+        self.sendTextView.scrollEnabled = false;
+    }
+}
+*/
 
 - (void) getMessages{
     //NSLog(@"%@",self.contact);
@@ -130,9 +168,6 @@
     
 }
     
-
-
-
 
 
 
@@ -252,6 +287,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [self scrollToBottom];
+    
 }
 
 - (void) scrollToBottom {
@@ -275,8 +311,9 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
-        f.origin.y = -keyboardSize.height;
+        f.origin.y = -keyboardSize.height + self.view.safeAreaInsets.top + self.navigationController.navigationBar.frame.size.height + 16;
         self.view.frame = f;
+        
     }];
 }
 
@@ -284,10 +321,11 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
-        f.origin.y = 0.0f;
+        f.origin.y = self.navigationController.navigationBar.frame.size.height + self.view.safeAreaInsets.top + 16;
         self.view.frame = f;
     }];
 }
+
 
 /*
  #pragma mark - Navigation
