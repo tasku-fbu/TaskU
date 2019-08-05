@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol MessageSentDelegate;
 
-@interface ChatMessagesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface ChatMessagesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource, UITextViewDelegate>
 
 @property (strong,nonatomic) PFUser *contact;
 

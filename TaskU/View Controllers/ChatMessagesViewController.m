@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (weak, nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
 
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
@@ -51,6 +52,12 @@
     self.shouldScrollToLastRow = YES;
     
     
+    [self.sendTextView sizeToFit];
+    self.sendTextView.scrollEnabled = false;
+    self.sendTextView.delegate = self;
+    
+    
+    
     self.messageTable.delegate = self;
     self.messageTable.dataSource = self;
     self.messageTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -65,6 +72,24 @@
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
     
 }
+/*
+- (void)textViewDidChange:(UITextView *)textView
+{
+    NSUInteger maxNumberOfLines = 3;
+    NSUInteger numLines = textView.contentSize.height/textView.font.lineHeight;
+    if (numLines >= maxNumberOfLines)
+    {
+        
+        CGRect frame = self.sendTextView.frame;
+        frame.size.height = maxNumberOfLines * textView.font.lineHeight;
+        self.sendTextView.frame = frame;
+        self.sendTextView.scrollEnabled = true;
+    } else if (numLines == maxNumberOfLines - 1){
+        [self.sendTextView sizeToFit];
+        self.sendTextView.scrollEnabled = false;
+    }
+}
+*/
 
 - (void) getMessages{
     //NSLog(@"%@",self.contact);
@@ -142,9 +167,6 @@
     
 }
     
-
-
-
 
 
 
@@ -264,6 +286,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [self scrollToBottom];
+    
 }
 
 - (void) scrollToBottom {
@@ -300,6 +323,7 @@
         self.view.frame = f;
     }];
 }
+
 
 /*
  #pragma mark - Navigation
