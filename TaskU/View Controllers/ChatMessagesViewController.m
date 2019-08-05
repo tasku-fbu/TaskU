@@ -52,10 +52,11 @@
     self.shouldScrollToLastRow = YES;
     
     
-    [self.sendTextView sizeToFit];
+    //[self.sendTextView sizeToFit];
     self.sendTextView.scrollEnabled = false;
-    self.sendTextView.delegate = self;
+    //self.sendTextView.delegate = self;
     
+    UIApplication.sharedApplication.keyWindow.backgroundColor = [UIColor whiteColor];
     
     
     self.messageTable.delegate = self;
@@ -310,8 +311,9 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
-        f.origin.y = -keyboardSize.height;
+        f.origin.y = -keyboardSize.height + self.view.safeAreaInsets.top + self.navigationController.navigationBar.frame.size.height + 16;
         self.view.frame = f;
+        
     }];
 }
 
@@ -319,7 +321,7 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
-        f.origin.y = 0.0f;
+        f.origin.y = self.navigationController.navigationBar.frame.size.height + self.view.safeAreaInsets.top + 16;
         self.view.frame = f;
     }];
 }

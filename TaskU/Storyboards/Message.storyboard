@@ -165,8 +165,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-tJ-R78">
-                                <rect key="frame" x="0.0" y="98" width="414" height="545"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-tJ-R78">
+                                <rect key="frame" x="0.0" y="104" width="414" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourMessage" id="fno-GG-ed4" customClass="YourMessageCell">
@@ -271,11 +271,11 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-XC-yKY">
-                                <rect key="frame" x="188.5" y="352" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="377" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="nib-gf-YC4">
-                                <rect key="frame" x="0.0" y="651" width="360" height="30"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nib-gf-YC4">
+                                <rect key="frame" x="0.0" y="695" width="360" height="30"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="30" id="h3a-KV-Usj"/>
@@ -284,7 +284,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VS-S1-AbT">
-                                <rect key="frame" x="368" y="651" width="36" height="30"/>
+                                <rect key="frame" x="368" y="695" width="36" height="30"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="onClickSend:" destination="OKb-9N-wT9" eventType="touchUpInside" id="EsW-ax-fXy"/>
@@ -299,12 +299,12 @@
                             <constraint firstItem="YYr-gt-mz5" firstAttribute="trailing" secondItem="9VS-S1-AbT" secondAttribute="trailing" constant="10" id="HWt-X4-dKW"/>
                             <constraint firstItem="Uqh-tJ-R78" firstAttribute="trailing" secondItem="YYr-gt-mz5" secondAttribute="trailing" id="M39-2R-bn6"/>
                             <constraint firstItem="T2R-XC-yKY" firstAttribute="centerY" secondItem="Uqh-tJ-R78" secondAttribute="centerY" id="RHA-UT-Dwg"/>
-                            <constraint firstItem="YYr-gt-mz5" firstAttribute="bottom" secondItem="nib-gf-YC4" secondAttribute="bottom" constant="10" id="Sce-vn-9iR"/>
                             <constraint firstItem="T2R-XC-yKY" firstAttribute="centerX" secondItem="ee3-xR-Kgy" secondAttribute="centerX" id="XzR-3N-XgR"/>
-                            <constraint firstItem="Uqh-tJ-R78" firstAttribute="top" secondItem="YYr-gt-mz5" secondAttribute="top" constant="10" id="YRO-cS-95u"/>
+                            <constraint firstItem="Uqh-tJ-R78" firstAttribute="top" secondItem="YYr-gt-mz5" secondAttribute="top" constant="16" id="YRO-cS-95u"/>
                             <constraint firstItem="9VS-S1-AbT" firstAttribute="leading" secondItem="nib-gf-YC4" secondAttribute="trailing" constant="8" id="drb-KQ-uto"/>
                             <constraint firstItem="9VS-S1-AbT" firstAttribute="bottom" secondItem="nib-gf-YC4" secondAttribute="bottom" id="gDb-p8-U9e"/>
                             <constraint firstItem="nib-gf-YC4" firstAttribute="leading" secondItem="YYr-gt-mz5" secondAttribute="leading" id="hJX-hZ-s89"/>
+                            <constraint firstAttribute="bottom" secondItem="nib-gf-YC4" secondAttribute="bottom" id="kEX-hs-lwe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YYr-gt-mz5"/>
                         <connections>
