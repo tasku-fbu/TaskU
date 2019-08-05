@@ -28,8 +28,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    /*
     UINavigationController *navigationVC = (UINavigationController *)[segue destinationViewController];
     Timeline1ViewController *timelineVC = (Timeline1ViewController*)navigationVC.topViewController;
+     */
+    Timeline1ViewController *timelineVC = (Timeline1ViewController*) [segue destinationViewController];
     timelineVC.category = self.chosenCategory;
 }
 
