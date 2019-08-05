@@ -13,6 +13,7 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -28,6 +29,11 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     // Do any additional setup after loading the view.
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
+    
+    self.loginButton.layer.cornerRadius = 10;
+    self.usernameTextField.layer.cornerRadius = 10;
+    self.passwordTextField.layer.cornerRadius = 10;
+
 }
 
 #pragma mark - configuration for external touch and keyboard return key as user logs in
