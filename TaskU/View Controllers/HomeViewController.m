@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "HomeToTimelineViewController.h"
 //#import "ProfileSlideView.h"
 
 #pragma mark - interface and properties
@@ -204,17 +205,26 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
 }
 
 #pragma mark - helps us know which collection view cell category was tapped and then navigates
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
+    /*
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
     Timeline1ViewController *timelineVC = (Timeline1ViewController*)navigationVC.topViewController;
-
+    */
+     
     NSString* chosenCategory = [self.categoriesTextArray objectAtIndex:indexPath.row];
     NSLog(@"%@ CollectionCell was chosen", chosenCategory);
+    /*
     timelineVC.category = chosenCategory;
     [self presentViewController:navigationVC animated:YES completion:nil];
+    */
+    [self performSegueWithIdentifier:@"passing" sender:chosenCategory];
+    
 }
+
+
 
 #pragma mark - button that redirects us to the newTaskViewController
 - (IBAction)addTaskAction:(id)sender {
@@ -245,14 +255,19 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
 
 
 
-/*
+
  #pragma mark - Navigation
 
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+     
+     NSString* chosenCategory = (NSString*) sender;
+     HomeToTimelineViewController *vc = [segue destinationViewController];
+     vc.chosenCategory = chosenCategory;
+     
  }
- */
+
 
 @end

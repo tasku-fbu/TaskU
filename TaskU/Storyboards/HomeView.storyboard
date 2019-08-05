@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-rj-NtJ">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fda-iv-p2R">
                                     <size key="itemSize" width="199" height="158"/>
@@ -136,7 +136,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPV-C9-PNA">
-                                <rect key="frame" x="279" y="692" width="56" height="56"/>
+                                <rect key="frame" x="279" y="643" width="56" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="70S-hW-QYX"/>
                                     <constraint firstAttribute="height" constant="56" id="NwG-Wh-Ub0"/>
@@ -158,6 +158,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PuE-cq-0ms"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="Ep0-bO-mJJ"/>
                     <navigationItem key="navigationItem" title="Home" id="NCG-81-325">
                         <leftBarButtonItems>
                             <barButtonItem title="Item" image="location" id="uKQ-mU-A1R"/>
@@ -182,16 +183,62 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="LocationButton" destination="apH-vt-SWW" id="nWd-VR-924"/>
                         <outlet property="collection_View" destination="0u4-rj-NtJ" id="7ys-VW-d3w"/>
                         <outlet property="logoutButton" destination="N5G-4h-I8k" id="SoK-P5-1qM"/>
                         <outlet property="plusButton" destination="nPV-C9-PNA" id="4FF-go-UWz"/>
+                        <segue destination="bKN-tg-9Ov" kind="show" identifier="passing" id="h7o-p1-Jx6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkM-tx-MnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1988" y="1881"/>
+        </scene>
+        <!--Home To Timeline View Controller-->
+        <scene sceneID="Wmo-RX-SUc">
+            <objects>
+                <viewController id="bKN-tg-9Ov" customClass="HomeToTimelineViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kvB-gR-msD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1i-LU-Fdz">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" red="1" green="0.19837046820000001" blue="0.028264012880000002" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <segue destination="sJa-DU-d4h" kind="embed" identifier="toTimeline" id="Q5N-9U-ojD"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="z1i-LU-Fdz" firstAttribute="height" secondItem="rav-VJ-j5N" secondAttribute="height" id="1oE-wG-xTm"/>
+                            <constraint firstItem="z1i-LU-Fdz" firstAttribute="bottom" secondItem="rav-VJ-j5N" secondAttribute="bottom" id="BVD-3p-fU8"/>
+                            <constraint firstItem="z1i-LU-Fdz" firstAttribute="trailing" secondItem="rav-VJ-j5N" secondAttribute="trailing" id="GJm-ld-nOx"/>
+                            <constraint firstItem="z1i-LU-Fdz" firstAttribute="width" secondItem="rav-VJ-j5N" secondAttribute="width" id="btg-WM-FgR"/>
+                            <constraint firstItem="z1i-LU-Fdz" firstAttribute="leading" secondItem="rav-VJ-j5N" secondAttribute="leading" id="kVZ-0Y-W15"/>
+                            <constraint firstItem="z1i-LU-Fdz" firstAttribute="top" secondItem="rav-VJ-j5N" secondAttribute="top" id="npk-0z-rtS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rav-VJ-j5N"/>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="containerView" destination="z1i-LU-Fdz" id="HfD-21-g2s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KRu-NR-rii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1988" y="2616.5024630541875"/>
+        </scene>
+        <!--Timeline1-->
+        <scene sceneID="K1j-gI-yml">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Timeline1" storyboardName="Timeline1" referencedIdentifier="Timeline1" id="sJa-DU-d4h" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hJw-aq-zYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2834" y="2937"/>
         </scene>
         <!--Title-->
         <scene sceneID="KeJ-La-EiF">
@@ -239,7 +286,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8q4-kN-gXE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="NfA-64-YlB">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
