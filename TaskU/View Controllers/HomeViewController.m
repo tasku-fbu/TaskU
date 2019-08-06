@@ -29,7 +29,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
 @property (weak, nonatomic) IBOutlet UIButton *LocationButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+//@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *mapButtonItem;
 
 @property NSString *userCity;
 @property NSString *userState;
@@ -66,6 +67,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
 
     
+    
     //Button configs
     self.plusButton.layer.shadowColor = [UIColor grayColor].CGColor;
     self.plusButton.layer.shadowOffset = CGSizeMake(10, 10);
@@ -89,15 +91,22 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     flow.minimumInteritemSpacing = spacing;
     flow.minimumLineSpacing = spacing;
 
-    //Navigation Controller Font
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:[UIColor blackColor],
-       NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
-
-
+    
+    
+    //setting navigation bar
+    UINavigationBar *bar = [self.navigationController navigationBar];
+    [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
+    bar.translucent = false;
+    bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
+    
+    
+    
+/*
     //Navigation Controller Font
     [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
-
+*/
 }
 
 
@@ -239,21 +248,6 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
 
 }
 
-#pragma mark - Logs user out
-- (IBAction)LogoutActionButton:(id)sender {
-
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-
-
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
-    }];
-
-}
 
 - (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue
 {
@@ -278,10 +272,12 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+     if ([[segue identifier] isEqualToString:@"passing"]) {
+         NSString* chosenCategory = (NSString*) sender;
+         HomeToTimelineViewController *vc = [segue destinationViewController];
+         vc.chosenCategory = chosenCategory;
+     }
      
-     NSString* chosenCategory = (NSString*) sender;
-     HomeToTimelineViewController *vc = [segue destinationViewController];
-     vc.chosenCategory = chosenCategory;
      
  }
 

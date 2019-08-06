@@ -19,6 +19,10 @@
 @property (weak, nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *sendHelperView;
+@property (weak, nonatomic) IBOutlet UIView *sendTextHelperView;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
 
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
@@ -49,13 +53,23 @@
     
     self.sendTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
+    
+    self.sendTextHelperView.layer.cornerRadius = 16;
+    self.sendTextHelperView.clipsToBounds = true;
+    
+    
     self.shouldScrollToLastRow = YES;
     
     
     //[self.sendTextView sizeToFit];
     self.sendTextView.scrollEnabled = false;
-    //self.sendTextView.delegate = self;
+    self.sendTextView.delegate = self;
     
+    self.sendButton.layer.cornerRadius = 16;
+    self.sendButton.clipsToBounds = true;
+    
+    self.plusButton.layer.cornerRadius = 15;
+    self.plusButton.clipsToBounds = true;
     UIApplication.sharedApplication.keyWindow.backgroundColor = [UIColor whiteColor];
     
     
@@ -63,8 +77,8 @@
     self.messageTable.dataSource = self;
     self.messageTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.messageTable.rowHeight = UITableViewAutomaticDimension;
-    self.sendTextView.layer.borderWidth = 2.0f;
-    self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
+    //self.sendTextView.layer.borderWidth = 2.0f;
+    //self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getMessages) forControlEvents:UIControlEventValueChanged];
@@ -78,19 +92,35 @@
 {
     NSUInteger maxNumberOfLines = 3;
     NSUInteger numLines = textView.contentSize.height/textView.font.lineHeight;
+    
+    
     if (numLines >= maxNumberOfLines)
     {
-        
+        //self.sendTextView.frame.size height
+     
         CGRect frame = self.sendTextView.frame;
-        frame.size.height = maxNumberOfLines * textView.font.lineHeight;
+        frame.size.height = self.sendTextView.contentSize.height + 18;
         self.sendTextView.frame = frame;
+     
+        
+        CGFloat fixedWidth = textView.frame.size.width;
+        CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, maxNumberOfLines * textView.font.lineHeight)];
+        CGRect newFrame = textView.frame;
+        newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+        textView.frame = newFrame;
+        
         self.sendTextView.scrollEnabled = true;
-    } else if (numLines == maxNumberOfLines - 1){
-        [self.sendTextView sizeToFit];
+    } else {
+        //[self.sendTextView sizeToFit];
         self.sendTextView.scrollEnabled = false;
+        
     }
 }
 */
+    
+    
+
+
 
 - (void) getMessages{
     //NSLog(@"%@",self.contact);
@@ -173,25 +203,53 @@
 
 
 - (IBAction)onClickSend:(id)sender {
-    self.shouldScrollToLastRow = YES;
     NSString *text = self.sendTextView.text;
-    if (self.contact) {
-        [Message sendMessage:text toReceiver:self.contact withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
-            if (error != nil) {
-                NSLog(@"User send message failed: %@", error.localizedDescription);
-                
-            } else {
-                NSLog(@"User sent message successfully");
-                [self getMessages];
-                
-                //self.shouldScrollToLastRow = YES;
-                [self.messageTable reloadData];
-                self.sendTextView.text = @"";
-            }
+    NSString *trimmedString = [text stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([trimmedString isEqualToString:@""]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@""
+                                                                       message:@"Unable to send blank message"
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
         }];
     } else {
-        NSLog(@"Contact nil");
+        self.shouldScrollToLastRow = YES;
+        
+        if (self.contact) {
+            [Message sendMessage:text toReceiver:self.contact withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
+                if (error != nil) {
+                    NSLog(@"User send message failed: %@", error.localizedDescription);
+                    
+                } else {
+                    NSLog(@"User sent message successfully");
+                    [self getMessages];
+                    
+                    //self.shouldScrollToLastRow = YES;
+                    [self.messageTable reloadData];
+                    self.sendTextView.text = @"";
+                    //[self keyboardWillHide:nil];
+                    [self.view endEditing:YES];
+                }
+            }];
+        } else {
+            NSLog(@"Contact nil");
+        }
     }
+        
+        
+    
     
     
     
@@ -269,21 +327,20 @@
     [self.view endEditing:YES];
 }
 
+/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    /*
-    [self.messageTable reloadData];
-    NSIndexPath* ip = [NSIndexPath indexPathForRow:[self.messageTable numberOfRowsInSection:0] - 1 inSection:0];
-    [self.messageTable scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    */
+ 
+ 
+ 
     
-    //[self.messageTable reloadData];
-    //int lastRowNumber = (int *)[self.messageTable numberOfRowsInSection:0] - 1;
+ 
     
     
 }
+*/
 
 - (void) viewDidAppear:(BOOL)animated {
     [self scrollToBottom];
@@ -297,6 +354,7 @@
     }
 }
 
+/*
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
@@ -325,7 +383,7 @@
         self.view.frame = f;
     }];
 }
-
+*/
 
 /*
  #pragma mark - Navigation
