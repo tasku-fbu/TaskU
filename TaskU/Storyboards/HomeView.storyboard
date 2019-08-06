@@ -31,6 +31,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -252,9 +253,7 @@
                             </barButtonItem>
                             <barButtonItem title="Item" style="plain" id="0hq-Uq-SEd">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apH-vt-SWW">
-
-                                    <rect key="frame" x="54" y="5" width="92" height="34"/>
-
+                                    <rect key="frame" x="51" y="5" width="100" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="13"/>
                                     <state key="normal" title="Current Location"/>
@@ -262,12 +261,10 @@
                                         <segue destination="FM5-ey-Hb6" kind="presentation" id="Kfa-CB-frc"/>
                                     </connections>
                                 </button>
-
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="LocationButtonAction:" destination="s1x-pU-5ie" id="iyh-zp-Vrt"/>
                                 </connections>
-
                             </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="N5G-4h-I8k">

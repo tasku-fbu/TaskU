@@ -66,6 +66,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
 
     
+    
     //Button configs
     self.plusButton.layer.shadowColor = [UIColor grayColor].CGColor;
     self.plusButton.layer.shadowOffset = CGSizeMake(10, 10);
@@ -89,15 +90,22 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     flow.minimumInteritemSpacing = spacing;
     flow.minimumLineSpacing = spacing;
 
-    //Navigation Controller Font
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:[UIColor blackColor],
-       NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
-
-
+    
+    
+    //setting navigation bar
+    UINavigationBar *bar = [self.navigationController navigationBar];
+    [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
+    bar.translucent = false;
+    bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
+    
+    
+    
+/*
     //Navigation Controller Font
     [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
-
+*/
 }
 
 
