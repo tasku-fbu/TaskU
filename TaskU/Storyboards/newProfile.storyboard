@@ -651,6 +651,32 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="PoL-3j-3Od">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="ncW-sU-XFi">
+                                        <rect key="frame" x="0.0" y="266" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ncW-sU-XFi" id="IdA-MW-PX1">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdC-WB-3dA">
+                                                    <rect key="frame" x="278.5" y="4" width="211" height="36"/>
+                                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="19"/>
+                                                    <state key="normal" title="Log out current account">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="EdC-WB-3dA" firstAttribute="centerX" secondItem="IdA-MW-PX1" secondAttribute="centerX" id="0e6-ho-n4I"/>
+                                                <constraint firstItem="EdC-WB-3dA" firstAttribute="centerY" secondItem="IdA-MW-PX1" secondAttribute="centerY" id="95Y-II-pCh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="GMo-62-eEJ" id="24x-dX-lhz"/>
@@ -660,12 +686,13 @@
                     <navigationItem key="navigationItem" title="Profile" id="6yg-c7-7gI"/>
                     <connections>
                         <outlet property="nameLabel" destination="iuM-C7-NGH" id="vqT-CQ-6GZ"/>
+                        <outlet property="tableView" destination="wvO-q3-wxj" id="qtq-0g-QpE"/>
                         <outlet property="userProfileImage" destination="s21-9u-TUt" id="QmV-AZ-N29"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGt-C6-G5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="-1351"/>
+            <point key="canvasLocation" x="1364" y="-1339"/>
         </scene>
         <!--Profile-->
         <scene sceneID="PAw-nq-DWX">
