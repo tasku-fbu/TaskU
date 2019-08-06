@@ -54,6 +54,7 @@
 
 @end
 static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
+NSMutableArray *annotationsArray;
 
 @implementation DetailsStatusViewController
 
@@ -72,25 +73,31 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     self.acceptButton.layer.cornerRadius = 10;
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
-    NSLog(@"%@ %@ %@ %@", self.task.startLatitude, self.task.startLongitude, self.task.endLatitude, self.task.endLongitude);
     MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]), MKCoordinateSpanMake(1.9, 1.9));
-    [self.mapView setRegion:schoolRegion animated:false];
+    [self.mapView setRegion:schoolRegion animated:YES];
 
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotationsArray = [NSMutableArray new];
     
-    annotation.coordinate = CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]);
-    annotation.title = @"Starts Here!";
-    [self.mapView addAnnotation:annotation];
+    if(!(self.task.startLatitude == nil) || !(self.task.startLongitude == nil)){
+        MKPointAnnotation *startAnnotation = [MKPointAnnotation new];
+        startAnnotation.coordinate = CLLocationCoordinate2DMake([self.task.startLatitude  doubleValue], [self.task.startLongitude doubleValue]);
+        startAnnotation.title = @"Starts Here!";
+        [annotationsArray addObject:startAnnotation];
+    //[self.mapView addAnnotation:startAnnotation];
+    }
     
-    annotation.coordinate = CLLocationCoordinate2DMake([self.task.startLatitude  doubleValue], [self.task.startLongitude doubleValue]);    annotation.title = @"Delivery Point!";
-    [self.mapView addAnnotation:annotation];
+    MKPointAnnotation *endAnnotation = [MKPointAnnotation new];
+    endAnnotation.coordinate = CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]);
+    endAnnotation.title = @"Delivery Point!";
+    [annotationsArray addObject:endAnnotation];
+    //[self.mapView showAnnotations:annotationsArray animated:YES];
+
 }
 
-#pragma mark - Display location search view controller
-- (IBAction)tapMapAction:(id)sender {
-    [self performSegueWithIdentifier:searchLocationSegueIdentifier sender:nil];
+-(void) viewDidAppear:(BOOL)animated{
+    [self.mapView showAnnotations:annotationsArray animated:YES];
+    
 }
-
 -(void)buttonRadiusHelper{
     self.createButton.layer.cornerRadius = 18;
     self.acceptMissionButton.layer.cornerRadius = 18;
@@ -143,14 +150,6 @@ static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
     
 }
 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Passes the selected object to the new view controller.
-    
-    UINavigationController *navigationController = [segue destinationViewController];
-    LocationsViewController *LocationController = (LocationsViewController*)navigationController.topViewController;
-    LocationController.delegate = self; //Setting the delegate in the prepareForSegue method
-}
 
 #pragma mark - mapView Annotation
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
