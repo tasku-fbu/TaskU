@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *sendHelperView;
 @property (weak, nonatomic) IBOutlet UIView *sendTextHelperView;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
@@ -51,12 +52,20 @@
     
     self.sendTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
+    
+    self.sendTextHelperView.layer.cornerRadius = 16;
+    self.sendTextHelperView.clipsToBounds = true;
+    
+    
     self.shouldScrollToLastRow = YES;
     
     
     //[self.sendTextView sizeToFit];
     self.sendTextView.scrollEnabled = false;
     //self.sendTextView.delegate = self;
+    
+    self.sendButton.layer.cornerRadius = 16;
+    self.sendButton.clipsToBounds = true;
     
     UIApplication.sharedApplication.keyWindow.backgroundColor = [UIColor whiteColor];
     
@@ -65,8 +74,8 @@
     self.messageTable.dataSource = self;
     self.messageTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.messageTable.rowHeight = UITableViewAutomaticDimension;
-    self.sendTextView.layer.borderWidth = 2.0f;
-    self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
+    //self.sendTextView.layer.borderWidth = 2.0f;
+    //self.sendTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     [self getMessages];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getMessages) forControlEvents:UIControlEventValueChanged];
@@ -189,6 +198,8 @@
                 //self.shouldScrollToLastRow = YES;
                 [self.messageTable reloadData];
                 self.sendTextView.text = @"";
+                [self keyboardWillHide:nil];
+                [self.view endEditing:YES];
             }
         }];
     } else {

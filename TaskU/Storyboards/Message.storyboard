@@ -166,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-tJ-R78">
-                                <rect key="frame" x="0.0" y="104" width="414" height="529"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourMessage" id="fno-GG-ed4" customClass="YourMessageCell">
@@ -271,20 +271,20 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-XC-yKY">
-                                <rect key="frame" x="188.5" y="350" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="359" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5so-JX-wpv">
-                                <rect key="frame" x="0.0" y="641" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="659" width="414" height="32"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l2I-pY-7H9">
-                                        <rect key="frame" x="54" y="5" width="306" height="40"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2I-pY-7H9">
+                                        <rect key="frame" x="62" y="5" width="300" height="22"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nib-gf-YC4">
-                                                <rect key="frame" x="0.0" y="5" width="306" height="30"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nib-gf-YC4">
+                                                <rect key="frame" x="10" y="2" width="280" height="18"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="750" constant="30" id="h3a-KV-Usj"/>
+                                                    <constraint firstAttribute="height" priority="750" constant="18" id="h3a-KV-Usj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -293,23 +293,27 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="nib-gf-YC4" firstAttribute="leading" secondItem="l2I-pY-7H9" secondAttribute="leading" constant="10" id="LIi-Wb-aWk"/>
-                                            <constraint firstItem="nib-gf-YC4" firstAttribute="top" secondItem="l2I-pY-7H9" secondAttribute="top" constant="5" id="TkL-Pa-c0J"/>
+                                            <constraint firstItem="nib-gf-YC4" firstAttribute="top" secondItem="l2I-pY-7H9" secondAttribute="top" constant="2" id="TkL-Pa-c0J"/>
                                             <constraint firstAttribute="trailing" secondItem="nib-gf-YC4" secondAttribute="trailing" constant="10" id="WAi-A0-w9M"/>
                                             <constraint firstItem="nib-gf-YC4" firstAttribute="centerY" secondItem="l2I-pY-7H9" secondAttribute="centerY" id="hVu-9l-SuB"/>
-                                            <constraint firstAttribute="bottom" secondItem="nib-gf-YC4" secondAttribute="bottom" constant="5" id="osm-5D-1hC"/>
+                                            <constraint firstAttribute="bottom" secondItem="nib-gf-YC4" secondAttribute="bottom" constant="2" id="osm-5D-1hC"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhr-sP-HxJ">
-                                        <rect key="frame" x="16" y="15" width="30" height="30"/>
+                                        <rect key="frame" x="16" y="-3" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="A85-VN-5wr"/>
                                             <constraint firstAttribute="width" constant="30" id="Yq0-tf-KoI"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="plus"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VS-S1-AbT">
-                                        <rect key="frame" x="370" y="15" width="36" height="30"/>
-                                        <state key="normal" title="Send"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VS-S1-AbT">
+                                        <rect key="frame" x="372" y="-5" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="FgG-n3-QPg"/>
+                                            <constraint firstAttribute="height" constant="32" id="HXX-af-yhz"/>
+                                        </constraints>
+                                        <state key="normal" image="sned"/>
                                         <connections>
                                             <action selector="onClickSend:" destination="OKb-9N-wT9" eventType="touchUpInside" id="EsW-ax-fXy"/>
                                         </connections>
@@ -322,8 +326,10 @@
                                     <constraint firstItem="l2I-pY-7H9" firstAttribute="top" secondItem="5so-JX-wpv" secondAttribute="top" constant="5" id="ESv-uP-A4n"/>
                                     <constraint firstItem="l2I-pY-7H9" firstAttribute="bottom" secondItem="Xhr-sP-HxJ" secondAttribute="bottom" id="Gjp-mN-RAC"/>
                                     <constraint firstItem="Xhr-sP-HxJ" firstAttribute="leading" secondItem="5so-JX-wpv" secondAttribute="leading" constant="16" id="TaG-yb-v0Q"/>
+                                    <constraint firstItem="9VS-S1-AbT" firstAttribute="leading" secondItem="l2I-pY-7H9" secondAttribute="trailing" constant="10" id="kO2-UG-slg"/>
                                     <constraint firstAttribute="bottom" secondItem="l2I-pY-7H9" secondAttribute="bottom" constant="5" id="wtu-gb-g8G"/>
                                     <constraint firstItem="l2I-pY-7H9" firstAttribute="leading" secondItem="Xhr-sP-HxJ" secondAttribute="trailing" constant="16" id="x2A-VI-HZD"/>
+                                    <constraint firstAttribute="trailing" secondItem="9VS-S1-AbT" secondAttribute="trailing" constant="10" id="yJN-eG-zwm"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -363,6 +369,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="T2R-XC-yKY" id="khU-pg-Qfm"/>
                         <outlet property="messageTable" destination="Uqh-tJ-R78" id="hfQ-Bp-88p"/>
+                        <outlet property="sendButton" destination="9VS-S1-AbT" id="vHt-ry-2zV"/>
                         <outlet property="sendHelperView" destination="5so-JX-wpv" id="DVU-Rb-CoT"/>
                         <outlet property="sendTextHelperView" destination="l2I-pY-7H9" id="asz-UG-iMg"/>
                         <outlet property="sendTextView" destination="nib-gf-YC4" id="f5U-ip-drY"/>
@@ -421,5 +428,6 @@
         <image name="compose" width="19" height="19"/>
         <image name="messages" width="24" height="23"/>
         <image name="plus" width="60" height="60"/>
+        <image name="sned" width="225" height="225"/>
     </resources>
 </document>
