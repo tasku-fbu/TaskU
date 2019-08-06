@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
 @property (weak, nonatomic) IBOutlet UIButton *LocationButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+//@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapButtonItem;
 
 @property NSString *userCity;
@@ -248,21 +248,6 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
 
 }
 
-#pragma mark - Logs user out
-- (IBAction)LogoutActionButton:(id)sender {
-
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-
-
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
-    }];
-
-}
 
 - (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue
 {

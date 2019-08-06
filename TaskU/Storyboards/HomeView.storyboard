@@ -270,18 +270,11 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="N5G-4h-I8k">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="LogoutActionButton:" destination="s1x-pU-5ie" id="ILc-MK-ull"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="LocationButton" destination="apH-vt-SWW" id="0Or-KC-JOP"/>
                         <outlet property="collection_View" destination="0u4-rj-NtJ" id="7ys-VW-d3w"/>
-                        <outlet property="logoutButton" destination="N5G-4h-I8k" id="SoK-P5-1qM"/>
                         <outlet property="mapButtonItem" destination="uKQ-mU-A1R" id="fcm-N4-uKv"/>
                         <outlet property="plusButton" destination="nPV-C9-PNA" id="4FF-go-UWz"/>
                         <segue destination="bKN-tg-9Ov" kind="show" identifier="passing" id="h7o-p1-Jx6"/>
