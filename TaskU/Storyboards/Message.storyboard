@@ -284,7 +284,7 @@
                                                 <rect key="frame" x="10" y="2" width="280" height="18"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="750" constant="18" id="h3a-KV-Usj"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="18" id="h3a-KV-Usj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

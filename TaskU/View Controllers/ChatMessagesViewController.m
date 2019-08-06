@@ -62,7 +62,7 @@
     
     //[self.sendTextView sizeToFit];
     self.sendTextView.scrollEnabled = false;
-    //self.sendTextView.delegate = self;
+    self.sendTextView.delegate = self;
     
     self.sendButton.layer.cornerRadius = 16;
     self.sendButton.clipsToBounds = true;
@@ -89,19 +89,35 @@
 {
     NSUInteger maxNumberOfLines = 3;
     NSUInteger numLines = textView.contentSize.height/textView.font.lineHeight;
+    
+    
     if (numLines >= maxNumberOfLines)
     {
-        
+        //self.sendTextView.frame.size height
+     
         CGRect frame = self.sendTextView.frame;
-        frame.size.height = maxNumberOfLines * textView.font.lineHeight;
+        frame.size.height = self.sendTextView.contentSize.height + 18;
         self.sendTextView.frame = frame;
+     
+        
+        CGFloat fixedWidth = textView.frame.size.width;
+        CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, maxNumberOfLines * textView.font.lineHeight)];
+        CGRect newFrame = textView.frame;
+        newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+        textView.frame = newFrame;
+        
         self.sendTextView.scrollEnabled = true;
-    } else if (numLines == maxNumberOfLines - 1){
-        [self.sendTextView sizeToFit];
+    } else {
+        //[self.sendTextView sizeToFit];
         self.sendTextView.scrollEnabled = false;
+        
     }
 }
 */
+    
+    
+
+
 
 - (void) getMessages{
     //NSLog(@"%@",self.contact);
