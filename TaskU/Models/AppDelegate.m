@@ -26,6 +26,7 @@
         
         configuration.applicationId = @"tasku";
         configuration.server = @"http://task-u.herokuapp.com/parse";
+        
     }];
     
     [Parse initializeWithConfiguration:config];

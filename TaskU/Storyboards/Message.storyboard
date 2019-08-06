@@ -193,7 +193,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="tcJ-Xh-h1O" firstAttribute="leading" secondItem="FEp-sj-oEs" secondAttribute="leading" constant="10" id="78j-T5-5g9"/>
                                                         <constraint firstItem="tcJ-Xh-h1O" firstAttribute="top" secondItem="FEp-sj-oEs" secondAttribute="top" constant="5" id="Ede-cN-9Y7"/>
@@ -319,7 +319,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="9VS-S1-AbT" firstAttribute="bottom" secondItem="Xhr-sP-HxJ" secondAttribute="bottom" id="0SA-Jp-3P3"/>
                                     <constraint firstItem="l2I-pY-7H9" firstAttribute="centerY" secondItem="5so-JX-wpv" secondAttribute="centerY" id="5TW-SK-tm8"/>
