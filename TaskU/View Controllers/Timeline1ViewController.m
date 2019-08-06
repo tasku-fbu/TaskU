@@ -265,6 +265,21 @@
     [task resume];
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
+    
+    DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
+    Task *task = self.filteredData[indexPath.row];
+    detailsVC.task = task;
+    DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
+    DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
+    statusVC.task = task;
+    infoVC.task = task;
+    statusVC.delegate = self;
+    [self presentViewController:navigationVC animated:YES completion:nil];
+}
+
 
 - (IBAction)onBackHome:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -161,6 +161,19 @@
     
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
+    
+    DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
+    Task *task = self.completedTasks[indexPath.row];
+    detailsVC.task = task;
+    DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
+    DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
+    statusVC.task = task;
+    infoVC.task = task;
+    [self presentViewController:navigationVC animated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation
