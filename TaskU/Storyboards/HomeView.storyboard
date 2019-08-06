@@ -246,7 +246,8 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="Ep0-bO-mJJ"/>
                     <navigationItem key="navigationItem" title="Home" id="NCG-81-325">
                         <leftBarButtonItems>
-                            <barButtonItem title="Item" image="location" id="uKQ-mU-A1R">
+                            <barButtonItem title="Item" image="whiteLocation" id="uKQ-mU-A1R">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="E59-nv-2eP" kind="show" id="MCW-dR-UuT"/>
                                 </connections>
@@ -557,6 +558,6 @@
         <image name="Image" width="22" height="22"/>
         <image name="close" width="28" height="28"/>
         <image name="home" width="23" height="24"/>
-        <image name="location" width="19" height="24"/>
+        <image name="whiteLocation" width="16" height="20"/>
     </resources>
 </document>
