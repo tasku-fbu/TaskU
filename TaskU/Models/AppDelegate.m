@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
 #import "UIButtonExtension.h"
+#import "IQKeyboardManager.h"
 @interface AppDelegate ()
 
 @end
@@ -29,7 +30,7 @@
     
     [Parse initializeWithConfiguration:config];
 
-
+    IQKeyboardManager.sharedManager.enable = true;
     
   #pragma mark - Persistent user login 
      if (PFUser.currentUser) {

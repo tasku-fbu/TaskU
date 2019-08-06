@@ -236,7 +236,7 @@
                     //self.shouldScrollToLastRow = YES;
                     [self.messageTable reloadData];
                     self.sendTextView.text = @"";
-                    [self keyboardWillHide:nil];
+                    //[self keyboardWillHide:nil];
                     [self.view endEditing:YES];
                 }
             }];
@@ -324,21 +324,20 @@
     [self.view endEditing:YES];
 }
 
+/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    /*
-    [self.messageTable reloadData];
-    NSIndexPath* ip = [NSIndexPath indexPathForRow:[self.messageTable numberOfRowsInSection:0] - 1 inSection:0];
-    [self.messageTable scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    */
+ 
+ 
+ 
     
-    //[self.messageTable reloadData];
-    //int lastRowNumber = (int *)[self.messageTable numberOfRowsInSection:0] - 1;
+ 
     
     
 }
+*/
 
 - (void) viewDidAppear:(BOOL)animated {
     [self scrollToBottom];
@@ -352,6 +351,7 @@
     }
 }
 
+/*
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
@@ -380,7 +380,7 @@
         self.view.frame = f;
     }];
 }
-
+*/
 
 /*
  #pragma mark - Navigation
