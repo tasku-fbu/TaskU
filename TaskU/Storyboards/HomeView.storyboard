@@ -253,10 +253,12 @@
                             </barButtonItem>
                             <barButtonItem title="Item" style="plain" id="0hq-Uq-SEd">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apH-vt-SWW">
-                                    <rect key="frame" x="51" y="5" width="100" height="34"/>
+                                    <rect key="frame" x="54" y="5" width="100" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="13"/>
-                                    <state key="normal" title="Current Location"/>
+                                    <state key="normal" title="Current Location">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <connections>
                                         <segue destination="FM5-ey-Hb6" kind="presentation" id="Kfa-CB-frc"/>
                                     </connections>
@@ -279,6 +281,7 @@
                         <outlet property="LocationButton" destination="apH-vt-SWW" id="0Or-KC-JOP"/>
                         <outlet property="collection_View" destination="0u4-rj-NtJ" id="7ys-VW-d3w"/>
                         <outlet property="logoutButton" destination="N5G-4h-I8k" id="SoK-P5-1qM"/>
+                        <outlet property="mapButtonItem" destination="uKQ-mU-A1R" id="fcm-N4-uKv"/>
                         <outlet property="plusButton" destination="nPV-C9-PNA" id="4FF-go-UWz"/>
                         <segue destination="bKN-tg-9Ov" kind="show" identifier="passing" id="h7o-p1-Jx6"/>
                     </connections>

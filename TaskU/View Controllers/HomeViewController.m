@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *LocationButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *mapButtonItem;
 
 @property NSString *userCity;
 @property NSString *userState;
