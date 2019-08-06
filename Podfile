@@ -10,6 +10,7 @@ target 'TaskU' do
   # Pods for TaskU
   pod 'Parse'
   pod 'AFNetworking'
+  pod 'IQKeyboardManager'
 
   target 'TaskUTests' do
     inherit! :search_paths

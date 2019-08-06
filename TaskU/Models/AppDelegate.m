@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
 #import "UIButtonExtension.h"
+#import "IQKeyboardManager.h"
 @interface AppDelegate ()
 
 @end
@@ -25,11 +26,12 @@
         
         configuration.applicationId = @"tasku";
         configuration.server = @"http://task-u.herokuapp.com/parse";
+        
     }];
     
     [Parse initializeWithConfiguration:config];
 
-
+    IQKeyboardManager.sharedManager.enable = true;
     
   #pragma mark - Persistent user login 
      if (PFUser.currentUser) {
