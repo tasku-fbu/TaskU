@@ -164,7 +164,7 @@
                             <barButtonItem title="Item" image="location" id="uKQ-mU-A1R"/>
                             <barButtonItem title="Item" style="plain" id="0hq-Uq-SEd">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apH-vt-SWW">
-                                    <rect key="frame" x="51" y="5" width="92" height="34"/>
+                                    <rect key="frame" x="54" y="5" width="92" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
                                     <state key="normal" title="Location"/>
@@ -172,12 +172,14 @@
                                         <segue destination="E59-nv-2eP" kind="show" id="oVl-UF-VmB"/>
                                     </connections>
                                 </button>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="LocationButtonAction:" destination="s1x-pU-5ie" id="iyh-zp-Vrt"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="N5G-4h-I8k">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="LogoutActionButton:" destination="s1x-pU-5ie" id="ILc-MK-ull"/>
                             </connections>
