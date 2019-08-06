@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "CustomAlert.h"
+
 #import "Parse/Parse.h"
 
 #pragma mark - interface and properties
@@ -14,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+
 
 @end
 
@@ -92,7 +95,14 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     [self performSegueWithIdentifier: signUpSegueIdentifier sender:nil]; //performs segue to show sign up page
 }
 - (IBAction)loginActionButton:(id)sender {
-    [self loginUser]; //verifies the user through parse login authentication
+    CustomAlert *alert = [[CustomAlert alloc] init];
+    
+    [alert showAlert:@"Failure" withMessage:@"Check your network connection and try again." withAlert:@"failure"];
+    
+   // CustomAlert *alert = [[CustomAlert alloc]init];
+   // [alert showAlert]
+    NSLog(@"Hello!");
+  //  [self loginUser]; //verifies the user through parse login authentication
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
