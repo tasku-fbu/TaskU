@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *sendHelperView;
 @property (weak, nonatomic) IBOutlet UIView *sendTextHelperView;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
 
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
@@ -67,6 +68,8 @@
     self.sendButton.layer.cornerRadius = 16;
     self.sendButton.clipsToBounds = true;
     
+    self.plusButton.layer.cornerRadius = 15;
+    self.plusButton.clipsToBounds = true;
     UIApplication.sharedApplication.keyWindow.backgroundColor = [UIColor whiteColor];
     
     
