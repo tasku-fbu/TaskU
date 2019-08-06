@@ -85,6 +85,7 @@ NSMutableArray *annotationsArray;
         [annotationsArray addObject:startAnnotation];
     //[self.mapView addAnnotation:startAnnotation];
     }
+    
     MKPointAnnotation *endAnnotation = [MKPointAnnotation new];
     endAnnotation.coordinate = CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]);
     endAnnotation.title = @"Delivery Point!";
