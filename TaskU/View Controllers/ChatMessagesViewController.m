@@ -184,27 +184,53 @@
 
 
 - (IBAction)onClickSend:(id)sender {
-    self.shouldScrollToLastRow = YES;
     NSString *text = self.sendTextView.text;
-    if (self.contact) {
-        [Message sendMessage:text toReceiver:self.contact withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
-            if (error != nil) {
-                NSLog(@"User send message failed: %@", error.localizedDescription);
-                
-            } else {
-                NSLog(@"User sent message successfully");
-                [self getMessages];
-                
-                //self.shouldScrollToLastRow = YES;
-                [self.messageTable reloadData];
-                self.sendTextView.text = @"";
-                [self keyboardWillHide:nil];
-                [self.view endEditing:YES];
-            }
+    NSString *trimmedString = [text stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([trimmedString isEqualToString:@""]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@""
+                                                                       message:@"Unable to send blank message"
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
         }];
     } else {
-        NSLog(@"Contact nil");
+        self.shouldScrollToLastRow = YES;
+        
+        if (self.contact) {
+            [Message sendMessage:text toReceiver:self.contact withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
+                if (error != nil) {
+                    NSLog(@"User send message failed: %@", error.localizedDescription);
+                    
+                } else {
+                    NSLog(@"User sent message successfully");
+                    [self getMessages];
+                    
+                    //self.shouldScrollToLastRow = YES;
+                    [self.messageTable reloadData];
+                    self.sendTextView.text = @"";
+                    [self keyboardWillHide:nil];
+                    [self.view endEditing:YES];
+                }
+            }];
+        } else {
+            NSLog(@"Contact nil");
+        }
     }
+        
+        
+    
     
     
     
