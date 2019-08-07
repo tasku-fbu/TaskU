@@ -84,7 +84,7 @@
 //want to make it a public method in Task, so that it takes in a "category" and gets all tasks in this category
 - (void) getAllTasks {
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
-    [query orderByDescending:@"taskDate"];
+    [query orderByAscending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
     [query includeKey:@"taskName"];
