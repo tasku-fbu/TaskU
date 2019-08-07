@@ -5,7 +5,7 @@
 //  Created by lucyyyw on 7/16/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
-
+#import <UIKit/UIKit.h>
 #import "Timeline1ViewController.h"
 #import "TaskCell.h"
 #import "Task.h"
@@ -153,13 +153,49 @@
     Task *task = self.filteredData[indexPath.row];
     
     [cell showCell:cell withTask:task];
+    // animation 1
+    /*
+     CATransform3D rotationTransfrom = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0);
+     cell.layer.transform = rotationTransfrom;
+     cell.alpha = 0.5;
+     [UIView animateWithDuration:1.0
+     animations:^{
+     // animations go here
+     cell.layer.transform = CATransform3DIdentity;
+     cell.alpha = 1.0;
+     }];
+    */
+    //animation 2
+    /*
+     CATransform3D rotationTransfrom = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0);
+     cell.layer.transform = rotationTransfrom;
+     cell.alpha = 0;
+     [UIView animateWithDuration:1.5
+     animations:^{
+     // animations go here
+     cell.layer.transform = CATransform3DIdentity;
+     cell.alpha = 1.0;
+     }];
+     */
+     /*
+    // CGAffineTransform
+    CGAffineTransform transform = CGAffineTransformRotate(cell.transform, -1);
+    transform = CGAffineTransformTranslate(transform, 1, 1);
+    
+    cell.transform= transform;
+    */
+    
+    cell.alpha = 0;
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         // animations go here
+                         cell.layer.transform = CATransform3DIdentity;
+                         cell.alpha = 1.0;
+                     }];
+
     
     return cell;
 }
-
-
-
-
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.filteredData.count;

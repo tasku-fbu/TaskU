@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Timeline1ViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,TaskCellDelegate, CancelRequestOnDetailsDelegate, LocationsViewControllerDelegate,UISearchBarDelegate>
+@interface Timeline1ViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,TaskCellDelegate, CancelRequestOnDetailsDelegate,UISearchBarDelegate>
 @property (nonatomic, strong) NSString * category;
 
 
