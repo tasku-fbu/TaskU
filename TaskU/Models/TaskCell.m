@@ -25,7 +25,9 @@
     [self.delegate didTapDetails:self];
 }
 
+
 - (void) showCell:(TaskCell*) cell withTask: (Task*) task {
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.cellView.layer.cornerRadius = 16;
     cell.cellView.clipsToBounds = true;
     //cell.cellView.backgroundColor = [UIColor lightGrayColor];
@@ -74,6 +76,7 @@
 }
 
 - (void) showRequestCell:(TaskCell*) cell withRequest: (Task*) task {
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.cellView.layer.cornerRadius = 16;
     cell.cellView.clipsToBounds = true;
     //cell.cellView.backgroundColor = [UIColor lightGrayColor];
@@ -140,6 +143,7 @@
 }
 
 - (void) showMissionCell:(TaskCell*) cell withMission: (Task*) task {
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.cellView.layer.cornerRadius = 16;
     cell.cellView.clipsToBounds = true;
     //cell.cellView.backgroundColor = [UIColor lightGrayColor];

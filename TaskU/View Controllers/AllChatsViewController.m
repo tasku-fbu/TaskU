@@ -42,6 +42,8 @@
     self.searchBar.layer.borderWidth = 1;
     self.searchBar.layer.borderColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0].CGColor;
     
+    [self.searchBar setTintColor:[UIColor whiteColor]];
+    [[UITextField appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class] ]] setTintColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
     [self getAllMessagesFirst];
     
     
@@ -234,6 +236,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSString *objectIdContact = self.filteredData[indexPath.row];
     //NSLog(@"%@",self.filteredData.allKeys);
     //NSLog(@"%@",objectIdContact);
