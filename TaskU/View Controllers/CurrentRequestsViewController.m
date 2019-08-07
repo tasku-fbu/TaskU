@@ -54,7 +54,7 @@
     
     NSArray *current = [NSArray arrayWithObjects: @"created",@"accepted", nil];
     
-    [query orderByDescending:@"taskDate"];
+    [query orderByAscending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
     [query includeKey:@"taskName"];
