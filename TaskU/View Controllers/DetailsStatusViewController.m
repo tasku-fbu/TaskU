@@ -73,8 +73,8 @@ NSMutableArray *annotationsArray;
     self.acceptButton.layer.cornerRadius = 10;
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
-    MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]), MKCoordinateSpanMake(1.9, 1.9));
-    [self.mapView setRegion:schoolRegion animated:YES];
+   //MKCoordinateRegion schoolRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.task.endLatitude doubleValue], [self.task.endLongitude doubleValue]), MKCoordinateSpanMake(1.9, 1.9));
+    //[self.mapView setRegion:schoolRegion animated:NO];
 
     annotationsArray = [NSMutableArray new];
     
