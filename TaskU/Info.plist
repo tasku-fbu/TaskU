@@ -2,16 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Shows your location on the map and helps improve OpenStreetMap.
-</string>
-	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoicmF5bW9uZDIwMCIsImEiOiJjanl0NmJ2N2cwMHZvM21vYWNteWZ4ZXN6In0.xMD7WxPhlrxuTWOSAIkiwQ</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -35,8 +25,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoicmF5cGFwZW5mdXNzIiwiYSI6ImNqeXJzcm1ldTA1NHIzYm1rb2liazBmMDMifQ.Dkg2vcHAyPjuLp9gVJOUWA
-</string>
+	<string>pk.eyJ1IjoicmF5bW9uZDIwMCIsImEiOiJjanowZnY1MHAwMDNlM2N0NzFkeW9hbTJoIn0.d-4fBRsgKawqRvE5fpqI3A</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -64,6 +53,10 @@
 		<string>Billabong.ttf</string>
 		<string>Quicksand-Bold.ttf</string>
 		<string>Quicksand-Regular.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
