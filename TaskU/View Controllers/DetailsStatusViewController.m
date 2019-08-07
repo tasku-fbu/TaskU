@@ -104,9 +104,9 @@ NSMutableArray *annotationsArray;
 - (void) slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
     
     CATransition *transition = [CATransition animation];
-    transition.duration = 1.5;
+    transition.duration = 1;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionPush;
+    transition.type = kCATransitionFade;
     transition.subtype = kCATransitionFromLeft;
     [self.view.window.layer addAnimation:transition forKey:nil];
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -116,9 +116,15 @@ NSMutableArray *annotationsArray;
 
 - (void) slideToRightWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
     
-    [UIView animateWithDuration:1.5 animations:^{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.75;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFromRight;
+    [self.view.window.layer addAnimation:transition forKey:nil];
+    
         self.tabBarController.selectedIndex += 1;
-    }];
+    
     
 }
 
