@@ -54,13 +54,12 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     // Do any additional setup after loading the view.
 
     self.userCity = loggedInUser[@"city"]; //gets the city of current user
-    self.userState = loggedInUser[@"state"];
-    self.userLocation = [NSString stringWithFormat:@"%@, %@", self.userCity, self.userState];
-    
-    if([self.userCity isEqualToString:@""] || [self.userState isEqualToString:@""]){
-        
+    self.userState = loggedInUser[@"state"]; //gets the state of current user
+    if([self.userCity length] == 0 || [self.userState length] == 0){
+        [self.LocationButton setTitle:@"Current Location" forState:UIControlStateNormal];
     }
     else{
+        self.userLocation = [NSString stringWithFormat:@"%@, %@", self.userCity, self.userState];
         [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
     }
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"groceries", @"tutoring", @"Laundry", @"movingIn", @"specialServices",  nil ];
@@ -211,6 +210,16 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     cell.layer.shadowOpacity = 0.5f;
     cell.layer.masksToBounds = NO;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
+    
+    CATransform3D rotationTransfrom = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0);
+    cell.layer.transform = rotationTransfrom;
+    cell.alpha = 0.5;
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         // animations go here
+                         cell.layer.transform = CATransform3DIdentity;
+                         cell.alpha = 1.0;
+                     }];
 
     return cell;
 }
