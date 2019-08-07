@@ -91,7 +91,35 @@ NSMutableArray *annotationsArray;
     endAnnotation.title = @"Delivery Point!";
     [annotationsArray addObject:endAnnotation];
     //[self.mapView showAnnotations:annotationsArray animated:YES];
+    
+    UISwipeGestureRecognizer *toLeftSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
+    toLeftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:toLeftSwipeRecognizer];
+    
+    UISwipeGestureRecognizer *toRightSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToRightWithGestureRecognizer:)];
+    toRightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:toRightSwipeRecognizer];
+}
 
+- (void) slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromLeft;
+    [self.view.window.layer addAnimation:transition forKey:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    
+}
+
+- (void) slideToRightWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
+    
+    [UIView animateWithDuration:1.5 animations:^{
+        self.tabBarController.selectedIndex += 1;
+    }];
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated{
