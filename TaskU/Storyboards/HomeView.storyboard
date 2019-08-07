@@ -245,31 +245,29 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="Ep0-bO-mJJ"/>
                     <navigationItem key="navigationItem" title="Home" id="NCG-81-325">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Item" image="whiteLocation" id="uKQ-mU-A1R">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="0hq-Uq-SEd">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apH-vt-SWW">
+                                <rect key="frame" x="51" y="5" width="100" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="14"/>
+                                <state key="normal" title="Current Location">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <segue destination="E59-nv-2eP" kind="show" id="MCW-dR-UuT"/>
+                                    <segue destination="FM5-ey-Hb6" kind="presentation" id="Kfa-CB-frc"/>
                                 </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" style="plain" id="0hq-Uq-SEd">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apH-vt-SWW">
-                                    <rect key="frame" x="51" y="5" width="100" height="34"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="13"/>
-                                    <state key="normal" title="Current Location">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <segue destination="FM5-ey-Hb6" kind="presentation" id="Kfa-CB-frc"/>
-                                    </connections>
-                                </button>
-                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="LocationButtonAction:" destination="s1x-pU-5ie" id="iyh-zp-Vrt"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                            </button>
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="LocationButtonAction:" destination="s1x-pU-5ie" id="iyh-zp-Vrt"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="whiteLocation" id="uKQ-mU-A1R">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="E59-nv-2eP" kind="show" id="MCW-dR-UuT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
