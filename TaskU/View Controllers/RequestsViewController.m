@@ -41,9 +41,31 @@
     [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
     [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
     
-    
-    
     self.helperView.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    
+    UISwipeGestureRecognizer *completedSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
+    completedSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.completedView addGestureRecognizer:completedSwipeRecognizer];
+    
+    UISwipeGestureRecognizer *currentSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToRightWithGestureRecognizer:)];
+    currentSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.currentView addGestureRecognizer:currentSwipeRecognizer];
+}
+
+- (void) slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
+    [UIView animateWithDuration:1.5 animations:^{
+        self.segmentctrl.selectedSegmentIndex = 0;
+        self.completedView.alpha = 0;
+        self.currentView.alpha = 1;
+    }];
+}
+
+- (void) slideToRightWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
+    [UIView animateWithDuration:1.5 animations:^{
+        self.segmentctrl.selectedSegmentIndex = 1;
+        self.completedView.alpha = 1;
+        self.currentView.alpha = 0;
+    }];
 }
 
 - (IBAction)showContainerView:(id)sender {
