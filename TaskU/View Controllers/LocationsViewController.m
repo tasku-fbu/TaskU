@@ -32,6 +32,7 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     self.tableView.rowHeight = 55;
+    self.searchBar.tintColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
 }
 
 /*
