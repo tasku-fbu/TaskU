@@ -57,7 +57,7 @@
     [query2 whereKey:@"taskDate" lessThanOrEqualTo:now];
     
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
-    [query orderByDescending:@"taskDate"];
+    [query orderByAscending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
     [query includeKey:@"taskName"];
