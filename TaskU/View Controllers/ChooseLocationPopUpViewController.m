@@ -20,7 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+     [self.cityTextField setTintColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
+    [self.stateTextField setTintColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
     //Alert for incomplete user input
     self.completionCityAlert = [UIAlertController alertControllerWithTitle:@"Error"
                                                                message:@"Please input a valid City"
