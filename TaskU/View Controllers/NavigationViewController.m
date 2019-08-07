@@ -31,6 +31,7 @@ static NSString *const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     self.mapView = [[MBNavigationMapView alloc] initWithFrame:self.view.bounds];
     
     [self.view addSubview:self.mapView];
+    
     // Set the map view's delegate
     self.mapView.delegate = self;
     
