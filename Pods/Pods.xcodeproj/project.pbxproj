@@ -608,6 +608,7 @@
 		B79A5686F1D2877134939F8A12C98A2B /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35940652156CA8E82670ADEFFCA4B3E /* Locale.swift */; };
 		B823002860074DE40049CD14FC226FC3 /* PFFieldOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F87025EEEFCFD5F27A14137F6B69530A /* PFFieldOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B91FAC89547F892D0AD65C431E313A1F /* PFCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F369541CA72340B9DE6B18A20A86C10 /* PFCloud.m */; };
+		B93554D122FB70300088A419 /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDFA2DAE745FD57264494A16D3C14B6 /* MapboxMobileEvents.framework */; };
 		B937E61D8DE4377F7B51FE5218D8862B /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54CEA640A92DAB5C853DCB5EF18CCE63 /* Polyline.framework */; };
 		B9B1377893DE52A4F899881D2842242F /* PFPurchase.h in Headers */ = {isa = PBXBuildFile; fileRef = E482D162D723F61DBD1FB191C62F933B /* PFPurchase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA92271D7030C29AC46CD9E74D115166 /* MMECertPin.m in Sources */ = {isa = PBXBuildFile; fileRef = E56DECEFA3AFCB15E1822B40B17B03C9 /* MMECertPin.m */; };
@@ -2019,6 +2020,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B93554D122FB70300088A419 /* MapboxMobileEvents.framework in Frameworks */,
 				EF2CFCD5D040816486312ABC13435035 /* Foundation.framework in Frameworks */,
 				C0FF2882BF1AA120E6BB796ED7F5CB57 /* MapboxCoreNavigation.framework in Frameworks */,
 				E19988D4262AB5FEE0BAC6184EFD9296 /* MapboxSpeech.framework in Frameworks */,
