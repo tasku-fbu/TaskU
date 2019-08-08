@@ -31,6 +31,7 @@ static NSString *const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     self.mapView = [[MBNavigationMapView alloc] initWithFrame:self.view.bounds];
     
     [self.view addSubview:self.mapView];
+    
     // Set the map view's delegate
     self.mapView.delegate = self;
     
@@ -69,9 +70,11 @@ static NSString *const chooseLocationSegueIdentifier = @"chooseLocationSegue";
 - (void) reloadMapWithSelectedCoordinates {
     
     // Converts point where user did a long press to map coordinates
-    CGPoint point  = CGPointMake([self.latitude doubleValue], [self.longitude doubleValue]);
-    CLLocationCoordinate2D coordinate = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
     
+    [self.mapView removeAnnotations:[self.mapView annotations]];
+    CLLocationCoordinate2D coordinate ;
+    coordinate.latitude = [self.latitude doubleValue];
+    coordinate.longitude = [self.longitude doubleValue];
     // Create a basic point annotation and add it to the map
     MGLPointAnnotation *annotation = [MGLPointAnnotation alloc];
     annotation.coordinate = coordinate;
@@ -96,6 +99,7 @@ static NSString *const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     CGPoint point = [sender locationInView:self.mapView];
     CLLocationCoordinate2D coordinate = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
     
+    [self.mapView removeAnnotations:[self.mapView annotations]];
     // Create a basic point annotation and add it to the map
     MGLPointAnnotation *annotation = [MGLPointAnnotation alloc];
     annotation.coordinate = coordinate;

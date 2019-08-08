@@ -30,10 +30,10 @@
     [self getCompletedTasks];
     
     self.completedTable.rowHeight = UITableViewAutomaticDimension;
-    self.completedTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.completedTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.completedTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.completedTable.tableFooterView.hidden = true;
-    self.completedTable.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    //self.completedTable.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
     
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -46,11 +46,18 @@
 
 - (void) getCompletedTasks{
     PFUser *user = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     
+    PFQuery *query1 = [PFQuery queryWithClassName:@"Task"];
     NSArray *completed = [NSArray arrayWithObjects: @"completed",@"pay",@"paid", nil];
+    [query1 whereKey:@"completionStatus" containedIn:completed];
     
-    [query orderByDescending:@"taskDate"];
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Task"];
+    [query2 whereKey:@"completionStatus" equalTo:@"created"];
+    NSDate *now = [NSDate date];
+    [query2 whereKey:@"taskDate" lessThanOrEqualTo:now];
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
+    [query orderByAscending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
     [query includeKey:@"taskName"];
@@ -64,9 +71,8 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
-    
     [query whereKey:@"missioner" equalTo:user];
-    [query whereKey:@"completionStatus" containedIn:completed];
+    
     
     //query.limit = 0;
     
@@ -80,6 +86,22 @@
             [self.activityIndicator stopAnimating];
         } else {
             NSLog(@"%@", error.localizedDescription);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot fetch mission history"
+                                                                           message:@"Please check your network connection."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 // handle response here.
+                                                             }];
+            // add the OK action to the alert controller
+            [alert addAction:okAction];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
         }
         
     }];
@@ -91,11 +113,11 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MissionCell"];
     
     if (!cell) {
-        [tableView registerNib:[UINib nibWithNibName:@"TaskCellView" bundle:nil] forCellReuseIdentifier:@"TaskCell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+        [tableView registerNib:[UINib nibWithNibName:@"MissionCellView" bundle:nil] forCellReuseIdentifier:@"MissionCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"MissionCell"];
     }
     cell.delegate = self;
     Task *task = self.completedTasks[indexPath.row];
@@ -132,6 +154,20 @@
     
     [self presentViewController:navigationVC animated:YES completion:nil];
     
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
+    
+    DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
+    Task *task = self.completedTasks[indexPath.row];
+    detailsVC.task = task;
+    DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
+    DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
+    statusVC.task = task;
+    infoVC.task = task;
+    [self presentViewController:navigationVC animated:YES completion:nil];
 }
 
 

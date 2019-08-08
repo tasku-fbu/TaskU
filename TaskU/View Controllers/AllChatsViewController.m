@@ -31,11 +31,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchBar.barTintColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    self.searchBar.layer.borderWidth = 1;
+    self.searchBar.layer.borderColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0].CGColor;
+    
+    [self.searchBar setTintColor:[UIColor whiteColor]];
+    [[UITextField appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class] ]] setTintColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
     [self getAllMessagesFirst];
+    
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getAllMessages) userInfo:nil repeats:true];
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -200,7 +210,7 @@
             return (NSComparisonResult)NSOrderedAscending;
         }
     }];
-    NSLog(@"%@",sortedKeys);
+    //NSLog(@"%@",sortedKeys);
     self.contactIds = [sortedKeys mutableCopy];
     self.messagesByContact = dictionary;
     
@@ -226,6 +236,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSString *objectIdContact = self.filteredData[indexPath.row];
     //NSLog(@"%@",self.filteredData.allKeys);
     //NSLog(@"%@",objectIdContact);
@@ -241,6 +252,8 @@
             PFFileObject *imageFile = contact[@"profileImage"];
             NSString *urlString = imageFile.url;
             [cell.contactProfileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+            cell.contactProfileImageView.layer.cornerRadius = 20;
+            cell.contactProfileImageView.clipsToBounds = YES;
             cell.contact = contact;
             
         } else {
@@ -334,7 +347,8 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"showMessages"]) {
         ContactCell *tappedCell = (ContactCell*)sender;
-        ChatMessagesViewController *chatMessagesController = [segue destinationViewController];
+        UINavigationController *navigation = [segue destinationViewController];
+        ChatMessagesViewController *chatMessagesController = (ChatMessagesViewController*) navigation.topViewController;
         chatMessagesController.contact = tappedCell.contact;
         
         

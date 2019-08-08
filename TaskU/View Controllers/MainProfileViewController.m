@@ -12,6 +12,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "EditProfileViewController.h"
 #import "ProfileViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface MainProfileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -29,12 +31,15 @@
     //  self.tableView.rowHeight = 44;
     [self fetchProfileImage];
     
-
+    
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor blackColor],
        NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
     [self.tableView reloadData];
-
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+    
+    [self.tableView setTableFooterView:view];
+    
 }
 
 
@@ -77,6 +82,47 @@
         }
     
 }
+
+-(CGFloat) tableView:(UITableView *) tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 2) {
+        return 50;
+    } else {
+        return CGFLOAT_MIN;
+    }
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 2) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
+        return view;
+    } else {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        return view;
+    }
+}
+- (IBAction)onTapLogout:(id)sender {
+    [self logout];
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2) {
+        [self logout];
+    }
+}
+
+- (void) logout {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
+}
+
 
 
 #pragma mark - Navigation

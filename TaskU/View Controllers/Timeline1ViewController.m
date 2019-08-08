@@ -5,7 +5,7 @@
 //  Created by lucyyyw on 7/16/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
-
+#import <UIKit/UIKit.h>
 #import "Timeline1ViewController.h"
 #import "TaskCell.h"
 #import "Task.h"
@@ -45,6 +45,7 @@
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchBar.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
     self.searchBar.barTintColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
+    self.searchBar.tintColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
     //self.searchBar.layer.borderColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1].CGColor;
     //self.searchBar.layer.borderWidth = 1;
     
@@ -83,7 +84,7 @@
 //want to make it a public method in Task, so that it takes in a "category" and gets all tasks in this category
 - (void) getAllTasks {
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
-    [query orderByDescending:@"taskDate"];
+    [query orderByAscending:@"taskDate"];
     [query includeKey:@"requester"];
     [query includeKey:@"taskDate"];
     [query includeKey:@"taskName"];
@@ -98,6 +99,7 @@
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
 
+    [query whereKey:@"requester" notEqualTo:[PFUser currentUser]];
     [query whereKey:@"category" equalTo:(self.category)];
     [query whereKey:@"completionStatus" equalTo:@"created"];
     
@@ -118,6 +120,22 @@
             
         } else {
             NSLog(@"%@", error.localizedDescription);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network failure."
+                                                                           message:@"Please check your network connection."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 // handle response here.
+                                                             }];
+            // add the OK action to the alert controller
+            [alert addAction:okAction];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
         }
         
     }];
@@ -135,13 +153,49 @@
     Task *task = self.filteredData[indexPath.row];
     
     [cell showCell:cell withTask:task];
+    // animation 1
+    /*
+     CATransform3D rotationTransfrom = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0);
+     cell.layer.transform = rotationTransfrom;
+     cell.alpha = 0.5;
+     [UIView animateWithDuration:1.0
+     animations:^{
+     // animations go here
+     cell.layer.transform = CATransform3DIdentity;
+     cell.alpha = 1.0;
+     }];
+    */
+    //animation 2
+    /*
+     CATransform3D rotationTransfrom = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0);
+     cell.layer.transform = rotationTransfrom;
+     cell.alpha = 0;
+     [UIView animateWithDuration:1.5
+     animations:^{
+     // animations go here
+     cell.layer.transform = CATransform3DIdentity;
+     cell.alpha = 1.0;
+     }];
+     */
+     /*
+    // CGAffineTransform
+    CGAffineTransform transform = CGAffineTransformRotate(cell.transform, -1);
+    transform = CGAffineTransformTranslate(transform, 1, 1);
+    
+    cell.transform= transform;
+    */
+    
+    cell.alpha = 0;
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         // animations go here
+                         cell.layer.transform = CATransform3DIdentity;
+                         cell.alpha = 1.0;
+                     }];
+
     
     return cell;
 }
-
-
-
-
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.filteredData.count;
@@ -246,6 +300,21 @@
         }
     }];
     [task resume];
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Details" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Details"];
+    
+    DetailsViewController *detailsVC = (DetailsViewController *) navigationVC.topViewController;
+    Task *task = self.filteredData[indexPath.row];
+    detailsVC.task = task;
+    DetailsStatusViewController *statusVC = (DetailsStatusViewController *) detailsVC.viewControllers[0];
+    DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
+    statusVC.task = task;
+    infoVC.task = task;
+    statusVC.delegate = self;
+    [self presentViewController:navigationVC animated:YES completion:nil];
 }
 
 

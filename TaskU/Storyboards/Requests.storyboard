@@ -14,7 +14,7 @@
         <scene sceneID="Y5g-TR-c6g">
             <objects>
                 <navigationController storyboardIdentifier="RequestsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w4n-Gc-y8f" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uFE-W1-WZM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="uFE-W1-WZM">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -31,43 +31,68 @@
             <objects>
                 <viewController id="lyu-xd-TGn" customClass="RequestsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fry-Rh-H02">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMH-VX-zbf">
-                                <rect key="frame" x="0.0" y="132" width="414" height="689"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="681"/>
                                 <connections>
                                     <segue destination="QJp-KZ-a1Q" kind="embed" id="kKd-1m-ple"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kr-uu-nSK">
-                                <rect key="frame" x="0.0" y="132" width="414" height="689"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="681"/>
                                 <connections>
                                     <segue destination="Pil-79-1q5" kind="embed" id="6zN-z4-1JG"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-6m-Z5C">
-                                <rect key="frame" x="146.5" y="96" width="121" height="29"/>
-                                <segments>
-                                    <segment title="Current"/>
-                                    <segment title="History"/>
-                                </segments>
-                                <connections>
-                                    <action selector="showContainerView:" destination="lyu-xd-TGn" eventType="valueChanged" id="8Xv-87-y7q"/>
-                                </connections>
-                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLe-Vv-HEC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EJ-hF-RBn">
+                                        <rect key="frame" x="146.5" y="8" width="121" height="28"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-6m-Z5C">
+                                                <rect key="frame" x="0.0" y="0.0" width="121" height="29"/>
+                                                <segments>
+                                                    <segment title="Current"/>
+                                                    <segment title="History"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="showContainerView:" destination="lyu-xd-TGn" eventType="valueChanged" id="8Xv-87-y7q"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="hE4-6m-Z5C" firstAttribute="centerX" secondItem="0EJ-hF-RBn" secondAttribute="centerX" id="L6X-J7-jXz"/>
+                                            <constraint firstItem="hE4-6m-Z5C" firstAttribute="top" secondItem="0EJ-hF-RBn" secondAttribute="top" id="TWI-4F-U2W"/>
+                                            <constraint firstItem="hE4-6m-Z5C" firstAttribute="leading" secondItem="0EJ-hF-RBn" secondAttribute="leading" id="h6J-m1-4k5"/>
+                                            <constraint firstAttribute="trailing" secondItem="hE4-6m-Z5C" secondAttribute="trailing" id="lFT-tP-BN0"/>
+                                            <constraint firstAttribute="bottom" secondItem="hE4-6m-Z5C" secondAttribute="bottom" id="nqa-zE-D9s"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0EJ-hF-RBn" firstAttribute="top" secondItem="HLe-Vv-HEC" secondAttribute="top" constant="8" id="hnu-go-afo"/>
+                                    <constraint firstAttribute="bottom" secondItem="0EJ-hF-RBn" secondAttribute="bottom" constant="8" id="k8F-uN-GF7"/>
+                                    <constraint firstItem="0EJ-hF-RBn" firstAttribute="centerX" secondItem="HLe-Vv-HEC" secondAttribute="centerX" id="nMx-fi-Xfp"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8kr-uu-nSK" firstAttribute="bottom" secondItem="KvN-hy-vL0" secondAttribute="bottom" constant="8" id="0gH-Rz-603"/>
-                            <constraint firstItem="hE4-6m-Z5C" firstAttribute="top" secondItem="KvN-hy-vL0" secondAttribute="top" constant="8" id="708-ji-Dnz"/>
                             <constraint firstItem="8kr-uu-nSK" firstAttribute="trailing" secondItem="KvN-hy-vL0" secondAttribute="trailing" id="AC8-ax-RGw"/>
-                            <constraint firstItem="8kr-uu-nSK" firstAttribute="top" secondItem="hE4-6m-Z5C" secondAttribute="bottom" constant="8" id="Ama-gU-WAa"/>
-                            <constraint firstItem="hE4-6m-Z5C" firstAttribute="centerX" secondItem="Fry-Rh-H02" secondAttribute="centerX" id="PF4-M3-79v"/>
+                            <constraint firstItem="HLe-Vv-HEC" firstAttribute="top" secondItem="KvN-hy-vL0" secondAttribute="top" id="OKk-oL-jHf"/>
+                            <constraint firstItem="KvN-hy-vL0" firstAttribute="trailing" secondItem="HLe-Vv-HEC" secondAttribute="trailing" id="PnV-tg-TkK"/>
                             <constraint firstItem="uMH-VX-zbf" firstAttribute="trailing" secondItem="KvN-hy-vL0" secondAttribute="trailing" id="WTy-2O-YUD"/>
                             <constraint firstItem="8kr-uu-nSK" firstAttribute="leading" secondItem="KvN-hy-vL0" secondAttribute="leading" id="XM2-sA-bi0"/>
                             <constraint firstItem="uMH-VX-zbf" firstAttribute="leading" secondItem="KvN-hy-vL0" secondAttribute="leading" id="aM2-rW-ehf"/>
-                            <constraint firstItem="uMH-VX-zbf" firstAttribute="top" secondItem="hE4-6m-Z5C" secondAttribute="bottom" constant="8" id="gdu-sh-TOF"/>
+                            <constraint firstItem="uMH-VX-zbf" firstAttribute="top" secondItem="HLe-Vv-HEC" secondAttribute="bottom" constant="8" id="drq-Rg-Vwt"/>
+                            <constraint firstItem="HLe-Vv-HEC" firstAttribute="leading" secondItem="KvN-hy-vL0" secondAttribute="leading" id="hYT-lX-3zi"/>
+                            <constraint firstItem="8kr-uu-nSK" firstAttribute="top" secondItem="HLe-Vv-HEC" secondAttribute="bottom" constant="8" id="vN4-Y1-GF6"/>
                             <constraint firstItem="uMH-VX-zbf" firstAttribute="bottom" secondItem="KvN-hy-vL0" secondAttribute="bottom" constant="8" id="xYt-4f-OiU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KvN-hy-vL0"/>
@@ -78,6 +103,8 @@
                     <connections>
                         <outlet property="completedView" destination="uMH-VX-zbf" id="OV8-eh-R0r"/>
                         <outlet property="currentView" destination="8kr-uu-nSK" id="ar3-uZ-Wh0"/>
+                        <outlet property="helperView" destination="HLe-Vv-HEC" id="f7s-gc-EFb"/>
+                        <outlet property="segmentView" destination="0EJ-hF-RBn" id="ZA0-VP-OGo"/>
                         <outlet property="segmentctrl" destination="hE4-6m-Z5C" id="ksD-ci-P7r"/>
                     </connections>
                 </viewController>
@@ -90,11 +117,11 @@
             <objects>
                 <viewController id="Pil-79-1q5" customClass="CurrentRequestsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bdi-Ec-ftU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="689"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="681"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DKh-nW-njc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="611"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="317" id="Btm-q5-i6C" customClass="TaskCell">
@@ -138,11 +165,11 @@
             <objects>
                 <viewController id="QJp-KZ-a1Q" customClass="CompletedRequestsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jan-qv-Eh8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="689"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="681"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q6f-nw-gLp">
-                                <rect key="frame" x="0.0" y="44" width="414" height="611"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="331" id="55R-ff-iZG" customClass="TaskCell">

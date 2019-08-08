@@ -52,7 +52,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     [super viewDidLoad];
     PFUser *loggedInUser = [PFUser currentUser];
     // Do any additional setup after loading the view.
-    
+
     self.userCity = loggedInUser[@"city"]; //gets the city of current user
     self.userState = loggedInUser[@"state"]; //gets the state of current user
     if([self.userCity length] == 0 || [self.userState length] == 0){
@@ -64,9 +64,9 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     }
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"groceries", @"tutoring", @"Laundry", @"movingIn", @"specialServices",  nil ];
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
-    
-    
-    
+
+
+
     //Button configs
     self.plusButton.layer.shadowColor = [UIColor grayColor].CGColor;
     self.plusButton.layer.shadowOffset = CGSizeMake(10, 10);
@@ -75,7 +75,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     self.plusButton.layer.masksToBounds = NO;
     self.plusButton.layer.cornerRadius = 26;
     self.plusButton.backgroundColor = [UIColor colorNamed:@"blue"];
-    
+
     //Programatically sizing cols
     CGFloat spacing = 15;
     UICollectionViewFlowLayout *flow = (UICollectionViewFlowLayout*)self.collection_View.collectionViewLayout;
@@ -85,13 +85,13 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     CGFloat oneMore = itemsPerRow + 1;
     CGFloat width = screenRect.size.width - spacing * oneMore;
     CGFloat height = (width / itemsPerRow) ;
-    
+
     flow.itemSize = CGSizeMake(floor(height ), height);
     flow.minimumInteritemSpacing = spacing;
     flow.minimumLineSpacing = spacing;
-    
-    
-    
+
+
+
     //setting navigation bar
     UINavigationBar *bar = [self.navigationController navigationBar];
     [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
@@ -99,36 +99,36 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
     [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
     [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
-    
-    
-    
-    /*
-     //Navigation Controller Font
-     [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
-     */
+
+
+
+/*
+    //Navigation Controller Font
+    [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
+*/
 }
 
 
 //Implementation for Header of Collection View
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     UICollectionReusableView *reusableview = nil;
-    
+
     if (kind == UICollectionElementKindSectionHeader) {
-        HomeHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeHeaderView" forIndexPath:indexPath];
+       HomeHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeHeaderView" forIndexPath:indexPath];
         NSString *title = [[NSString alloc]initWithFormat:@"I can help with..."];
         headerView.title.text = title;
-        
+
         reusableview = headerView;
     }
-    
+
     if (kind == UICollectionElementKindSectionFooter) {
         UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
-        
+
         reusableview = footerview;
     }
-    
+
     return reusableview;
-    
+
 }
 
 #pragma mark - Profile Slide menu
@@ -144,73 +144,73 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
  self.leftViewToSlideIn.backgroundColor = [UIColor whiteColor];
  [self.view addSubview:self.leftViewToSlideIn];
  }
- 
+
  - (void) buttonClicked: (id)sender
  {
  [self animateView];
- 
+
  }
- 
+
  - (void) animateView{
  [UIView animateWithDuration: 0.75 animations:^{
  self.leftViewToSlideIn.frame = CGRectMake(0,CGRectGetWidth(self.view.frame)-330, 280 , CGRectGetWidth(self.view.frame));
  }];
  }
- 
- 
+
+
  - (void) didTapOnPageView:(UITapGestureRecognizer *)sender{
  // TODO: Call method on delegate
  [self animateViewBackwards];
- 
+
  }
- 
+
  - (void) animateViewBackwards{
  [UIView animateWithDuration: 0.75 animations:^{
  //self.leftViewToSlideIn.frame = CGRectMake(CGRectGetWidth(self.view.frame), 0, 0 , 400);
  self.leftViewToSlideIn.frame = CGRectMake(4000, 0, 0, 400);
  }];
  }
- 
+
  */
 
 #pragma mark - collectionview cell datasource and delegate functions implementation
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
+
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
+
     return self.categoriesImagesArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
+
     // Configure the cell
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:(100)];
-    
+
     //want to resize images later
     imageView.image = [UIImage imageNamed: [self.categoriesImagesArray objectAtIndex:indexPath.row]];
-    
+
     UILabel *label = (UILabel *)[cell viewWithTag:(101)];
     label.text = [self.categoriesTextArray objectAtIndex:indexPath.row];
-    
-    
+
+
     //Cell shadow
     cell.contentView.layer.cornerRadius = 2.0f;
     cell.contentView.layer.borderWidth = 1.0f;
     cell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
     cell.contentView.layer.masksToBounds = YES;
-    
+
     cell.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
     cell.layer.shadowRadius = 2.0f;
     cell.layer.shadowOpacity = 0.5f;
     cell.layer.masksToBounds = NO;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
-    
+
     CATransform3D rotationTransfrom = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0);
     cell.layer.transform = rotationTransfrom;
     cell.alpha = 0.5;
@@ -220,76 +220,75 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
                          cell.layer.transform = CATransform3DIdentity;
                          cell.alpha = 1.0;
                      }];
-    
+
     return cell;
 }
 
 #pragma mark - helps us know which collection view cell category was tapped and then navigates
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     /*
-     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
-     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
-     Timeline1ViewController *timelineVC = (Timeline1ViewController*)navigationVC.topViewController;
-     */
-    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
+    Timeline1ViewController *timelineVC = (Timeline1ViewController*)navigationVC.topViewController;
+    */
+
     NSString* chosenCategory = [self.categoriesTextArray objectAtIndex:indexPath.row];
     NSLog(@"%@ CollectionCell was chosen", chosenCategory);
     /*
-     timelineVC.category = chosenCategory;
-     [self presentViewController:navigationVC animated:YES completion:nil];
-     */
+    timelineVC.category = chosenCategory;
+    [self presentViewController:navigationVC animated:YES completion:nil];
+    */
     [self performSegueWithIdentifier:@"passing" sender:chosenCategory];
-    
+
 }
 
 
 
 #pragma mark - button that redirects us to the newTaskViewController
 - (IBAction)addTaskAction:(id)sender {
-    
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"newTask" bundle:nil];
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"newTaskViewController"];
-    
+
     [self presentViewController:navigationVC animated:YES completion:nil];
-    
-    
+
+
 }
 
 
 - (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue
 {
     UIViewController* sourceViewController = unwindSegue.sourceViewController;
-    
+
     if ([sourceViewController isKindOfClass:[ChooseLocationPopUpViewController class]])
     {
         NSLog(@"Coming from Choose Location PopUpViewController");
         ChooseLocationPopUpViewController *vc = (ChooseLocationPopUpViewController*) unwindSegue.sourceViewController;
         self.userLocation = vc.userLocation;
-        
+
         [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
-        
+
     }
-    
+
 }
 
 
-#pragma mark - Navigation
+ #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if ([[segue identifier] isEqualToString:@"passing"]) {
-        NSString* chosenCategory = (NSString*) sender;
-        HomeToTimelineViewController *vc = [segue destinationViewController];
-        vc.chosenCategory = chosenCategory;
-    }
-    
-    
-}
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+     if ([[segue identifier] isEqualToString:@"passing"]) {
+         NSString* chosenCategory = (NSString*) sender;
+         HomeToTimelineViewController *vc = [segue destinationViewController];
+         vc.chosenCategory = chosenCategory;
+     }
+
+
+ }
 
 
 @end
-

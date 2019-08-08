@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1F2DC222FB4D0300C80A82 /* LocationQueryBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F2DC122FB4D0300C80A82 /* LocationQueryBuilder.m */; };
 		0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7922E520EB0003FD6C /* LocationCell.m */; };
 		0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */; };
 		0E2A70F122F36F9E0006B879 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A70F022F36F9E0006B879 /* NavigationViewController.m */; };
@@ -25,6 +26,7 @@
 		0E8EFF5922DD523600B9FE89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF5822DD523600B9FE89 /* main.m */; };
 		0E8EFF6322DD523600B9FE89 /* TaskUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6222DD523600B9FE89 /* TaskUTests.m */; };
 		0E8EFF6E22DD523600B9FE89 /* TaskUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */; };
+		0EE7243A22F3AE820002C61D /* ChooseLocationPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE7243922F3AE820002C61D /* ChooseLocationPopUpViewController.m */; };
 		0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */; };
 		110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */; };
 		110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C127122DFF50B009DC7DB /* EditProfileViewController.m */; };
@@ -79,6 +81,9 @@
 		B902D1CD22E8140A0080B87E /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B902D1CC22E8140A0080B87E /* Message.m */; };
 		B935548522F0AA150088A419 /* TaskCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B935548422F0AA150088A419 /* TaskCellView.xib */; };
 		B935548722F13B930088A419 /* RequestCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B935548622F13B930088A419 /* RequestCellView.xib */; };
+		B93554C722F347620088A419 /* MissionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B93554C622F347620088A419 /* MissionCellView.xib */; };
+		B93554CA22F3BB960088A419 /* chatFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554C922F3BB960088A419 /* chatFirstViewController.m */; };
+		B93554CD22F7EBC40088A419 /* HomeToTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554CC22F7EBC40088A419 /* HomeToTimelineViewController.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +106,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E1F2DC022FB4D0300C80A82 /* LocationQueryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationQueryBuilder.h; sourceTree = "<group>"; };
+		0E1F2DC122FB4D0300C80A82 /* LocationQueryBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationQueryBuilder.m; sourceTree = "<group>"; };
 		0E1F7C7822E520EB0003FD6C /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		0E1F7C7922E520EB0003FD6C /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
@@ -135,6 +142,8 @@
 		0E8EFF6922DD523600B9FE89 /* TaskUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8EFF6D22DD523600B9FE89 /* TaskUUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskUUITests.m; sourceTree = "<group>"; };
 		0E8EFF6F22DD523600B9FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EE7243822F3AE820002C61D /* ChooseLocationPopUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseLocationPopUpViewController.h; sourceTree = "<group>"; };
+		0EE7243922F3AE820002C61D /* ChooseLocationPopUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseLocationPopUpViewController.m; sourceTree = "<group>"; };
 		0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
 		0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
 		110C126A22DFD693009DC7DB /* ProfileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
@@ -221,6 +230,11 @@
 		B902D1CC22E8140A0080B87E /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		B935548422F0AA150088A419 /* TaskCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCellView.xib; sourceTree = "<group>"; };
 		B935548622F13B930088A419 /* RequestCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestCellView.xib; sourceTree = "<group>"; };
+		B93554C622F347620088A419 /* MissionCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCellView.xib; sourceTree = "<group>"; };
+		B93554C822F3BB960088A419 /* chatFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chatFirstViewController.h; sourceTree = "<group>"; };
+		B93554C922F3BB960088A419 /* chatFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chatFirstViewController.m; sourceTree = "<group>"; };
+		B93554CB22F7EBC40088A419 /* HomeToTimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeToTimelineViewController.h; sourceTree = "<group>"; };
+		B93554CC22F7EBC40088A419 /* HomeToTimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeToTimelineViewController.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,10 +313,16 @@
 				B902D1B222E7BA090080B87E /* AllChatsViewController.h */,
 				B902D1B322E7BA090080B87E /* AllChatsViewController.m */,
 				B902D1B622E7BA380080B87E /* ChatMessagesViewController.m */,
+				B93554C822F3BB960088A419 /* chatFirstViewController.h */,
+				B93554C922F3BB960088A419 /* chatFirstViewController.m */,
 				0E2A70EF22F36F9E0006B879 /* NavigationViewController.h */,
 				0E2A70F022F36F9E0006B879 /* NavigationViewController.m */,
 				110D97D922FA0EEE0011B629 /* RefreshControlViewController.h */,
 				110D97DA22FA0EEE0011B629 /* RefreshControlViewController.m */,
+				B93554CB22F7EBC40088A419 /* HomeToTimelineViewController.h */,
+				B93554CC22F7EBC40088A419 /* HomeToTimelineViewController.m */,
+				0EE7243822F3AE820002C61D /* ChooseLocationPopUpViewController.h */,
+				0EE7243922F3AE820002C61D /* ChooseLocationPopUpViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -315,6 +335,9 @@
 				11D2F50C22DE5D520065D70D /* Task.m */,
 				0E8EFF4922DD523500B9FE89 /* AppDelegate.h */,
 				0E8EFF4A22DD523500B9FE89 /* AppDelegate.m */,
+				0E1F2DC022FB4D0300C80A82 /* LocationQueryBuilder.h */,
+				0E1F2DC122FB4D0300C80A82 /* LocationQueryBuilder.m */,
+				0E8EFF5222DD523600B9FE89 /* Assets.xcassets */,
 				0E8EFF5422DD523600B9FE89 /* LaunchScreen.storyboard */,
 				0E8EFF5822DD523600B9FE89 /* main.m */,
 				110C126A22DFD693009DC7DB /* ProfileTableViewCell.h */,
@@ -417,6 +440,7 @@
 				118987AE22EF967E007F75C5 /* HomeHeaderView.m */,
 				B935548422F0AA150088A419 /* TaskCellView.xib */,
 				B935548622F13B930088A419 /* RequestCellView.xib */,
+				B93554C622F347620088A419 /* MissionCellView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -568,7 +592,7 @@
 				TargetAttributes = {
 					0E8EFF4522DD523500B9FE89 = {
 						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1030;
 					};
 					0E8EFF5D22DD523600B9FE89 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -626,6 +650,7 @@
 				B902D1B122E7B8F50080B87E /* Message.storyboard in Resources */,
 				118F6A5822E93D8200299B25 /* FreigSanProBookIt.otf in Resources */,
 				118F6A4F22E93D8200299B25 /* FreigSanProMed.otf in Resources */,
+				B93554C722F347620088A419 /* MissionCellView.xib in Resources */,
 				118F6A5122E93D8200299B25 /* FreigSanProBlk.otf in Resources */,
 				118F6A5722E93D8200299B25 /* FreigSanProSem.otf in Resources */,
 				0E8EFF5122DD523500B9FE89 /* Main.storyboard in Resources */,
@@ -758,8 +783,10 @@
 				B902D14D22E01FFD0080B87E /* DetailsInfoViewController.m in Sources */,
 				110D97CF22F8CE300011B629 /* CustomAlert.m in Sources */,
 				1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */,
+				B93554CA22F3BB960088A419 /* chatFirstViewController.m in Sources */,
 				110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */,
 				118987AF22EF967E007F75C5 /* HomeHeaderView.m in Sources */,
+				B93554CD22F7EBC40088A419 /* HomeToTimelineViewController.m in Sources */,
 				1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */,
 				0EFEDA9A22DFE6550075A9DD /* HomeCollectionViewCell.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
@@ -768,6 +795,7 @@
 				B902D19E22E61DBC0080B87E /* CurrentRequestsViewController.m in Sources */,
 				B902D1CD22E8140A0080B87E /* Message.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
+				0E1F2DC222FB4D0300C80A82 /* LocationQueryBuilder.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
 				B902D1A122E61DE20080B87E /* CompletedRequestsViewController.m in Sources */,
@@ -780,6 +808,7 @@
 				B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */,
 				11D2F50D22DE5D520065D70D /* Task.m in Sources */,
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
+				0EE7243A22F3AE820002C61D /* ChooseLocationPopUpViewController.m in Sources */,
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
 				1177A79422EFB08B00D1561F /* UIButtonExtension.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
@@ -962,13 +991,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7FF4JGN27;
 				GCC_NO_COMMON_BLOCKS = NO;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pauanzaldo.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -984,13 +1015,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7FF4JGN27;
 				GCC_NO_COMMON_BLOCKS = NO;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pauanzaldo.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

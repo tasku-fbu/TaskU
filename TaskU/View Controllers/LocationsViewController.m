@@ -32,6 +32,7 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     self.tableView.rowHeight = 55;
+    self.searchBar.tintColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
 }
 
 /*
@@ -91,9 +92,13 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
 #pragma mark - Query Set up (searches for possible locations using fourSqaure map API)
 
 - (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
-    city = @"San Francisco";
+    
+    PFUser *loggedInUser = [PFUser currentUser];
+    NSString *state = loggedInUser[@"state"];
+    
     NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
-    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&near=%@,CA&query=%@&v=20141020", clientID, clientSecret, city, query];
+    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&near=%@,%@&query=%@&v=20141020", clientID, clientSecret, city, state, query];
+    //NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&intent=global&query=%@&v=20141020", clientID, clientSecret, query];
     queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *url = [NSURL URLWithString:[baseURLString stringByAppendingString:queryString]];
@@ -119,18 +124,18 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
 
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     PFUser *loggedInUser = [PFUser currentUser];
-    NSString *schoolLocation = loggedInUser[@"university"]; //gets the university of current user
-    
+    NSString *city = loggedInUser[@"city"]; //gets the city owaf current user
+
     NSString *newText = [searchBar.text stringByReplacingCharactersInRange:range withString:text];
-    [self fetchLocationsWithQuery:newText nearCity:schoolLocation];
+    [self fetchLocationsWithQuery:newText nearCity:city];
     return true;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     PFUser *loggedInUser = [PFUser currentUser];
-    NSString *schoolLocation = loggedInUser[@"university"]; //gets the university of current user
+    NSString *city = loggedInUser[@"city"]; //gets the city of current user
     
-    [self fetchLocationsWithQuery:searchBar.text nearCity:schoolLocation];
+    [self fetchLocationsWithQuery:searchBar.text nearCity:city];
 }
 
 @end

@@ -60,6 +60,9 @@
     newTask.taskDate = taskDate;
     newTask.taskDescription = taskDescription;
     newTask.completionStatus = @"created";
+    if (!category) {
+        category = @"Delivery";
+    }
     newTask.category = category;
     //convert Task time to NSNumber
     newTask.hours = [NSNumber numberWithInt:[hours intValue]];
