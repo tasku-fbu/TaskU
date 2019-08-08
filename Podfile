@@ -11,6 +11,7 @@ target 'TaskU' do
   pod 'Parse'
   pod 'AFNetworking'
   pod 'IQKeyboardManager'
+  pod 'VCTransitionsLibrary'
 
   target 'TaskUTests' do
     inherit! :search_paths

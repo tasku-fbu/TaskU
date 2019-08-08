@@ -11,8 +11,9 @@
 #import "MyMessageCell.h"
 #import "YourMessageCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "VCTransitionsLibrary/CEPanAnimationController.h"
 
-@interface ChatMessagesViewController () <UINavigationControllerDelegate>
+@interface ChatMessagesViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
 @property (weak, nonatomic) IBOutlet UITextView *sendTextView;
 @property (strong, nonatomic) NSMutableArray *messages;
@@ -24,7 +25,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 
-@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
+//@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
+
+@property (nonatomic, strong) CEPanAnimationController *animationController;
+
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @property (nonatomic, assign) int numData;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -36,10 +40,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.transitioningDelegate = self;
+    self.animationController = [[CEPanAnimationController alloc] init];
     self.navigationController.delegate = self;
     
-    // Do any additional setup after loading the view.
-    //self.navigationController.navigationBar.topItem.title = self.contact.username;
+    
     self.navigationItem.title = self.contact.username;
     UINavigationBar *bar = [self.navigationController navigationBar];
     [bar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
@@ -92,6 +97,22 @@
     
     
     
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return self.animationController;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:
+(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    
+    // reverse the animation for 'pop' transitions
+    _animationController.reverse = operation == UINavigationControllerOperationPop;
+    
+    return _animationController;
 }
 
 /*
@@ -387,11 +408,13 @@
     }
 }
 
+/*
 -(id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController*)navigationController
                           interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>)animationController
 {
     return self.interactionController;
 }
+ */
 
 /*
 - (void)viewWillDisappear:(BOOL)animated {

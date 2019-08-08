@@ -39,6 +39,7 @@ PODS:
   - Polyline (4.2.1)
   - Solar (2.1.0)
   - Turf (0.3.0)
+  - VCTransitionsLibrary (1.5.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - Mapbox-iOS-SDK (~> 5.2)
   - MapboxNavigation (~> 0.36.0)
   - Parse
+  - VCTransitionsLibrary
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -63,6 +65,7 @@ SPEC REPOS:
     - Polyline
     - Solar
     - Turf
+    - VCTransitionsLibrary
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -79,7 +82,8 @@ SPEC CHECKSUMS:
   Polyline: 0e9890790292741c8186201a536b6bb6a78d02dd
   Solar: 2dc6e7cc39186cb0c8228fa08df76fb50c7d8f24
   Turf: c6bdf62d6a70c647874f295dd1cf4eefc0c3e9e6
+  VCTransitionsLibrary: d61fd9b7b6721942f0d583bcc0e7f8c31ec9271b
 
-PODFILE CHECKSUM: a15fdd68e728d7fba33a969ee1777d89d60e59c4
+PODFILE CHECKSUM: 4a366afef5eee0c1106a055f8dcbfd7fba1e7925
 
 COCOAPODS: 1.7.2
