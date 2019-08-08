@@ -8,7 +8,6 @@
 
 #import "EditProfileViewController.h"
 //#import "MapViewController.h"
-#import "SWRevealViewController.h"
 #import <Parse/Parse.h>
 #import <Photos/Photos.h>
 #import "Task.h"
@@ -31,15 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Sets side navigation
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
-        [self.sideButton setTarget: self.revealViewController];
-        [self.sideButton setAction: @selector( revealToggle: )];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }
-
     //Load and display current user info
     PFUser *user = [PFUser currentUser];
     

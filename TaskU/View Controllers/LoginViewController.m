@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "CustomRefreshControl.h"
+
 #import "CustomAlert.h"
 
 #import "Parse/Parse.h"
@@ -29,6 +31,18 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 #pragma mark - Login Initial View
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //init a refresh control
+    
+    CGRect frame = CGRectMake(10, 10, 100, 100);
+    
+    CustomRefreshControl *refreshControl = [[CustomRefreshControl alloc] initWithFrame:frame];
+    
+    [self.view addSubview:refreshControl];
+    refreshControl.center = self.view.center;
+    
+    
+    
     // Do any additional setup after loading the view.
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;

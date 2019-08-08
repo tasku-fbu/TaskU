@@ -6,7 +6,6 @@
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
-#import "SWRevealViewController.h"
 #import "HomeViewController.h"
 #import "HomeHeaderView.h"
 #import "UIButtonExtension.h"
@@ -16,7 +15,6 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
-//#import "ProfileSlideView.h"
 
 #pragma mark - interface and properties
 @interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource, HomeCollectionCellDelegate>
@@ -85,13 +83,6 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     //Navigation Controller Font
     [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
 
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
-        [self.sideButton setTarget: self.revealViewController];
-        [self.sideButton setAction: @selector( revealToggle: )];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }
 }
 
 //Implementation for Header of Collection View

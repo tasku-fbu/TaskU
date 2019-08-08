@@ -2,7 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -11,7 +10,8 @@
 	<string>Shows your location on the map and helps improve OpenStreetMap.
 </string>
 	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoicmF5bW9uZDIwMCIsImEiOiJjanl0NmJ2N2cwMHZvM21vYWNteWZ4ZXN6In0.xMD7WxPhlrxuTWOSAIkiwQ</string>
+	<string>pk.eyJ1IjoicmF5cGFwZW5mdXNzIiwiYSI6ImNqeXJzcm1ldTA1NHIzYm1rb2liazBmMDMifQ.Dkg2vcHAyPjuLp9gVJOUWA
+</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -34,9 +34,6 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoicmF5cGFwZW5mdXNzIiwiYSI6ImNqeXJzcm1ldTA1NHIzYm1rb2liazBmMDMifQ.Dkg2vcHAyPjuLp9gVJOUWA
-</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -54,9 +51,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Need camera access to take pictures</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Shows your location on the map and helps improve OpenStreetMap.
-</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Need library access to upload images</string>
 	<key>UIAppFonts</key>
@@ -68,7 +62,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Testing</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
