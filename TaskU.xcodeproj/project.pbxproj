@@ -31,10 +31,15 @@
 		110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */; };
 		110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C127122DFF50B009DC7DB /* EditProfileViewController.m */; };
 		110C127422E0E6F1009DC7DB /* newProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110C127322E0E6F1009DC7DB /* newProfile.storyboard */; };
+		110D97CF22F8CE300011B629 /* CustomAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 110D97CE22F8CE300011B629 /* CustomAlert.m */; };
+		110D97D622F9F43F0011B629 /* CustomRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 110D97D522F9F43F0011B629 /* CustomRefreshControl.m */; };
+		110D97DB22FA0EEE0011B629 /* RefreshControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110D97DA22FA0EEE0011B629 /* RefreshControlViewController.m */; };
 		1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37122E118B1004A235C /* EditPasswordViewController.m */; };
 		1131D37322E12096004A235C /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
 		1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37522E129BC004A235C /* MainProfileViewController.m */; };
 		1131D37822E14738004A235C /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1131D37722E14738004A235C /* HomeView.storyboard */; };
+		113C148A22FB7749002FBFF5 /* CustomRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 1145229122FA5F7A00531117 /* CustomRefresh.m */; };
+		1166721022F8A323007387D6 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1166720F22F8A323007387D6 /* AlertView.xib */; };
 		1177A79422EFB08B00D1561F /* UIButtonExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 118987B222EFA0A7007F75C5 /* UIButtonExtension.m */; };
 		118987AF22EF967E007F75C5 /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 118987AE22EF967E007F75C5 /* HomeHeaderView.m */; };
 		118F6A3E22E93CF300299B25 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 118F6A3A22E93CF300299B25 /* Quicksand-Medium.ttf */; };
@@ -147,11 +152,20 @@
 		110C127022DFF50B009DC7DB /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		110C127122DFF50B009DC7DB /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		110C127322E0E6F1009DC7DB /* newProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = newProfile.storyboard; sourceTree = "<group>"; };
+		110D97CD22F8CE300011B629 /* CustomAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAlert.h; sourceTree = "<group>"; };
+		110D97CE22F8CE300011B629 /* CustomAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAlert.m; sourceTree = "<group>"; };
+		110D97D422F9F43F0011B629 /* CustomRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomRefreshControl.h; sourceTree = "<group>"; };
+		110D97D522F9F43F0011B629 /* CustomRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomRefreshControl.m; sourceTree = "<group>"; };
+		110D97D922FA0EEE0011B629 /* RefreshControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshControlViewController.h; sourceTree = "<group>"; };
+		110D97DA22FA0EEE0011B629 /* RefreshControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshControlViewController.m; sourceTree = "<group>"; };
 		1131D37022E118B1004A235C /* EditPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPasswordViewController.h; sourceTree = "<group>"; };
 		1131D37122E118B1004A235C /* EditPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPasswordViewController.m; sourceTree = "<group>"; };
 		1131D37422E129BC004A235C /* MainProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainProfileViewController.h; sourceTree = "<group>"; };
 		1131D37522E129BC004A235C /* MainProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainProfileViewController.m; sourceTree = "<group>"; };
 		1131D37722E14738004A235C /* HomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
+		1145229022FA5F7A00531117 /* CustomRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomRefresh.h; sourceTree = "<group>"; };
+		1145229122FA5F7A00531117 /* CustomRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomRefresh.m; sourceTree = "<group>"; };
+		1166720F22F8A323007387D6 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		118987AD22EF967E007F75C5 /* HomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeaderView.h; sourceTree = "<group>"; };
 		118987AE22EF967E007F75C5 /* HomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderView.m; sourceTree = "<group>"; };
 		118987B122EFA0A7007F75C5 /* UIButtonExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIButtonExtension.h; sourceTree = "<group>"; };
@@ -307,6 +321,8 @@
 				B93554C922F3BB960088A419 /* chatFirstViewController.m */,
 				0E2A70EF22F36F9E0006B879 /* NavigationViewController.h */,
 				0E2A70F022F36F9E0006B879 /* NavigationViewController.m */,
+				110D97D922FA0EEE0011B629 /* RefreshControlViewController.h */,
+				110D97DA22FA0EEE0011B629 /* RefreshControlViewController.m */,
 				B93554CB22F7EBC40088A419 /* HomeToTimelineViewController.h */,
 				B93554CC22F7EBC40088A419 /* HomeToTimelineViewController.m */,
 				0EE7243822F3AE820002C61D /* ChooseLocationPopUpViewController.h */,
@@ -329,16 +345,6 @@
 				0E8EFF5222DD523600B9FE89 /* Assets.xcassets */,
 				0E8EFF5422DD523600B9FE89 /* LaunchScreen.storyboard */,
 				0E8EFF5822DD523600B9FE89 /* main.m */,
-				110C126A22DFD693009DC7DB /* ProfileTableViewCell.h */,
-				110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */,
-				B902D14022DE9F110080B87E /* TaskCell.h */,
-				B902D14122DE9F110080B87E /* TaskCell.m */,
-				B902D1C222E812D90080B87E /* ContactCell.h */,
-				B902D1C322E812D90080B87E /* ContactCell.m */,
-				B902D1C522E8131F0080B87E /* YourMessageCell.h */,
-				B902D1C622E8131F0080B87E /* YourMessageCell.m */,
-				B902D1C822E8133F0080B87E /* MyMessageCell.h */,
-				B902D1C922E8133F0080B87E /* MyMessageCell.m */,
 				B902D1CB22E8140A0080B87E /* Message.h */,
 				B902D1CC22E8140A0080B87E /* Message.m */,
 			);
@@ -388,7 +394,6 @@
 			children = (
 				118987B022EFA085007F75C5 /* Extensions */,
 				118F6A3922E93CC800299B25 /* Fonts */,
-				B902D1B822E7EAEF0080B87E /* New Group */,
 				0E8EFF5722DD523600B9FE89 /* Info.plist */,
 				0E45A03922DD9182005D798F /* View Controllers */,
 				0E45A05122DE5E7A005D798F /* Storyboards */,
@@ -419,6 +424,18 @@
 		0EFEDA9722DFE6160075A9DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				110C126A22DFD693009DC7DB /* ProfileTableViewCell.h */,
+				110C126B22DFD693009DC7DB /* ProfileTableViewCell.m */,
+				B902D14022DE9F110080B87E /* TaskCell.h */,
+				B902D14122DE9F110080B87E /* TaskCell.m */,
+				B902D1C222E812D90080B87E /* ContactCell.h */,
+				B902D1C322E812D90080B87E /* ContactCell.m */,
+				B902D1C522E8131F0080B87E /* YourMessageCell.h */,
+				B902D1C622E8131F0080B87E /* YourMessageCell.m */,
+				B902D1C822E8133F0080B87E /* MyMessageCell.h */,
+				B902D1C922E8133F0080B87E /* MyMessageCell.m */,
+				110D97D322F9F4030011B629 /* CustomRefreshControl */,
+				110D97D222F9F3ED0011B629 /* CustomAlertView */,
 				0EFEDA9822DFE6550075A9DD /* HomeCollectionViewCell.h */,
 				0EFEDA9922DFE6550075A9DD /* HomeCollectionViewCell.m */,
 				0E1F7C7822E520EB0003FD6C /* LocationCell.h */,
@@ -430,6 +447,27 @@
 				B93554C622F347620088A419 /* MissionCellView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		110D97D222F9F3ED0011B629 /* CustomAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				110D97CD22F8CE300011B629 /* CustomAlert.h */,
+				110D97CE22F8CE300011B629 /* CustomAlert.m */,
+				1166720F22F8A323007387D6 /* AlertView.xib */,
+			);
+			path = CustomAlertView;
+			sourceTree = "<group>";
+		};
+		110D97D322F9F4030011B629 /* CustomRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				110D97D422F9F43F0011B629 /* CustomRefreshControl.h */,
+				110D97D522F9F43F0011B629 /* CustomRefreshControl.m */,
+				1145229022FA5F7A00531117 /* CustomRefresh.h */,
+				1145229122FA5F7A00531117 /* CustomRefresh.m */,
+			);
+			path = CustomRefreshControl;
 			sourceTree = "<group>";
 		};
 		118987B022EFA085007F75C5 /* Extensions */ = {
@@ -472,13 +510,6 @@
 				D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B902D1B822E7EAEF0080B87E /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		EC2E1F4B5115CDED7FCB96FC /* Pods */ = {
@@ -630,6 +661,7 @@
 				118F6A5622E93D8200299B25 /* FreigSanProBold.otf in Resources */,
 				0E45A05322DE5EDA005D798F /* Requests.storyboard in Resources */,
 				B902D14422DFC3380080B87E /* Details.storyboard in Resources */,
+				1166721022F8A323007387D6 /* AlertView.xib in Resources */,
 				11D2F51122DE8C130065D70D /* newTask.storyboard in Resources */,
 				118F6A5322E93D8200299B25 /* FreigSanProBlkIt.otf in Resources */,
 			);
@@ -753,6 +785,7 @@
 				0E2A70F122F36F9E0006B879 /* NavigationViewController.m in Sources */,
 				B902D1B722E7BA380080B87E /* ChatMessagesViewController.m in Sources */,
 				B902D14D22E01FFD0080B87E /* DetailsInfoViewController.m in Sources */,
+				110D97CF22F8CE300011B629 /* CustomAlert.m in Sources */,
 				1131D37622E129BC004A235C /* MainProfileViewController.m in Sources */,
 				B93554CA22F3BB960088A419 /* chatFirstViewController.m in Sources */,
 				110C126C22DFD693009DC7DB /* ProfileTableViewCell.m in Sources */,
@@ -763,6 +796,7 @@
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14722DFC5230080B87E /* DetailsViewController.m in Sources */,
 				B93554D922FCE3270088A419 /* InteractionViewController.m in Sources */,
+				113C148A22FB7749002FBFF5 /* CustomRefresh.m in Sources */,
 				B902D19E22E61DBC0080B87E /* CurrentRequestsViewController.m in Sources */,
 				B902D1CD22E8140A0080B87E /* Message.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
@@ -772,6 +806,7 @@
 				B902D1A122E61DE20080B87E /* CompletedRequestsViewController.m in Sources */,
 				0E45A03D22DD92B8005D798F /* SignUpViewController.m in Sources */,
 				B902D1C422E812D90080B87E /* ContactCell.m in Sources */,
+				110D97DB22FA0EEE0011B629 /* RefreshControlViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
 				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,
@@ -782,6 +817,7 @@
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
 				1177A79422EFB08B00D1561F /* UIButtonExtension.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
+				110D97D622F9F43F0011B629 /* CustomRefreshControl.m in Sources */,
 				0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -959,6 +995,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG765643Z3;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -981,6 +1018,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG765643Z3;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
