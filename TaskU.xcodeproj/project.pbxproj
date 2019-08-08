@@ -330,7 +330,6 @@
 		0E45A03A22DD91A4005D798F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0E8EFF5222DD523600B9FE89 /* Assets.xcassets */,
 				11D2F50B22DE5D520065D70D /* Task.h */,
 				11D2F50C22DE5D520065D70D /* Task.m */,
 				0E8EFF4922DD523500B9FE89 /* AppDelegate.h */,
@@ -991,13 +990,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7FF4JGN27;
 				GCC_NO_COMMON_BLOCKS = NO;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pauanzaldo.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1015,13 +1013,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7FF4JGN27;
 				GCC_NO_COMMON_BLOCKS = NO;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pauanzaldo.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
