@@ -16,6 +16,12 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 
+#import "HomeToTimelineViewController.h"
+
+#import "ChooseLocationPopUpViewController.h"
+
+//#import "ProfileSlideView.h"
+
 #pragma mark - interface and properties
 @interface HomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource, HomeCollectionCellDelegate>
 @property NSArray *categoriesImagesArray;
@@ -23,9 +29,11 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
 @property (weak, nonatomic) IBOutlet UIButton *LocationButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+//@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *mapButtonItem;
 
-@property NSString *userLocation;
+@property NSString *userCity;
+@property NSString *userState;
 
 //@property(nonatomic, strong) ProfileSlideView *leftViewToSlideIn;
 //@property (weak, nonatomic) IBOutlet UIButton *profileButton;
@@ -37,19 +45,27 @@
 @synthesize collection_View;
 static NSString * const reuseIdentifier = @"HomeCollectionViewCell_ID";
 static NSString * const messageSegueIdentifier = @"messageSegue";
+static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
 
 #pragma mark - Home initial view
 - (void)viewDidLoad {
     [super viewDidLoad];
     PFUser *loggedInUser = [PFUser currentUser];
     // Do any additional setup after loading the view.
-
-    self.userLocation = loggedInUser[@"university"]; //gets the university of current user
-    [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
-
+    
+    self.userCity = loggedInUser[@"city"]; //gets the city of current user
+    self.userState = loggedInUser[@"state"]; //gets the state of current user
+    if([self.userCity length] == 0 || [self.userState length] == 0){
+        [self.LocationButton setTitle:@"Current Location" forState:UIControlStateNormal];
+    }
+    else{
+        self.userLocation = [NSString stringWithFormat:@"%@, %@", self.userCity, self.userState];
+        [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
+    }
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"groceries", @"tutoring", @"Laundry", @"movingIn", @"specialServices",  nil ];
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
-
+    
+    
     
     //Button configs
     self.plusButton.layer.shadowColor = [UIColor grayColor].CGColor;
@@ -59,7 +75,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     self.plusButton.layer.masksToBounds = NO;
     self.plusButton.layer.cornerRadius = 26;
     self.plusButton.backgroundColor = [UIColor colorNamed:@"blue"];
- 
+    
     //Programatically sizing cols
     CGFloat spacing = 15;
     UICollectionViewFlowLayout *flow = (UICollectionViewFlowLayout*)self.collection_View.collectionViewLayout;
@@ -69,21 +85,29 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     CGFloat oneMore = itemsPerRow + 1;
     CGFloat width = screenRect.size.width - spacing * oneMore;
     CGFloat height = (width / itemsPerRow) ;
-
+    
     flow.itemSize = CGSizeMake(floor(height ), height);
     flow.minimumInteritemSpacing = spacing;
     flow.minimumLineSpacing = spacing;
-
-    //Navigation Controller Font
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:[UIColor blackColor],
-       NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
-
-
-    //Navigation Controller Font
-    [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
-
+    
+    
+    
+    //setting navigation bar
+    UINavigationBar *bar = [self.navigationController navigationBar];
+    [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
+    bar.translucent = false;
+    bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
+    
+    
+    
+    /*
+     //Navigation Controller Font
+     [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
+     */
 }
+
 
 //Implementation for Header of Collection View
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
@@ -107,18 +131,7 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     
 }
 
-#pragma mark - location button action
-//[self.view addSubview:self.profileButton]; //slideMenu
-// [self createInitialSlideView];
-
-
-
-#pragma mark - University location button action
--(IBAction)LocationButtonAction:(id)sender {
-    PFUser *loggedInUser = [PFUser currentUser];
-    self.userLocation = loggedInUser[@"university"]; //gets the university of current user
-    [self.LocationButton setTitle:self.userLocation forState:UIControlStateSelected];
-}
+#pragma mark - Profile Slide menu
 
 /*
  #pragma mark - collectionview cell datasource and delegate functions implementation
@@ -198,21 +211,40 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     cell.layer.masksToBounds = NO;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
     
+    CATransform3D rotationTransfrom = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0);
+    cell.layer.transform = rotationTransfrom;
+    cell.alpha = 0.5;
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         // animations go here
+                         cell.layer.transform = CATransform3DIdentity;
+                         cell.alpha = 1.0;
+                     }];
+    
     return cell;
 }
 
 #pragma mark - helps us know which collection view cell category was tapped and then navigates
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
-    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
-    Timeline1ViewController *timelineVC = (Timeline1ViewController*)navigationVC.topViewController;
+    /*
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Timeline1" bundle:nil];
+     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
+     Timeline1ViewController *timelineVC = (Timeline1ViewController*)navigationVC.topViewController;
+     */
     
     NSString* chosenCategory = [self.categoriesTextArray objectAtIndex:indexPath.row];
     NSLog(@"%@ CollectionCell was chosen", chosenCategory);
-    timelineVC.category = chosenCategory;
-    [self presentViewController:navigationVC animated:YES completion:nil];
+    /*
+     timelineVC.category = chosenCategory;
+     [self presentViewController:navigationVC animated:YES completion:nil];
+     */
+    [self performSegueWithIdentifier:@"passing" sender:chosenCategory];
+    
 }
+
+
 
 #pragma mark - button that redirects us to the newTaskViewController
 - (IBAction)addTaskAction:(id)sender {
@@ -225,76 +257,39 @@ static NSString * const messageSegueIdentifier = @"messageSegue";
     
 }
 
-#pragma mark - Logs user out
-- (IBAction)LogoutActionButton:(id)sender {
+
+- (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue
+{
+    UIViewController* sourceViewController = unwindSegue.sourceViewController;
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-    
-    
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
-    }];
+    if ([sourceViewController isKindOfClass:[ChooseLocationPopUpViewController class]])
+    {
+        NSLog(@"Coming from Choose Location PopUpViewController");
+        ChooseLocationPopUpViewController *vc = (ChooseLocationPopUpViewController*) unwindSegue.sourceViewController;
+        self.userLocation = vc.userLocation;
+        
+        [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
+        
+    }
     
 }
 
 
+#pragma mark - Navigation
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"passing"]) {
+        NSString* chosenCategory = (NSString*) sender;
+        HomeToTimelineViewController *vc = [segue destinationViewController];
+        vc.chosenCategory = chosenCategory;
+    }
+    
+    
+}
 
-//- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
-//    <#code#>
-//}
-//
-//- (void)traitCollectionDidChange:(nullable UITraitCollection *)previousTraitCollection {
-//    <#code#>
-//}
-//
-//- (void)preferredContentSizeDidChangeForChildContentContainer:(nonnull id<UIContentContainer>)container {
-//    <#code#>
-//}
-//
-//- (CGSize)sizeForChildContentContainer:(nonnull id<UIContentContainer>)container withParentContainerSize:(CGSize)parentSize {
-//    <#code#>
-//}
-//
-//- (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(nonnull id<UIContentContainer>)container {
-//    <#code#>
-//}
-//
-//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator {
-//    <#code#>
-//}
-//
-//- (void)willTransitionToTraitCollection:(nonnull UITraitCollection *)newCollection withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator {
-//    <#code#>
-//}
-//
-//- (void)didUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context withAnimationCoordinator:(nonnull UIFocusAnimationCoordinator *)coordinator {
-//    <#code#>
-//}
-//
-//- (void)setNeedsFocusUpdate {
-//    <#code#>
-//}
-//
-//- (BOOL)shouldUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context {
-//    <#code#>
-//}
-//
-//- (void)updateFocusIfNeeded {
-//    <#code#>
-//}
 
 @end
+
