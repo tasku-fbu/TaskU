@@ -106,7 +106,7 @@ NSMutableArray *annotationsArray;
     CATransition *transition = [CATransition animation];
     transition.duration = 1;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionFade;
+    transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromLeft;
     [self.view.window.layer addAnimation:transition forKey:nil];
     [self dismissViewControllerAnimated:NO completion:nil];

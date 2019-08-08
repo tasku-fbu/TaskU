@@ -12,7 +12,7 @@
 #import "YourMessageCell.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface ChatMessagesViewController ()
+@interface ChatMessagesViewController () <UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
 @property (weak, nonatomic) IBOutlet UITextView *sendTextView;
 @property (strong, nonatomic) NSMutableArray *messages;
@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 
-
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @property (nonatomic, assign) int numData;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -35,6 +35,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationController.delegate = self;
+    
     // Do any additional setup after loading the view.
     //self.navigationController.navigationBar.topItem.title = self.contact.username;
     self.navigationItem.title = self.contact.username;
@@ -86,7 +89,37 @@
     [self.activityIndicator startAnimating];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
     
+    
+    
+    
 }
+
+/*
+- (void) handlePan: (UIPanGestureRecognizer*) panGestureRecognizer {
+    CGPoint translation = [panGestureRecognizer translationInView:self.view];
+    if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        
+        if (translation.x <  CGRectGetMidX(self.view.bounds)) {
+            self.interactionController = [[UIPercentDrivenInteractiveTransition alloc] init];
+            [self.timer invalidate];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+        
+    } else if (panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        CGFloat d = (translation.x / CGRectGetWidth(self.view.bounds)) * 1;
+        [self.interactionController updateInteractiveTransition:d];
+    } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        if ([panGestureRecognizer velocityInView:self.view].x > 0) {
+            [self.interactionController finishInteractiveTransition];
+        } else {
+            [self.interactionController cancelInteractiveTransition];
+        }
+        self.interactionController = nil;
+    }
+}
+ */
+    
 /*
 - (void)textViewDidChange:(UITextView *)textView
 {
@@ -271,7 +304,7 @@
         cell.myTextLabel.text = message.text;
         cell.bubbleView.layer.cornerRadius = 12;
         cell.bubbleView.clipsToBounds = true;
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
         YourMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"yourMessage"];
@@ -284,7 +317,7 @@
         cell.yourTextLabel.text = message.text;
         cell.bubbleView.layer.cornerRadius = 12;
         cell.bubbleView.clipsToBounds = true;
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     
@@ -352,6 +385,12 @@
         NSIndexPath *ip = [NSIndexPath indexPathForRow:self.messages.count - 1 inSection:0];
         [self.messageTable scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
     }
+}
+
+-(id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController*)navigationController
+                          interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>)animationController
+{
+    return self.interactionController;
 }
 
 /*
