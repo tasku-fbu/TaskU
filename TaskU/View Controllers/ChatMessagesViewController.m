@@ -13,7 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "VCTransitionsLibrary/CEPanAnimationController.h"
 
-@interface ChatMessagesViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
+@interface ChatMessagesViewController () <UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
 @property (weak, nonatomic) IBOutlet UITextView *sendTextView;
 @property (strong, nonatomic) NSMutableArray *messages;
@@ -27,7 +27,7 @@
 
 //@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
 
-@property (nonatomic, strong) CEPanAnimationController *animationController;
+
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @property (nonatomic, assign) int numData;
@@ -40,9 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.transitioningDelegate = self;
-    self.animationController = [[CEPanAnimationController alloc] init];
-    self.navigationController.delegate = self;
+    
+    
     
     
     self.navigationItem.title = self.contact.username;
@@ -99,21 +98,6 @@
     
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    return self.animationController;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:
-(UINavigationController *)navigationController
-                                  animationControllerForOperation:(UINavigationControllerOperation)operation
-                                               fromViewController:(UIViewController *)fromVC
-                                                 toViewController:(UIViewController *)toVC {
-    
-    // reverse the animation for 'pop' transitions
-    _animationController.reverse = operation == UINavigationControllerOperationPop;
-    
-    return _animationController;
-}
 
 /*
 - (void) handlePan: (UIPanGestureRecognizer*) panGestureRecognizer {

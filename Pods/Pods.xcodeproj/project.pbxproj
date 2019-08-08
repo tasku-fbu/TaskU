@@ -632,7 +632,7 @@
 		B823002860074DE40049CD14FC226FC3 /* PFFieldOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F8E7F6BE597291D79BA0DA1E2A2773F /* PFFieldOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B91FAC89547F892D0AD65C431E313A1F /* PFCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FD2A9E496662FA4F202AAC68E998C6 /* PFCloud.m */; };
 		B920D2BC5DB1BDDE8D9F16BE8EDA2B0D /* CETurnAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 92BDE69B820F6DCA816DFADB17CCBF1D /* CETurnAnimationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B93554D222FCAD8F0088A419 /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDFA2DAE745FD57264494A16D3C14B6 /* MapboxMobileEvents.framework */; };
+		B93554D322FCD9210088A419 /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDFA2DAE745FD57264494A16D3C14B6 /* MapboxMobileEvents.framework */; };
 		B937E61D8DE4377F7B51FE5218D8862B /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54CEA640A92DAB5C853DCB5EF18CCE63 /* Polyline.framework */; };
 		B9B1377893DE52A4F899881D2842242F /* PFPurchase.h in Headers */ = {isa = PBXBuildFile; fileRef = C01F5FBF0966C7620E419784C9DB5FE9 /* PFPurchase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA92271D7030C29AC46CD9E74D115166 /* MMECertPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F48D0F3348F0FAC9FB23D54652E67BB /* MMECertPin.m */; };
@@ -2097,7 +2097,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B93554D222FCAD8F0088A419 /* MapboxMobileEvents.framework in Frameworks */,
+				B93554D322FCD9210088A419 /* MapboxMobileEvents.framework in Frameworks */,
 				EF2CFCD5D040816486312ABC13435035 /* Foundation.framework in Frameworks */,
 				C0FF2882BF1AA120E6BB796ED7F5CB57 /* MapboxCoreNavigation.framework in Frameworks */,
 				E19988D4262AB5FEE0BAC6184EFD9296 /* MapboxSpeech.framework in Frameworks */,

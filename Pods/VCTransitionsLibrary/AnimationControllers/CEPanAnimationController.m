@@ -12,7 +12,7 @@
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC fromView:(UIView *)fromView toView:(UIView *)toView {
     
-    self.duration = .3;
+    self.duration = .2;
     // Add the toView to the container
     UIView* containerView = [transitionContext containerView];
     [containerView addSubview:toView];

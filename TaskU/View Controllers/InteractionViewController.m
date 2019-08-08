@@ -1,17 +1,17 @@
 //
-//  SwipeINteractionController.m
-//  ILoveCatz
+//  InteractionViewController.m
+//  TaskU
 //
-//  Created by Colin Eberhardt on 22/08/2013.
-//  Copyright (c) 2013 com.razeware. All rights reserved.
+//  Created by lucyyyw on 8/8/19.
+//  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 
-#import "CEHorizontalSwipeInteractionController.h"
+#import "InteractionViewController.h"
 #import <objc/runtime.h>
 
 const NSString *kCEHorizontalSwipeGestureKey = @"kCEHorizontalSwipeGestureKey";
 
-@implementation CEHorizontalSwipeInteractionController {
+@implementation InteractionViewController {
     BOOL _shouldCompleteTransition;
     UIViewController *_viewController;
     CEInteractionOperation _operation;
@@ -84,7 +84,7 @@ const NSString *kCEHorizontalSwipeGestureKey = @"kCEHorizontalSwipeGestureKey";
                 if (!rightToLeftSwipe){
                     self.interactionInProgress = YES;
                     
-//                                                                                                                       [_viewController dismissViewControllerAnimated:YES completion:nil];
+                    [_viewController dismissViewControllerAnimated:YES completion:nil];
                 }
                 
             }

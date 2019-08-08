@@ -357,8 +357,9 @@
                     <navigationItem key="navigationItem" id="SJo-mp-r4t">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="EcN-pm-ZHI">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" id="mfe-2K-rgm">
-                                <rect key="frame" x="20" y="1" width="24" height="22"/>
+                                <rect key="frame" x="20" y="11" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
                                 <state key="normal" image="right-1"/>
                                 <connections>
                                     <action selector="onClickBack:" destination="OKb-9N-wT9" eventType="touchUpInside" id="ODf-QR-VPe"/>
