@@ -8,55 +8,36 @@
 
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
-//#import "HomeViewController.h"
-//#import "MFSideMenu.h"
-//#import "SideMenuViewController.h"
 #import "UIButtonExtension.h"
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-{
-    UINavigationController *navigation;
-  
-}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-   // [UIButtonExtension class];
-
+    [UIButtonExtension class];
+    
     //Initialize Parse in AppDelegate to point to our own server:
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         
         configuration.applicationId = @"tasku";
         configuration.server = @"http://task-u.herokuapp.com/parse";
+        
     }];
     
     [Parse initializeWithConfiguration:config];
-
-//    HomeViewController *viewCtrl=[[HomeViewController alloc]init];
-//    navigation = [[UINavigationController alloc]initWithRootViewController:viewCtrl];
-//
-//    navigation.navigationBar.barTintColor = [UIColor colorWithRed:72.0/255.0 green:144.0/255.0 blue:226.0/255.0 alpha:1];
-//    SideMenuViewController *leftMenuViewController = [[SideMenuViewController alloc] init];
-//
-//    MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController
-//                                                    containerWithCenterViewController:navigation
-//                                                    leftMenuViewController:leftMenuViewController
-//                                                    rightMenuViewController:nil];
-//
-//
-//    self.window.rootViewController=container;
     
-  #pragma mark - Persistent user login 
-     if (PFUser.currentUser) {
-     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Testing" bundle:nil];
-     
-     self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TestingViewController"];
-     }
-     
+    
+#pragma mark - Persistent user login
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
+    }
+    
     return YES;
     
 }
@@ -91,3 +72,4 @@
 
 
 @end
+

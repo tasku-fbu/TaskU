@@ -32,16 +32,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //init a refresh control
-    
-    CGRect frame = CGRectMake(10, 10, 100, 100);
-    
-    CustomRefreshControl *refreshControl = [[CustomRefreshControl alloc] initWithFrame:frame];
-    
-    [self.view addSubview:refreshControl];
-    refreshControl.center = self.view.center;
-    
-    
+  
     
     // Do any additional setup after loading the view.
     self.usernameTextField.delegate = self;
@@ -109,14 +100,7 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     [self performSegueWithIdentifier: signUpSegueIdentifier sender:nil]; //performs segue to show sign up page
 }
 - (IBAction)loginActionButton:(id)sender {
-    CustomAlert *alert = [[CustomAlert alloc] init];
-    
-    [alert showAlert:@"Failure" withMessage:@"Check your network connection and try again." withAlert:@"failure"];
-    
-   // CustomAlert *alert = [[CustomAlert alloc]init];
-   // [alert showAlert]
-    NSLog(@"Hello!");
-  //  [self loginUser]; //verifies the user through parse login authentication
+      [self loginUser]; //verifies the user through parse login authentication
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

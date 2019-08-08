@@ -23,7 +23,6 @@
         self.progressLayer = [[CAShapeLayer alloc] init];
         self.trackLayer = [[CAShapeLayer alloc] init];
         [self createCircularPath];
-        [self initCheckImage];
     }
     return self;
 }
@@ -35,9 +34,6 @@
         self.progressLayer = [[CAShapeLayer alloc] init];
         self.trackLayer = [[CAShapeLayer alloc] init];
         [self createCircularPath];
-        [self initCheckImage];
-
-        
     }
     return self;
 }
@@ -57,50 +53,55 @@
     //Track Layer
     self.trackLayer.path = circlePath.CGPath;
     self.trackLayer.fillColor = [[UIColor clearColor] CGColor];
-    self.trackLayer.strokeColor = [[UIColor lightGrayColor] CGColor];
+    self.trackLayer.strokeColor = [[UIColor whiteColor] CGColor];
     self.trackLayer.lineWidth = 10.0;
     self.trackLayer.strokeEnd = 1.0;  //Relative location at which to stop stroking the path
 
-
     //Add trackLayer as a sublayer
     [self.layer addSublayer:self.trackLayer];
-
     
     //Progress Layer
     self.progressLayer.path = circlePath.CGPath;
     self.progressLayer.fillColor = [[UIColor clearColor] CGColor];
-    self.progressLayer.strokeColor = [[UIColor blueColor] CGColor];
+    self.progressLayer.strokeColor = [[UIColor colorNamed:@"blue"] CGColor];
     self.progressLayer.lineWidth = 10.0;
     self.progressLayer.strokeEnd = 0.0;
 
-
     //Add progressLayer as a sublayer
     [self.layer addSublayer:self.progressLayer];
-    
-  
 }
 
-
+/*
+Creates animation for the stroke loading
+ params:
+ duration - the duration of the animation
+ value - what percentage of the arc is filled (we want 100%)
+*/
 -(void) setProgressWithAnimation:(NSTimeInterval)duration withValue:(CGFloat)value{
 
     CABasicAnimation *animation = [CABasicAnimation animation];
-    animation.repeatCount = FLT_MAX;
     animation.keyPath = @"strokeEnd";
     
     animation.duration = duration;
+    //Starting and ending point
     animation.fromValue = 0;
     animation.toValue =  [NSNumber numberWithDouble:value];
-
+    
     // Defines the pacing of the animation (ocurs evenly)
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     
-    self.progressLayer.strokeEnd = value;
+    //Repeats animation infinitely
+    animation.repeatDuration =  FLT_MAX;
     
     [self.progressLayer addAnimation:animation forKey:@"animateprogress"];
+    [self initCheckImage];
     
     
 }
-
+/*
+ Initializes our logo image to be in the center of circle
+ Image will be hidden until data has loaded
+ */
 -(void)initCheckImage{
     image = [UIImage imageNamed:@"check"];
     imageView = [[UIImageView alloc] initWithImage:image];
@@ -110,17 +111,9 @@
     [imageView setHidden:YES];
 }
 
+
 -(void)addCheckImage{
      [imageView setHidden:NO];
 }
-//
-//
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-//- (void)drawRect:(CGRect)rect {
-//    UIBezierPath
-//
-//}
-
 
 @end

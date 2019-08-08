@@ -30,9 +30,7 @@
 		110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C127122DFF50B009DC7DB /* EditProfileViewController.m */; };
 		110C127422E0E6F1009DC7DB /* newProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110C127322E0E6F1009DC7DB /* newProfile.storyboard */; };
 		110D97CF22F8CE300011B629 /* CustomAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 110D97CE22F8CE300011B629 /* CustomAlert.m */; };
-		110D97D122F9F3D00011B629 /* CustomRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110D97D022F9F3D00011B629 /* CustomRefreshControl.xib */; };
 		110D97D622F9F43F0011B629 /* CustomRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 110D97D522F9F43F0011B629 /* CustomRefreshControl.m */; };
-		110D97D822FA0EAD0011B629 /* Testing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110D97D722FA0EAD0011B629 /* Testing.storyboard */; };
 		110D97DB22FA0EEE0011B629 /* RefreshControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110D97DA22FA0EEE0011B629 /* RefreshControlViewController.m */; };
 		1131D37222E118B1004A235C /* EditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131D37122E118B1004A235C /* EditPasswordViewController.m */; };
 		1131D37322E12096004A235C /* newTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D2F51322DE8CC30065D70D /* newTaskViewController.m */; };
@@ -146,10 +144,8 @@
 		110C127322E0E6F1009DC7DB /* newProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = newProfile.storyboard; sourceTree = "<group>"; };
 		110D97CD22F8CE300011B629 /* CustomAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAlert.h; sourceTree = "<group>"; };
 		110D97CE22F8CE300011B629 /* CustomAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAlert.m; sourceTree = "<group>"; };
-		110D97D022F9F3D00011B629 /* CustomRefreshControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomRefreshControl.xib; sourceTree = "<group>"; };
 		110D97D422F9F43F0011B629 /* CustomRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomRefreshControl.h; sourceTree = "<group>"; };
 		110D97D522F9F43F0011B629 /* CustomRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomRefreshControl.m; sourceTree = "<group>"; };
-		110D97D722FA0EAD0011B629 /* Testing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Testing.storyboard; sourceTree = "<group>"; };
 		110D97D922FA0EEE0011B629 /* RefreshControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshControlViewController.h; sourceTree = "<group>"; };
 		110D97DA22FA0EEE0011B629 /* RefreshControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshControlViewController.m; sourceTree = "<group>"; };
 		1131D37022E118B1004A235C /* EditPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPasswordViewController.h; sourceTree = "<group>"; };
@@ -350,7 +346,6 @@
 				11D2F51022DE8C130065D70D /* newTask.storyboard */,
 				110C127322E0E6F1009DC7DB /* newProfile.storyboard */,
 				B902D1B022E7B8F50080B87E /* Message.storyboard */,
-				110D97D722FA0EAD0011B629 /* Testing.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -382,7 +377,6 @@
 			children = (
 				118987B022EFA085007F75C5 /* Extensions */,
 				118F6A3922E93CC800299B25 /* Fonts */,
-				B902D1B822E7EAEF0080B87E /* New Group */,
 				0E8EFF5722DD523600B9FE89 /* Info.plist */,
 				0E45A03922DD9182005D798F /* View Controllers */,
 				0E45A05122DE5E7A005D798F /* Storyboards */,
@@ -440,7 +434,6 @@
 		110D97D322F9F4030011B629 /* CustomRefreshControl */ = {
 			isa = PBXGroup;
 			children = (
-				110D97D022F9F3D00011B629 /* CustomRefreshControl.xib */,
 				110D97D422F9F43F0011B629 /* CustomRefreshControl.h */,
 				110D97D522F9F43F0011B629 /* CustomRefreshControl.m */,
 				1145229022FA5F7A00531117 /* CustomRefresh.h */,
@@ -489,13 +482,6 @@
 				D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B902D1B822E7EAEF0080B87E /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		EC2E1F4B5115CDED7FCB96FC /* Pods */ = {
@@ -622,11 +608,9 @@
 				1131D37822E14738004A235C /* HomeView.storyboard in Resources */,
 				B935548722F13B930088A419 /* RequestCellView.xib in Resources */,
 				110C127422E0E6F1009DC7DB /* newProfile.storyboard in Resources */,
-				110D97D122F9F3D00011B629 /* CustomRefreshControl.xib in Resources */,
 				0E8EFF5622DD523600B9FE89 /* LaunchScreen.storyboard in Resources */,
 				B935548522F0AA150088A419 /* TaskCellView.xib in Resources */,
 				118F6A4022E93CF300299B25 /* Quicksand-Light.ttf in Resources */,
-				110D97D822FA0EAD0011B629 /* Testing.storyboard in Resources */,
 				118F6A4E22E93D8200299B25 /* FreigSanProLigIt.otf in Resources */,
 				118F6A5922E93D8200299B25 /* FreigSanProSemIt.otf in Resources */,
 				118F6A4122E93CF300299B25 /* Quicksand-Bold.ttf in Resources */,
