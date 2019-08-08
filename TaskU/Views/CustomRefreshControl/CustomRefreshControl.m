@@ -9,7 +9,7 @@
 #import "CustomRefreshControl.h"
 #include <math.h>
 
-//This is the CustomRefreshControl you want to use
+//This is the CustomRefreshControl you want to use!
 @implementation CustomRefreshControl
 {
     UIImage *image;
