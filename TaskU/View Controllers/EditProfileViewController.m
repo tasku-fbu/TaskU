@@ -7,6 +7,7 @@
 //
 
 #import "EditProfileViewController.h"
+//#import "MapViewController.h"
 #import <Parse/Parse.h>
 #import <Photos/Photos.h>
 #import "Task.h"
@@ -28,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //Load and display current user info
     PFUser *user = [PFUser currentUser];
     

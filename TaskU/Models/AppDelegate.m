@@ -18,30 +18,30 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
     [UIButtonExtension class];
 
     //Initialize Parse in AppDelegate to point to our own server:
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-        
+
         configuration.applicationId = @"tasku";
         configuration.server = @"http://task-u.herokuapp.com/parse";
-        
+
     }];
-    
+
     [Parse initializeWithConfiguration:config];
 
     IQKeyboardManager.sharedManager.enable = true;
-    
-  #pragma mark - Persistent user login 
+
+  #pragma mark - Persistent user login
      if (PFUser.currentUser) {
      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-     
+
      self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
      }
-    
+
     return YES;
-    
+
 }
 
 
