@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) CustomAlert *customAlert;
 
 
 @end
@@ -31,8 +32,6 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 #pragma mark - Login Initial View
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-  
     
     // Do any additional setup after loading the view.
     self.usernameTextField.delegate = self;
@@ -61,30 +60,16 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
     
     
     if ([self isSignUpInfoComplete] == false){
-        
-        //show alert
-        
+    
     }
     else{
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
             if (error != nil) {
                 NSLog(@"User log in failed: %@", error.localizedDescription);
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Try Again"
-                                                                               message:@"Incorrect username or password"
-                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
-                
-                // create an OK action
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                   style:UIAlertActionStyleDefault
-                                                                 handler:^(UIAlertAction * _Nonnull action) {
-                                                                     // handle response here.
-                                                                 }];
-                // add the OK action to the alert controller
-                [alert addAction:okAction];
-                
-                [self presentViewController:alert animated:YES completion:^{
-                    // optional code for what happens after the alert controller has finished presenting
-                }];
+                self.customAlert = [[CustomAlert alloc] init];
+                [self.customAlert showAlert:@"Try again" withMessage:@"Incorrect username or password" withAlert:@"failure"];
+                self.customAlert.buttonDelegate = self;
+
             } else {
                 [self performSegueWithIdentifier: loginSegueIdentifier sender:nil]; //performs segue to login if user is valid
                 NSLog(@"User logged in successfully");
@@ -116,47 +101,18 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 - (bool) isSignUpInfoComplete{
     
     if ([self.usernameTextField.text isEqual:@""]){
-        
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Username"
-                                                                       message:@"Please type valid username."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid Username" withMessage:@"Please type valid username." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
         
     }
     
     else if ([self.passwordTextField.text isEqual:@""]){
         
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Password"
-                                                                       message:@"Password cannot be empty."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid Password" withMessage:@"Password cannot be empty." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
         
     }
@@ -165,5 +121,24 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 }
 
 
+
+
+- (void)removeAllSubviewsFromUIView:(UIView *)parentView
+{
+    for (id child in [parentView subviews])
+    {
+        if ([child isMemberOfClass:[CustomAlert class]])
+        {
+            [child removeFromSuperview];
+        }
+    }
+}
+
+- (void)didTapButton {
+    [self.customAlert.alertView removeFromSuperview];
+    [self.customAlert.parentView removeFromSuperview];
+ //   self.customAlert.buttonDelegate = nil;
+
+}
 
 @end

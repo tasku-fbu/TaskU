@@ -10,7 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+@protocol ButtonTapDelegate
+-(void)didTapButton;
+@end
+
 @interface CustomAlert : UIView
+@property(weak,nonatomic) id<ButtonTapDelegate> buttonDelegate;
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
@@ -20,5 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) showAlert: (NSString*)title withMessage: (NSString*)message withAlert: (NSString*)alertType; 
 @end
+
+
 
 NS_ASSUME_NONNULL_END
