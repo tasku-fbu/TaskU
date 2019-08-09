@@ -1020,6 +1020,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamRYP.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rhaypapenfuzz.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1043,6 +1044,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamRYP.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rhaypapenfuzz.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
