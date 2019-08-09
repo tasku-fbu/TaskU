@@ -66,7 +66,7 @@
                                     <constraint firstAttribute="width" constant="15" id="eO8-dx-Ujf"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="show status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf0-zF-Fhn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="show status" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf0-zF-Fhn">
                                 <rect key="frame" x="426" y="10" width="82" height="19"/>
                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -87,6 +87,7 @@
                             <constraint firstItem="QzD-Oj-rCH" firstAttribute="leading" secondItem="jLO-th-pw1" secondAttribute="trailing" constant="5" id="8gd-QH-cQP"/>
                             <constraint firstItem="QzD-Oj-rCH" firstAttribute="centerY" secondItem="jLO-th-pw1" secondAttribute="centerY" id="CvA-NL-YGx"/>
                             <constraint firstItem="Lf0-zF-Fhn" firstAttribute="top" secondItem="5B8-eU-33q" secondAttribute="top" constant="10" id="DAi-7z-YsQ"/>
+                            <constraint firstItem="fLM-eB-aun" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lf0-zF-Fhn" secondAttribute="bottom" constant="8" id="DSV-xO-mxq"/>
                             <constraint firstItem="jLO-th-pw1" firstAttribute="top" secondItem="VtW-d3-FKu" secondAttribute="bottom" constant="5" id="EAY-GB-cBF"/>
                             <constraint firstItem="pzn-un-cQU" firstAttribute="leading" secondItem="5B8-eU-33q" secondAttribute="leading" constant="5" id="GwF-Xj-vR6"/>
                             <constraint firstItem="pzn-un-cQU" firstAttribute="top" secondItem="5B8-eU-33q" secondAttribute="top" constant="5" id="P4C-Vx-sy9"/>

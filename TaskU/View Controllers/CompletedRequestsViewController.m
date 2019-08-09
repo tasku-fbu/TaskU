@@ -11,18 +11,27 @@
 #import "DetailsInfoViewController.h"
 #import "DetailsViewController.h"
 #import "DetailsStatusViewController.h"
+#import "PanNormalAnimator.h"
+#import "VCTransitionsLibrary/CEBaseInteractionController.h"
+#import "PanTabAnimator.h"
 
-@interface CompletedRequestsViewController ()
+@interface CompletedRequestsViewController () <UIViewControllerTransitioningDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *completedTable;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) NSMutableArray *completedTasks;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) PanNormalAnimator *animationController;
+@property (strong, nonatomic) PanTabAnimator * tabAnimator;
 @end
 
 @implementation CompletedRequestsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.animationController = [[PanNormalAnimator alloc] init];
+    self.tabAnimator = [[PanTabAnimator alloc] init];
+    
     // Do any additional setup after loading the view.
     self.completedTable.delegate = self;
     self.completedTable.dataSource = self;
@@ -43,6 +52,26 @@
     
 }
 
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.animationController.reverse = YES;
+    return self.animationController;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>) animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    
+    self.animationController.reverse = NO;
+    return self.animationController;
+}
+- (id <UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController
+            animationControllerForTransitionFromViewController:(UIViewController *)fromVC
+                                              toViewController:(UIViewController *)toVC {
+    
+    NSUInteger fromVCIndex = [tabBarController.viewControllers indexOfObject:fromVC];
+    NSUInteger toVCIndex = [tabBarController.viewControllers indexOfObject:toVC];
+    
+    self.tabAnimator.reverse = fromVCIndex < toVCIndex;
+    return self.tabAnimator;
+}
 
 - (void) getCompletedTasks{
     PFUser *user = [PFUser currentUser];
@@ -156,7 +185,9 @@
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = cell.task;
     infoVC.task = cell.task;
-    
+    navigationVC.modalTransitionStyle = UIModalPresentationCustom;
+    navigationVC.transitioningDelegate = self;
+    detailsVC.delegate = self;
     [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
@@ -172,6 +203,9 @@
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = task;
     infoVC.task = task;
+    navigationVC.modalTransitionStyle = UIModalPresentationCustom;
+    navigationVC.transitioningDelegate = self;
+    detailsVC.delegate = self;
     [self presentViewController:navigationVC animated:YES completion:nil];
 }
 

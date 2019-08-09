@@ -134,9 +134,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5aq-BI-Vgg">
-                                <rect key="frame" x="189" y="320" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5aq-BI-Vgg">
+                                <rect key="frame" x="188.5" y="322" width="37" height="37"/>
                                 <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -144,7 +143,9 @@
                         <constraints>
                             <constraint firstItem="DKh-nW-njc" firstAttribute="bottom" secondItem="aKp-wE-WEC" secondAttribute="bottom" id="082-kT-2FO"/>
                             <constraint firstItem="DKh-nW-njc" firstAttribute="leading" secondItem="aKp-wE-WEC" secondAttribute="leading" id="5l3-80-uvR"/>
+                            <constraint firstItem="5aq-BI-Vgg" firstAttribute="centerX" secondItem="bdi-Ec-ftU" secondAttribute="centerX" id="62R-lt-oeR"/>
                             <constraint firstItem="DKh-nW-njc" firstAttribute="trailing" secondItem="aKp-wE-WEC" secondAttribute="trailing" id="UMB-Gk-wlf"/>
+                            <constraint firstItem="5aq-BI-Vgg" firstAttribute="centerY" secondItem="bdi-Ec-ftU" secondAttribute="centerY" id="a4n-ac-Mjw"/>
                             <constraint firstItem="DKh-nW-njc" firstAttribute="top" secondItem="aKp-wE-WEC" secondAttribute="top" id="b5a-bC-CLX"/>
                             <constraint firstItem="DKh-nW-njc" firstAttribute="height" secondItem="aKp-wE-WEC" secondAttribute="height" id="jnP-s5-yhJ"/>
                             <constraint firstItem="DKh-nW-njc" firstAttribute="width" secondItem="aKp-wE-WEC" secondAttribute="width" id="xTD-cp-qoT"/>
@@ -158,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEs-Nr-tpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1101.449275362319" y="457.70089285714283"/>
+            <point key="canvasLocation" x="-1057" y="632"/>
         </scene>
         <!--Completed Requests View Controller-->
         <scene sceneID="btA-di-4bb">
@@ -182,9 +183,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A3e-xo-otK">
-                                <rect key="frame" x="189" y="320" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A3e-xo-otK">
+                                <rect key="frame" x="188.5" y="322" width="37" height="37"/>
                                 <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -193,8 +193,10 @@
                             <constraint firstItem="q6f-nw-gLp" firstAttribute="leading" secondItem="2QD-3G-aaL" secondAttribute="leading" id="4UO-2h-GWw"/>
                             <constraint firstItem="q6f-nw-gLp" firstAttribute="width" secondItem="2QD-3G-aaL" secondAttribute="width" id="Afy-de-bVj"/>
                             <constraint firstItem="q6f-nw-gLp" firstAttribute="height" secondItem="2QD-3G-aaL" secondAttribute="height" id="N3Z-0z-Thl"/>
+                            <constraint firstItem="A3e-xo-otK" firstAttribute="centerX" secondItem="jan-qv-Eh8" secondAttribute="centerX" id="hX9-b4-oVC"/>
                             <constraint firstItem="q6f-nw-gLp" firstAttribute="bottom" secondItem="2QD-3G-aaL" secondAttribute="bottom" id="iLt-zw-86v"/>
                             <constraint firstItem="q6f-nw-gLp" firstAttribute="trailing" secondItem="2QD-3G-aaL" secondAttribute="trailing" id="k67-QJ-dzW"/>
+                            <constraint firstItem="A3e-xo-otK" firstAttribute="centerY" secondItem="jan-qv-Eh8" secondAttribute="centerY" id="oKt-xi-e3e"/>
                             <constraint firstItem="q6f-nw-gLp" firstAttribute="top" secondItem="2QD-3G-aaL" secondAttribute="top" id="t6c-NC-mKn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2QD-3G-aaL"/>
@@ -206,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HoY-I0-iFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="115.94202898550725" y="433.59375"/>
+            <point key="canvasLocation" x="110" y="632"/>
         </scene>
     </scenes>
     <resources>

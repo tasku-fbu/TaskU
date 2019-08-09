@@ -8,6 +8,8 @@
 
 #import "DetailsInfoViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "PanTabAnimator.h"
+#import "VCTransitionsLibrary/CEHorizontalSwipeInteractionController.h"
 
 @interface DetailsInfoViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableVIew;
@@ -47,6 +49,7 @@
 
 @implementation DetailsInfoViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -60,6 +63,23 @@
     [self showingTaskDetails];
     [self showRequesterInfo];
     [self showMissionerInfo];
+    
+    
+     UISwipeGestureRecognizer *toLeftSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
+     toLeftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+     [self.view addGestureRecognizer:toLeftSwipeRecognizer];
+     
+}
+
+- (void) slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFromLeft;
+    [self.view.window.layer addAnimation:transition forKey:nil];
+    self.tabBarController.selectedIndex -= 1;
     
     
 }
