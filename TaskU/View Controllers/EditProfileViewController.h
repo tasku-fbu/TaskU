@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 @interface EditProfileViewController : UITableViewController 
 @property (weak, nonatomic) id <editedProfile> delegate;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideButton;
+
 @end
 
 NS_ASSUME_NONNULL_END

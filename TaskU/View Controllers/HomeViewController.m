@@ -65,8 +65,8 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     self.categoriesImagesArray = [[NSArray alloc] initWithObjects:@"get_coffee",@"groceries", @"tutoring", @"Laundry", @"movingIn", @"specialServices",  nil ];
     self.categoriesTextArray = [[NSArray alloc] initWithObjects:@"Delivery",@"Groceries", @"Tutoring", @"Laundry & Cleaning", @"Volunteering",  @"Other", nil ];
 
-    
-    
+
+
     //Button configs
     self.plusButton.layer.shadowColor = [UIColor grayColor].CGColor;
     self.plusButton.layer.shadowOffset = CGSizeMake(10, 10);
@@ -75,7 +75,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     self.plusButton.layer.masksToBounds = NO;
     self.plusButton.layer.cornerRadius = 26;
     self.plusButton.backgroundColor = [UIColor colorNamed:@"blue"];
- 
+
     //Programatically sizing cols
     CGFloat spacing = 15;
     UICollectionViewFlowLayout *flow = (UICollectionViewFlowLayout*)self.collection_View.collectionViewLayout;
@@ -90,8 +90,8 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     flow.minimumInteritemSpacing = spacing;
     flow.minimumLineSpacing = spacing;
 
-    
-    
+
+
     //setting navigation bar
     UINavigationBar *bar = [self.navigationController navigationBar];
     [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
@@ -99,9 +99,9 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
     [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
     [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
-    
-    
-    
+
+
+
 /*
     //Navigation Controller Font
     [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
@@ -112,23 +112,23 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
 //Implementation for Header of Collection View
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     UICollectionReusableView *reusableview = nil;
-    
+
     if (kind == UICollectionElementKindSectionHeader) {
        HomeHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeHeaderView" forIndexPath:indexPath];
         NSString *title = [[NSString alloc]initWithFormat:@"I can help with..."];
         headerView.title.text = title;
-        
+
         reusableview = headerView;
     }
-    
+
     if (kind == UICollectionElementKindSectionFooter) {
         UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
-        
+
         reusableview = footerview;
     }
-    
+
     return reusableview;
-    
+
 }
 
 #pragma mark - Profile Slide menu
@@ -210,7 +210,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     cell.layer.shadowOpacity = 0.5f;
     cell.layer.masksToBounds = NO;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
-    
+  
     return cell;
 }
 
@@ -223,7 +223,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"Timeline1"];
     Timeline1ViewController *timelineVC = (Timeline1ViewController*)navigationVC.topViewController;
     */
-     
+
     NSString* chosenCategory = [self.categoriesTextArray objectAtIndex:indexPath.row];
     NSLog(@"%@ CollectionCell was chosen", chosenCategory);
     /*
@@ -231,7 +231,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     [self presentViewController:navigationVC animated:YES completion:nil];
     */
     [self performSegueWithIdentifier:@"passing" sender:chosenCategory];
-    
+
 }
 
 
@@ -251,17 +251,17 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
 - (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue
 {
     UIViewController* sourceViewController = unwindSegue.sourceViewController;
-    
+
     if ([sourceViewController isKindOfClass:[ChooseLocationPopUpViewController class]])
     {
         NSLog(@"Coming from Choose Location PopUpViewController");
         ChooseLocationPopUpViewController *vc = (ChooseLocationPopUpViewController*) unwindSegue.sourceViewController;
         self.userLocation = vc.userLocation;
-        
+
         [self.LocationButton setTitle:self.userLocation forState:UIControlStateNormal];
 
     }
-    
+
 }
 
 
@@ -276,8 +276,8 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
          HomeToTimelineViewController *vc = [segue destinationViewController];
          vc.chosenCategory = chosenCategory;
      }
-     
-     
+
+
  }
 
 
