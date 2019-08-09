@@ -13,13 +13,15 @@
 #import "DetailsInfoViewController.h"
 #import "PanNormalAnimator.h"
 #import "VCTransitionsLibrary/CEBaseInteractionController.h"
+#import "PanTabAnimator.h"
 
-@interface CurrentMissionsViewController () <UIViewControllerTransitioningDelegate>
+@interface CurrentMissionsViewController () <UIViewControllerTransitioningDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *currentTable;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSMutableArray *currentTasks;
 @property (nonatomic, strong) PanNormalAnimator *animationController;
+@property (strong, nonatomic) PanTabAnimator * tabAnimator;
 @end
 
 @implementation CurrentMissionsViewController
@@ -28,7 +30,7 @@
     [super viewDidLoad];
     
     self.animationController = [[PanNormalAnimator alloc] init];
-    self.animationController.duration = 0.3;
+    self.tabAnimator = [[PanTabAnimator alloc] init];
     // Do any additional setup after loading the view.
     self.currentTable.delegate = self;
     self.currentTable.dataSource = self;
@@ -57,7 +59,16 @@
     self.animationController.reverse = NO;
     return self.animationController;
 }
-
+- (id <UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController
+            animationControllerForTransitionFromViewController:(UIViewController *)fromVC
+                                              toViewController:(UIViewController *)toVC {
+    
+    NSUInteger fromVCIndex = [tabBarController.viewControllers indexOfObject:fromVC];
+    NSUInteger toVCIndex = [tabBarController.viewControllers indexOfObject:toVC];
+    
+    self.tabAnimator.reverse = fromVCIndex < toVCIndex;
+    return self.tabAnimator;
+}
 
 - (void) getCurrentTasks{
     PFUser *user = [PFUser currentUser];
@@ -165,6 +176,7 @@
     infoVC.task = cell.task;
     navigationVC.modalTransitionStyle = UIModalPresentationCustom;
     navigationVC.transitioningDelegate = self;
+    detailsVC.delegate = self;
     [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
@@ -187,6 +199,7 @@
     infoVC.task = task;
     navigationVC.modalTransitionStyle = UIModalPresentationCustom;
     navigationVC.transitioningDelegate = self;
+    detailsVC.delegate = self;
     [self presentViewController:navigationVC animated:YES completion:nil];
 }
 

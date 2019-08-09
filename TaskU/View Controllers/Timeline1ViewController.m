@@ -19,9 +19,10 @@
 #import "PanNormalAnimator.h"
 #import "VCTransitionsLibrary/CEBaseInteractionController.h"
 #import "InteractionViewController.h"
+#import "PanTabAnimator.h"
 
 #pragma mark - interface and properties
-@interface Timeline1ViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
+@interface Timeline1ViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *tasks;
 @property (strong, nonatomic) NSArray *filteredData;
@@ -32,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic, strong) PanNormalAnimator *animationController;
+
+@property (strong, nonatomic) PanTabAnimator * tabAnimator;
 //@property (nonatomic, strong) InteractionViewController *interactionController;
 @end
 
@@ -41,6 +44,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.animationController = [[PanNormalAnimator alloc] init];
+    self.tabAnimator = [[PanTabAnimator alloc] init];
+    
     
     //self.interactionController = [[InteractionViewController alloc] init];
     
@@ -104,6 +109,16 @@
     return self.animationController;
 }
 
+- (id <UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController
+            animationControllerForTransitionFromViewController:(UIViewController *)fromVC
+                                              toViewController:(UIViewController *)toVC {
+    
+    NSUInteger fromVCIndex = [tabBarController.viewControllers indexOfObject:fromVC];
+    NSUInteger toVCIndex = [tabBarController.viewControllers indexOfObject:toVC];
+    
+    self.tabAnimator.reverse = fromVCIndex < toVCIndex;
+    return self.tabAnimator;
+}
 
 
 //want to make it a public method in Task, so that it takes in a "category" and gets all tasks in this category
@@ -299,7 +314,7 @@
     //[self.delegate locationsViewController:self didPickLocationWithLatitude:(lat) longitude:(lng)];
     navigationVC.modalTransitionStyle = UIModalPresentationCustom;
     navigationVC.transitioningDelegate = self;
-    
+    detailsVC.delegate = self;
     [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
@@ -344,7 +359,7 @@
     statusVC.delegate = self;
     navigationVC.modalTransitionStyle = UIModalPresentationCustom;
     navigationVC.transitioningDelegate = self;
-    
+    detailsVC.delegate = self;
     [self presentViewController:navigationVC animated:YES completion:nil];
 }
 

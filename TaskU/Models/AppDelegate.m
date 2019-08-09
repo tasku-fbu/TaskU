@@ -14,7 +14,7 @@
 //#import "VCTransitionsLibrary/CEPanAnimationController.h"
 #import "PanTabAnimator.h"
 
-@interface AppDelegate () <UITabBarControllerDelegate>
+@interface AppDelegate () 
 @property (strong, nonatomic) PanTabAnimator * animator;
 
 @end
@@ -45,7 +45,7 @@
      //self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
          self.animator = [[PanTabAnimator alloc] init];
     MainTabViewController *vc = (MainTabViewController*) [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
-    //vc.delegate = self;
+    
          self.window.rootViewController = vc;
     
      }
@@ -54,16 +54,7 @@
 
 }
 
-- (id <UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController
-            animationControllerForTransitionFromViewController:(UIViewController *)fromVC
-                                              toViewController:(UIViewController *)toVC {
-    
-    NSUInteger fromVCIndex = [tabBarController.viewControllers indexOfObject:fromVC];
-    NSUInteger toVCIndex = [tabBarController.viewControllers indexOfObject:toVC];
-    
-    self.animator.reverse = fromVCIndex < toVCIndex;
-    return self.animator;
-}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

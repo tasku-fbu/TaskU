@@ -17,7 +17,7 @@
 
 
 #pragma mark - interface and properties
-@interface DetailsStatusViewController ()
+@interface DetailsStatusViewController () 
 
 //Labels
 @property (weak, nonatomic) IBOutlet UILabel *createLabel;

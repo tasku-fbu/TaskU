@@ -8,6 +8,8 @@
 
 #import "DetailsInfoViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "PanTabAnimator.h"
+#import "VCTransitionsLibrary/CEHorizontalSwipeInteractionController.h"
 
 @interface DetailsInfoViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableVIew;
@@ -46,6 +48,7 @@
 @end
 
 @implementation DetailsInfoViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
