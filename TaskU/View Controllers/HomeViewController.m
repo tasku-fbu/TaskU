@@ -102,10 +102,6 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
 
 
 
-/*
-    //Navigation Controller Font
-    [self.logoutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Quicksand-Regular" size:18.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
-*/
 }
 
 

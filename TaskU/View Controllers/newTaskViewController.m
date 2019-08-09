@@ -72,7 +72,7 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
     self.picker.dataSource = self;
     
     //Task Categories
-    self.categories = @[@"Delivery", @"Groceries", @"Laundry and Cleaning", @"Tutoring", @"Volunteering", @"Other"];
+    self.categories = @[@"Delivery", @"Groceries", @"Laundry & Cleaning", @"Tutoring", @"Volunteering", @"Other"];
 
 }
 - (IBAction)startAddressAction:(id)sender {
