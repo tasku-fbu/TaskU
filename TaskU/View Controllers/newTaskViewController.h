@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CustomAlert.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface newTaskViewController : UIViewController
+@interface newTaskViewController : UIViewController<ButtonTapDelegate>
 @end
 
 

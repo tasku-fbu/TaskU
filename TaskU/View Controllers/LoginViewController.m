@@ -137,8 +137,6 @@ static NSString *const loginSegueIdentifier = @"loginSegue";
 - (void)didTapButton {
     [self.customAlert.alertView removeFromSuperview];
     [self.customAlert.parentView removeFromSuperview];
- //   self.customAlert.buttonDelegate = nil;
-
 }
 
 @end
