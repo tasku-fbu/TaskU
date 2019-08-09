@@ -14,6 +14,8 @@
 #import "LocationsViewController.h"
 #import "Task.h"
 
+
+
 #pragma mark - interface and properties
 @interface DetailsStatusViewController ()
 
@@ -51,6 +53,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *acceptMissionButton;
 @property (weak, nonatomic) IBOutlet UIButton *completedMissionButton;
 @property (weak, nonatomic) IBOutlet UIButton *paidMissionButton;
+
+
 
 @end
 static NSString *const searchLocationSegueIdentifier = @"searchLocationSegue";
@@ -92,15 +96,20 @@ NSMutableArray *annotationsArray;
     [annotationsArray addObject:endAnnotation];
     //[self.mapView showAnnotations:annotationsArray animated:YES];
     
+    /*
     UISwipeGestureRecognizer *toLeftSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
     toLeftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:toLeftSwipeRecognizer];
+    */
     
     UISwipeGestureRecognizer *toRightSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToRightWithGestureRecognizer:)];
     toRightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:toRightSwipeRecognizer];
 }
 
+
+
+/*
 - (void) slideToLeftWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
     
     CATransition *transition = [CATransition animation];
@@ -113,6 +122,8 @@ NSMutableArray *annotationsArray;
     
     
 }
+ */
+
 
 - (void) slideToRightWithGestureRecognizer:(UISwipeGestureRecognizer *) gestureRecognizer {
     
@@ -124,8 +135,6 @@ NSMutableArray *annotationsArray;
     [self.view.window.layer addAnimation:transition forKey:nil];
     
         self.tabBarController.selectedIndex += 1;
-    
-    
 }
 
 -(void) viewDidAppear:(BOOL)animated{

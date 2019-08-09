@@ -16,8 +16,12 @@
 #import "LocationsViewController.h"
 #import "UIImageView+AFNetworking.h"
 
+#import "VCTransitionsLibrary/CEPanAnimationController.h"
+#import "VCTransitionsLibrary/CEBaseInteractionController.h"
+#import "InteractionViewController.h"
+
 #pragma mark - interface and properties
-@interface Timeline1ViewController ()
+@interface Timeline1ViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *tasks;
 @property (strong, nonatomic) NSArray *filteredData;
@@ -26,6 +30,9 @@
 @property (strong, nonatomic) NSArray *results;
 @property (strong, nonatomic) NSDictionary *venue;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (nonatomic, strong) CEPanAnimationController *animationController;
+@property (nonatomic, strong) InteractionViewController *interactionController;
 @end
 
 @implementation Timeline1ViewController
@@ -33,6 +40,8 @@
 #pragma mark - Timeline initial View
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.animationController = [[CEPanAnimationController alloc] init];
+    self.interactionController = [[InteractionViewController alloc] init];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -80,6 +89,20 @@
     [self.activityIndicator startAnimating];
     
 }
+
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.animationController.reverse = YES;
+    return self.animationController;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>) animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    
+    self.animationController.reverse = NO;
+    return self.animationController;
+}
+
+
 
 //want to make it a public method in Task, so that it takes in a "category" and gets all tasks in this category
 - (void) getAllTasks {
@@ -272,6 +295,9 @@
      */
     //calling the locationsViewController delegate method with the latitude and longitude of the location the user selects.
     //[self.delegate locationsViewController:self didPickLocationWithLatitude:(lat) longitude:(lng)];
+    navigationVC.modalTransitionStyle = UIModalPresentationCustom;
+    navigationVC.transitioningDelegate = self;
+    
     [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
@@ -314,6 +340,9 @@
     statusVC.task = task;
     infoVC.task = task;
     statusVC.delegate = self;
+    navigationVC.modalTransitionStyle = UIModalPresentationCustom;
+    navigationVC.transitioningDelegate = self;
+    
     [self presentViewController:navigationVC animated:YES completion:nil];
 }
 
