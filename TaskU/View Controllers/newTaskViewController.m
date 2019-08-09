@@ -98,11 +98,11 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
 #pragma mark - Gets user selected location's name of place and address
 - (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithName:(nonnull NSString *) locationName address:(nonnull NSString *)locationAddress {
     if(self.isThisStartAddress){
-        self.startAddress.text = locationAddress;
+        self.startAddress.text = locationName;
     }
     else
     {
-        self.endAddress.text = locationAddress;
+        self.endAddress.text = locationName;
     }
     
 }

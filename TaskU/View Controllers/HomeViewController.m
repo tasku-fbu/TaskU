@@ -210,17 +210,7 @@ static NSString * const chooseLocationSegueIdentifier = @"chooseLocationSegue";
     cell.layer.shadowOpacity = 0.5f;
     cell.layer.masksToBounds = NO;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
-
-    CATransform3D rotationTransfrom = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0);
-    cell.layer.transform = rotationTransfrom;
-    cell.alpha = 0.5;
-    [UIView animateWithDuration:1.0
-                     animations:^{
-                         // animations go here
-                         cell.layer.transform = CATransform3DIdentity;
-                         cell.alpha = 1.0;
-                     }];
-
+  
     return cell;
 }
 
