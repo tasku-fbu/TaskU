@@ -64,7 +64,7 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
     NSNumber *lat = [venue valueForKeyPath:@"location.lat"];
     NSNumber *lng = [venue valueForKeyPath:@"location.lng"];
     NSLog(@"%@, %@", lat, lng);
-    NSString *locationName = [venue valueForKeyPath:@"location.name"];
+    NSString *locationName = [venue valueForKeyPath:@"name"];
     NSString *locationAddress = [venue valueForKeyPath:@"location.address"];
     
 

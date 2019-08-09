@@ -72,7 +72,7 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
     self.picker.dataSource = self;
     
     //Task Categories
-    self.categories = @[@"Delivery", @"Groceries", @"Laundry and Cleaning", @"Tutoring", @"Volunteering", @"Other"];
+    self.categories = @[@"Delivery", @"Groceries", @"Laundry & Cleaning", @"Tutoring", @"Volunteering", @"Other"];
 
 }
 - (IBAction)startAddressAction:(id)sender {
@@ -98,11 +98,11 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
 #pragma mark - Gets user selected location's name of place and address
 - (void)locationsViewController:(nonnull LocationsViewController *)controller didPickLocationWithName:(nonnull NSString *) locationName address:(nonnull NSString *)locationAddress {
     if(self.isThisStartAddress){
-        self.startAddress.text = locationAddress;
+        self.startAddress.text = locationName;
     }
     else
     {
-        self.endAddress.text = locationAddress;
+        self.endAddress.text = locationName;
     }
     
 }
