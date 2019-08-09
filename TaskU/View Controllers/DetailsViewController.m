@@ -8,19 +8,24 @@
 
 #import "DetailsViewController.h"
 
+
 @interface DetailsViewController ()
 
 
 @end
 
 @implementation DetailsViewController
-
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    //[self.tabBar setSelectedItem:[[self.tabBar items] objectAtIndex:1]];
-    
+    //setting navigation bar
+    UINavigationBar *bar = [self.navigationController navigationBar];
+    [bar setBarTintColor:[UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0]];
+    bar.translucent = false;
+    bar.backgroundColor = [UIColor colorWithRed:56/255.0 green:151.0/255 blue:240/255.0 alpha:1.0];
+    [bar setValue:@(YES) forKeyPath:@"hidesShadow"];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:20]}];
 }
+
 - (IBAction)onTapBack:(id)sender {
     NSLog(@"on back");
     [self dismissViewControllerAnimated:YES completion:nil];

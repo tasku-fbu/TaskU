@@ -12,8 +12,11 @@
 #import "ContactCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ChatMessagesViewController.h"
+#import "VCTransitionsLibrary/CEPanAnimationController.h"
+#import "VCTransitionsLibrary/CEBaseInteractionController.h"
+#import "InteractionViewController.h"
 
-@interface AllChatsViewController ()
+@interface AllChatsViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableDictionary *messagesByContact;
@@ -24,6 +27,11 @@
 @property (strong, nonatomic) NSMutableArray *filteredData;
 @property (strong, nonatomic) NSMutableArray *contacts;
 @property (strong, nonatomic) NSMutableArray *contactIds;
+
+
+@property (nonatomic, strong) CEPanAnimationController *animationController;
+@property (nonatomic, strong) InteractionViewController *interactionController;
+
 @end
 
 @implementation AllChatsViewController
@@ -32,7 +40,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    self.animationController = [[CEPanAnimationController alloc] init];
+    self.interactionController = [[InteractionViewController alloc] init];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -55,6 +64,45 @@
     [self.activityIndicator startAnimating];
     
 }
+
+
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.animationController.reverse = YES;
+    return self.animationController;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>) animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    
+    [self.interactionController wireToViewController:presented forOperation:CEInteractionOperationDismiss];
+    self.animationController.reverse = NO;
+    return self.animationController;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>) interactionControllerForDismissal: (id<UIViewControllerAnimatedTransitioning>)animator {
+    
+    // provide the interaction controller, if an interactive transition is in progress
+    return _interactionController.interactionInProgress
+    ? _interactionController : nil;
+}
+
+
+
+
+/*
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:
+(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    
+    // reverse the animation for 'pop' transitions
+    _animationController.reverse = operation == UINavigationControllerOperationPop;
+    
+    
+    return _animationController;
+}
+ */
 
 
 - (void) getAllMessages {
@@ -350,8 +398,10 @@
         UINavigationController *navigation = [segue destinationViewController];
         ChatMessagesViewController *chatMessagesController = (ChatMessagesViewController*) navigation.topViewController;
         chatMessagesController.contact = tappedCell.contact;
-        
-        
+        navigation.modalTransitionStyle = UIModalPresentationCustom;
+        navigation.transitioningDelegate = self;
+        //chatMessagesController.modalPresentationStyle = UIModalPresentationCustom;
+        //chatMessagesController.transitioningDelegate = self;
     }
 }
 

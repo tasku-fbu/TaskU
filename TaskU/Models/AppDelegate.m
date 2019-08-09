@@ -10,7 +10,12 @@
 #import "Parse/Parse.h"
 #import "UIButtonExtension.h"
 #import "IQKeyboardManager.h"
-@interface AppDelegate ()
+#import "MainTabViewController.h"
+//#import "VCTransitionsLibrary/CEPanAnimationController.h"
+#import "PanTabAnimator.h"
+
+@interface AppDelegate () 
+@property (strong, nonatomic) PanTabAnimator * animator;
 
 @end
 
@@ -37,12 +42,19 @@
      if (PFUser.currentUser) {
      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
-     self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
+     //self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
+         self.animator = [[PanTabAnimator alloc] init];
+    MainTabViewController *vc = (MainTabViewController*) [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
+    
+         self.window.rootViewController = vc;
+    
      }
 
     return YES;
 
 }
+
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

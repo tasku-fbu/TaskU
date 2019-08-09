@@ -167,7 +167,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-tJ-R78">
-                                <rect key="frame" x="0.0" y="104" width="414" height="547"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourMessage" id="fno-GG-ed4" customClass="YourMessageCell">
@@ -272,7 +272,7 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-XC-yKY">
-                                <rect key="frame" x="188.5" y="359" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="351" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5so-JX-wpv">
@@ -346,7 +346,7 @@
                             <constraint firstItem="5so-JX-wpv" firstAttribute="top" secondItem="Uqh-tJ-R78" secondAttribute="bottom" constant="8" id="NSd-fz-Z5W"/>
                             <constraint firstItem="T2R-XC-yKY" firstAttribute="centerY" secondItem="Uqh-tJ-R78" secondAttribute="centerY" id="RHA-UT-Dwg"/>
                             <constraint firstItem="T2R-XC-yKY" firstAttribute="centerX" secondItem="ee3-xR-Kgy" secondAttribute="centerX" id="XzR-3N-XgR"/>
-                            <constraint firstItem="Uqh-tJ-R78" firstAttribute="top" secondItem="YYr-gt-mz5" secondAttribute="top" constant="16" id="YRO-cS-95u"/>
+                            <constraint firstItem="Uqh-tJ-R78" firstAttribute="top" secondItem="YYr-gt-mz5" secondAttribute="top" id="YRO-cS-95u"/>
                             <constraint firstItem="5so-JX-wpv" firstAttribute="leading" secondItem="YYr-gt-mz5" secondAttribute="leading" id="p9D-dE-R0x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YYr-gt-mz5"/>
@@ -356,13 +356,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="SJo-mp-r4t">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="EcN-pm-ZHI">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mfe-2K-rgm">
-                                <rect key="frame" x="20" y="1" width="30" height="42"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" id="mfe-2K-rgm">
+                                <rect key="frame" x="20" y="2" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="&lt; ">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                <state key="normal" image="right-1"/>
                                 <connections>
                                     <action selector="onClickBack:" destination="OKb-9N-wT9" eventType="touchUpInside" id="ODf-QR-VPe"/>
                                 </connections>
@@ -433,6 +431,7 @@
         <image name="compose" width="19" height="19"/>
         <image name="glyph-send" width="18" height="18"/>
         <image name="messages" width="24" height="23"/>
+        <image name="right-1" width="12" height="18"/>
         <namedColor name="blue">
             <color red="0.2196078431372549" green="0.59215686274509804" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

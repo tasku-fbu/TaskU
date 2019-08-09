@@ -178,6 +178,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Solar/Solar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Turf/Turf.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/VCTransitionsLibrary/VCTransitionsLibrary.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
@@ -197,6 +198,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Solar/Solar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Turf/Turf.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/VCTransitionsLibrary/VCTransitionsLibrary.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
