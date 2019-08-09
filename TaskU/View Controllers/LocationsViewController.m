@@ -107,11 +107,10 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
         if (data) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             self.results = [responseDictionary valueForKeyPath:@"response.venues"];
+            [self.tableView reloadData];
         }
     }];
     [task resume];
-    [self.tableView reloadData];
-
 }
 
 - (IBAction)backButtonAction:(id)sender {

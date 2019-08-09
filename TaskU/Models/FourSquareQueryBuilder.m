@@ -18,7 +18,7 @@ NSString *const kBaseURLString = @"https://api.foursquare.com/v2/venues/search?"
 @implementation FourSquareQueryBuilder
 {
 NSMutableDictionary *queryMap;
-NSMutableString *queryString;
+NSString *queryString;
 
 }
 
@@ -44,7 +44,7 @@ NSMutableString *queryString;
 }
 
 - (NSString *) buildQueryString {
-    queryString = [[NSMutableString alloc] init];
+    queryString = [[NSString alloc] init];
     for (NSString *key in queryMap.allKeys) {
         NSString *temp = [queryString stringByAppendingString:
          [NSString stringWithFormat:@"%@=%@&", key, queryMap[key]]];
