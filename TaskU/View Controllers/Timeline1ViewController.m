@@ -16,7 +16,7 @@
 #import "LocationsViewController.h"
 #import "UIImageView+AFNetworking.h"
 
-#import "VCTransitionsLibrary/CEPanAnimationController.h"
+#import "PanNormalAnimator.h"
 #import "VCTransitionsLibrary/CEBaseInteractionController.h"
 #import "InteractionViewController.h"
 
@@ -31,8 +31,8 @@
 @property (strong, nonatomic) NSDictionary *venue;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property (nonatomic, strong) CEPanAnimationController *animationController;
-@property (nonatomic, strong) InteractionViewController *interactionController;
+@property (nonatomic, strong) PanNormalAnimator *animationController;
+//@property (nonatomic, strong) InteractionViewController *interactionController;
 @end
 
 @implementation Timeline1ViewController
@@ -40,8 +40,9 @@
 #pragma mark - Timeline initial View
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.animationController = [[CEPanAnimationController alloc] init];
-    self.interactionController = [[InteractionViewController alloc] init];
+    self.animationController = [[PanNormalAnimator alloc] init];
+    
+    //self.interactionController = [[InteractionViewController alloc] init];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -93,6 +94,7 @@
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     self.animationController.reverse = YES;
+    
     return self.animationController;
 }
 

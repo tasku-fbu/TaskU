@@ -408,10 +408,10 @@
             </objects>
             <point key="canvasLocation" x="1531.8840579710145" y="-560.49107142857144"/>
         </scene>
-        <!--Main Tab View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="uLc-vN-b1S">
             <objects>
-                <tabBarController storyboardIdentifier="AuthenticatedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2dv-dE-POF" customClass="mainTabViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="AuthenticatedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2dv-dE-POF" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fYN-FU-im9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

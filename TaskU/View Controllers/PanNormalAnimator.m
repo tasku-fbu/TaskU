@@ -1,18 +1,17 @@
 //
-//  PanTabAnimator.m
+//  PanNormalAnimator.m
 //  TaskU
 //
 //  Created by lucyyyw on 8/9/19.
 //  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "PanTabAnimator.h"
+#import "PanNormalAnimator.h"
 
-@implementation PanTabAnimator
-
+@implementation PanNormalAnimator
 -(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC fromView:(UIView *)fromView toView:(UIView *)toView {
     
-    self.duration = 0.1;
+    self.duration = 0.3;
     // Add the toView to the container
     UIView* containerView = [transitionContext containerView];
     [containerView addSubview:toView];

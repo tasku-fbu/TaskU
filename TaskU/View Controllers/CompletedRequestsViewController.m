@@ -11,18 +11,25 @@
 #import "DetailsInfoViewController.h"
 #import "DetailsViewController.h"
 #import "DetailsStatusViewController.h"
+#import "PanNormalAnimator.h"
+#import "VCTransitionsLibrary/CEBaseInteractionController.h"
 
-@interface CompletedRequestsViewController ()
+@interface CompletedRequestsViewController () <UIViewControllerTransitioningDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *completedTable;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) NSMutableArray *completedTasks;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) PanNormalAnimator *animationController;
 @end
 
 @implementation CompletedRequestsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.animationController = [[PanNormalAnimator alloc] init];
+    self.animationController.duration = 0.3;
+    
     // Do any additional setup after loading the view.
     self.completedTable.delegate = self;
     self.completedTable.dataSource = self;
@@ -41,6 +48,17 @@
     
     [self.activityIndicator startAnimating];
     
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.animationController.reverse = YES;
+    return self.animationController;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>) animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    
+    self.animationController.reverse = NO;
+    return self.animationController;
 }
 
 
@@ -156,6 +174,8 @@
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = cell.task;
     infoVC.task = cell.task;
+    navigationVC.modalTransitionStyle = UIModalPresentationCustom;
+    navigationVC.transitioningDelegate = self;
     
     [self presentViewController:navigationVC animated:YES completion:nil];
     
@@ -172,6 +192,8 @@
     DetailsInfoViewController *infoVC = (DetailsInfoViewController *) detailsVC.viewControllers[1];
     statusVC.task = task;
     infoVC.task = task;
+    navigationVC.modalTransitionStyle = UIModalPresentationCustom;
+    navigationVC.transitioningDelegate = self;
     [self presentViewController:navigationVC animated:YES completion:nil];
 }
 

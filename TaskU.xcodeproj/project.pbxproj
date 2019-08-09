@@ -87,6 +87,7 @@
 		B93554D922FCE3270088A419 /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554D522FCDECF0088A419 /* InteractionViewController.m */; };
 		B93554E222FD563C0088A419 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554E122FD563C0088A419 /* MainTabViewController.m */; };
 		B93554E522FDD7B40088A419 /* PanTabAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554E422FDD7B40088A419 /* PanTabAnimator.m */; };
+		B93554E822FDE75F0088A419 /* PanNormalAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554E722FDE75F0088A419 /* PanNormalAnimator.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -244,6 +245,8 @@
 		B93554E122FD563C0088A419 /* MainTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabViewController.m; sourceTree = "<group>"; };
 		B93554E322FDD7B40088A419 /* PanTabAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanTabAnimator.h; sourceTree = "<group>"; };
 		B93554E422FDD7B40088A419 /* PanTabAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanTabAnimator.m; sourceTree = "<group>"; };
+		B93554E622FDE75F0088A419 /* PanNormalAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanNormalAnimator.h; sourceTree = "<group>"; };
+		B93554E722FDE75F0088A419 /* PanNormalAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanNormalAnimator.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +342,8 @@
 				B93554E122FD563C0088A419 /* MainTabViewController.m */,
 				B93554E322FDD7B40088A419 /* PanTabAnimator.h */,
 				B93554E422FDD7B40088A419 /* PanTabAnimator.m */,
+				B93554E622FDE75F0088A419 /* PanNormalAnimator.h */,
+				B93554E722FDE75F0088A419 /* PanNormalAnimator.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -785,6 +790,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E8EFF4E22DD523500B9FE89 /* LoginViewController.m in Sources */,
+				B93554E822FDE75F0088A419 /* PanNormalAnimator.m in Sources */,
 				B902D1CA22E8133F0080B87E /* MyMessageCell.m in Sources */,
 				B902D1A422E677510080B87E /* CurrentMissionsViewController.m in Sources */,
 				B902D1A722E677650080B87E /* CompletedMissionsViewController.m in Sources */,

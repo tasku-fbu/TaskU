@@ -11,7 +11,7 @@
 #import "UIButtonExtension.h"
 #import "IQKeyboardManager.h"
 #import "MainTabViewController.h"
-#import "VCTransitionsLibrary/CEPanAnimationController.h"
+//#import "VCTransitionsLibrary/CEPanAnimationController.h"
 #import "PanTabAnimator.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate>
@@ -45,7 +45,7 @@
      //self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
          self.animator = [[PanTabAnimator alloc] init];
     MainTabViewController *vc = (MainTabViewController*) [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
-    vc.delegate = self;
+    //vc.delegate = self;
          self.window.rootViewController = vc;
     
      }
