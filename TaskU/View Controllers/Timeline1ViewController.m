@@ -52,8 +52,10 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.tableFooterView.hidden = true;
+    //UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
+    //[self.tableView setTableFooterView:view];
+    self.tableView.estimatedRowHeight = 100;
+    
     self.tableView.backgroundColor = [UIColor colorWithRed:240/255.0 green:248/255.0 blue:255 alpha:1];
     
     self.searchBar.delegate = self;
@@ -183,6 +185,7 @@
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     
     if (!cell) {
