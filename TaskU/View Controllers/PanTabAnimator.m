@@ -1,24 +1,24 @@
 //
-//  CEPanAnimationController.m
-//  TransitionsDemo
+//  PanTabAnimator.m
+//  TaskU
 //
-//  Created by Alvin Zeng on 01/08/2014.
-//  Copyright (c) 2014 Alvin Zeng. All rights reserved.
+//  Created by lucyyyw on 8/9/19.
+//  Copyright © 2019 rhaypapenfuzz. All rights reserved.
 //
+#import <UIKit/UIKit.h>
+#import "PanTabAnimator.h"
 
-#import "CEPanAnimationController.h"
+@implementation PanTabAnimator
 
-@implementation CEPanAnimationController
-
-- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC fromView:(UIView *)fromView toView:(UIView *)toView {
+-(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC fromView:(UIView *)fromView toView:(UIView *)toView {
     
-    self.duration = 1;
+    self.duration = 0.3;
     // Add the toView to the container
     UIView* containerView = [transitionContext containerView];
     [containerView addSubview:toView];
     toView.frame = CGRectMake(self.reverse ? -160 : 320, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
     
-    self.reverse ? [containerView sendSubviewToBack:toView] : [containerView bringSubviewToFront:toView];
+    !self.reverse ? [containerView sendSubviewToBack:toView] : [containerView bringSubviewToFront:toView];
     
     // animate
     NSTimeInterval duration = [self transitionDuration:transitionContext];

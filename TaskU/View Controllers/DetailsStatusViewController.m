@@ -96,11 +96,7 @@ NSMutableArray *annotationsArray;
     [annotationsArray addObject:endAnnotation];
     //[self.mapView showAnnotations:annotationsArray animated:YES];
     
-    /*
-    UISwipeGestureRecognizer *toLeftSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToLeftWithGestureRecognizer:)];
-    toLeftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:toLeftSwipeRecognizer];
-    */
+    
     
     UISwipeGestureRecognizer *toRightSwipeRecognizer = [[[UISwipeGestureRecognizer alloc] init] initWithTarget:self action:@selector(slideToRightWithGestureRecognizer:)];
     toRightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;

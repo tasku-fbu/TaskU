@@ -85,6 +85,8 @@
 		B93554CA22F3BB960088A419 /* chatFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554C922F3BB960088A419 /* chatFirstViewController.m */; };
 		B93554CD22F7EBC40088A419 /* HomeToTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554CC22F7EBC40088A419 /* HomeToTimelineViewController.m */; };
 		B93554D922FCE3270088A419 /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554D522FCDECF0088A419 /* InteractionViewController.m */; };
+		B93554E222FD563C0088A419 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554E122FD563C0088A419 /* MainTabViewController.m */; };
+		B93554E522FDD7B40088A419 /* PanTabAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B93554E422FDD7B40088A419 /* PanTabAnimator.m */; };
 		EA8AF07189071D6D31AEDBA1 /* Pods_TaskUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */; };
 		F408FE75A3A725D8B5D450B9 /* Pods_TaskUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */; };
 /* End PBXBuildFile section */
@@ -238,6 +240,10 @@
 		B93554CC22F7EBC40088A419 /* HomeToTimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeToTimelineViewController.m; sourceTree = "<group>"; };
 		B93554D422FCDECF0088A419 /* InteractionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InteractionViewController.h; sourceTree = "<group>"; };
 		B93554D522FCDECF0088A419 /* InteractionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InteractionViewController.m; sourceTree = "<group>"; };
+		B93554E022FD563C0088A419 /* MainTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
+		B93554E122FD563C0088A419 /* MainTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabViewController.m; sourceTree = "<group>"; };
+		B93554E322FDD7B40088A419 /* PanTabAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanTabAnimator.h; sourceTree = "<group>"; };
+		B93554E422FDD7B40088A419 /* PanTabAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanTabAnimator.m; sourceTree = "<group>"; };
 		CC3C2998FB29B4D4693AFA0E /* Pods-TaskUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskUTests.debug.xcconfig"; path = "Target Support Files/Pods-TaskUTests/Pods-TaskUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48B896C384CE49B05E8B294 /* Pods_TaskUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15982F03980D47DAE8F8736 /* Pods_TaskUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,6 +335,10 @@
 				0EE7243922F3AE820002C61D /* ChooseLocationPopUpViewController.m */,
 				B93554D422FCDECF0088A419 /* InteractionViewController.h */,
 				B93554D522FCDECF0088A419 /* InteractionViewController.m */,
+				B93554E022FD563C0088A419 /* MainTabViewController.h */,
+				B93554E122FD563C0088A419 /* MainTabViewController.m */,
+				B93554E322FDD7B40088A419 /* PanTabAnimator.h */,
+				B93554E422FDD7B40088A419 /* PanTabAnimator.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -808,6 +818,7 @@
 				B902D1C422E812D90080B87E /* ContactCell.m in Sources */,
 				110D97DB22FA0EEE0011B629 /* RefreshControlViewController.m in Sources */,
 				0E45A04722DD9308005D798F /* MissionsViewController.m in Sources */,
+				B93554E522FDD7B40088A419 /* PanTabAnimator.m in Sources */,
 				110C127222DFF50B009DC7DB /* EditProfileViewController.m in Sources */,
 				0E45A04022DD92CF005D798F /* HomeViewController.m in Sources */,
 				B902D13F22DE9DE40080B87E /* Timeline1ViewController.m in Sources */,
@@ -815,6 +826,7 @@
 				1131D37322E12096004A235C /* newTaskViewController.m in Sources */,
 				0EE7243A22F3AE820002C61D /* ChooseLocationPopUpViewController.m in Sources */,
 				0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */,
+				B93554E222FD563C0088A419 /* MainTabViewController.m in Sources */,
 				1177A79422EFB08B00D1561F /* UIButtonExtension.m in Sources */,
 				0E8EFF4B22DD523500B9FE89 /* AppDelegate.m in Sources */,
 				110D97D622F9F43F0011B629 /* CustomRefreshControl.m in Sources */,
