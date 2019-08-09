@@ -1019,7 +1019,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamRYP.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamRYPTaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1042,7 +1042,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamRYP.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamRYPTaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
