@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E1F2DC222FB4D0300C80A82 /* LocationQueryBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F2DC122FB4D0300C80A82 /* LocationQueryBuilder.m */; };
+		0E1F2DC222FB4D0300C80A82 /* FourSquareQueryBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F2DC122FB4D0300C80A82 /* FourSquareQueryBuilder.m */; };
 		0E1F7C7A22E520EB0003FD6C /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7922E520EB0003FD6C /* LocationCell.m */; };
 		0E1F7C8022E5221C0003FD6C /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1F7C7F22E5221C0003FD6C /* LocationsViewController.m */; };
 		0E2A70F122F36F9E0006B879 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A70F022F36F9E0006B879 /* NavigationViewController.m */; };
@@ -101,8 +101,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E1F2DC022FB4D0300C80A82 /* LocationQueryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationQueryBuilder.h; sourceTree = "<group>"; };
-		0E1F2DC122FB4D0300C80A82 /* LocationQueryBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationQueryBuilder.m; sourceTree = "<group>"; };
+		0E1F2DC022FB4D0300C80A82 /* FourSquareQueryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FourSquareQueryBuilder.h; sourceTree = "<group>"; };
+		0E1F2DC122FB4D0300C80A82 /* FourSquareQueryBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FourSquareQueryBuilder.m; sourceTree = "<group>"; };
 		0E1F7C7822E520EB0003FD6C /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		0E1F7C7922E520EB0003FD6C /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		0E1F7C7E22E5221C0003FD6C /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
@@ -319,8 +319,8 @@
 				11D2F50C22DE5D520065D70D /* Task.m */,
 				0E8EFF4922DD523500B9FE89 /* AppDelegate.h */,
 				0E8EFF4A22DD523500B9FE89 /* AppDelegate.m */,
-				0E1F2DC022FB4D0300C80A82 /* LocationQueryBuilder.h */,
-				0E1F2DC122FB4D0300C80A82 /* LocationQueryBuilder.m */,
+				0E1F2DC022FB4D0300C80A82 /* FourSquareQueryBuilder.h */,
+				0E1F2DC122FB4D0300C80A82 /* FourSquareQueryBuilder.m */,
 				0E8EFF5222DD523600B9FE89 /* Assets.xcassets */,
 				0E8EFF5422DD523600B9FE89 /* LaunchScreen.storyboard */,
 				0E8EFF5822DD523600B9FE89 /* main.m */,
@@ -760,7 +760,7 @@
 				B902D19E22E61DBC0080B87E /* CurrentRequestsViewController.m in Sources */,
 				B902D1CD22E8140A0080B87E /* Message.m in Sources */,
 				B902D14222DE9F110080B87E /* TaskCell.m in Sources */,
-				0E1F2DC222FB4D0300C80A82 /* LocationQueryBuilder.m in Sources */,
+				0E1F2DC222FB4D0300C80A82 /* FourSquareQueryBuilder.m in Sources */,
 				0E45A04322DD92ED005D798F /* RequestsViewController.m in Sources */,
 				B902D14A22E01FEC0080B87E /* DetailsStatusViewController.m in Sources */,
 				B902D1A122E61DE20080B87E /* CompletedRequestsViewController.m in Sources */,
@@ -952,13 +952,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B7R4TAWA36;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rhaypapenfuzz.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -974,13 +974,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B7R4TAWA36;
 				INFOPLIST_FILE = TaskU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.TaskU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rhaypapenfuzz.TaskU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TaskU/View Controllers/TaskU-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
