@@ -10,6 +10,7 @@
 #import "LocationCell.h"
 #import "Parse/Parse.h"
 #import "newTaskViewController.h"
+#import "FourSquareQueryBuilder.h"
 
 #pragma mark - interface and properties
 @interface LocationsViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
@@ -92,23 +93,19 @@ static NSString * const clientSecret = @"QUZTBM11UBAHE1KQVBISIF4CB1OWALMODUWMUCM
 #pragma mark - Query Set up (searches for possible locations using fourSqaure map API)
 
 - (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
-    
+
     PFUser *loggedInUser = [PFUser currentUser];
     NSString *state = loggedInUser[@"state"];
+    NSString *const venue = @"20141020";
     
-    NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
-    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&near=%@,%@&query=%@&v=20141020", clientID, clientSecret, city, state, query];
-    //NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&intent=global&query=%@&v=20141020", clientID, clientSecret, query];
-    queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    
-    NSURL *url = [NSURL URLWithString:[baseURLString stringByAppendingString:queryString]];
+    FourSquareQueryBuilder *builder = [[FourSquareQueryBuilder alloc] initWithClientID: clientID withClientSecret:clientSecret withCity:city withState:state withVenue:venue];
+    [builder setQuery:query];
+    NSURL *url = [builder getQueryUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (data) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            //NSLog(@"response: %@", responseDictionary);
             self.results = [responseDictionary valueForKeyPath:@"response.venues"];
             [self.tableView reloadData];
         }
