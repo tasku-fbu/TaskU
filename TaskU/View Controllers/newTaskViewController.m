@@ -134,8 +134,6 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
                 self.customAlert = [[CustomAlert alloc] init];
                 [self.customAlert showAlert:@"Success!" withMessage:@"Your task has succesfully posted." withAlert:@"success"];
                 self.customAlert.buttonDelegate = self;
-
-                [self dismissViewControllerAnimated:YES completion:nil];
             } else{
                 //Network Error
                 self.customAlert = [[CustomAlert alloc] init];
@@ -161,6 +159,9 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
 -(void)didTapButton{
     [self.customAlert.alertView removeFromSuperview];
     [self.customAlert.parentView removeFromSuperview];
+    if([self.customAlert.doneButton.backgroundColor isEqual:[UIColor colorNamed:@"darkGreen"]]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 /*
 #pragma mark - Navigation
