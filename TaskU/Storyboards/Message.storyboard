@@ -129,16 +129,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f2o-iI-YTW">
-                                <rect key="frame" x="188.5" y="344" width="37" height="37"/>
-                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7D7-2n-r04" firstAttribute="top" secondItem="Pps-u2-CZJ" secondAttribute="top" id="HkK-ZY-kqC"/>
-                            <constraint firstItem="f2o-iI-YTW" firstAttribute="centerX" secondItem="FMq-e2-8jd" secondAttribute="centerX" id="MPS-VV-GVQ"/>
-                            <constraint firstItem="f2o-iI-YTW" firstAttribute="centerY" secondItem="FMq-e2-8jd" secondAttribute="centerY" id="XIN-hE-K2K"/>
                             <constraint firstItem="7D7-2n-r04" firstAttribute="height" secondItem="Pps-u2-CZJ" secondAttribute="height" id="Y0f-am-NHS"/>
                             <constraint firstItem="7D7-2n-r04" firstAttribute="trailing" secondItem="Pps-u2-CZJ" secondAttribute="trailing" id="csj-AB-aVh"/>
                             <constraint firstItem="7D7-2n-r04" firstAttribute="leading" secondItem="Pps-u2-CZJ" secondAttribute="leading" id="eeb-uK-L9F"/>
@@ -149,7 +143,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="ulr-Q4-r78"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="f2o-iI-YTW" id="nEe-vT-p5e"/>
                         <outlet property="searchBar" destination="SkO-rF-HuQ" id="tbg-pF-VHI"/>
                         <outlet property="tableView" destination="7D7-2n-r04" id="d73-ZN-rA4"/>
                     </connections>
@@ -271,10 +264,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-XC-yKY">
-                                <rect key="frame" x="188.5" y="351" width="37" height="37"/>
-                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5so-JX-wpv">
                                 <rect key="frame" x="0.0" y="659" width="414" height="32"/>
                                 <subviews>
@@ -344,8 +333,6 @@
                             <constraint firstItem="Uqh-tJ-R78" firstAttribute="trailing" secondItem="YYr-gt-mz5" secondAttribute="trailing" id="M39-2R-bn6"/>
                             <constraint firstItem="YYr-gt-mz5" firstAttribute="trailing" secondItem="5so-JX-wpv" secondAttribute="trailing" id="MIP-dw-CpV"/>
                             <constraint firstItem="5so-JX-wpv" firstAttribute="top" secondItem="Uqh-tJ-R78" secondAttribute="bottom" constant="8" id="NSd-fz-Z5W"/>
-                            <constraint firstItem="T2R-XC-yKY" firstAttribute="centerY" secondItem="Uqh-tJ-R78" secondAttribute="centerY" id="RHA-UT-Dwg"/>
-                            <constraint firstItem="T2R-XC-yKY" firstAttribute="centerX" secondItem="ee3-xR-Kgy" secondAttribute="centerX" id="XzR-3N-XgR"/>
                             <constraint firstItem="Uqh-tJ-R78" firstAttribute="top" secondItem="YYr-gt-mz5" secondAttribute="top" id="YRO-cS-95u"/>
                             <constraint firstItem="5so-JX-wpv" firstAttribute="leading" secondItem="YYr-gt-mz5" secondAttribute="leading" id="p9D-dE-R0x"/>
                         </constraints>
@@ -368,7 +355,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityIndicator" destination="T2R-XC-yKY" id="khU-pg-Qfm"/>
                         <outlet property="messageTable" destination="Uqh-tJ-R78" id="hfQ-Bp-88p"/>
                         <outlet property="plusButton" destination="Xhr-sP-HxJ" id="Z0K-YN-0Od"/>
                         <outlet property="sendButton" destination="9VS-S1-AbT" id="vHt-ry-2zV"/>
