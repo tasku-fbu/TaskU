@@ -91,7 +91,18 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getMessages) forControlEvents:UIControlEventValueChanged];
     [self.messageTable insertSubview:self.refreshControl atIndex:0];
-    [self.activityIndicator startAnimating];
+    
+    CGRect frame = CGRectMake(10, 10, 100, 100);
+    self.activityIndicator = [[CustomRefreshControl alloc] initWithFrame:frame];
+    
+    self.activityIndicator.tag = 101;  //tag: int used to identify view objects in your application.
+    [self.view addSubview:self.activityIndicator];
+    
+    self.activityIndicator.center = self.view.center;
+    
+    [self performSelector:@selector(animateProgress) withObject:nil afterDelay:0.5];
+    
+
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
     
     
