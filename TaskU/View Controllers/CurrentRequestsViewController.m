@@ -14,11 +14,12 @@
 #import "PanNormalAnimator.h"
 #import "VCTransitionsLibrary/CEBaseInteractionController.h"
 #import "PanTabAnimator.h"
+#import "CustomRefreshControl.h"
 
 @interface CurrentRequestsViewController () <UIViewControllerTransitioningDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *currentTable;
 @property (strong, nonatomic) NSMutableArray *currentTasks;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) CustomRefreshControl *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) PanNormalAnimator *animationController;
 @property (strong, nonatomic) PanTabAnimator * tabAnimator;
@@ -51,7 +52,26 @@
     [self.refreshControl addTarget:self action:@selector(getCurrentTasks) forControlEvents:UIControlEventValueChanged];
     [self.currentTable insertSubview:self.refreshControl atIndex:0];
     
-    [self.activityIndicator startAnimating];
+    CGRect frame = CGRectMake(10, 10, 100, 100);
+    self.activityIndicator = [[CustomRefreshControl alloc] initWithFrame:frame];
+    
+    self.activityIndicator.tag = 101;  //tag: int used to identify view objects in your application.
+    [self.view addSubview:self.activityIndicator];
+    
+    self.activityIndicator.center = self.view.center;
+    
+    [self performSelector:@selector(animateProgress) withObject:nil afterDelay:0.5];
+    
+
+}
+
+-(void)animateProgress{
+    CustomRefreshControl *refresh = [self.view viewWithTag:101];
+    [refresh setProgressWithAnimation:0.5 withValue:1];
+}
+
+- (void) endAnimation {
+    [self.activityIndicator removeFromSuperview];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
@@ -114,7 +134,7 @@
             
             [self.currentTable reloadData];
             [self.refreshControl endRefreshing];
-            [self.activityIndicator stopAnimating];
+            [self performSelector:@selector(endAnimation) withObject:nil afterDelay:0.5];
         } else {
             NSLog(@"%@", error.localizedDescription);
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot fetch current requests"

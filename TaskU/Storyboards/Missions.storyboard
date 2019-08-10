@@ -140,24 +140,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1rX-UW-23a">
-                                <rect key="frame" x="188.5" y="322" width="37" height="37"/>
-                                <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="A0L-0M-3a2" firstAttribute="top" secondItem="Ykn-f8-j2b" secondAttribute="top" id="8NM-eA-FkN"/>
                             <constraint firstItem="Ykn-f8-j2b" firstAttribute="trailing" secondItem="A0L-0M-3a2" secondAttribute="trailing" id="QZk-yX-Brv"/>
-                            <constraint firstItem="1rX-UW-23a" firstAttribute="centerY" secondItem="cbZ-5i-Yz4" secondAttribute="centerY" id="d5c-sL-Evs"/>
                             <constraint firstItem="A0L-0M-3a2" firstAttribute="bottom" secondItem="Ykn-f8-j2b" secondAttribute="bottom" id="ekP-bE-o42"/>
-                            <constraint firstItem="1rX-UW-23a" firstAttribute="centerX" secondItem="cbZ-5i-Yz4" secondAttribute="centerX" id="mtU-gN-iEq"/>
                             <constraint firstItem="A0L-0M-3a2" firstAttribute="leading" secondItem="Ykn-f8-j2b" secondAttribute="leading" id="pWr-E6-Wm6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ykn-f8-j2b"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="1rX-UW-23a" id="ZaH-ll-c0B"/>
                         <outlet property="completedTable" destination="A0L-0M-3a2" id="HcE-HK-MyI"/>
                     </connections>
                 </viewController>
@@ -187,24 +180,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Xqv-d6-JyF">
-                                <rect key="frame" x="188.5" y="322" width="37" height="37"/>
-                                <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lrL-oc-7k3" firstAttribute="leading" secondItem="BAA-dB-4vW" secondAttribute="leading" id="IU1-Gl-pGm"/>
-                            <constraint firstItem="Xqv-d6-JyF" firstAttribute="centerX" secondItem="hPn-iD-LYR" secondAttribute="centerX" id="cUU-Wo-5je"/>
                             <constraint firstItem="BAA-dB-4vW" firstAttribute="trailing" secondItem="lrL-oc-7k3" secondAttribute="trailing" id="fyg-1r-Q6k"/>
                             <constraint firstItem="lrL-oc-7k3" firstAttribute="bottom" secondItem="BAA-dB-4vW" secondAttribute="bottom" id="hry-Sn-I9P"/>
-                            <constraint firstItem="Xqv-d6-JyF" firstAttribute="centerY" secondItem="hPn-iD-LYR" secondAttribute="centerY" id="iut-wm-gmU"/>
                             <constraint firstItem="lrL-oc-7k3" firstAttribute="top" secondItem="BAA-dB-4vW" secondAttribute="top" id="zPw-fW-DRX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BAA-dB-4vW"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="Xqv-d6-JyF" id="Krl-NI-oTp"/>
                         <outlet property="currentTable" destination="lrL-oc-7k3" id="5EX-kL-7jr"/>
                     </connections>
                 </viewController>

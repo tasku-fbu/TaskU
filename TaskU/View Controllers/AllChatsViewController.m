@@ -15,13 +15,14 @@
 #import "VCTransitionsLibrary/CEPanAnimationController.h"
 #import "VCTransitionsLibrary/CEBaseInteractionController.h"
 #import "InteractionViewController.h"
+#import "CustomRefreshControl.h"
 
 @interface AllChatsViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableDictionary *messagesByContact;
 @property (weak, nonatomic) NSTimer *timer;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) CustomRefreshControl *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredData;
@@ -61,8 +62,26 @@
     [self.refreshControl addTarget:self action:@selector(getAllMessages) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-    [self.activityIndicator startAnimating];
+    CGRect frame = CGRectMake(10, 10, 100, 100);
+    self.activityIndicator = [[CustomRefreshControl alloc] initWithFrame:frame];
     
+    self.activityIndicator.tag = 101;  //tag: int used to identify view objects in your application.
+    [self.view addSubview:self.activityIndicator];
+    
+    self.activityIndicator.center = self.view.center;
+    
+    [self performSelector:@selector(animateProgress) withObject:nil afterDelay:0.5];
+    
+
+    
+}
+-(void)animateProgress{
+    CustomRefreshControl *refresh = [self.view viewWithTag:101];
+    [refresh setProgressWithAnimation:0.5 withValue:1];
+}
+
+- (void) endAnimation {
+    [self.activityIndicator removeFromSuperview];
 }
 
 
@@ -135,7 +154,7 @@
                 self.filteredData = self.contactIds;
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
-                [self.activityIndicator stopAnimating];
+                [self performSelector:@selector(endAnimation) withObject:nil afterDelay:0.5];
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
@@ -193,7 +212,7 @@
                 self.filteredData = self.contactIds;
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
-                [self.activityIndicator stopAnimating];
+                [self performSelector:@selector(endAnimation) withObject:nil afterDelay:0.5];
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
