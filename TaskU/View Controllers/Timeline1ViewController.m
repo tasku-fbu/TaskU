@@ -21,12 +21,15 @@
 #import "InteractionViewController.h"
 #import "PanTabAnimator.h"
 
+#import "CustomRefreshControl.h"
+
 #pragma mark - interface and properties
 @interface Timeline1ViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *tasks;
 @property (strong, nonatomic) NSArray *filteredData;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+//@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) CustomRefreshControl *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *results;
 @property (strong, nonatomic) NSDictionary *venue;
@@ -93,9 +96,24 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getAllTasks) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    CGRect frame = CGRectMake(10, 10, 100, 100);
     
-    [self.activityIndicator startAnimating];
+    self.activityIndicator = [[CustomRefreshControl alloc] initWithFrame:frame];
     
+    self.activityIndicator.tag = 101;  //tag: int used to identify view objects in your application.
+    [self.view addSubview:self.activityIndicator];
+    
+    self.activityIndicator.center = self.view.center;
+    
+    [self performSelector:@selector(animateProgress) withObject:nil afterDelay:0.5];
+    
+    //[self.activityIndicator startAnimating];
+    
+}
+
+-(void)animateProgress{
+    CustomRefreshControl *refresh = [self.view viewWithTag:101];
+    [refresh setProgressWithAnimation:0.5 withValue:1];
 }
 
 
@@ -158,7 +176,10 @@
             self.filteredData = self.tasks;
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
-            [self.activityIndicator stopAnimating];
+            //[self.activityIndicator stopAnimating];
+            
+            [self performSelector:@selector(endAnimation) withObject:nil afterDelay:0.5];
+            
             
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -183,6 +204,9 @@
     }];
 }
 
+- (void) endAnimation {
+    [self.activityIndicator removeFromSuperview];
+}
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
@@ -375,6 +399,7 @@
     [self getAllTasks];
     [self.tableView reloadData];
 }
+
 
 
  #pragma mark - Navigation
