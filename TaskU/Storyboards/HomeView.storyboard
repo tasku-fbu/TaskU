@@ -247,7 +247,7 @@
                     <navigationItem key="navigationItem" title="Home" id="NCG-81-325">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="0hq-Uq-SEd">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apH-vt-SWW">
-                                <rect key="frame" x="51" y="5" width="100" height="34"/>
+                                <rect key="frame" x="16" y="5" width="111" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="14"/>
                                 <state key="normal" title="Current Location">
@@ -326,7 +326,7 @@
             </objects>
             <point key="canvasLocation" x="2834" y="2937"/>
         </scene>
-        <!--Title-->
+        <!--My location-->
         <scene sceneID="KeJ-La-EiF">
             <objects>
                 <viewController id="E59-nv-2eP" customClass="NavigationViewController" sceneMemberID="viewController">
@@ -347,7 +347,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jhj-Mz-Yxe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="GK7-kI-mLo">
+                    <navigationItem key="navigationItem" title="My location" id="GK7-kI-mLo">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="7nf-5b-oKr">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XmE-8N-IhB" userLabel="Where to?">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
