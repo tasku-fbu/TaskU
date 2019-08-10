@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary *messagesByContact;
 @property (weak, nonatomic) NSTimer *timer;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) CustomRefreshControl *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredData;

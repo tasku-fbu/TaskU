@@ -32,7 +32,7 @@
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @property (nonatomic, assign) int numData;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) CustomRefreshControl *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 

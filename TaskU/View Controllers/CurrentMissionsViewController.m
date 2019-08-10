@@ -18,7 +18,7 @@
 
 @interface CurrentMissionsViewController () <UIViewControllerTransitioningDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *currentTable;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) CustomRefreshControl *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSMutableArray *currentTasks;
 @property (nonatomic, strong) PanNormalAnimator *animationController;

@@ -18,7 +18,7 @@
 
 @interface CompletedMissionsViewController () <UIViewControllerTransitioningDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *completedTable;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) CustomRefreshControl *activityIndicator;
 @property (strong, nonatomic) NSMutableArray *completedTasks;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) PanNormalAnimator *animationController;
