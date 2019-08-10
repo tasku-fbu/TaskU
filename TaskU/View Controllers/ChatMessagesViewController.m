@@ -12,6 +12,7 @@
 #import "YourMessageCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "VCTransitionsLibrary/CEPanAnimationController.h"
+#import "CustomRefreshControl.h"
 
 @interface ChatMessagesViewController () <UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
@@ -31,7 +32,7 @@
 
 @property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @property (nonatomic, assign) int numData;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) CustomRefreshControl *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
@@ -90,12 +91,32 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getMessages) forControlEvents:UIControlEventValueChanged];
     [self.messageTable insertSubview:self.refreshControl atIndex:0];
-    [self.activityIndicator startAnimating];
+    
+    CGRect frame = CGRectMake(10, 10, 100, 100);
+    self.activityIndicator = [[CustomRefreshControl alloc] initWithFrame:frame];
+    
+    self.activityIndicator.tag = 101;  //tag: int used to identify view objects in your application.
+    [self.view addSubview:self.activityIndicator];
+    
+    self.activityIndicator.center = self.view.center;
+    
+    [self performSelector:@selector(animateProgress) withObject:nil afterDelay:0.5];
+    
+
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getMessages) userInfo:nil repeats:true];
     
     
     
     
+}
+
+-(void)animateProgress{
+    CustomRefreshControl *refresh = [self.view viewWithTag:101];
+    [refresh setProgressWithAnimation:0.5 withValue:1];
+}
+
+- (void) endAnimation {
+    [self.activityIndicator removeFromSuperview];
 }
 
 
@@ -204,8 +225,7 @@
             }
             
             [self.refreshControl endRefreshing];
-            [self.activityIndicator stopAnimating];
-            
+            [self performSelector:@selector(endAnimation) withObject:nil afterDelay:0.5];
             
             
             
