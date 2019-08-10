@@ -225,8 +225,7 @@
             }
             
             [self.refreshControl endRefreshing];
-            [self.activityIndicator stopAnimating];
-            
+            [self performSelector:@selector(endAnimation) withObject:nil afterDelay:0.5];
             
             
             
