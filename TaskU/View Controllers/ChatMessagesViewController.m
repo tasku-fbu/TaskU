@@ -110,6 +110,15 @@
     
 }
 
+-(void)animateProgress{
+    CustomRefreshControl *refresh = [self.view viewWithTag:101];
+    [refresh setProgressWithAnimation:0.5 withValue:1];
+}
+
+- (void) endAnimation {
+    [self.activityIndicator removeFromSuperview];
+}
+
 
 /*
  - (void) handlePan: (UIPanGestureRecognizer*) panGestureRecognizer {

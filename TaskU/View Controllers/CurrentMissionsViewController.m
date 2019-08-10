@@ -61,6 +61,14 @@
     
 
 }
+-(void)animateProgress{
+    CustomRefreshControl *refresh = [self.view viewWithTag:101];
+    [refresh setProgressWithAnimation:0.5 withValue:1];
+}
+
+- (void) endAnimation {
+    [self.activityIndicator removeFromSuperview];
+}
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     self.animationController.reverse = YES;
     return self.animationController;
