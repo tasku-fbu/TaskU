@@ -15,6 +15,7 @@
 #import "VCTransitionsLibrary/CEPanAnimationController.h"
 #import "VCTransitionsLibrary/CEBaseInteractionController.h"
 #import "InteractionViewController.h"
+#import "CustomRefreshControl.h"
 
 @interface AllChatsViewController () <UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

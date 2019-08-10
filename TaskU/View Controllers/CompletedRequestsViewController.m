@@ -14,6 +14,7 @@
 #import "PanNormalAnimator.h"
 #import "VCTransitionsLibrary/CEBaseInteractionController.h"
 #import "PanTabAnimator.h"
+#import "CustomRefreshControl.h"
 
 @interface CompletedRequestsViewController () <UIViewControllerTransitioningDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *completedTable;

@@ -14,6 +14,7 @@
 #import "PanNormalAnimator.h"
 #import "VCTransitionsLibrary/CEBaseInteractionController.h"
 #import "PanTabAnimator.h"
+#import "CustomRefreshControl.h"
 
 @interface CurrentMissionsViewController () <UIViewControllerTransitioningDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *currentTable;
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) NSMutableArray *currentTasks;
 @property (nonatomic, strong) PanNormalAnimator *animationController;
 @property (strong, nonatomic) PanTabAnimator * tabAnimator;
+
 @end
 
 @implementation CurrentMissionsViewController

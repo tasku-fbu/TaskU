@@ -12,6 +12,7 @@
 #import "YourMessageCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "VCTransitionsLibrary/CEPanAnimationController.h"
+#import "CustomRefreshControl.h"
 
 @interface ChatMessagesViewController () <UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
