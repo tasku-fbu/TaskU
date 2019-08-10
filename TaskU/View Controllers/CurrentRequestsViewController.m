@@ -134,7 +134,7 @@
             
             [self.currentTable reloadData];
             [self.refreshControl endRefreshing];
-            [self.activityIndicator stopAnimating];
+            [self performSelector:@selector(endAnimation) withObject:nil afterDelay:0.5];
         } else {
             NSLog(@"%@", error.localizedDescription);
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot fetch current requests"
