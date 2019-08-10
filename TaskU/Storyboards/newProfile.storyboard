@@ -277,7 +277,6 @@
                             </state>
                             <connections>
                                 <action selector="onSave:" destination="L2i-Bk-TgT" eventType="touchUpInside" id="7gh-MA-ILc"/>
-                                <segue destination="kcV-1Z-586" kind="unwind" identifier="UnwindToProfileID" unwindAction="unwindToProfile:" id="Whw-ZT-yOn"/>
                             </connections>
                         </button>
                         <sections>
@@ -479,7 +478,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfd-Wl-khc">
                                                     <rect key="frame" x="641" y="12" width="113" height="22"/>
                                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                    <state key="normal" title="Choose image"/>
+                                                    <state key="normal" title="Choose image">
+                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="onTapChooseImage:" destination="L2i-Bk-TgT" eventType="touchUpInside" id="OSp-MM-5Er"/>
                                                     </connections>
@@ -511,7 +512,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiG-3B-JbT">
                                                     <rect key="frame" x="631" y="12" width="123" height="22"/>
                                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
-                                                    <state key="normal" title="Go to Cash App"/>
+                                                    <state key="normal" title="Go to Cash App">
+                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="onTapCash:" destination="L2i-Bk-TgT" eventType="touchUpInside" id="goU-jn-c9y"/>
                                                     </connections>
@@ -542,6 +545,7 @@
                         <outlet property="editedPhone" destination="6ac-3c-rKd" id="dxb-rq-VqD"/>
                         <outlet property="editedUniversity" destination="r9t-uC-TqE" id="EE9-fA-O1I"/>
                         <outlet property="editedUsername" destination="tT1-aw-NSf" id="Dmz-9X-2zl"/>
+                        <segue destination="kcV-1Z-586" kind="unwind" identifier="UnwindToProfile" unwindAction="unwindToProfile:" id="cts-q4-Kic"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tkj-Sd-UPk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -812,4 +816,5 @@
         <image name="right" width="12" height="20"/>
         <image name="user" width="22" height="24"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
