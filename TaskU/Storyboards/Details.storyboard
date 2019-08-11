@@ -494,7 +494,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed3-Xq-jxD" userLabel="name Label">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed3-Xq-jxD" userLabel="name Label">
                                                             <rect key="frame" x="104" y="10" width="48.5" height="22"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -512,8 +512,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="@username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZy-fA-lCx">
-                                                            <rect key="frame" x="280" y="10" width="74" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="@username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZy-fA-lCx">
+                                                            <rect key="frame" x="286.5" y="10" width="67.5" height="15"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="12"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -532,7 +532,7 @@
                                                         <constraint firstItem="zWv-Hx-mdC" firstAttribute="top" secondItem="pYn-WR-eXM" secondAttribute="bottom" constant="4" id="T4X-S3-Nl7"/>
                                                         <constraint firstItem="zWv-Hx-mdC" firstAttribute="width" secondItem="pYn-WR-eXM" secondAttribute="width" id="ZaO-Th-hil"/>
                                                         <constraint firstItem="IZy-fA-lCx" firstAttribute="top" secondItem="ed3-Xq-jxD" secondAttribute="top" id="b6L-Yf-0Hb"/>
-                                                        <constraint firstItem="IZy-fA-lCx" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ed3-Xq-jxD" secondAttribute="trailing" constant="127.5" id="e6z-dp-zFD"/>
+                                                        <constraint firstItem="IZy-fA-lCx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ed3-Xq-jxD" secondAttribute="trailing" constant="8" id="e6z-dp-zFD"/>
                                                         <constraint firstItem="zWv-Hx-mdC" firstAttribute="height" secondItem="pYn-WR-eXM" secondAttribute="height" id="fiH-8m-4fU"/>
                                                         <constraint firstItem="pYn-WR-eXM" firstAttribute="top" secondItem="bwV-fp-tHw" secondAttribute="bottom" constant="8" id="hcz-ub-sU8"/>
                                                         <constraint firstItem="bwV-fp-tHw" firstAttribute="leading" secondItem="ed3-Xq-jxD" secondAttribute="leading" id="m8c-gn-L9B"/>
@@ -596,7 +596,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lw-0u-Ggu" userLabel="name Label">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lw-0u-Ggu" userLabel="name Label">
                                                             <rect key="frame" x="104" y="10" width="48.5" height="22"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -614,8 +614,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="@username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjI-tX-4Sx">
-                                                            <rect key="frame" x="280" y="10" width="74" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="@username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjI-tX-4Sx">
+                                                            <rect key="frame" x="286.5" y="10" width="67.5" height="15"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="12"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -644,7 +644,7 @@
                                                         <constraint firstItem="bS9-YI-zRV" firstAttribute="leading" secondItem="0Lw-0u-Ggu" secondAttribute="leading" id="tpx-B0-dUU"/>
                                                         <constraint firstItem="gSZ-Ve-g0i" firstAttribute="top" secondItem="bS9-YI-zRV" secondAttribute="bottom" constant="6" id="ucE-GG-vtN"/>
                                                         <constraint firstItem="nGz-5d-GDN" firstAttribute="leading" secondItem="9oi-Ic-lNs" secondAttribute="leading" id="xrf-BL-1Un"/>
-                                                        <constraint firstItem="tjI-tX-4Sx" firstAttribute="leading" relation="lessThanOrEqual" secondItem="0Lw-0u-Ggu" secondAttribute="trailing" constant="127.5" id="yJC-Cb-BU7"/>
+                                                        <constraint firstItem="tjI-tX-4Sx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0Lw-0u-Ggu" secondAttribute="trailing" constant="8" id="yJC-Cb-BU7"/>
                                                         <constraint firstItem="9oi-Ic-lNs" firstAttribute="top" secondItem="bS9-YI-zRV" secondAttribute="bottom" constant="8" id="zX0-JG-ues"/>
                                                     </constraints>
                                                 </view>
