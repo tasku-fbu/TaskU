@@ -158,6 +158,7 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
+    [query includeKey:@"email"];
 
     [query whereKey:@"requester" notEqualTo:[PFUser currentUser]];
     [query whereKey:@"category" equalTo:(self.category)];

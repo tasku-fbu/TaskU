@@ -110,6 +110,7 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
+    [query includeKey:@"email"];
     
     [query whereKey:@"missioner" equalTo:user];
     [query whereKey:@"completionStatus" containedIn:current];

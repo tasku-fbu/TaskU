@@ -117,6 +117,7 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
+    [query includeKey:@"email"];
     
     [query whereKey:@"requester" equalTo:user];
     [query whereKey:@"completionStatus" containedIn:current];
