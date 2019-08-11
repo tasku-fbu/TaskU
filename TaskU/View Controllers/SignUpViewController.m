@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (weak, nonatomic) IBOutlet UIButton *chooseImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+@property (strong, nonatomic) CustomAlert *customAlert;
+
 
 @end
 
@@ -85,13 +87,13 @@
             } else {
                 NSLog(@"User registered successfully");
                 newUser[@"contacts"] = [NSArray new];
-                /*
+                
                 PFACL *acl = [PFACL ACL];
                 [acl setPublicReadAccess:true];
                 [acl setPublicWriteAccess:true];
                 
                 newUser.ACL = acl;
-                */
+                
                 [newUser saveInBackground];
                 
                 // dismiss signUpViewController
@@ -128,203 +130,65 @@
 - (bool) isSignUpInfoComplete{
     
     if ([self.usernameTextField.text isEqual:@""]){
-        
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Username"
-                                                                       message:@"Please type valid username."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid Username" withMessage:@"Please type valid username." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
         
     }
     else if ([self.firstNameTextField.text isEqual:@""] || [self.lastNameTextField.text isEqual:@""]){
-        
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid name"
-                                                                       message:@"Please type a valid name."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid name" withMessage:@"Please type a valid name." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
-        
     }
     else if (self.phoneNumberLength < 10) {
         
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid phone number"
-                                                                       message:@"Must be more than 10 characters"
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid phone number" withMessage:@"Must be more than 10 characters." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
         
     }
     
     else if ([self.emailTextField.text isEqual:@""]){
-        
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Email"
-                                                                       message:@"Please type a valid email."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid Email" withMessage:@"Please type a valid email." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
-        
     }
     else if(![self validateEmail:self.emailTextField.text]) {
         //Email Address is Invalid.
         //checks if the email follows the format name@something.edu
-        NSLog(@"Invalid Email");
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Email"
-                                                                       message:@"Use a valid .edu email."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid Email" withMessage:@"Use a valid .edu email." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
     }
     else if ([self.universityNameTextField.text isEqual:@""]){
-        
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid University"
-                                                                       message:@"Please type your University name."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid University" withMessage:@"Please type your University name." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
-        
     }
     else if ([self.passwordTextField.text isEqual:@""]){
         
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Password"
-                                                                       message:@"Password cannot be empty."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid Password" withMessage:@"Password cannot be empty." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
-        
     }
     else if ([self.confirmPasswordTextField.text isEqual:@""]){
-        
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Password"
-                                                                       message:@"Both Passwords must match."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid Password" withMessage:@"Both passwords must match." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
-        
     }
     else if (![self.confirmPasswordTextField.text isEqual:self.passwordTextField.text]){
-        
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Password"
-                                                                       message:@"Both Passwords must match."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Invalid Password" withMessage:@"Both passwords must match." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
         return false;
-        
     }
     return true;
 }
@@ -364,14 +228,9 @@
 
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (void)didTapButton {
+    [self.customAlert.alertView removeFromSuperview];
+    [self.customAlert.parentView removeFromSuperview];
+}
 
 @end

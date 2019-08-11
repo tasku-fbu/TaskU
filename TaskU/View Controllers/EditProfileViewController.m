@@ -7,11 +7,11 @@
 //
 
 #import "EditProfileViewController.h"
-//#import "MapViewController.h"
 #import <Parse/Parse.h>
 #import <Photos/Photos.h>
 #import "Task.h"
 #import <UIKit/UIKit.h>
+#import "CustomAlert.h"
 
 
 @interface EditProfileViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *editedPhone;
 @property (weak, nonatomic) IBOutlet UITextField *editedUniversity;
 @property (strong, nonatomic) UIImage *chosenImage;
-
+@property(strong,nonatomic) CustomAlert *customAlert;
 @end
 
 @implementation EditProfileViewController
@@ -116,18 +116,18 @@
     //TODO: Place some image here
     if (self.chosenImage) {
         user[@"profileImage"] = [Task getPFFileFromImage:self.chosenImage];
+        [user saveInBackground];
         [self.delegate didEditProfilewithImage:self.chosenImage];
     }
-    [self.delegate didEditProfileName];
     [user saveInBackground];
+    [self.delegate didEditProfileName];
+    self.customAlert = [[CustomAlert alloc] init];
+    [self.customAlert showAlert:@"Success!" withMessage:@"Your changes were succesfully saved." withAlert:@"success"];
+    self.customAlert.buttonDelegate = self;
     
-
-//    [self.delegate didEditProfilewithImage:self.chosenImage];
-    
-    //[user saveInBackground];
     
     
- [self performSegueWithIdentifier:@"UnwindToProfileID" sender:self];
+ //[self performSegueWithIdentifier:@"UnwindToProfileID" sender:self];
 
     NSLog(@"Am I saving this picture?");
 }
@@ -138,12 +138,10 @@
 
 - (IBAction)onSave:(UIButton *)sender {
     [self updateUserInfo];
-
 }
 
 - (IBAction)onTapCash:(UIButton *)sender {
     // Call the Cash App app from TaskU
-    
     UIApplication *application = [UIApplication sharedApplication];
     NSURL *URL = [NSURL URLWithString:@"squarecash://"];
     [application openURL:URL options:@{} completionHandler:^(BOOL success) {
@@ -153,6 +151,15 @@
     }];
      
     
+}
+
+-(void)didTapButton{
+    [self.customAlert.alertView removeFromSuperview];
+    [self.customAlert.parentView removeFromSuperview];
+    if([self.customAlert.doneButton.backgroundColor isEqual:[UIColor colorNamed:@"darkGreen"]]){
+        [self performSegueWithIdentifier:@"UnwindToProfile" sender:self];
+        
+    }
 }
 
 
