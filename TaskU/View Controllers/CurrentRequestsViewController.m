@@ -180,12 +180,14 @@
     return self.currentTasks.count;
 }
 
+/*
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
+    [dateFormatter setDateFormat:@"h:mm a, MM.d, YYYY"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
+ */
 
 - (void) didTapDetails:(TaskCell *) cell {
     
