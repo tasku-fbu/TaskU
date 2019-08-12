@@ -148,6 +148,7 @@
 
 - (void) showRequesterInfo {
     PFUser *requester = self.task.requester;
+    
     self.rusernameLabel.text = [NSString stringWithFormat:@"@%@",requester[@"username"]];
     self.rnameLabel.text = [NSString stringWithFormat:@"%@ %@", requester[@"firstName"], requester[@"lastName"]];
     self.runiversityLabel.text = requester[@"university"];
