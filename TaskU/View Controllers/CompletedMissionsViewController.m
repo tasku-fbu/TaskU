@@ -118,6 +118,7 @@
     [query includeKey:@"category"];
     [query includeKey:@"hours"];
     [query includeKey:@"minutes"];
+    [query includeKey:@"email"];
     [query whereKey:@"missioner" equalTo:user];
     
     
@@ -178,12 +179,7 @@
     return self.completedTasks.count;
 }
 
-- (NSString *) stringfromDateHelper: (NSDate *) date {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm, MM.d, YYYY"];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    return dateString;
-}
+
 
 - (void)didTapDetails:(TaskCell *) cell {
     
