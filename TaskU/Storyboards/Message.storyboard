@@ -154,7 +154,7 @@
         <!--Chat Messages View Controller-->
         <scene sceneID="wFJ-F5-maT">
             <objects>
-                <viewController storyboardIdentifier="chatMessages" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OKb-9N-wT9" customClass="ChatMessagesViewController" sceneMemberID="viewController">
+                <viewController id="OKb-9N-wT9" customClass="ChatMessagesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ee3-xR-Kgy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,7 +349,7 @@
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
                                 <state key="normal" image="right-1"/>
                                 <connections>
-                                    <action selector="onClickBack:" destination="OKb-9N-wT9" eventType="touchUpInside" id="ODf-QR-VPe"/>
+                                    <action selector="onClickBack:" destination="OKb-9N-wT9" eventType="touchUpInside" id="gdv-qV-Hwf"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -396,7 +396,7 @@
         <!--Navigation Controller-->
         <scene sceneID="wT0-eT-oLc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wd3-Ij-0P3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="chatMessages" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wd3-Ij-0P3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pZd-Kf-qOz">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
