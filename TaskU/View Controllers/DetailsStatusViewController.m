@@ -407,7 +407,7 @@ NSMutableArray *annotationsArray;
 
 - (NSString *) stringfromDateHelper: (NSDate *) date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEE, MMM d @ HH:mm a"];
+    [dateFormatter setDateFormat:@"EEE, MMM d @ h:mm a"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
