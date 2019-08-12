@@ -42,6 +42,7 @@
     //Add parent to subview of window
     self.parentView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleHeight);
     
+    self.parentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];    
 }
 
 /*
@@ -70,10 +71,7 @@
 }
 - (IBAction)onTapDone:(id)sender {
     
-    //TODO: Remove Custom View from MainView
-   [self willRemoveSubview:self.parentView];
-    [self willRemoveSubview:self.alertView];
-
+    [self.buttonDelegate didTapButton];
 }
 
 @end

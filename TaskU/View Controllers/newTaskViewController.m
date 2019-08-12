@@ -10,6 +10,7 @@
 #import "Task.h"
 #import "LocationsViewController.h"
 #import "newTaskViewController.h"
+#import "CustomAlert.h"
 
 @interface newTaskViewController () <UIPickerViewDelegate, UIPickerViewDataSource, LocationsViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *taskName;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) NSNumber *endLatitude;
 @property (strong, nonatomic) NSNumber *endLongitude;
 @property (assign, nonatomic) BOOL isThisStartAddress;
+@property(strong,nonatomic) CustomAlert *customAlert;
 @end
 
 static NSString *const addressSegueIdentifier = @"addressSegue";
@@ -42,30 +44,6 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor blackColor],
        NSFontAttributeName:[UIFont fontWithName:@"Quicksand-Bold" size:19]}];
-    
-    
-    
-    //Alert for incomplete user input
-    self.completionAlert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                     message:@"Please input all the required fields"
-                                              preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *errorAction = [UIAlertAction actionWithTitle:@"Ok"
-                                                          style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-                                                        }];
-    [self.completionAlert addAction:errorAction];
-    
-    
-    //Alert for Network Error
-    self.networkAlert = [UIAlertController alertControllerWithTitle:@"Network Error"
-                                                               message:@"Please connect to the internet"
-                                                        preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *otherErrorAction = [UIAlertAction actionWithTitle:@"Ok"
-                                                          style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-                                                        }];
-    // add the OK action to the alert controller
-    [self.networkAlert addAction:otherErrorAction];
     
     // Connect data:
     self.picker.delegate = self;
@@ -140,8 +118,11 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
 
     //Checks if one of the required fields is empty. Only optional field is Start Address
     if ([self.taskName.text isEqualToString:@""] || [self.endAddress.text isEqualToString:@""] || [self.taskDescription.text isEqualToString:@""] || [zeroPayAmount containsObject:self.payAmount.text] || ([errorAmount containsObject:self.minutes.text] && [errorAmount containsObject:self.hours.text])){
-        [self presentViewController:self.completionAlert animated:YES completion:^{
-        }];
+        //Alert for incomplete user input
+        
+        self.customAlert = [[CustomAlert alloc] init];
+        [self.customAlert showAlert:@"Error" withMessage:@"Please input all the required fields." withAlert:@"failure"];
+        self.customAlert.buttonDelegate = self;
     } else {
         NSLog(@"%@ %@ %@ %@",self.startLatitude , self.startLongitude, self.endLatitude, self.endLongitude);
         [Task postTask:self.taskName.text withStart:self.startAddress.text withEnd:self.endAddress.text
@@ -150,15 +131,17 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
             
             if(succeeded){
                 NSLog(@"Posted!");
-                [self dismissViewControllerAnimated:YES completion:nil];
-                
-                //TODO: Incorporate connection to tab bar controller
-                //ParentViewController is tab bar controller
-                // [self.parentViewController.tabBarController setSelectedIndex:0];
+                self.customAlert = [[CustomAlert alloc] init];
+                [self.customAlert showAlert:@"Success!" withMessage:@"Your task has succesfully posted." withAlert:@"success"];
+                self.customAlert.buttonDelegate = self;
             } else{
+                //Network Error
+                self.customAlert = [[CustomAlert alloc] init];
+                [self.customAlert showAlert:@"Error posting task" withMessage:@"Please connect to the internet." withAlert:@"failure"];
+                self.customAlert.buttonDelegate = self;
                 NSLog(@"Error posting task: %@", error.localizedDescription);
-                [self presentViewController:self.networkAlert animated:YES completion:^{
-                }];
+
+   
             }
         }];
     }
@@ -173,7 +156,13 @@ static NSString *const addressSegueIdentifier = @"addressSegue";
     [self makePost];
 }
 
-
+-(void)didTapButton{
+    [self.customAlert.alertView removeFromSuperview];
+    [self.customAlert.parentView removeFromSuperview];
+    if([self.customAlert.doneButton.backgroundColor isEqual:[UIColor colorNamed:@"darkGreen"]]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 /*
 #pragma mark - Navigation
 

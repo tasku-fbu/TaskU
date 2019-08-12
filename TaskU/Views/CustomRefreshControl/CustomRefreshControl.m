@@ -50,7 +50,7 @@
     //Creates and returns a new UIBezierPath object initialized with an arc of a circle
    // Y-Axis is reversed compared to standard coordinate system in math
 
-    UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2,   self.frame.size.height/2) radius:(self.frame.size.width-1.5)/2 startAngle:-0.5 * M_PI endAngle:1.5 * M_PI clockwise:YES];
+    UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2,   self.frame.size.height/2) radius:(self.frame.size.width-3)/2 startAngle:-0.5 * M_PI endAngle:1.5 * M_PI clockwise:YES];
 
     //Track Layer
     self.trackLayer.path = circlePath.CGPath;
@@ -105,17 +105,18 @@ Creates animation for the stroke loading
  Image will be hidden until data has loaded
  */
 -(void)initCheckImage{
-    image = [UIImage imageNamed:@"check"];
+    image = [UIImage imageNamed:@"check-1"];
     imageView = [[UIImageView alloc] initWithImage:image];
     imageView.center = self.center;
     [imageView setFrame:CGRectMake(20, 20, 60, 60)];
     [self addSubview:imageView];
-    [imageView setHidden:YES];
+    //[imageView setHidden:YES];
 }
 
 
 -(void)addCheckImage{
      [imageView setHidden:NO];
+    
 }
 
 @end
