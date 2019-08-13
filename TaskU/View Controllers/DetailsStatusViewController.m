@@ -657,9 +657,10 @@ NSMutableArray *annotationsArray;
 
 - (void) contact:(PFUser *) otherUser {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Message" bundle:nil];
-    ChatMessagesViewController *chatMessagesVC = (ChatMessagesViewController *)[storyboard instantiateViewControllerWithIdentifier:@"chatMessages"];
+    UINavigationController *navigationVC = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"chatMessages"];
+    ChatMessagesViewController *chatMessagesVC = (ChatMessagesViewController *) navigationVC.topViewController;
     chatMessagesVC.contact = otherUser;
-    [self presentViewController:chatMessagesVC animated:YES completion:nil];
+    [self presentViewController:navigationVC animated:YES completion:nil];
     
 }
 
